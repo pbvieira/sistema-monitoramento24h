@@ -1,0 +1,36 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{55A64967-B322-417E-9356-D72323F05777}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Cmo\AzSIM.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="AzSIM">
+			<MSBuild Projects="Cmo\AzSIM.dproj"/>
+		</Target>
+		<Target Name="AzSIM:Clean">
+			<MSBuild Targets="Clean" Projects="Cmo\AzSIM.dproj"/>
+		</Target>
+		<Target Name="AzSIM:Make">
+			<MSBuild Targets="Make" Projects="Cmo\AzSIM.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="AzSIM"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="AzSIM:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="AzSIM:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>
