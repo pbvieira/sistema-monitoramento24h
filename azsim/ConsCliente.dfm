@@ -1,6 +1,6 @@
 object FConsCliente: TFConsCliente
-  Left = 352
-  Top = 131
+  Left = 284
+  Top = 121
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Consulta de Clientes'
@@ -351,9 +351,9 @@ object FConsCliente: TFConsCliente
   object GroupBox1: TGroupBox
     Left = 8
     Top = 8
-    Width = 358
+    Width = 469
     Height = 64
-    Caption = 'Consutla por Cliente '
+    Caption = 'Consulta por Cliente '
     TabOrder = 1
     object Label4: TLabel
       Left = 17
@@ -378,7 +378,7 @@ object FConsCliente: TFConsCliente
     object EdtNome: TEdit
       Left = 85
       Top = 32
-      Width = 265
+      Width = 372
       Height = 21
       CharCase = ecUpperCase
       TabOrder = 1
@@ -395,29 +395,16 @@ object FConsCliente: TFConsCliente
     end
   end
   object GPBConsEndereco: TGroupBox
-    Left = 603
+    Left = 481
     Top = 8
-    Width = 393
+    Width = 278
     Height = 64
     Caption = 'Consulta por Endere'#231'o'
     TabOrder = 2
-    object Label11: TLabel
-      Left = 10
-      Top = 17
-      Width = 33
-      Height = 13
-      Caption = 'Cidade'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-    end
     object EdtCidade: TEdit
       Left = 10
       Top = 32
-      Width = 209
+      Width = 255
       Height = 21
       CharCase = ecUpperCase
       TabOrder = 0
@@ -578,7 +565,7 @@ object FConsCliente: TFConsCliente
     end
   end
   object GroupBox2: TGroupBox
-    Left = 368
+    Left = 763
     Top = 8
     Width = 233
     Height = 64

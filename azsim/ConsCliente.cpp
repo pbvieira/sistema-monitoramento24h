@@ -122,7 +122,7 @@ void __fastcall TFConsCliente::BtnConsultarClick(TObject *Sender)
 
                 if(Cidade != ""){
                     if(Cidade != ""){
-                        SQL_FILTRO_POR_LOCAL += " C.CIDADE LIKE UPPER(:CIDADE)";
+                        SQL_FILTRO_POR_LOCAL += " C.CIDADE LIKE UPPER(:CIDADE) OR C.ENDERECO LIKE UPPER(:CIDADE) OR C.BAIRRO LIKE UPPER(:CIDADE)";
                     }
 
                     DModuleCliente->CDSConsCliente->Close();

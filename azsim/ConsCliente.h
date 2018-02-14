@@ -31,7 +31,6 @@ __published:	// IDE-managed Components
     TSpeedButton *BtnConsultar;
     TGroupBox *GPBConsEndereco;
     TEdit *EdtCidade;
-    TLabel *Label11;
     TSpeedButton *BtnTodos;
     TStatusBar *SBarConsCliente;
     TGroupBox *GPBNomeSelecionado;

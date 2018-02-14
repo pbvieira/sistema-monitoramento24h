@@ -1,7 +1,7 @@
 object DModuleCliente: TDModuleCliente
   OldCreateOrder = False
-  Left = 190
-  Top = 127
+  Left = 191
+  Top = 112
   Height = 640
   Width = 1176
   object IBQContato: TIBQuery
@@ -1321,7 +1321,6 @@ object DModuleCliente: TDModuleCliente
     Top = 110
   end
   object CDSTipoContrato: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPTipoContrato'
@@ -1374,7 +1373,6 @@ object DModuleCliente: TDModuleCliente
     Top = 110
   end
   object CDSReceita: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPReceita'
@@ -1427,7 +1425,6 @@ object DModuleCliente: TDModuleCliente
     Top = 110
   end
   object CDSTipoCobranca: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPTipoCobranca'
@@ -1670,7 +1667,7 @@ object DModuleCliente: TDModuleCliente
     Top = 254
   end
   object IBTConsCliente: TIBTransaction
-    Active = True
+    Active = False
     DefaultDatabase = DModule.IBCONAzsim
     Params.Strings = (
       'concurrency'
@@ -1680,7 +1677,6 @@ object DModuleCliente: TDModuleCliente
     Top = 14
   end
   object CDSConsCliente: TClientDataSet
-    Active = True
     Aggregates = <>
     FieldDefs = <
       item
@@ -1921,7 +1917,6 @@ object DModuleCliente: TDModuleCliente
     Top = 110
   end
   object CDSConsContrato: TClientDataSet
-    Active = True
     Aggregates = <>
     DataSetField = CDSConsClienteIBQConsContrato
     FieldDefs = <
@@ -2178,7 +2173,6 @@ object DModuleCliente: TDModuleCliente
     Top = 311
   end
   object CDSMotivoCancel: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPMotivoCancel'

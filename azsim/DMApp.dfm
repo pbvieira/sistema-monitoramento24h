@@ -2,12 +2,12 @@ object DModule: TDModule
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Left = 675
-  Top = 190
+  Left = 464
+  Top = 250
   Height = 433
   Width = 654
   object IBCONAzsim: TIBDatabase
-    DatabaseName = 'C:\dados-azsim\AZPRODUCAO\AZSIMDB-MONTENEGRO.FDB'
+    DatabaseName = 'C:\Desenvolvimento\database\AZSIMDB-LAJEADO.FDB'
     Params.Strings = (
       'user_name=SYSDBA'
       'password=masterkey'
