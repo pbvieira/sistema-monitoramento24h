@@ -336,7 +336,7 @@ object FConsCliente: TFConsCliente
             Expanded = False
             FieldName = 'MODELOCENTRAL'
             Title.Caption = 'Modelo da Central'
-            Width = 213
+            Width = 300
             Visible = True
           end
           item

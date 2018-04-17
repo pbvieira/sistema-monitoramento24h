@@ -27,10 +27,10 @@
       RelOcorrenciasEncerradas.dfm CadOrdemServico.dfm ConsOrdemServico.dfm 
       RelOrdemServicos.dfm CadBase.dfm CadCodificadores.dfm RelClientes.dfm"/>
     <LIBFILES value=""/>
-    <LIBRARIES value="bcb2kaxserver.lib vclx.lib qrpt.lib bdertl.lib vcldb.lib dbexpress.lib 
-      dsnap.lib cds.lib ibxpress.lib dbrtl.lib rtl.lib vcl.lib"/>
+    <LIBRARIES value="bcbie.lib bcb2kaxserver.lib vclx.lib qrpt.lib bdertl.lib vcldb.lib 
+      dbexpress.lib dsnap.lib cds.lib ibxpress.lib dbrtl.lib rtl.lib vcl.lib"/>
     <SPARELIBS value="vcl.lib rtl.lib dbrtl.lib ibxpress.lib cds.lib dsnap.lib dbexpress.lib 
-      vcldb.lib bdertl.lib qrpt.lib vclx.lib bcb2kaxserver.lib"/>
+      vcldb.lib bdertl.lib qrpt.lib vclx.lib bcb2kaxserver.lib bcbie.lib"/>
     <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
       vcldbx.bpi ibxpress.bpi dsnap.bpi cds.bpi bdecds.bpi qrpt.bpi teeui.bpi 
       teedb.bpi tee.bpi dss.bpi teeqr.bpi visualclx.bpi visualdbclx.bpi 
@@ -45,7 +45,7 @@
     <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
     <RELEASELIBPATH value="$(BCB)\lib\release"/>
     <LINKER value="ilink32"/>
-    <USERDEFINES value=""/>
+    <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT"/>
     <MAINSOURCE value="Azsim.cpp"/>
     <INCLUDEPATH value="&quot;C:\Arquivos de programas\Borland\CBuilder6\Projects&quot;;C:\azmonitoramento\azsim;$(BCB)\include;$(BCB)\include\vcl"/>
@@ -56,12 +56,13 @@
   <OPTIONS>
     <IDLCFLAGS value="-I&quot;C:\Arquivos de programas\Borland\CBuilder6\Projects&quot; 
       -IC:\azmonitoramento\azsim -I$(BCB)\include -I$(BCB)\include\vcl 
-      -src_suffix cpp -boa"/>
-    <CFLAG1 value="-O2 -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -a4 -b- -k- -vi -c -tW -tWM"/>
-    <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
+      -src_suffix cpp -D_DEBUG -boa"/>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a4 -b- -k -y -v -vi- -c 
+      -tW -tWM"/>
+    <PFLAGS value="-$Y+ -$W -$O- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
-    <AFLAGS value="/mx /w2 /zn"/>
-    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn"/>
+    <AFLAGS value="/mx /w2 /zi"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
     <OTHERFILES value=""/>
   </OPTIONS>
   <LINKER>
@@ -113,7 +114,7 @@ AutoIncBuild=0
 MajorVer=1
 MinorVer=0
 Release=0
-Build=34
+Build=35
 Debug=0
 PreRelease=0
 Special=0
@@ -125,7 +126,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=
 FileDescription=
-FileVersion=1.0.0.34
+FileVersion=1.0.0.35
 InternalName=
 LegalCopyright=
 LegalTrademarks=

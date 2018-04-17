@@ -89,8 +89,8 @@ void __fastcall TFMonitor::FormCreate(TObject *Sender)
     gettime(&h);
 
     try{
-        ApresentaLogNoMemo("Iniciando o monitor serial Versão 1.0.1.0", true);
-        ApresentaLogNoMemo("Carregando em cache os status", true);
+        PrintCtxLog("Iniciando o monitor serial Versão 1.2", true);
+        PrintCtxLog("Carregando em cache os status", true);
 
         DModule->CDSStatus->Active = true;
         if(DModule->IBTStatus->InTransaction)
@@ -101,14 +101,7 @@ void __fastcall TFMonitor::FormCreate(TObject *Sender)
             DModule->IBTStatusCliente->Commit();
 
         PARAMSISISTEMA_SETORIZACAO = GetValorParametro(4);
-        /*
-        TDateTime dDataAtual = DModule->RetornaDataHoraAtual();
-        AdicionarEvento(0, 159030, 3, "37", dDataAtual);
-        AdicionarEvento(0, 159030, 0, "00", dDataAtual);
-        AdicionarEvento(0, 159030, 0, "0F", dDataAtual);
-        AdicionarEvento(3, 159030, 0, "FF", dDataAtual);
-        */
-        
+          
         if(ParamCount() > 0){
             AnsiString portaCOM = ParamStr(2);
             apphwnd = (HWND)StrToInt(ParamStr(4));
@@ -121,19 +114,19 @@ void __fastcall TFMonitor::FormCreate(TObject *Sender)
 
             if (stCtx.hiDll == NULL) {
                 sprintf(acBuffer,"Carregando a dll %s", szDll);
-                ApresentaLogNoMemo(acBuffer, true);
+                PrintCtxLog(acBuffer, true);
                 stCtx.hiDll = LoadLibrary(szDll.c_str());
                 if(CarregaMetodosDll()){
                     sprintf(acBuffer,"Iniciando a comunicação serial com a porta %s", szPorta);
-                    ApresentaLogNoMemo(acBuffer, true);
+                    PrintCtxLog(acBuffer, true);
                     if(InterpretaRetornoDll(
                         stCtx.bInitNetwork(Application->Handle, 0, szPorta.c_str(), NR_RETRANSMISSOES_CTX,
                             ESPERA_RESPOSTA_CTX, PERIODO_TIMER, 0)!= BIBCOM_SEM_ERRO)){
                         sprintf(acBuffer,"Porta de comunicação serial %s aberta, aguardando resposta da CTX", szPorta);
-                        ApresentaLogNoMemo(acBuffer, true);
+                        PrintCtxLog(acBuffer, true);
                     }else{
                         sprintf(acBuffer,"Comunicação serial com a porta %s falhou", szPorta);
-                        ApresentaLogNoMemo(acBuffer, true);
+                        PrintCtxLog(acBuffer, true);
                     }
                 }
             }
@@ -155,9 +148,9 @@ void __fastcall TFMonitor::FormClose(TObject *Sender, TCloseAction &Action)
 {
     if (stCtx.hiDll != NULL){
         if(InterpretaRetornoDll(stCtx.bEndNetwork())){
-            ApresentaLogNoMemo("Comunicação serial encerrada com sucesso", true);
+            PrintCtxLog("Comunicação serial encerrada com sucesso", true);
         }else{
-            ApresentaLogNoMemo("Encerramento da comunicação serial falhou", true);
+            PrintCtxLog("Encerramento da comunicação serial falhou", true);
         }
     }
     DModule->IBQStatus->Active = false;
@@ -175,306 +168,306 @@ bool __fastcall TFMonitor::CarregaMetodosDll(void)
     gettime(&h);
 
     if (stCtx.hiDll != NULL){
-        ApresentaLogNoMemo("Validando a integridade da dll", true);
+        PrintCtxLog("Validando a integridade da dll", true);
 
         stCtx.bEndNetwork = (BYTE (__stdcall*)(void)) GetProcAddress(stCtx.hiDll, "bEndNetwork");
         if (stCtx.bEndNetwork == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bEndNetwork()", true);
+            PrintCtxLog("Não foi possível encontrar a função bEndNetwork()", true);
             retorno = false;
         }
 
         stCtx.bGetDllError = (BYTE (__stdcall*)(DWORD*)) GetProcAddress(stCtx.hiDll, "bGetDllError");
         if (stCtx.bGetDllError == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bGetDllError()", true);
+            PrintCtxLog("Não foi possível encontrar a função bGetDllError()", true);
             retorno = false;
         }
 
         stCtx.bGetDllVersion = (BYTE (__stdcall*)(WORD*, char*, char*)) GetProcAddress(stCtx.hiDll, "bGetDllVersion");
         if (stCtx.bGetDllVersion == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bGetDllVersion()", true);
+            PrintCtxLog("Não foi possível encontrar a função bGetDllVersion()", true);
             retorno = false;
         }
 
         stCtx.bInitNetwork = (BYTE (__stdcall*)(HWND, WORD, char*, BYTE, WORD, BYTE, BYTE)) GetProcAddress(stCtx.hiDll, "bInitNetwork");
         if (stCtx.bInitNetwork == NULL)	{
-            ApresentaLogNoMemo("Não foi possível encontrar a função bInitNetwork()", true);
+            PrintCtxLog("Não foi possível encontrar a função bInitNetwork()", true);
             retorno = false;
         }
 
         stCtx.bReadCounter = (BYTE (__stdcall*)(WORD*)) GetProcAddress(stCtx.hiDll, "bReadCounter");
         if (stCtx.bReadCounter == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bReadCounter()", true);
+            PrintCtxLog("Não foi possível encontrar a função bReadCounter()", true);
             retorno = false;
         }
 
         stCtx.bWaitResponse = (BYTE (__stdcall*)(void)) GetProcAddress(stCtx.hiDll, "bWaitResponse");
         if (stCtx.bWaitResponse == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bWaitResponse()", true);
+            PrintCtxLog("Não foi possível encontrar a função bWaitResponse()", true);
             retorno = false;
         }
 
         stCtx.bLoadConfiguration = (BYTE (__stdcall*)(void)) GetProcAddress(stCtx.hiDll, "bLoadConfiguration");
         if (stCtx.bLoadConfiguration == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bLoadConfiguration()", true);
+            PrintCtxLog("Não foi possível encontrar a função bLoadConfiguration()", true);
             retorno = false;
         }
 
         stCtx.bOpenTelephoneConnection = (BYTE (__stdcall*)(void)) GetProcAddress(stCtx.hiDll, "bOpenTelephoneConnection");
         if (stCtx.bOpenTelephoneConnection == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bOpenTelephoneConnection()", true);
+            PrintCtxLog("Não foi possível encontrar a função bOpenTelephoneConnection()", true);
             retorno = false;
         }
 
         stCtx.bPrintString = (BYTE (__stdcall*)(char*)) GetProcAddress(stCtx.hiDll, "bPrintString");
         if (stCtx.bPrintString == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bPrintString()", true);
+            PrintCtxLog("Não foi possível encontrar a função bPrintString()", true);
             retorno = false;
         }
 
         stCtx.bPutEvent = (BYTE (__stdcall*)(DWORD, BYTE, BYTE)) GetProcAddress(stCtx.hiDll, "bPutEvent");
         if (stCtx.bPutEvent == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bPutEvent()", true);
+            PrintCtxLog("Não foi possível encontrar a função bPutEvent()", true);
             retorno = false;
         }
 
         stCtx.bPutLog = (BYTE (__stdcall*)(DWORD, BYTE, BYTE, BYTE*)) GetProcAddress(stCtx.hiDll, "bPutLog");
         if (stCtx.bPutLog == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bPutLog()", true);
+            PrintCtxLog("Não foi possível encontrar a função bPutLog()", true);
             retorno = false;
         }
 
         stCtx.bReadAllEventsFrom = (BYTE (__stdcall*)(short int)) GetProcAddress(stCtx.hiDll, "bReadAllEventsFrom");
         if (stCtx.bReadAllEventsFrom == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bReadAllEventsFrom()", true);
+            PrintCtxLog("Não foi possível encontrar a função bReadAllEventsFrom()", true);
             retorno = false;
         }
 
         stCtx.bReadAllLogsFrom = (BYTE (__stdcall*)(short int)) GetProcAddress(stCtx.hiDll, "bReadAllLogsFrom");
         if (stCtx.bReadAllLogsFrom == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bReadAllLogsFrom()", true);
+            PrintCtxLog("Não foi possível encontrar a função bReadAllLogsFrom()", true);
             retorno = false;
         }
 
         stCtx.bReadParameter = (BYTE (__stdcall*)(BYTE)) GetProcAddress(stCtx.hiDll, "bReadParameter");
         if (stCtx.bReadParameter == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bReadParameter()", true);
+            PrintCtxLog("Não foi possível encontrar a função bReadParameter()", true);
             retorno = false;
         }
 
         stCtx.bResetCTX = (BYTE (__stdcall*)(BYTE)) GetProcAddress(stCtx.hiDll, "bResetCTX");
         if (stCtx.bResetCTX == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bResetCTX()", true);
+            PrintCtxLog("Não foi possível encontrar a função bResetCTX()", true);
             retorno = false;
         }
 
         stCtx.bResetOutputs = (BYTE (__stdcall*)(BYTE)) GetProcAddress(stCtx.hiDll, "bResetOutputs");
         if (stCtx.bResetOutputs == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bResetOutputs()", true);
+            PrintCtxLog("Não foi possível encontrar a função bResetOutputs()", true);
             retorno = false;
         }
 
         stCtx.bSaveConfiguration = (BYTE (__stdcall*)(void)) GetProcAddress(stCtx.hiDll, "bSaveConfiguration");
         if (stCtx.bSaveConfiguration == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bSaveConfiguration()", true);
+            PrintCtxLog("Não foi possível encontrar a função bSaveConfiguration()", true);
             retorno = false;
         }
 
         stCtx.bSendDTMFMessage = (BYTE (__stdcall*)(char*)) GetProcAddress(stCtx.hiDll, "bSendDTMFMessage");
         if (stCtx.bSendDTMFMessage == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bSendDTMFMessage()", true);
+            PrintCtxLog("Não foi possível encontrar a função bSendDTMFMessage()", true);
             retorno = false;
         }
 
         stCtx.bSetDateTime = (BYTE (__stdcall*)(BYTE, BYTE, WORD, BYTE, BYTE, BYTE)) GetProcAddress(stCtx.hiDll, "bSetDateTime");
         if (stCtx.bSetDateTime == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bSetDateTime()", true);
+            PrintCtxLog("Não foi possível encontrar a função bSetDateTime()", true);
             retorno = false;
         }
 
         stCtx.bSetOutputs = (BYTE (__stdcall*)(BYTE)) GetProcAddress(stCtx.hiDll, "bSetOutputs");
         if (stCtx.bSetOutputs == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bSetOutputs()", true);
+            PrintCtxLog("Não foi possível encontrar a função bSetOutputs()", true);
             retorno = false;
         }
 
         stCtx.bSetSignature = (BYTE (__stdcall*)(BYTE, BYTE, WORD)) GetProcAddress(stCtx.hiDll, "bSetSignature");
         if (stCtx.bSetSignature == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bSetSignature()", true);
+            PrintCtxLog("Não foi possível encontrar a função bSetSignature()", true);
             retorno = false;
         }
 
         stCtx.bSetTelephoneCommands = (BYTE (__stdcall*)(char*)) GetProcAddress(stCtx.hiDll, "bSetTelephoneCommands");
         if (stCtx.bSetTelephoneCommands == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bSetTelephoneCommands()", true);
+            PrintCtxLog("Não foi possível encontrar a função bSetTelephoneCommands()", true);
             retorno = false;
         }
 
         stCtx.bWriteParameter = (BYTE (__stdcall*)(BYTE, VALPAR*)) GetProcAddress(stCtx.hiDll, "bWriteParameter");
         if (stCtx.bWriteParameter == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bWriteParameter()", true);
+            PrintCtxLog("Não foi possível encontrar a função bWriteParameter()", true);
             retorno = false;
         }
 
         stCtx.bBufferToCTAConfig = (BYTE (__stdcall*)(BYTE*, BYTE*, BYTE*, BYTE*, BYTE*, WORD*)) GetProcAddress(stCtx.hiDll, "bBufferToCTAConfig");
         if (stCtx.bBufferToCTAConfig == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToCTAConfig()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToCTAConfig()", true);
             retorno = false;
         }
 
         stCtx.bBufferToCTAStatus = (BYTE (__stdcall*)(BYTE*, BYTE*, BYTE*, WORD*)) GetProcAddress(stCtx.hiDll, "bBufferToCTAStatus");
         if (stCtx.bBufferToCTAStatus == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToCTAStatus()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToCTAStatus()", true);
             retorno = false;
         }
 
         stCtx.bBufferToCTDConfig = (BYTE (__stdcall*)(BYTE*, BYTE*, BYTE*, BYTE*, BYTE*, WORD*, WORD*, WORD*)) GetProcAddress(stCtx.hiDll, "bBufferToCTDConfig");
         if (stCtx.bBufferToCTDConfig == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToCTDConfig()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToCTDConfig()", true);
             retorno = false;
         }
 
         stCtx.bBufferToCTDStatus = (BYTE (__stdcall*)(BYTE*, BYTE*, BYTE*, WORD*)) GetProcAddress(stCtx.hiDll, "bBufferToCTDStatus");
         if (stCtx.bBufferToCTDStatus == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToCTDStatus()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToCTDStatus()", true);
             retorno = false;
         }
 
         stCtx.bBufferToCTFConfig = (BYTE (__stdcall*)(BYTE*, BYTE*, BYTE*, BYTE*, BYTE*)) GetProcAddress(stCtx.hiDll, "bBufferToCTFConfig");
         if (stCtx.bBufferToCTFConfig == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToCTFConfig()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToCTFConfig()", true);
             retorno = false;
         }
 
         stCtx.bBufferToCTFStatus = (BYTE (__stdcall*)(BYTE*, BYTE*, BYTE*, BYTE*, BYTE*, BYTE*)) GetProcAddress(stCtx.hiDll, "bBufferToCTFStatus");
         if (stCtx.bBufferToCTFStatus == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToCTFStatus()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToCTFStatus()", true);
             retorno = false;
         }
 
         stCtx.bBufferToCTXCode = (BYTE (__stdcall*)(BYTE*, WORD*)) GetProcAddress(stCtx.hiDll, "bBufferToCTXCode");
         if (stCtx.bBufferToCTXCode == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToCTXCode()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToCTXCode()", true);
             retorno = false;
         }
 
         stCtx.bBufferToCTXConfig = (BYTE (__stdcall*)(BYTE*, BYTE*)) GetProcAddress(stCtx.hiDll, "bBufferToCTXConfig");
         if (stCtx.bBufferToCTXConfig == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToCTXConfig()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToCTXConfig()", true);
             retorno = false;
         }
 
         stCtx.bBufferToCTXStatus = (BYTE (__stdcall*)(BYTE*, BYTE*)) GetProcAddress(stCtx.hiDll, "bBufferToCTXStatus");
         if (stCtx.bBufferToCTXStatus == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToCTXStatus()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToCTXStatus()", true);
             retorno = false;
         }
 
         stCtx.bBufferToDateTime = (BYTE (__stdcall*)(BYTE*, BYTE*, BYTE*, WORD*, BYTE*, BYTE*, BYTE*)) GetProcAddress(stCtx.hiDll, "bBufferToDateTime");
         if (stCtx.bBufferToDateTime == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToDateTime()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToDateTime()", true);
             retorno = false;
         }
 
         stCtx.bBufferToError = (BYTE (__stdcall*)(BYTE*, BYTE*, char*)) GetProcAddress(stCtx.hiDll, "bBufferToError");
         if (stCtx.bBufferToError == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToError()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToError()", true);
             retorno = false;
         }
 
         stCtx.bBufferToEvent = (BYTE (__stdcall*)(BYTE*, WORD*, DWORD*, BYTE*, BYTE*)) GetProcAddress(stCtx.hiDll, "bBufferToEvent");
         if (stCtx.bBufferToEvent == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToEvent()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToEvent()", true);
             retorno = false;
         }
 
         stCtx.bBufferToExpirationTime = (BYTE (__stdcall*)(BYTE*, BYTE*)) GetProcAddress(stCtx.hiDll, "bBufferToExpirationTime");
         if (stCtx.bBufferToExpirationTime == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToExpirationTime()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToExpirationTime()", true);
             retorno = false;
         }
 
         stCtx.bBufferToKey = (BYTE (__stdcall*)(BYTE*, char*)) GetProcAddress(stCtx.hiDll, "bBufferToKey");
         if (stCtx.bBufferToKey == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToKey()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToKey()", true);
             retorno = false;
         }
 
         stCtx.bBufferToLog = (BYTE (__stdcall*)(BYTE*, WORD*, DWORD*, BYTE*, BYTE*, BYTE*)) GetProcAddress(stCtx.hiDll, "bBufferToLog");
         if (stCtx.bBufferToLog == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToLog()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToLog()", true);
             retorno = false;
         }
 
         stCtx.bBufferToMessage = (BYTE (__stdcall *)(BYTE*, BYTE*, char*, DWORD*)) GetProcAddress(stCtx.hiDll, "bBufferToMessage");
         if (stCtx.bBufferToMessage == NULL)	{
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToMessage()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToMessage()", true);
             retorno = false;
         }
 
         stCtx.bBufferToMTACode = (BYTE (__stdcall *)(BYTE*, DWORD*)) GetProcAddress(stCtx.hiDll, "bBufferToMTACode");
         if (stCtx.bBufferToMTACode == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToMTACode()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToMTACode()", true);
             retorno = false;
         }
 
         stCtx.bBufferToOutputs = (BYTE (__stdcall *)(BYTE*, BYTE*)) GetProcAddress(stCtx.hiDll, "bBufferToOutputs");
         if (stCtx.bBufferToOutputs == NULL)	{
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToOutputs()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToOutputs()", true);
             retorno = false;
         }
 
         stCtx.bBufferToPowerConfig = (BYTE (__stdcall *)(BYTE*, WORD*, BYTE*, BYTE*, BYTE*)) GetProcAddress(stCtx.hiDll, "bBufferToPowerConfig");
         if (stCtx.bBufferToPowerConfig == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToPowerConfig()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToPowerConfig()", true);
             retorno = false;
         }
 
         stCtx.bBufferToPowerStatus = (BYTE (__stdcall *)(BYTE*, BYTE*, BYTE*, WORD*)) GetProcAddress(stCtx.hiDll, "bBufferToPowerStatus");
         if (stCtx.bBufferToPowerStatus == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToPowerStatus()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToPowerStatus()", true);
             retorno = false;
         }
 
         stCtx.bBufferToPrintConfig = (BYTE (__stdcall *)(BYTE*, BYTE*, BYTE*, BYTE*)) GetProcAddress(stCtx.hiDll, "bBufferToPrintConfig");
         if (stCtx.bBufferToPrintConfig == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToPrintConfig()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToPrintConfig()", true);
             retorno = false;
         }
 
         stCtx.bBufferToPrintStatus = (BYTE (__stdcall *)(BYTE*, short int*, short int*, BYTE*, BYTE*, BYTE*)) GetProcAddress(stCtx.hiDll, "bBufferToPrintStatus");
         if (stCtx.bBufferToPrintStatus == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToPrintStatus()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToPrintStatus()", true);
             retorno = false;
         }
 
         stCtx.bBufferToSignature = (BYTE (__stdcall *)(BYTE*, DWORD*)) GetProcAddress(stCtx.hiDll, "bBufferToSignature");
         if (stCtx.bBufferToSignature == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToSignature()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToSignature()", true);
             retorno = false;
         }
 
         stCtx.bBufferToString = (BYTE (__stdcall *)(BYTE*, char*)) GetProcAddress(stCtx.hiDll, "bBufferToString");
         if (stCtx.bBufferToString == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToString()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToString()", true);
             retorno = false;
         }
 
         stCtx.bBufferToToneConfig = (BYTE (__stdcall *)(BYTE*, WORD*, WORD*, WORD*, WORD*, WORD*, WORD*)) GetProcAddress(stCtx.hiDll, "bBufferToToneConfig");
         if (stCtx.bBufferToToneConfig == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToToneConfig()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToToneConfig()", true);
             retorno = false;
         }
 
         stCtx.bBufferToToneStatus = (BYTE (__stdcall *)(BYTE*, BYTE*, BYTE*)) GetProcAddress(stCtx.hiDll, "bBufferToToneStatus");
         if (stCtx.bBufferToToneStatus == NULL){
-            ApresentaLogNoMemo("Não foi possível encontrar a função bBufferToToneStatus()", true);
+            PrintCtxLog("Não foi possível encontrar a função bBufferToToneStatus()", true);
             retorno = false;
         }
 
         return retorno;
 
     }else{
-        ApresentaLogNoMemo("Não foi possível carregar a dll", true);
+        PrintCtxLog("Não foi possível carregar a dll", true);
         stCtx.bCom = 0;
         return false;
     }
@@ -485,7 +478,7 @@ bool __fastcall TFMonitor::CarregaMetodosDll(void)
 void __fastcall TFMonitor::OnWMCopyData(TWMCopyData &Msg){
     COPYDATASTRUCT * pCds;
     pCds = (COPYDATASTRUCT *)Msg.CopyDataStruct;
-    ApresentaLogNoMemo((char *)pCds->lpData, pCds->dwData);
+    PrintCtxLog((char *)pCds->lpData, pCds->dwData);
 }
 
 //---------------------------------------------------------------------------
@@ -504,15 +497,15 @@ void __fastcall TFMonitor::AppMessage(tagMSG &Msg, bool &Handled)
     try{
         switch(Msg.message){
             case WM_CTX_CONECTADO:
-                ApresentaLogNoMemo("CTX conectado", true);
-                ApresentaLogNoMemo("bReadParameter(PRM_CONFIGURACAO_CTX)", true);
+                PrintCtxLog("CTX conectado", true);
+                PrintCtxLog("bReadParameter(PRM_CONFIGURACAO_CTX)", true);
                 stCtx.bReadParameter(PRM_CONFIGURACAO_CTX);
 
-                ApresentaLogNoMemo("bReadParameter(PRM_CODIGO_CTX)", true);
+                PrintCtxLog("bReadParameter(PRM_CODIGO_CTX)", true);
                 stCtx.bReadParameter(PRM_CODIGO_CTX);
 
                 sprintf(acBuffer,"bSetDateTime(%02u,%02u,%04u,%02u,%02u,%02u)",d.da_day,d.da_mon,d.da_year,h.ti_hour,h.ti_min,h.ti_sec);
-                ApresentaLogNoMemo(acBuffer, true);
+                PrintCtxLog(acBuffer, true);
                 stCtx.bSetDateTime(d.da_day,d.da_mon,d.da_year,h.ti_hour,h.ti_min,h.ti_sec);
                 TMRSetDataHora->Enabled = true;
                 Handled = true;
@@ -520,7 +513,7 @@ void __fastcall TFMonitor::AppMessage(tagMSG &Msg, bool &Handled)
 
             case WM_CTX_DESCONECTADO:
                 sprintf(acBuffer,"CTX = %5u desconectado",stCtx.wCodigoCtx);
-                ApresentaLogNoMemo(acBuffer, true);
+                PrintCtxLog(acBuffer, true);
                 TMRSetDataHora->Enabled = false;
                 Handled = true;
                 break;
@@ -532,7 +525,7 @@ void __fastcall TFMonitor::AppMessage(tagMSG &Msg, bool &Handled)
 
                 stCtx.bBufferToError(mensagem,&codigo,descricao);
                 sprintf(acBuffer,"CTX = %5u. %s",stCtx.wCodigoCtx,descricao);
-                ApresentaLogNoMemo(acBuffer, true);
+                PrintCtxLog(acBuffer, true);
                 Handled = true;
                 }
                 break;
@@ -546,7 +539,7 @@ void __fastcall TFMonitor::AppMessage(tagMSG &Msg, bool &Handled)
             case WM_BUFFER_IMPRESSAO:
                 stCtx.bBufferToString(mensagem,acBufferAux);
                 sprintf(acBuffer,"CTX = %5u, %s%s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO],acBufferAux);
-                ApresentaLogNoMemo(acBuffer, true);
+                PrintCtxLog(acBuffer, true);
                 Handled = true;
                 break;
             case WM_ASSINATURA:
@@ -557,14 +550,14 @@ void __fastcall TFMonitor::AppMessage(tagMSG &Msg, bool &Handled)
                 stCtx.bBufferToSignature(mensagem,&stCtx.dwAssinatura);
                 stCtx.bBufferToDateTime(mensagem,&dia,&mes,&ano,&hora,&minuto,&segundo);
                 sprintf(acBuffer,"CTX = %5u, %s%u (%02u/%02u/%4u)",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO],stCtx.dwAssinatura,dia,mes,ano);
-                ApresentaLogNoMemo(acBuffer, true);
+                PrintCtxLog(acBuffer, true);
                 Handled = true;
                 }
                 break;
             case WM_CODIGO_CTX:
                 stCtx.bBufferToCTXCode(mensagem,&stCtx.wCodigoCtx);
                 sprintf(acBuffer,"%s%u",acParametros[Msg.message-WM_IDENTIFICACAO],stCtx.wCodigoCtx);
-                ApresentaLogNoMemo(acBuffer, true);
+                PrintCtxLog(acBuffer, true);
                 SalvarCTX();
                 Handled = true;
                 break;
@@ -573,13 +566,13 @@ void __fastcall TFMonitor::AppMessage(tagMSG &Msg, bool &Handled)
                 switch (stCtx.bConfiguracao)
                 {
                     case 0:
-                        ApresentaLogNoMemo("Configuracao CTX = CTA", true);
+                        PrintCtxLog("Configuracao CTX = CTA", true);
                     break;
                     case 1:
-                        ApresentaLogNoMemo("Configuracao CTX = CTF", true);
+                        PrintCtxLog("Configuracao CTX = CTF", true);
                     break;
                     case 2:
-                        ApresentaLogNoMemo("Configuracao CTX = CTD", true);
+                        PrintCtxLog("Configuracao CTX = CTD", true);
                     break;
                 }
 
@@ -588,13 +581,13 @@ void __fastcall TFMonitor::AppMessage(tagMSG &Msg, bool &Handled)
             case WM_ESTADO_CTX:
                 stCtx.bBufferToCTXStatus(mensagem,&stCtx.bStatus);
                 sprintf(acBuffer,"CTX = %5u, %s%04x",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO],stCtx.bStatus);
-                ApresentaLogNoMemo(acBuffer, true);
+                PrintCtxLog(acBuffer, true);
                 Handled = true;
                 break;
             case WM_DATA_HORARIO:
                 stCtx.bBufferToDateTime(mensagem,&stCtx.bDia,&stCtx.bMes,&stCtx.wAno,&stCtx.bHora,&stCtx.bMinuto,&stCtx.bSegundo);
                 sprintf(acBuffer,"%CTX = %5u, %s%02u/%02u/%4u, %02u:%02u:%02u",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO],stCtx.bDia,stCtx.bMes,stCtx.wAno,stCtx.bHora,stCtx.bMinuto,stCtx.bSegundo);
-                ApresentaLogNoMemo(acBuffer, true);
+                PrintCtxLog(acBuffer, true);
                 Handled = true;
                 break;
             case WM_EVENTO:
@@ -604,21 +597,38 @@ void __fastcall TFMonitor::AppMessage(tagMSG &Msg, bool &Handled)
                     BYTE dia, mes, hora, minuto, segundo = NULL;
                     WORD ano, wNrEvento = NULL;
 
-                    stCtx.bBufferToEvent(mensagem, &wNrEvento, &dwCodificador, &bStatus, &bReferencia);
-                    stCtx.bBufferToDateTime(mensagem, &dia, &mes, &ano, &hora, &minuto, &segundo);
-                    sprintf(acBuffer,"%02u/%02u/%4u %02u:%02u:%02u",dia,mes,ano,hora,minuto,segundo);
-                    AdicionarEvento(wNrEvento, dwCodificador, IntToHex(bStatus, 1), IntToHex(bReferencia, 2), StrToDateTime(acBuffer));
+                    BYTE bRetorno = stCtx.bBufferToEvent(mensagem, &wNrEvento, &dwCodificador, &bStatus, &bReferencia);
 
-                    sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-                    ApresentaLogNoMemo(acBuffer, true);
-                    sprintf(acBuffer,"  Número do Evento = %u",wNrEvento);
-                    ApresentaLogNoMemo(acBuffer, true);
-                    sprintf(acBuffer,"  Código do equipamento = %05lu.%u",dwCodificador/10,(WORD)(dwCodificador%10));
-                    ApresentaLogNoMemo(acBuffer, true);
-                    sprintf(acBuffer,"  Status/Referência = %x.%02x",bStatus,bReferencia);
-                    ApresentaLogNoMemo(acBuffer, true);
-                    sprintf(acBuffer,"  Data/Horário = %02u/%02u/%4u %02u:%02u:%02u",dia,mes,ano,hora,minuto,segundo);
-                    ApresentaLogNoMemo(acBuffer, true);
+                    if(bRetorno == BIBCOM_SEM_ERRO){
+                      stCtx.bBufferToDateTime(mensagem, &dia, &mes, &ano, &hora, &minuto, &segundo);
+                      sprintf(acBuffer,"%02u/%02u/%4u %02u:%02u:%02u",dia,mes,ano,hora,minuto,segundo);
+
+                      if(AdicionarEvento(wNrEvento, dwCodificador, IntToHex(bStatus, 1),
+                                IntToHex(bReferencia, 2), StrToDateTime(acBuffer))){
+                        sprintf(acBuffer,"S - %02u:%02u:%02u - CTX %5u - Número do Evento %u - Codificador %u - Status/Referência = %x.%02x",
+                          hora, minuto, segundo, stCtx.wCodigoCtx, wNrEvento, dwCodificador, bStatus, bReferencia);
+                        PrintEventoLog(acBuffer);
+                      }else{
+                        sprintf(acBuffer,"D - %02u:%02u:%02u - CTX %5u - Número do Evento %u - Codificador %u - Status/Referência = %x.%02x",
+                          hora, minuto, segundo, stCtx.wCodigoCtx, wNrEvento, dwCodificador, bStatus, bReferencia);
+                        PrintEventoLog(acBuffer);
+                      }
+
+                      sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
+                      PrintCtxLog(acBuffer, true);
+                      sprintf(acBuffer,"  Número do Evento = %u",wNrEvento);
+                      PrintCtxLog(acBuffer, true);
+                      sprintf(acBuffer,"  Código do equipamento = %05lu.%u",dwCodificador/10,(WORD)(dwCodificador%10));
+                      PrintCtxLog(acBuffer, true);
+                      sprintf(acBuffer,"  Status/Referência = %x.%02x",bStatus,bReferencia);
+                      PrintCtxLog(acBuffer, true);
+                      sprintf(acBuffer,"  Data/Horário = %02u/%02u/%4u %02u:%02u:%02u",dia,mes,ano,hora,minuto,segundo);
+                      PrintCtxLog(acBuffer, true);
+                    }else{
+                      sprintf(acBuffer,"E - %02u:%02u:%02u - CTX %5u - Número do Evento %u - Codificador %u - Status/Referência = %x.%02x",
+                        hora, minuto, segundo, stCtx.wCodigoCtx, wNrEvento, dwCodificador, bStatus, bReferencia);
+                      PrintEventoLog(acBuffer);
+                    }
                     Handled = true;
                 }
                 break;
@@ -634,48 +644,48 @@ void __fastcall TFMonitor::AppMessage(tagMSG &Msg, bool &Handled)
               stCtx.bBufferToLog(mensagem,&stCtx.wNrRelatorio,&codigo,&tipo,&referencia,geral);
               stCtx.bBufferToDateTime(mensagem,&dia,&mes,&ano,&hora,&minuto,&segundo);
               sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Número do Relatório = %u",stCtx.wNrRelatorio);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Código do equipamento = %04u.%u",(WORD)(codigo/10),codigo%10);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Status/Referência = %x.%02x",tipo,referencia);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Data/Horário = %02u/%02u/%4u %02u:%02u:%02u",dia,mes,ano,hora,minuto,segundo);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Dados =  %02x%02x%02x %02x%02x%02x",geral[0],geral[1],geral[2],geral[3],geral[4],geral[5]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               }
               break;
             case WM_CONFIGURACAO_CTF:
               stCtx.bBufferToCTFConfig(mensagem,&stCtx.bHabilitacao,&stCtx.bNrToques,&stCtx.bNrMaxTentativas,&stCtx.bSemLinha);
               sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Habilitação = %02x",stCtx.bHabilitacao);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Número de toques = %u",stCtx.bNrToques);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Número de tentativas = %u",stCtx.bNrMaxTentativas);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Tempo sem linha = %umin",stCtx.bSemLinha);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_ESTADO_CTF:
               stCtx.bBufferToCTFStatus(mensagem,&stCtx.bStatusCTF,&stCtx.bEstadoCTF,&stCtx.bEstadoDiscar,&stCtx.bNrTentativas,&stCtx.bTempo);
               sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Status = %02x",stCtx.bStatusCTF);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Estado = %u",stCtx.bEstadoCTF);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Estado Discar = %u",stCtx.bEstadoDiscar);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Número de tentativas = %u",stCtx.bNrTentativas);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Tempo transcorrido sem linha = %umin",stCtx.bTempo);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_CONEXAO_ABERTA:
@@ -684,7 +694,7 @@ void __fastcall TFMonitor::AppMessage(tagMSG &Msg, bool &Handled)
 
               stCtx.bBufferToMTACode(mensagem,&codigo);
               sprintf(acBuffer,"CTX = %5u, %s%u",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO],codigo);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               }
               break;
@@ -694,174 +704,174 @@ void __fastcall TFMonitor::AppMessage(tagMSG &Msg, bool &Handled)
 
               stCtx.bBufferToCTFStatus(mensagem,&status,NULL,NULL,NULL,NULL);
               sprintf(acBuffer,"CTX = %5u, %s%u",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO],status);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               }
               break;
             case WM_PRAZO_VALIDADE:
               stCtx.bBufferToExpirationTime(mensagem,&stCtx.bValidade);
               sprintf(acBuffer,"CTX = %5u, %s%u dias",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO],stCtx.bValidade);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_HABILITACAO_AUTOMATO:
               stCtx.bBufferToCTXConfig(mensagem,&stCtx.bHabAutomato);
               sprintf(acBuffer,"CTX = %5u, %s%02xh",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO],stCtx.bHabAutomato);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_CONFIGURACAO_TOM:
               stCtx.bBufferToToneConfig(mensagem,&stCtx.wPreambulo,&stCtx.wTomInicial,&stCtx.wTom,&stCtx.wGuardaTx,&stCtx.wGuardaRx,&stCtx.wTimeOut);
               sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Preâmbulo = %ums",stCtx.wPreambulo);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Duração do tom inicial = %ums",stCtx.wTomInicial);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Duração dos demais tons = %ums",stCtx.wTom);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Tempo entre dois tons transmitidos = %ums",stCtx.wGuardaTx);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Tempo mínimo entre dois tons recebidos = %ums",stCtx.wGuardaRx);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Tempo para detectar final de mensagem = %ums",stCtx.wTimeOut);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_ESTADO_TOM:
               stCtx.bBufferToToneStatus(mensagem,&stCtx.bEstadoTom,&stCtx.bNrTons);
               sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Estado atual = %u",stCtx.bEstadoTom);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Nº de tons recebidos = %u tons",stCtx.bNrTons);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_CONFIGURACAO_CTA:
               stCtx.bBufferToCTAConfig(mensagem,&stCtx.bHabCTX,&stCtx.bArea,&stCtx.bMilharDV,&stCtx.bReservado,&stCtx.wTempoMaxPortadora);
               sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Habilitação = %02xh",stCtx.bHabCTX);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Área do CTA = %u",stCtx.bArea);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Milhar sem consistência do DV = %u",stCtx.bMilharDV);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Reservado = %02xh",stCtx.bReservado);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Tempo máximo com portadora = %us",stCtx.wTempoMaxPortadora);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_ESTADO_CTA:
               stCtx.bBufferToCTAStatus(mensagem,&stCtx.bStatusCTX,&stCtx.bReservado,&stCtx.wTempoPortadora);
               sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Estado = %02xh",stCtx.bStatusCTX);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Reservado = %02xh",stCtx.bReservado);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Tempo com portadora = %us",stCtx.wTempoPortadora);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_CONFIGURACAO_CTD:
               stCtx.bBufferToCTDConfig(mensagem,&stCtx.bHabCTX,&stCtx.bArea,&stCtx.bMilharDV,&stCtx.bAreaRtx,&stCtx.wAtrasoEvento,&stCtx.wAtrasoRelatorio,&stCtx.wTempoMaxPortadora);
               sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Habilitação = %02xh",stCtx.bHabCTX);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Área do CTD = %u",stCtx.bArea);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Milhar sem consistência do DV = %u",stCtx.bMilharDV);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Área de retransmissão do CTD = %u",stCtx.bAreaRtx);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Atraso Retransmissão de Evento = %ums",stCtx.wAtrasoEvento);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Atraso Retransmissão de Relatório = %ums",stCtx.wAtrasoRelatorio);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Tempo máximo com portadora = %us",stCtx.wTempoMaxPortadora);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_ESTADO_CTD:
               stCtx.bBufferToCTDStatus(mensagem,&stCtx.bStatusCTX,&stCtx.bReservado,&stCtx.wTempoPortadora);
               sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Estado = %02xh",stCtx.bStatusCTX);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Reservado = %02xh",stCtx.bReservado);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Tempo com portadora = %us",stCtx.wTempoPortadora);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_CONFIGURACAO_FONTE:
               stCtx.bBufferToPowerConfig(mensagem,&stCtx.wTempoMaxFaltaAC,&stCtx.bTensaoBaixaBat,&stCtx.bTensaoCriticaBat,&stCtx.bIntervTestes);
               sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Tempo máximo com falta de energia = %us",stCtx.wTempoMaxFaltaAC);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Limiar de tensão baixa na bateria = %u.%u V",stCtx.bTensaoBaixaBat/10,stCtx.bTensaoBaixaBat%10);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Limiar de tensão crítica na bateria = %u.%u V",stCtx.bTensaoCriticaBat/10,stCtx.bTensaoCriticaBat%10);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Intervalo entre testes de bateria = %uh",stCtx.bIntervTestes);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_ESTADO_FONTE:
               stCtx.bBufferToPowerStatus(mensagem,&stCtx.bEstadoBat,&stCtx.bTensaoBat,&stCtx.wTempoFaltaAC);
               sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Estado bateria = %02u",stCtx.bEstadoBat);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Tensão bateria = %u.%u V",stCtx.bTensaoBat/10,stCtx.bTensaoBat%10);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Tempo de falta de energia = %u s",stCtx.wTempoFaltaAC);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_CONFIGURACAO_IMPRESSAO:
               stCtx.bBufferToPrintConfig(mensagem,&stCtx.bHabImp,&stCtx.bMargem,&stCtx.bLinhasPagina);
               sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Habilitação = %02xh",stCtx.bHabImp);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Margem = %u espaços",stCtx.bMargem);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Linhas na página = %u linhas",stCtx.bLinhasPagina);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_ESTADO_IMPRESSAO:
               stCtx.bBufferToPrintStatus(mensagem,(short int*)&stCtx.wNrEventoImp,(short int*)&stCtx.wNrRelatorioImp,&stCtx.bStatusImp,&stCtx.bLinhaAtual,&stCtx.bNrCaracteres);
               sprintf(acBuffer,"CTX = %5u, %s",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO]);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Último evento impresso = %u",stCtx.wNrEventoImp);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Último relatório impresso = %u",stCtx.wNrRelatorioImp);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Status = %02x",stCtx.bStatusImp);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Nº da linha atual = %u",stCtx.bLinhaAtual);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               sprintf(acBuffer,"  Nº de caracteres no buffer = %u",stCtx.bNrCaracteres);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_SAIDAS:
               stCtx.bBufferToOutputs(mensagem,&stCtx.bSaidas);
               sprintf(acBuffer,"CTX = %5u, %s%02xh",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO],stCtx.bSaidas);
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             case WM_TECLA:
               stCtx.bBufferToKey(mensagem,&stCtx.cTecla);
               sprintf(acBuffer,"CTX = %5u, %s%c",stCtx.wCodigoCtx,acParametros[Msg.message-WM_IDENTIFICACAO],(stCtx.cTecla==-1? ' ': stCtx.cTecla));
-              ApresentaLogNoMemo(acBuffer, true);
+              PrintCtxLog(acBuffer, true);
               Handled = true;
               break;
             }
@@ -878,7 +888,30 @@ void __fastcall TFMonitor::AppMessage(tagMSG &Msg, bool &Handled)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFMonitor::ApresentaLogNoMemo(AnsiString log, bool salvar)
+void __fastcall TFMonitor::PrintCtxLog(AnsiString log, bool salvar)
+{
+    char MensagemLog[TAM_BUFFER];
+    struct time h;
+    struct date d;
+
+    getdate(&d);
+    gettime(&h);
+
+    if(mmComunicacaoCtx->Lines->Count > TAM_BUFFER){
+        mmComunicacaoCtx->Lines->Clear();
+    }
+
+    sprintf(MensagemLog,"%02u:%02u:%02u> %s.",h.ti_hour,h.ti_min,h.ti_sec,log);
+    mmComunicacaoCtx->Lines->Add(MensagemLog);
+
+    if(salvar){
+        TDModule::SalvaCtxLog(log);
+    }
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TFMonitor::PrintEventoLog(AnsiString log)
 {
     char MensagemLog[TAM_BUFFER];
     struct time h;
@@ -890,18 +923,13 @@ void __fastcall TFMonitor::ApresentaLogNoMemo(AnsiString log, bool salvar)
     if(mmEventos->Lines->Count > TAM_BUFFER){
         mmEventos->Lines->Clear();
     }
-
-    sprintf(MensagemLog,"%02u:%02u:%02u> %s.",h.ti_hour,h.ti_min,h.ti_sec,log);
-    mmEventos->Lines->Add(MensagemLog);
-
-    if(salvar){
-        TDModule::SalvaLog(log);
-    }
+    mmEventos->Lines->Add(log);
+    TDModule::SalvaEventoLog(log);
 }
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFMonitor::AdicionarEvento(WORD wNrEvento, DWORD dwCodificador, AnsiString szStatus,
+bool __fastcall TFMonitor::AdicionarEvento(WORD wNrEvento, DWORD dwCodificador, AnsiString szStatus,
     AnsiString szReferencia, TDateTime dtDataEHora)
 {
     AnsiString szDescricaoStatus, szSetor, szLocalizacao, szNomeCliente, szEndereco, szCidade, zsFilial = "";
@@ -915,7 +943,7 @@ void __fastcall TFMonitor::AdicionarEvento(WORD wNrEvento, DWORD dwCodificador, 
     // Localiza o cliente pelo contrato e codificador
     bExisteCliente = BuscaCliente(dwCodificador, iCdCliente, szNomeCliente, szEndereco, szCidade, zsFilial);
     if(!bExisteCliente){
-        return;
+        return false;
     }
 
     // Se for um evento de setor complementa com a localização
@@ -936,7 +964,8 @@ void __fastcall TFMonitor::AdicionarEvento(WORD wNrEvento, DWORD dwCodificador, 
         }
         // Registra a data e hora no log da ctx para controlar a falta de comunicação da ctx
         SalvarUltimoEventoCTX();
-    }
+        return true;
+    } return false;
 }
 
 //---------------------------------------------------------------------------
@@ -1301,26 +1330,26 @@ void __fastcall TFMonitor::btnConectarClick(TObject *Sender)
     Screen->Cursor = crHourGlass;
     AnsiString szPorta = Format("COM%s", ARRAYOFCONST((IntToStr(stCtx.bCom))));
     sprintf(acBuffer,"Encerrando a comunicação serial com a porta %s", szPorta);
-    ApresentaLogNoMemo(acBuffer, true);
+    PrintCtxLog(acBuffer, true);
     if(InterpretaRetornoDll(stCtx.bEndNetwork())){
-        ApresentaLogNoMemo("Comunicação serial encerrada com sucesso", true);
+        PrintCtxLog("Comunicação serial encerrada com sucesso", true);
     }else{
-        ApresentaLogNoMemo("Encerramento da comunicação serial falhou", true);
+        PrintCtxLog("Encerramento da comunicação serial falhou", true);
     }
     Screen->Cursor = crArrow;
 
     sprintf(acBuffer,"Reiniciando a comunicação serial com a porta %s", szPorta);
-    ApresentaLogNoMemo(acBuffer, true);
+    PrintCtxLog(acBuffer, true);
 
     if(InterpretaRetornoDll(
         stCtx.bInitNetwork(Application->Handle, 0, szPorta.c_str(), NR_RETRANSMISSOES_CTX,
             ESPERA_RESPOSTA_CTX, PERIODO_TIMER, 0)!= BIBCOM_SEM_ERRO)){
 
         sprintf(acBuffer,"Porta de comunicação serial %s aberta, aguardando resposta da CTX", szPorta);
-        ApresentaLogNoMemo(acBuffer, true);
+        PrintCtxLog(acBuffer, true);
     }else{
         sprintf(acBuffer,"Comunicação serial com a porta %s falhou", szPorta);
-        ApresentaLogNoMemo(acBuffer, true);
+        PrintCtxLog(acBuffer, true);
     }
 }
 
@@ -1384,7 +1413,7 @@ bool __fastcall TFMonitor::InterpretaRetornoDll(BYTE erro)
         if(CheckBit(erroAdicional, DLL_ERRO_CRIACAO_MMTIMER)) MsgErro+= "Erro na criação do MMTIMER";
         if(CheckBit(erroAdicional, DLL_ERRO_SERVICO_EM_ANDAMENTO)) MsgErro+= "Erro de serviço em andamento";
         if(CheckBit(erroAdicional, DLL_ERRO_ALOCACAO_MEMORIA)) MsgErro+= "Erro de alocação de memória";
-        ApresentaLogNoMemo(MsgErro, true);
+        PrintCtxLog(MsgErro, true);
         return false;
     }else{
         return true;
@@ -1416,7 +1445,7 @@ void __fastcall TFMonitor::TMRSetDataHoraTimer(TObject *Sender)
     gettime(&h);
 
     sprintf(acBuffer,"bSetDateTime(%02u,%02u,%04u,%02u,%02u,%02u)",d.da_day,d.da_mon,d.da_year,h.ti_hour,h.ti_min,h.ti_sec);
-    ApresentaLogNoMemo(acBuffer, true);
+    PrintCtxLog(acBuffer, true);
     stCtx.bSetDateTime(d.da_day,d.da_mon,d.da_year,h.ti_hour,h.ti_min,h.ti_sec);
 }
 
@@ -1441,3 +1470,4 @@ AnsiString __fastcall TFMonitor::GetValorParametro(int CdParametro)
 }
 
 //---------------------------------------------------------------------------
+

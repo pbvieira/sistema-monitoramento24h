@@ -2,8 +2,8 @@ object DModule: TDModule
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Left = 464
-  Top = 250
+  Left = 581
+  Top = 232
   Height = 433
   Width = 654
   object IBCONAzsim: TIBDatabase

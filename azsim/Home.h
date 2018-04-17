@@ -38,6 +38,8 @@
 #include "OcorrenciasAbertas.h"
 #include "CadContratoBasico.h"
 #include <dbcgrids.hpp>
+#include "SHDocVw_OCX.h"
+#include <OleCtrls.hpp>
 
 //---------------------------------------------------------------------------
 class TFHome : public TForm

@@ -1,9 +1,9 @@
 object FHome: TFHome
-  Left = 190
-  Top = 127
+  Left = 189
+  Top = 187
   AutoScroll = False
-  Caption = 'AZSIM - Sistema Integrado de Monitoramento - Vers'#227'o 1.0.0.34'
-  ClientHeight = 595
+  Caption = 'AZSIM - Sistema Integrado de Monitoramento - Vers'#227'o 1.0.0.35'
+  ClientHeight = 546
   ClientWidth = 1169
   Color = clBtnFace
   Constraints.MinHeight = 600
@@ -23,7 +23,7 @@ object FHome: TFHome
   TextHeight = 13
   object SBarHome: TStatusBar
     Left = 0
-    Top = 576
+    Top = 527
     Width = 1169
     Height = 19
     Panels = <
@@ -42,7 +42,7 @@ object FHome: TFHome
     Left = 0
     Top = 0
     Width = 1169
-    Height = 576
+    Height = 527
     Align = alClient
     BevelOuter = bvLowered
     TabOrder = 1
@@ -50,10 +50,10 @@ object FHome: TFHome
       Left = 1
       Top = 1
       Width = 1167
-      Height = 574
-      ActivePage = TSRegistroManutencao
+      Height = 525
+      ActivePage = TSRegistroEventos
       Align = alClient
-      TabIndex = 2
+      TabIndex = 0
       TabOrder = 0
       object TSRegistroEventos: TTabSheet
         Caption = 'Registro de Eventos'
@@ -296,7 +296,7 @@ object FHome: TFHome
           Left = 0
           Top = 96
           Width = 1159
-          Height = 450
+          Height = 401
           Align = alBottom
           Anchors = [akLeft, akTop, akRight, akBottom]
           BevelOuter = bvNone
@@ -431,7 +431,7 @@ object FHome: TFHome
             Left = 0
             Top = 290
             Width = 1159
-            Height = 160
+            Height = 111
             Align = alClient
             BorderStyle = bsNone
             Ctl3D = True
@@ -697,7 +697,7 @@ object FHome: TFHome
           Left = 0
           Top = 96
           Width = 1159
-          Height = 450
+          Height = 401
           Align = alBottom
           Anchors = [akLeft, akTop, akRight, akBottom]
           BorderStyle = bsNone
@@ -933,14 +933,14 @@ object FHome: TFHome
           Left = 270
           Top = 41
           Width = 3
-          Height = 505
+          Height = 456
           Cursor = crHSplit
         end
         object Panel2: TPanel
           Left = 273
           Top = 41
           Width = 886
-          Height = 505
+          Height = 456
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
@@ -1027,7 +1027,7 @@ object FHome: TFHome
             Left = 0
             Top = 337
             Width = 886
-            Height = 168
+            Height = 119
             ActivePage = TSEventos
             Align = alClient
             Style = tsFlatButtons
@@ -1509,9 +1509,8 @@ object FHome: TFHome
           Left = 0
           Top = 41
           Width = 270
-          Height = 505
+          Height = 456
           Align = alLeft
-          Images = DModule.ILForm12
           Indent = 19
           ReadOnly = True
           TabOrder = 2
@@ -2740,39 +2739,49 @@ object FHome: TFHome
     Top = 230
     object CDSConsEventosCTX: TIntegerField
       FieldName = 'CTX'
+      Origin = 'LOGEVENTO.CTX'
     end
     object CDSConsEventosPORTACOM: TIntegerField
       FieldName = 'PORTACOM'
+      Origin = 'LOGEVENTO.PORTACOM'
     end
     object CDSConsEventosEQUIPAMENTO: TIntegerField
       FieldName = 'EQUIPAMENTO'
+      Origin = 'LOGEVENTO.EQUIPAMENTO'
     end
     object CDSConsEventosSTATUS: TStringField
       FieldName = 'STATUS'
+      Origin = 'VLOGEVENTO.STATUS'
       ReadOnly = True
       Size = 4
     end
     object CDSConsEventosDESTATUS: TStringField
       FieldName = 'DESTATUS'
+      Origin = 'LOGEVENTO.DESTATUS'
       Size = 70
     end
     object CDSConsEventosNMCLIENTE: TStringField
       FieldName = 'NMCLIENTE'
+      Origin = 'LOGEVENTO.NMCLIENTE'
       Size = 60
     end
     object CDSConsEventosENDERECO: TStringField
       FieldName = 'ENDERECO'
+      Origin = 'LOGEVENTO.ENDERECO'
       Size = 60
     end
     object CDSConsEventosCIDADE: TStringField
       FieldName = 'CIDADE'
+      Origin = 'LOGEVENTO.CIDADE'
       Size = 30
     end
     object CDSConsEventosDATAEVENTO: TDateTimeField
       FieldName = 'DATAEVENTO'
+      Origin = 'LOGEVENTO.DATAEVENTO'
     end
     object CDSConsEventosCDCLIENTE: TIntegerField
       FieldName = 'CDCLIENTE'
+      Origin = 'VLOGEVENTO.CDCLIENTE'
     end
   end
   object DSPEventos: TDataSetProvider

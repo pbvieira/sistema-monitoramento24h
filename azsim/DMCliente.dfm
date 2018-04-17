@@ -1,7 +1,7 @@
 object DModuleCliente: TDModuleCliente
   OldCreateOrder = False
-  Left = 191
-  Top = 112
+  Left = 192
+  Top = 102
   Height = 640
   Width = 1176
   object IBQContato: TIBQuery
@@ -613,7 +613,6 @@ object DModuleCliente: TDModuleCliente
     object CDSClienteNMFILIAL: TStringField
       FieldKind = fkLookup
       FieldName = 'NMFILIAL'
-      LookupDataSet = DModule.CDSFilial
       LookupKeyFields = 'CDFILIAL'
       LookupResultField = 'NMFILIAL'
       KeyFields = 'CDFILIAL'

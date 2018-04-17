@@ -4,7 +4,7 @@ object DModule: TDModule
   OnDestroy = DataModuleDestroy
   Left = 607
   Top = 236
-  Height = 322
+  Height = 315
   Width = 720
   object IBTMonitor: TIBTransaction
     Active = False

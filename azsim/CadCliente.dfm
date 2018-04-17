@@ -192,7 +192,6 @@ object FCadCliente: TFCadCliente
         ButtonHeight = 36
         ButtonWidth = 55
         Caption = 'TBOperacoes'
-        DisabledImages = DModule.ILForm12
         EdgeInner = esNone
         EdgeOuter = esNone
         Flat = True

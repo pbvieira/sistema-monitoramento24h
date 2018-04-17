@@ -25,9 +25,24 @@ TStringList *LogSistema;
 __fastcall TDModule::TDModule(TComponent* Owner)
         : TDataModule(Owner)
 {
-    if (!DirectoryExists("./log")){
-        if (!CreateDir("./log"))
-            throw Exception("Não foi possível criar o diretório.");
+    if (!DirectoryExists("./logs")){
+        if (!CreateDir("./logs"))
+            throw Exception("Não foi possível criar o diretório logs.");
+    }
+
+    if (!DirectoryExists("./logs/evento")){
+        if (!CreateDir("./logs/evento"))
+            throw Exception("Não foi possível criar o diretório logs/evento.");
+    }
+
+    if (!DirectoryExists("./logs/ctx")){
+        if (!CreateDir("./logs/ctx"))
+            throw Exception("Não foi possível criar o diretório logs/ctx.");
+    }
+
+    if (!DirectoryExists("./logs/app")){
+        if (!CreateDir("./logs/app"))
+            throw Exception("Não foi possível criar o diretório logs/app.");
     }
 }
 
@@ -102,9 +117,9 @@ TDateTime __fastcall TDModule::RetornaDataHoraAtual()
 
 //---------------------------------------------------------------------------
 
-TDateTime __fastcall TDModule::SetaDataHora(AnsiString DataEHora)
+TDateTime __fastcall TDModule::SetaDataHora(AnsiString dataEHora)
 {
-    return StrToDateTime(DataEHora);
+    return StrToDateTime(dataEHora);
 }
 
 //---------------------------------------------------------------------------
@@ -115,9 +130,10 @@ void __fastcall TDModule::SalvaLog(AnsiString log)
     struct time h;
     gettime(&h);
 
-    AnsiString ArquivoLog = "./log/M" + FormatDateTime("ddmmyyyy", Date()) + ".log";
-    char LogCompleto[2048];
+    AnsiString ArquivoLog = "./logs/app/A" + FormatDateTime("ddmmyyyy", Date()) + ".log";
+    char LogCompleto[1024];
     sprintf(LogCompleto,"%02u:%02u:%02u - %s",h.ti_hour,h.ti_min,h.ti_sec,log.c_str());
+
     if ((fp = _fsopen(ArquivoLog.c_str(),"at",SH_DENYWR)) != NULL){
         fprintf(fp,"%s\n", LogCompleto);
         fclose(fp);
@@ -125,3 +141,34 @@ void __fastcall TDModule::SalvaLog(AnsiString log)
 }
 
 //---------------------------------------------------------------------------
+
+void __fastcall TDModule::SalvaCtxLog(AnsiString log)
+{
+    FILE *fp;
+    struct time h;
+    gettime(&h);
+
+    AnsiString ArquivoLog = "./logs/ctx/C" + FormatDateTime("ddmmyyyy", Date()) + ".log";
+    char LogCompleto[1024];
+    sprintf(LogCompleto,"%02u:%02u:%02u - %s",h.ti_hour,h.ti_min,h.ti_sec,log.c_str());
+
+    if ((fp = _fsopen(ArquivoLog.c_str(),"at",SH_DENYWR)) != NULL){
+        fprintf(fp,"%s\n", LogCompleto);
+        fclose(fp);
+   }
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TDModule::SalvaEventoLog(AnsiString log)
+{
+    FILE *fp;
+    AnsiString ArquivoLog = "./logs/evento/E" + FormatDateTime("ddmmyyyy", Date()) + ".log";
+    if ((fp = _fsopen(ArquivoLog.c_str(),"at",SH_DENYWR)) != NULL){
+        fprintf(fp,"%s\n", log.c_str());
+        fclose(fp);
+   }
+}
+
+//---------------------------------------------------------------------------
+

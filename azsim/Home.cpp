@@ -19,6 +19,7 @@
 #pragma hdrstop
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
+#pragma link "SHDocVw_OCX"
 #pragma resource "*.dfm"
 //---------------------------------------------------------------------------
 
@@ -2500,4 +2501,3 @@ void __fastcall TFHome::CDSSinalIndesejadoCalcFields(TDataSet *DataSet)
 }
 
 //---------------------------------------------------------------------------
-

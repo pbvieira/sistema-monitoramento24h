@@ -106,10 +106,18 @@ private:	// User declarations
 public:		// User declarations
     __fastcall TDModule(TComponent* Owner);
     static TDateTime __fastcall RetornaDataHoraAtual();
-    static TDateTime __fastcall SetaDataHora(AnsiString DataEHora);
-    static void __fastcall SalvaLog(AnsiString log);
+    static TDateTime __fastcall SetaDataHora(AnsiString dataEHora);
+    static void __fastcall SalvaCtxLog(AnsiString log);
+    static void __fastcall SalvaEventoLog(AnsiString log);
+    static void __fastcall SalvaLog(AnsiString log);    
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TDModule *DModule;
 //---------------------------------------------------------------------------
 #endif
+
+
+
+
+
+

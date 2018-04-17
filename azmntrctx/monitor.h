@@ -29,12 +29,13 @@ class TFMonitor : public TForm
 __published:	// IDE-managed Components
     TPageControl *PCMonitor;
     TTabSheet *TSMonitor;
-    TMemo *mmEventos;
+        TMemo *mmComunicacaoCtx;
     TPanel *PCabecalho;
     TSpeedButton *btnConectar;
     TSpeedButton *BtnFechar;
     TSpeedButton *BtnSolicitarEventos;
     TTimer *TMRSetDataHora;
+        TMemo *mmEventos;
     void __fastcall FormCreate(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall btnConectarClick(TObject *Sender);
@@ -44,12 +45,13 @@ __published:	// IDE-managed Components
     void __fastcall TMRSetDataHoraTimer(TObject *Sender);
 private:	// User declarations
     void __fastcall ConectarCtx(byte porta);
-    void __fastcall ApresentaLogNoMemo(AnsiString log, bool salvar);
+    void __fastcall PrintCtxLog(AnsiString log, bool salvar);
+    void __fastcall PrintEventoLog(AnsiString log);
     bool __fastcall CarregaMetodosDll(void);
     bool __fastcall BuscaStatus(DWORD dwCodificador, AnsiString szStatus, AnsiString szReferencia, AnsiString &szDescricaoStatus, bool &bGeraAlarme, bool &bMostrarMensagem, int &iTipoMonitor, int &iTipoIdentificacao, int &iDefineSeOcTemSetor, AnsiString &szSetor);
     bool __fastcall BuscaCliente(DWORD dwCodificador, int &iCdCliente, AnsiString &szNomeCliente, AnsiString &szEndereco, AnsiString &szCidade, AnsiString &szFilial);
     bool __fastcall BuscaSetor(DWORD dwCodificador, AnsiString szSetor, AnsiString &szLocalizacao);
-    void __fastcall AdicionarEvento(WORD wNrEvento, DWORD dwCodificador, AnsiString szStatus, AnsiString szReferencia, TDateTime dtDataEHora);
+    bool __fastcall AdicionarEvento(WORD wNrEvento, DWORD dwCodificador, AnsiString szStatus, AnsiString szReferencia, TDateTime dtDataEHora);
     bool __fastcall SalvarEvento(WORD wNrEvento, DWORD dwCodificador, AnsiString szStatus,
         AnsiString szReferencia, AnsiString szDescricaoStatus, int iTipoMonitor, int iTipoIdentificacao, TDateTime dtDataEHora,
         AnsiString szNomeCliente, int iCdCliente, AnsiString szSetor, AnsiString szLocalizacao,

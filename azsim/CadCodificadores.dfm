@@ -1,5 +1,6 @@
 inherited FCadCodificadores: TFCadCodificadores
   Left = 829
+  Top = 175
   Width = 514
   Height = 405
   Caption = 'Cadastro de Codificadores'
@@ -9,7 +10,7 @@ inherited FCadCodificadores: TFCadCodificadores
   PixelsPerInch = 96
   TextHeight = 13
   inherited PMenu: TPanel
-    Top = 341
+    Top = 334
     Width = 506
     inherited POperacoes: TPanel
       inherited TBOperacoes: TToolBar
