@@ -6,7 +6,6 @@
 USEFORM("Home.cpp", FHome);
 USEFORM("DMApp.cpp", DModule); /* TDataModule: File Type */
 USEFORM("CadCliente.cpp", FCadCliente);
-USEFORM("CadContrato.cpp", FCadContrato);
 USEFORM("ConsCliente.cpp", FConsCliente);
 USEFORM("Ocorrencia.cpp", FOcorrencia);
 USEFORM("CadProcedimento.cpp", FCadProcedimento);
@@ -32,6 +31,7 @@ USEFORM("RelOrdemServicos.cpp", QRPOrdemServicos); /* TQuickRep: File Type */
 USEFORM("CadBase.cpp", FCadBase);
 USEFORM("CadCodificadores.cpp", FCadCodificadores);
 USEFORM("RelClientes.cpp", QRPClientes); /* TQuickRep: File Type */
+USEFORM("RelFichaClientes.cpp", QrpFichaCliente); /* TQuickRep: File Type */
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -39,7 +39,7 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
     {
          Application->Initialize();
          Application->Title = "AZSIM - Sistema Integrado de Monitoramento - Versão 1.0.0.35";
-                 Application->CreateForm(__classid(TFLogin), &FLogin);
+         Application->CreateForm(__classid(TFLogin), &FLogin);
          Application->CreateForm(__classid(TDModule), &DModule);
          Application->CreateForm(__classid(TDModuleCliente), &DModuleCliente);
          Application->Run();

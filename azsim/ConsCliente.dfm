@@ -1,11 +1,10 @@
 object FConsCliente: TFConsCliente
-  Left = 284
-  Top = 121
+  Left = 310
+  Top = 129
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'Consulta de Clientes'
-  ClientHeight = 583
-  ClientWidth = 1002
+  ClientHeight = 677
+  ClientWidth = 1004
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,13 +17,13 @@ object FConsCliente: TFConsCliente
   OnClose = FormClose
   OnShow = FormShow
   DesignSize = (
-    1002
-    583)
+    1004
+    677)
   PixelsPerInch = 96
   TextHeight = 13
   object BtnConsultar: TSpeedButton
     Left = 8
-    Top = 78
+    Top = 142
     Width = 138
     Height = 22
     Caption = 'Executar Consulta'
@@ -59,8 +58,8 @@ object FConsCliente: TFConsCliente
     OnClick = BtnConsultarClick
   end
   object BtnTodos: TSpeedButton
-    Left = 412
-    Top = 78
+    Left = 508
+    Top = 142
     Width = 138
     Height = 22
     Caption = 'Listar Todos Clientes'
@@ -95,8 +94,8 @@ object FConsCliente: TFConsCliente
     OnClick = BtnConsultarClick
   end
   object BtnAbrirClientes: TSpeedButton
-    Left = 552
-    Top = 78
+    Left = 648
+    Top = 142
     Width = 174
     Height = 22
     Caption = 'Abrir Cadastro de Clientes'
@@ -144,8 +143,8 @@ object FConsCliente: TFConsCliente
     OnClick = DBGClientesDblClick
   end
   object BtnAbrirContratos: TSpeedButton
-    Left = 728
-    Top = 78
+    Left = 824
+    Top = 142
     Width = 174
     Height = 22
     Caption = 'Abrir Cadastro de Contratos'
@@ -193,8 +192,8 @@ object FConsCliente: TFConsCliente
     OnClick = DBGContratosDblClick
   end
   object BtnRelatorioClientes: TSpeedButton
-    Left = 293
-    Top = 78
+    Left = 389
+    Top = 142
     Width = 116
     Height = 22
     Caption = 'Imprimir Relat'#243'rio'
@@ -244,11 +243,11 @@ object FConsCliente: TFConsCliente
   end
   object PCResultado: TPageControl
     Left = 8
-    Top = 157
-    Width = 988
-    Height = 362
+    Top = 281
+    Width = 990
+    Height = 328
     ActivePage = TabSheet1
-    Anchors = [akLeft, akTop, akRight, akBottom]
+    Anchors = []
     Style = tsFlatButtons
     TabIndex = 0
     TabOrder = 0
@@ -257,8 +256,8 @@ object FConsCliente: TFConsCliente
       object DBGClientes: TDBGrid
         Left = 0
         Top = 0
-        Width = 980
-        Height = 225
+        Width = 982
+        Height = 273
         Align = alTop
         DataSource = DModuleCliente.DSConsCliente
         Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
@@ -272,6 +271,12 @@ object FConsCliente: TFConsCliente
         OnKeyPress = DBGClientesKeyPress
         Columns = <
           item
+            Expanded = False
+            FieldName = 'CDCODIFICADOR'
+            Title.Caption = 'Codificador'
+            Visible = True
+          end
+          item
             Alignment = taCenter
             Expanded = False
             FieldName = 'CDCLIENTE'
@@ -282,7 +287,7 @@ object FConsCliente: TFConsCliente
             Expanded = False
             FieldName = 'NMCLIENTE'
             Title.Caption = 'Nome / Raz'#227'o Social'
-            Width = 300
+            Width = 350
             Visible = True
           end
           item
@@ -300,57 +305,11 @@ object FConsCliente: TFConsCliente
             Visible = True
           end>
       end
-      object DBGContratos: TDBGrid
-        Left = 0
-        Top = 232
-        Width = 980
-        Height = 99
-        Align = alBottom
-        DataSource = DModuleCliente.DSConsContrato
-        Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-        TabOrder = 1
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'MS Sans Serif'
-        TitleFont.Style = []
-        OnDblClick = DBGContratosDblClick
-        OnKeyPress = DBGContratosKeyPress
-        Columns = <
-          item
-            Alignment = taCenter
-            Expanded = False
-            FieldName = 'CDCONTRATO'
-            Title.Caption = 'N'#186' Contrato'
-            Visible = True
-          end
-          item
-            Alignment = taLeftJustify
-            Expanded = False
-            FieldName = 'CDCODIFICADOR'
-            Title.Caption = 'Codificador'
-            Width = 90
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'MODELOCENTRAL'
-            Title.Caption = 'Modelo da Central'
-            Width = 300
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'LOCALINSTALCENTRAL'
-            Title.Caption = 'Local Instala'#231#227'o'
-            Visible = True
-          end>
-      end
     end
   end
   object GroupBox1: TGroupBox
     Left = 8
-    Top = 8
+    Top = 72
     Width = 469
     Height = 64
     Caption = 'Consulta por Cliente '
@@ -396,7 +355,7 @@ object FConsCliente: TFConsCliente
   end
   object GPBConsEndereco: TGroupBox
     Left = 481
-    Top = 8
+    Top = 72
     Width = 278
     Height = 64
     Caption = 'Consulta por Endere'#231'o'
@@ -412,8 +371,8 @@ object FConsCliente: TFConsCliente
   end
   object SBarConsCliente: TStatusBar
     Left = 0
-    Top = 564
-    Width = 1002
+    Top = 658
+    Width = 1004
     Height = 19
     Panels = <
       item
@@ -426,15 +385,15 @@ object FConsCliente: TFConsCliente
   end
   object GPBNomeSelecionado: TGroupBox
     Left = 8
-    Top = 101
-    Width = 989
-    Height = 48
+    Top = 165
+    Width = 991
+    Height = 100
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 4
     object TXTNome: TDBText
       Left = 80
       Top = 16
-      Width = 473
+      Width = 897
       Height = 17
       DataField = 'NMCLIENTE'
       DataSource = DModuleCliente.DSConsCliente
@@ -459,11 +418,53 @@ object FConsCliente: TFConsCliente
       Font.Style = []
       ParentFont = False
     end
+    object TXTCodificador: TDBText
+      Left = 12
+      Top = 40
+      Width = 63
+      Height = 17
+      DataField = 'CDCODIFICADOR'
+      DataSource = DModuleCliente.DSConsCliente
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object TXTModeloCentral: TDBText
+      Left = 80
+      Top = 40
+      Width = 889
+      Height = 17
+      DataField = 'MODELOCENTRAL'
+      DataSource = DModuleCliente.DSConsCliente
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object TXTLocalInstalacao: TDBText
+      Left = 13
+      Top = 64
+      Width = 889
+      Height = 17
+      DataField = 'LOCALINSTALCENTRAL'
+      DataSource = DModuleCliente.DSConsCliente
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
   end
   object PMenu: TPanel
     Left = 0
-    Top = 525
-    Width = 1002
+    Top = 619
+    Width = 1004
     Height = 39
     Align = alBottom
     BevelOuter = bvNone
@@ -519,7 +520,7 @@ object FConsCliente: TFConsCliente
       OnClick = BtnSelecionarClick
     end
     object PFechar: TPanel
-      Left = 945
+      Left = 947
       Top = 0
       Width = 57
       Height = 39
@@ -566,7 +567,7 @@ object FConsCliente: TFConsCliente
   end
   object GroupBox2: TGroupBox
     Left = 763
-    Top = 8
+    Top = 72
     Width = 233
     Height = 64
     Caption = 'Consulta por Filial'
@@ -584,10 +585,28 @@ object FConsCliente: TFConsCliente
   end
   object CkbAtivos: TCheckBox
     Left = 154
-    Top = 80
-    Width = 127
+    Top = 144
+    Width = 231
     Height = 17
-    Caption = 'Filtrar Clientes Ativos'
+    Caption = 'Filtrar apenas clientes com contrato'
     TabOrder = 7
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 1004
+    Height = 25
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    Caption = ' Consulta de clientes'
+    Color = clMedGray
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -13
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 8
   end
 end

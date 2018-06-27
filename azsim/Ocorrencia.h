@@ -360,10 +360,26 @@ __published:	// IDE-managed Components
     TDBEdit *EdtLacre;
     TDBEdit *EdtKmSaida;
     TDBEdit *EdtHoraLacre;
-    TIBQuery *IBQCodificador;
-    TIntegerField *IntegerField1;
-    TIBStringField *IBStringField1;
-    TIBTransaction *IBTCodificador;
+        TLabel *Label47;
+        TLabel *Label48;
+        TLabel *Label49;
+        TLabel *Label50;
+        TDBEdit *EdtFone7;
+        TDBEdit *EdtFone7Obs;
+        TDBEdit *EdtFone8;
+        TDBEdit *EdtFone8Obs;
+        TIBStringField *IBQClienteFONE7;
+        TIBStringField *IBQClienteFONEOBS7;
+        TIBStringField *IBQClienteFONE8;
+        TIBStringField *IBQClienteFONEOBS8;
+        TStringField *CDSClienteFONE7;
+        TStringField *CDSClienteFONEOBS7;
+        TStringField *CDSClienteFONE8;
+        TStringField *CDSClienteFONEOBS8;
+        TDBEdit *EdtNomeFantasia;
+        TLabel *Label51;
+        TIBStringField *IBQClienteNMFANTASIA;
+        TStringField *CDSClienteNMFANTASIA;
 
     void __fastcall DBGContatosDrawColumnCell(TObject *Sender,
           const TRect &Rect, int DataCol, TColumn *Column,

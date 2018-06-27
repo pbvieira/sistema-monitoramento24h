@@ -26,7 +26,6 @@
 #define SECAO_MONITOR "Monitor Serial"
 
 #include "CadCliente.h"
-#include "CadContrato.h"
 #include "CadProcedimento.h"
 //---------------------------------------------------------------------------
 class TDModule : public TDataModule

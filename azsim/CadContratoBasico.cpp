@@ -40,20 +40,22 @@ void __fastcall TFCadContratoBasico::ConsultaContrato(int CodigoContrato, int Co
         "LOCALINSTALCENTRAL, OBSCENTRAL FROM CONTRATO WHERE CDCLIENTE = :CDCLIENTE";
 
     try{
-        DModuleCliente->CDSContrato->Active = false;
-        DModuleCliente->IBQContrato->SQL->Clear();
-        DModuleCliente->IBQContrato->SQL->Text = SQL_CONTRATOS_CLIENTE;
-        DModuleCliente->IBQContrato->ParamByName("CDCLIENTE")->AsInteger = CodigoCliente;
+        if(CodigoContrato > 0  || CodigoCliente > 0){
+          DModuleCliente->CDSContrato->Active = false;
+          DModuleCliente->IBQContrato->SQL->Clear();
+          DModuleCliente->IBQContrato->SQL->Text = SQL_CONTRATOS_CLIENTE;
+          DModuleCliente->IBQContrato->ParamByName("CDCLIENTE")->AsInteger = CodigoCliente;
 
-        DModuleCliente->CDSContrato->Active = true;
-        if(DModuleCliente->IBTContrato->InTransaction)
-            DModuleCliente->IBTContrato->Commit();
+          DModuleCliente->CDSContrato->Active = true;
+          if(DModuleCliente->IBTContrato->InTransaction)
+              DModuleCliente->IBTContrato->Commit();
 
-        if(DModuleCliente->CDSContrato->RecordCount > 0 && CodigoContrato > 0){
-            TLocateOptions Opts;
-            Opts.Clear();
-            Opts << loPartialKey;
-            DModuleCliente->CDSContrato->Locate("CDCONTRATO", CodigoContrato, Opts);
+          if(DModuleCliente->CDSContrato->RecordCount > 0 && CodigoContrato > 0){
+              TLocateOptions Opts;
+              Opts.Clear();
+              Opts << loPartialKey;
+              DModuleCliente->CDSContrato->Locate("CDCONTRATO", CodigoContrato, Opts);
+          }
         }
 
         ConfiguraConsultaAuxiliar();
@@ -147,6 +149,8 @@ void __fastcall TFCadContratoBasico::HabilitaBarraBotoes(void)
     BtnDeletar->Enabled = (DModuleCliente->DSContrato->State == dsBrowse || DModuleCliente->DSContrato->State == dsEdit);
     BtnCancelar->Enabled = (DModuleCliente->DSContrato->State == dsInsert || DModuleCliente->DSContrato->State == dsEdit);
     BtnLocalizarCliente->Enabled = (DModuleCliente->DSContrato->State == dsInsert || DModuleCliente->DSContrato->State == dsEdit);
+    BtnVoltar->Enabled = (DModuleCliente->DSContrato->State == dsBrowse);
+    BtnAvancar->Enabled = (DModuleCliente->DSContrato->State == dsBrowse);    
 }
 
 //---------------------------------------------------------------------------
@@ -172,9 +176,6 @@ void __fastcall TFCadContratoBasico::HabilitaCamposFormulario(bool Status)
         } else if(dynamic_cast <TDBCheckBox*> (Components[i]) != NULL){
             dynamic_cast <TDBCheckBox*> (Components[i])->Enabled = Status;
 
-        /*} else if(dynamic_cast <TDBNavigator*> (Components[i]) != NULL){
-            dynamic_cast <TDBNavigator*> (Components[i])->Enabled = Status;
-        */
         } else if(dynamic_cast <TDBGrid*> (Components[i]) != NULL){
             dynamic_cast <TDBGrid*> (Components[i])->Enabled = Status;
         }
@@ -228,12 +229,20 @@ void __fastcall TFCadContratoBasico::ConfiguraEventosForm(void)
 
 void __fastcall TFCadContratoBasico::BtnNovoClick(TObject *Sender)
 {
+    if(!DModuleCliente->CDSContrato->Active){
+        DModuleCliente->CDSContrato->Active = true;
+    }
+
     DModuleCliente->CDSContrato->Append();
 
     ConfiguraConsultaAuxiliar();
     HabilitaBarraBotoes();
     HabilitaCamposFormulario(true);
-    EdtCodigo->SetFocus();
+    if(PgcContrato->ActivePageIndex == 0){
+        EdtCodigo->SetFocus();
+    }else{
+        EdtInfoTecnica->SetFocus();
+    }
 }
 
 //---------------------------------------------------------------------------
@@ -255,7 +264,11 @@ void __fastcall TFCadContratoBasico::BtnEditarClick(TObject *Sender)
     DModuleCliente->CDSContrato->Edit();
     HabilitaBarraBotoes();
     HabilitaCamposFormulario(true);
-    EdtCodigo->SetFocus();    
+    if(PgcContrato->ActivePageIndex == 0){
+        EdtCodigo->SetFocus();
+    }else{
+        EdtInfoTecnica->SetFocus();
+    }
 }
 
 //---------------------------------------------------------------------------
@@ -267,6 +280,9 @@ void __fastcall TFCadContratoBasico::BtnCancelarClick(TObject *Sender)
 
     if(ConfirmaCancelamento){
         DModuleCliente->CDSContrato->CancelUpdates();
+        if(DModuleCliente->DSContrato->State == dsInsert){
+            DModuleCliente->CDSContrato->Active = false;
+        }
         ConfiguraConsultaAuxiliar();
         HabilitaBarraBotoes();
         HabilitaCamposFormulario(false);
@@ -444,30 +460,21 @@ void __fastcall TFCadContratoBasico::DBGSetorDrawColumnCell(
 void __fastcall TFCadContratoBasico::BtnLocalizarClienteClick(
       TObject *Sender)
 {
-    if(FHome->FormEstaAberto("FConsCliente")){
-        FConsCliente->Left = 10;
-        FConsCliente->Width = 375;
-        FConsCliente->GPBConsEndereco->Visible = false;
-        FConsCliente->GPBNomeSelecionado->Visible = false;
-        FConsCliente->BtnTodos->Visible = false;
-        FConsCliente->BtnAbrirClientes->Visible = false;
-        FConsCliente->BtnAbrirContratos->Visible = false;
-        FConsCliente->BtnSelecionar->Visible = true;
-        FConsCliente->SetarObjetoCodigoCliente(DModuleCliente->CDSContratoCDCLIENTE);
-        FConsCliente->Show();
-    }else{
+    if(!FHome->FormEstaAberto("FConsCliente")){
         FConsCliente = new TFConsCliente(this);
-        FConsCliente->Width = 375;
-        FConsCliente->GPBConsEndereco->Visible = false;
-        FConsCliente->GPBNomeSelecionado->Visible = false;
-        FConsCliente->BtnTodos->Visible = false;
-        FConsCliente->BtnAbrirClientes->Visible = false;
-        FConsCliente->BtnAbrirContratos->Visible = false;
-        FConsCliente->BtnSelecionar->Visible = true;
-        FConsCliente->SetarObjetoCodigoCliente(DModuleCliente->CDSContratoCDCLIENTE);
-        FConsCliente->Show();
-        FConsCliente->Left = 10;
-    }    
+    }
+
+    FConsCliente->Width = 487;
+    FConsCliente->GPBConsEndereco->Visible = false;
+    FConsCliente->GPBNomeSelecionado->Visible = false;
+    FConsCliente->BtnTodos->Visible = false;
+    FConsCliente->BtnAbrirClientes->Visible = false;
+    FConsCliente->BtnAbrirContratos->Visible = false;
+    FConsCliente->BtnRelatorioClientes->Visible = false;
+    FConsCliente->BtnSelecionar->Visible = true;
+    FConsCliente->SetarObjetoCodigoCliente(DModuleCliente->CDSContratoCDCLIENTE);
+    FConsCliente->Show();
+    FConsCliente->Left = 10;
 }
 
 //---------------------------------------------------------------------------

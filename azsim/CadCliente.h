@@ -88,6 +88,16 @@ __published:	// IDE-managed Components
     TDBEdit *EdtFone6Obs;
     TSpeedButton *BtnPesquisa;
     TSpeedButton *BtnContratos;
+        TLabel *Label1;
+        TDBEdit *EdtNomeFantasia;
+        TLabel *Label16;
+        TLabel *Label17;
+        TLabel *Label18;
+        TLabel *Label19;
+        TDBEdit *EdtFone7;
+        TDBEdit *EdtFone7Obs;
+        TDBEdit *EdtFone8;
+        TDBEdit *EdtFone8Obs;
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall BtnFecharClick(TObject *Sender);
     void __fastcall BtnNovoClick(TObject *Sender);

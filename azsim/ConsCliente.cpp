@@ -8,6 +8,7 @@
 #include "CadCliente.h"
 #include "DMCliente.h"
 #include "RelClientes.h"
+#include "RelFichaClientes.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -44,30 +45,31 @@ void __fastcall TFConsCliente::BtnFecharClick(TObject *Sender)
 void __fastcall TFConsCliente::BtnConsultarClick(TObject *Sender)
 {
     try{
-        AnsiString ENTIDADE = "CLIENTE";
+        AnsiString RESTRINGI_CONTRATO = "LEFT";
         if(CkbAtivos->Checked){
-            ENTIDADE = "VCLIENTES_ATIVOS";
+            RESTRINGI_CONTRATO = "INNER";
         }
 
-        AnsiString SQL_FILTRO_TODOS = Format(
-                "SELECT CDCLIENTE, NMCLIENTE, CIDADE, ENDERECO "
-                "FROM %s C ORDER BY NMCLIENTE",
-                ARRAYOFCONST((ENTIDADE)));
+        AnsiString SQL_FILTRO_TODOS = Format("SELECT C.CDCLIENTE, C.CDFILIAL, C.TPPESSOA, C.NMCLIENTE, C.NMFANTASIA, "
+            "C.DOCUMENTO, C.INSCMUNICIPAL, C.ENDERECO, C.BAIRRO, C.CIDADE, C.UF, C.CEP, "
+	        "C.PONTOREF, C.CHAVE, C.KMBASE, C.OBSERVACAO, C.PROCEDIMENTOS, C.DATACADASTRO, "
+	        "C.DATAALTERACAO, C.FONE1, C.FONEOBS1, C.FONE2, C.FONEOBS2, C.FONE3, C.FONEOBS3, "
+	        "C.FONE4, C.FONEOBS4, C.FONE5, C.FONEOBS5, C.FONE6, C.FONEOBS6, C.FONE7, C.FONEOBS7, "
+	        "C.FONE8, C.FONEOBS8, CR.CDCONTRATO, CR.CDCODIFICADOR, CR.LOCALINSTALCENTRAL, CR.MODELOCENTRAL "
+          "FROM CLIENTE C %s JOIN CONTRATO CR ON C.CDCLIENTE = CR.CDCLIENTE ",
+          ARRAYOFCONST((RESTRINGI_CONTRATO)));
 
         AnsiString SQL_FILTRO_POR_CODIGO = Format(
-            "SELECT CDCLIENTE, NMCLIENTE, CIDADE, ENDERECO "
-            "FROM %s C WHERE C.CDCLIENTE = :CDCLIENTE",
-                ARRAYOFCONST((ENTIDADE)));
+            "%s WHERE C.CDCLIENTE = :CDCLIENTE",
+                ARRAYOFCONST((SQL_FILTRO_TODOS)));
 
         AnsiString SQL_FILTRO_POR_NOME = Format(
-            "SELECT CDCLIENTE, NMCLIENTE, CIDADE, ENDERECO "
-            "FROM %s C WHERE C.NMCLIENTE LIKE UPPER(:NMCLIENTE)",
-                ARRAYOFCONST((ENTIDADE)));
+            "%s WHERE C.NMCLIENTE LIKE UPPER(:NMCLIENTE) OR C.NMFANTASIA LIKE UPPER(:NMCLIENTE)",
+                ARRAYOFCONST((SQL_FILTRO_TODOS)));
 
         AnsiString SQL_FILTRO_POR_FILIAL = Format(
-            "SELECT CDCLIENTE, NMCLIENTE, CIDADE, ENDERECO "
-            "FROM %s C WHERE C.CDFILIAL = :CDFILIAL",
-                ARRAYOFCONST((ENTIDADE)));
+            "%s WHERE C.CDFILIAL = :CDFILIAL",
+                ARRAYOFCONST((SQL_FILTRO_TODOS)));
 
         AnsiString ORDER_BY = " ORDER BY NMCLIENTE";
 
@@ -114,9 +116,8 @@ void __fastcall TFConsCliente::BtnConsultarClick(TObject *Sender)
 
             }else{
                 AnsiString SQL_FILTRO_POR_LOCAL =  Format(
-                    "SELECT CDCLIENTE, NMCLIENTE, CIDADE, ENDERECO "
-                    "FROM %s C WHERE ",
-                        ARRAYOFCONST((ENTIDADE)));
+                    "%s WHERE ",
+                        ARRAYOFCONST((SQL_FILTRO_TODOS)));
                 
                 String Cidade = EdtCidade->Text;
 
@@ -278,64 +279,9 @@ void __fastcall TFConsCliente::BtnSelecionarClick(TObject *Sender)
 
 void __fastcall TFConsCliente::BtnRelatorioClientesClick(TObject *Sender)
 {
-    QRPClientes = new TQRPClientes(this);
-    QRPClientes->PreviewModal();
-    QRPClientes->Free();
-
-    /*
-    AnsiString Cabecalho = "";
-    TStringList *ConteudoCSV = new TStringList();
-
-    ConteudoCSV->Add("RELATÓRIO DE CLIENTE " + DModule->RetornaDataHoraAtual());
-    ConteudoCSV->Add("");
-    if(CmbFilial->Text != ""){
-        ConteudoCSV->Add("FILIAL " + CmbFilial->Text);
-    }
-    ConteudoCSV->Add("");
-
-    // Monta o cabeçalho do arquivo
-    for(int i =0; i <= DModuleCliente->CDSConsCliente->FieldCount -3; i++){
-        AnsiString NomeCampo = DModuleCliente->CDSConsCliente->Fields->Fields[i]->FieldName;
-        if(NomeCampo == "CDCLIENTE" || NomeCampo == "NMCLIENTE"){
-            Cabecalho+=  NomeCampo + ",";
-        }
-    }
-
-    for(int j =0; j <= DModuleCliente->CDSConsContrato->FieldCount -3; j++){
-        AnsiString NomeCampo = DModuleCliente->CDSConsContrato->Fields->Fields[j]->FieldName;
-        Cabecalho+= NomeCampo + ",";
-    }
-
-
-    ConteudoCSV->Add(Cabecalho.SubString(0, StrLen(Cabecalho.c_str())-1));
-    DModuleCliente->CDSConsCliente->First();
-
-    // Monta linhas do arquivo
-    while(!DModuleCliente->CDSConsCliente->Eof){
-        AnsiString Linha = "";
-        AnsiString Valor = "";
-        for(int i =0; i <= DModuleCliente->CDSConsCliente->FieldCount -3; i++){
-            AnsiString NomeCampo = DModuleCliente->CDSConsCliente->Fields->Fields[i]->FieldName;
-            if(NomeCampo == "CDCLIENTE" || NomeCampo == "NMCLIENTE"){
-                Valor = DModuleCliente->CDSConsCliente->Fields->Fields[i]->AsString;
-                Linha += StringReplace (Valor, ",", " ", TReplaceFlags() << rfReplaceAll) + ",";
-            }
-        }
-
-        for(int j =0; j <= DModuleCliente->CDSConsContrato->FieldCount -3; j++){
-            Valor = DModuleCliente->CDSConsContrato->Fields->Fields[j]->AsString;
-            Linha += StringReplace (Valor, ",", " ", TReplaceFlags() << rfReplaceAll) + ",";
-        }
-
-        ConteudoCSV->Add(Linha.SubString(0, StrLen(Linha.c_str())-1));
-        DModuleCliente->CDSConsCliente->Next();
-    }
-
-    AnsiString PathArquivo = "C:\\AZSIM\\Clientes.csv";
-    AnsiString MensagemExportacao = "Arquivo exportadado em " + PathArquivo;
-    ConteudoCSV->SaveToFile(PathArquivo);
-    Application->MessageBox(MensagemExportacao.c_str(),"Exportação",MB_OK);
-    */
+    QrpFichaCliente = new TQrpFichaCliente(this);
+    QrpFichaCliente->PreviewModal();
+    QrpFichaCliente->Free();
 }
 
 //---------------------------------------------------------------------------

@@ -42,11 +42,14 @@ __published:	// IDE-managed Components
     TSpeedButton *BtnAbrirClientes;
     TSpeedButton *BtnAbrirContratos;
     TSpeedButton *BtnSelecionar;
-    TDBGrid *DBGContratos;
     TSpeedButton *BtnRelatorioClientes;
     TGroupBox *GroupBox2;
     TDBLookupComboBox *CmbFilial;
     TCheckBox *CkbAtivos;
+        TDBText *TXTCodificador;
+        TDBText *TXTModeloCentral;
+        TDBText *TXTLocalInstalacao;
+    TPanel *Panel1;
     void __fastcall BtnConsultarClick(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall DBGClientesDblClick(TObject *Sender);

@@ -25,7 +25,6 @@
 
 #include "DMApp.h"
 #include "CadCliente.h"
-#include "CadContrato.h"
 #include "ConsCliente.h"
 #include "CadMonitoramento.h"
 #include "OcorrenciaAviso.h"

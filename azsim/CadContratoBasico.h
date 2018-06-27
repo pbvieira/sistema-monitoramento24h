@@ -31,7 +31,7 @@ __published:	// IDE-managed Components
     TSpeedButton *BtnFechar;
     TToolButton *BtnVoltar;
     TToolButton *BtnAvancar;
-    TPageControl *PageControl1;
+    TPageControl *PgcContrato;
     TTabSheet *TabSheet1;
     TTabSheet *TabSheet2;
     TLabel *Label1;
@@ -52,8 +52,6 @@ __published:	// IDE-managed Components
     TLabel *Label21;
     TLabel *Label15;
     TSpeedButton *BtnLocalizarCliente;
-    TSpeedButton *SpeedButton1;
-    TSpeedButton *SpeedButton2;
     TDBEdit *EdtCodigo;
     TDBEdit *EdtCodCodificador;
     TDBEdit *EdtCodCliente;
@@ -95,6 +93,7 @@ __published:	// IDE-managed Components
     TDBCheckBox *CkbLocacao;
     TDBLookupComboBox *CmbMotivoCancelamento;
     TDBCheckBox *CkbInativo;
+    TLabel *Label23;
     void __fastcall FormCreate(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall ChangeEnter(TObject * Sender);

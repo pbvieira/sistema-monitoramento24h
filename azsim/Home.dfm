@@ -1,12 +1,12 @@
 object FHome: TFHome
-  Left = 189
-  Top = 187
+  Left = 382
+  Top = 104
   AutoScroll = False
   Caption = 'AZSIM - Sistema Integrado de Monitoramento - Vers'#227'o 1.0.0.35'
-  ClientHeight = 546
-  ClientWidth = 1169
+  ClientHeight = 719
+  ClientWidth = 1242
   Color = clBtnFace
-  Constraints.MinHeight = 600
+  Constraints.MinHeight = 592
   Constraints.MinWidth = 800
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -23,9 +23,9 @@ object FHome: TFHome
   TextHeight = 13
   object SBarHome: TStatusBar
     Left = 0
-    Top = 527
-    Width = 1169
-    Height = 19
+    Top = 702
+    Width = 1242
+    Height = 17
     Panels = <
       item
         Width = 200
@@ -41,16 +41,16 @@ object FHome: TFHome
   object PHome: TPanel
     Left = 0
     Top = 0
-    Width = 1169
-    Height = 527
+    Width = 1242
+    Height = 702
     Align = alClient
     BevelOuter = bvLowered
     TabOrder = 1
     object PGCHome: TPageControl
       Left = 1
       Top = 1
-      Width = 1167
-      Height = 525
+      Width = 1240
+      Height = 700
       ActivePage = TSRegistroEventos
       Align = alClient
       TabIndex = 0
@@ -295,8 +295,8 @@ object FHome: TFHome
         object PNLEventos: TPanel
           Left = 0
           Top = 96
-          Width = 1159
-          Height = 401
+          Width = 1232
+          Height = 576
           Align = alBottom
           Anchors = [akLeft, akTop, akRight, akBottom]
           BevelOuter = bvNone
@@ -304,7 +304,7 @@ object FHome: TFHome
           object Splitter1: TSplitter
             Left = 0
             Top = 241
-            Width = 1159
+            Width = 1232
             Height = 8
             Cursor = crVSplit
             Align = alTop
@@ -313,7 +313,7 @@ object FHome: TFHome
           object DBGEventos: TDBGrid
             Left = 0
             Top = 0
-            Width = 1159
+            Width = 1232
             Height = 241
             Align = alTop
             BorderStyle = bsNone
@@ -421,7 +421,7 @@ object FHome: TFHome
           object TPanel
             Left = 0
             Top = 249
-            Width = 1159
+            Width = 1232
             Height = 41
             Align = alTop
             BevelOuter = bvNone
@@ -430,8 +430,8 @@ object FHome: TFHome
           object DBGOcorrencias: TDBGrid
             Left = 0
             Top = 290
-            Width = 1159
-            Height = 111
+            Width = 1232
+            Height = 286
             Align = alClient
             BorderStyle = bsNone
             Ctl3D = True
@@ -696,8 +696,8 @@ object FHome: TFHome
         object DBGOcorrenciasHist: TDBGrid
           Left = 0
           Top = 96
-          Width = 1159
-          Height = 401
+          Width = 1232
+          Height = 576
           Align = alBottom
           Anchors = [akLeft, akTop, akRight, akBottom]
           BorderStyle = bsNone
@@ -933,21 +933,21 @@ object FHome: TFHome
           Left = 270
           Top = 41
           Width = 3
-          Height = 456
+          Height = 631
           Cursor = crHSplit
         end
         object Panel2: TPanel
           Left = 273
           Top = 41
-          Width = 886
-          Height = 456
+          Width = 959
+          Height = 631
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
           object Splitter2: TSplitter
             Left = 0
             Top = 300
-            Width = 886
+            Width = 959
             Height = 8
             Cursor = crVSplit
             Align = alTop
@@ -956,7 +956,7 @@ object FHome: TFHome
           object DBGClientesManutencao: TDBGrid
             Left = 0
             Top = 0
-            Width = 886
+            Width = 959
             Height = 300
             Align = alTop
             BorderStyle = bsNone
@@ -1017,7 +1017,7 @@ object FHome: TFHome
           object Panel3: TPanel
             Left = 0
             Top = 308
-            Width = 886
+            Width = 959
             Height = 29
             Align = alTop
             BevelOuter = bvNone
@@ -1026,8 +1026,8 @@ object FHome: TFHome
           object PGCOrdemServico: TPageControl
             Left = 0
             Top = 337
-            Width = 886
-            Height = 119
+            Width = 959
+            Height = 294
             ActivePage = TSEventos
             Align = alClient
             Style = tsFlatButtons
@@ -1039,8 +1039,8 @@ object FHome: TFHome
               object DBGCliConsEventos: TDBGrid
                 Left = 0
                 Top = 0
-                Width = 878
-                Height = 137
+                Width = 951
+                Height = 263
                 Align = alClient
                 BorderStyle = bsNone
                 Ctl3D = True
@@ -1440,7 +1440,7 @@ object FHome: TFHome
         object Panel1: TPanel
           Left = 0
           Top = 0
-          Width = 1159
+          Width = 1232
           Height = 41
           Align = alTop
           BevelOuter = bvNone
@@ -1509,7 +1509,7 @@ object FHome: TFHome
           Left = 0
           Top = 41
           Width = 270
-          Height = 456
+          Height = 631
           Align = alLeft
           Indent = 19
           ReadOnly = True

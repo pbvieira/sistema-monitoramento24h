@@ -1,10 +1,10 @@
 object FCadCliente: TFCadCliente
-  Left = 335
-  Top = 187
+  Left = 348
+  Top = 169
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Cadastro de Clientes'
-  ClientHeight = 494
+  ClientHeight = 538
   ClientWidth = 964
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -170,7 +170,7 @@ object FCadCliente: TFCadCliente
   end
   object PMenu: TPanel
     Left = 0
-    Top = 457
+    Top = 501
     Width = 964
     Height = 37
     Align = alBottom
@@ -283,7 +283,7 @@ object FCadCliente: TFCadCliente
   end
   object GRPObs: TGroupBox
     Left = 8
-    Top = 353
+    Top = 393
     Width = 873
     Height = 97
     Caption = 'Observa'#231#245'es / Viagens'
@@ -302,7 +302,7 @@ object FCadCliente: TFCadCliente
     Left = 8
     Top = 8
     Width = 873
-    Height = 192
+    Height = 193
     Caption = 'Cliente'
     TabOrder = 1
     object Label2: TLabel
@@ -319,15 +319,15 @@ object FCadCliente: TFCadCliente
       ParentFont = False
     end
     object Label4: TLabel
-      Left = 9
-      Top = 58
+      Left = 212
+      Top = 12
       Width = 62
       Height = 13
       Caption = 'N'#186' do Cliente'
     end
     object Label6: TLabel
-      Left = 80
-      Top = 59
+      Left = 283
+      Top = 13
       Width = 102
       Height = 13
       Caption = 'Nome / Raz'#227'o Social'
@@ -456,6 +456,19 @@ object FCadCliente: TFCadCliente
       Font.Style = []
       ParentFont = False
     end
+    object Label1: TLabel
+      Left = 9
+      Top = 59
+      Width = 71
+      Height = 13
+      Caption = 'Nome Fantasia'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
     object CmbFilial: TDBLookupComboBox
       Left = 8
       Top = 30
@@ -466,8 +479,8 @@ object FCadCliente: TFCadCliente
       TabOrder = 0
     end
     object EdtCodigo: TDBEdit
-      Left = 8
-      Top = 75
+      Left = 211
+      Top = 29
       Width = 69
       Height = 21
       DataField = 'CDCLIENTE'
@@ -475,9 +488,9 @@ object FCadCliente: TFCadCliente
       TabOrder = 1
     end
     object EdtNmCliente: TDBEdit
-      Left = 80
-      Top = 75
-      Width = 459
+      Left = 283
+      Top = 29
+      Width = 582
       Height = 21
       DataField = 'NMCLIENTE'
       DataSource = DModuleCliente.DSCliente
@@ -580,12 +593,21 @@ object FCadCliente: TFCadCliente
       DataSource = DModuleCliente.DSCliente
       TabOrder = 12
     end
+    object EdtNomeFantasia: TDBEdit
+      Left = 9
+      Top = 75
+      Width = 529
+      Height = 21
+      DataField = 'NMFANTASIA'
+      DataSource = DModuleCliente.DSCliente
+      TabOrder = 13
+    end
   end
   object GRPContatos: TGroupBox
     Left = 8
-    Top = 203
+    Top = 211
     Width = 873
-    Height = 147
+    Height = 182
     Caption = 'Contatos'
     TabOrder = 2
     TabStop = True
@@ -709,6 +731,46 @@ object FCadCliente: TFCadCliente
       Font.Style = []
       ParentFont = False
     end
+    object Label17: TLabel
+      Left = 11
+      Top = 137
+      Width = 39
+      Height = 13
+      Caption = 'Fone (7)'
+    end
+    object Label16: TLabel
+      Left = 523
+      Top = 137
+      Width = 73
+      Height = 13
+      Caption = 'Observa'#231#227'o (8)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label18: TLabel
+      Left = 93
+      Top = 137
+      Width = 73
+      Height = 13
+      Caption = 'Observa'#231#227'o (7)'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label19: TLabel
+      Left = 440
+      Top = 137
+      Width = 39
+      Height = 13
+      Caption = 'Fone (8)'
+    end
     object EdtFone1: TDBEdit
       Tag = 1
       Left = 8
@@ -828,6 +890,46 @@ object FCadCliente: TFCadCliente
       DataField = 'FONEOBS6'
       DataSource = DModuleCliente.DSCliente
       TabOrder = 11
+    end
+    object EdtFone7: TDBEdit
+      Tag = 1
+      Left = 9
+      Top = 153
+      Width = 81
+      Height = 21
+      DataField = 'FONE7'
+      DataSource = DModuleCliente.DSCliente
+      TabOrder = 12
+    end
+    object EdtFone7Obs: TDBEdit
+      Tag = 1
+      Left = 92
+      Top = 153
+      Width = 343
+      Height = 21
+      DataField = 'FONEOBS7'
+      DataSource = DModuleCliente.DSCliente
+      TabOrder = 13
+    end
+    object EdtFone8: TDBEdit
+      Tag = 1
+      Left = 439
+      Top = 153
+      Width = 81
+      Height = 21
+      DataField = 'FONE8'
+      DataSource = DModuleCliente.DSCliente
+      TabOrder = 14
+    end
+    object EdtFone8Obs: TDBEdit
+      Tag = 1
+      Left = 522
+      Top = 152
+      Width = 343
+      Height = 21
+      DataField = 'FONEOBS8'
+      DataSource = DModuleCliente.DSCliente
+      TabOrder = 15
     end
   end
 end

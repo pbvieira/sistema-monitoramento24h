@@ -19,7 +19,7 @@ __fastcall TFCadBase::TFCadBase(TComponent* Owner)
 void __fastcall TFCadBase::FormCreate(TObject *Sender)
 {
     ConfiguraEventosForm();
-    ConfiguraCharCaseForm();    
+    ConfiguraCharCaseForm();
 }
 
 //---------------------------------------------------------------------------

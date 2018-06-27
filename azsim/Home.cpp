@@ -1,9 +1,10 @@
 //---------------------------------------------------------------------------
 #include <vcl.h>
-#include <inifiles.hpp>
 #include <winuser.h>
 #include <stdio.h>
 #include <dos.h>
+#include <IniFiles.hpp>
+
 #define AZSIM
 #include "Home.h"
 #include "Login.h"
@@ -436,26 +437,20 @@ void __fastcall TFHome::DBGOcorrenciasHistDblClick(TObject *Sender)
 void __fastcall TFHome::BtnConsultarClick(TObject *Sender)
 {
     try{
-        AnsiString SQL_ORDER_BY = " ORDER BY DATAEVENTO DESC";
-
-        AnsiString SQL_FILTRO_DATA =
-            "SELECT FIRST 200 "
-            "    DATAEVENTO, CTX, PORTACOM, EQUIPAMENTO, STATUS, "
-            "    DESTATUS, CDCLIENTE, NMCLIENTE, ENDERECO, CIDADE "
-            "FROM VLOGEVENTO WHERE DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL" + SQL_ORDER_BY;
-
+        AnsiString LIMITA_CONSULTA = "SELECT FIRST 200";
         if(!CkbAtualizar->Checked){
-            SQL_FILTRO_DATA =
-                "SELECT "
-                "    DATAEVENTO, CTX, PORTACOM, EQUIPAMENTO, STATUS, "
-                "    DESTATUS, CDCLIENTE, NMCLIENTE, ENDERECO, CIDADE "
-                "FROM VLOGEVENTO WHERE DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL" + SQL_ORDER_BY;
+            LIMITA_CONSULTA = "SELECT";
         }
+        AnsiString SQL_ORDER_BY = " ORDER BY DATAEVENTO DESC";
+        AnsiString SQL_FILTRO_DATA = Format("%s DATAEVENTO, CTX, PORTACOM, EQUIPAMENTO, "
+          "  STATUS, DESTATUS, CDCLIENTE, NMCLIENTE, ENDERECO, CIDADE "
+          "  FROM VLOGEVENTO WHERE E.DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL %s",
+          ARRAYOFCONST((LIMITA_CONSULTA, SQL_ORDER_BY)));
 
         AnsiString SQL_FILTRO = SQL_FILTRO_DATA;
-        AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND CDCLIENTE = :CDCLIENTE" + SQL_ORDER_BY;
-        AnsiString SQL_FILTRO_NOME = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND NMCLIENTE LIKE UPPER(:NMCLIENTE)" + SQL_ORDER_BY;
-        AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND EQUIPAMENTO = :EQUIPAMENTO" + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND E.CDCLIENTE = :CDCLIENTE" + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_NOME = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND E.NMCLIENTE LIKE UPPER(:NMCLIENTE)" + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND E.EQUIPAMENTO = :EQUIPAMENTO" + SQL_ORDER_BY;
 
         CDSConsEventos->Close();
         IBQConsEventos->SQL->Clear();

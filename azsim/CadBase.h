@@ -45,6 +45,7 @@ private:
     TClientDataSet *FDataSetBase;
 public:		// User declarations
     __fastcall TFCadBase(TComponent* Owner);
+    void __fastcall ChangeFormStyle(TObject * Sender);
     void __fastcall SetDataSetBase(TClientDataSet* ClientDS);
     void __fastcall ChangeEnter(TObject * Sender);
     void __fastcall ChangeExit(TObject *Sender);

@@ -1,10 +1,10 @@
 object FOcorrencia: TFOcorrencia
-  Left = 407
-  Top = 83
+  Left = 189
+  Top = 102
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Atendimento'
-  ClientHeight = 655
+  ClientHeight = 705
   ClientWidth = 950
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -25,7 +25,7 @@ object FOcorrencia: TFOcorrencia
     Left = 4
     Top = 2
     Width = 476
-    Height = 470
+    Height = 509
     TabOrder = 0
     object Label8: TLabel
       Left = 7
@@ -339,7 +339,7 @@ object FOcorrencia: TFOcorrencia
     end
     object Label46: TLabel
       Left = 10
-      Top = 383
+      Top = 421
       Width = 241
       Height = 13
       Caption = 'Observa'#231#245'es do Cliente dados de Viagens'
@@ -349,6 +349,51 @@ object FOcorrencia: TFOcorrencia
       Font.Height = -11
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label47: TLabel
+      Left = 8
+      Top = 382
+      Width = 36
+      Height = 13
+      Caption = 'Fone(7)'
+      FocusControl = EdtFone3
+    end
+    object Label48: TLabel
+      Left = 91
+      Top = 382
+      Width = 73
+      Height = 13
+      Caption = 'Observa'#231#227'o (7)'
+      FocusControl = EdtFone3Obs
+    end
+    object Label49: TLabel
+      Left = 241
+      Top = 382
+      Width = 36
+      Height = 13
+      Caption = 'Fone(8)'
+      FocusControl = EdtFone6
+    end
+    object Label50: TLabel
+      Left = 324
+      Top = 382
+      Width = 73
+      Height = 13
+      Caption = 'Observa'#231#227'o (8)'
+      FocusControl = EdtFone6Obs
+    end
+    object Label51: TLabel
+      Left = 234
+      Top = 120
+      Width = 71
+      Height = 13
+      Caption = 'Nome Fantasia'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
       ParentFont = False
     end
     object EdtStatus: TDBEdit
@@ -394,7 +439,7 @@ object FOcorrencia: TFOcorrencia
     object EdtNmCliente: TDBEdit
       Left = 7
       Top = 136
-      Width = 434
+      Width = 226
       Height = 21
       TabStop = False
       DataField = 'NMCLIENTE'
@@ -625,7 +670,7 @@ object FOcorrencia: TFOcorrencia
     end
     object EdtObs: TDBMemo
       Left = 8
-      Top = 399
+      Top = 437
       Width = 456
       Height = 67
       TabStop = False
@@ -634,12 +679,62 @@ object FOcorrencia: TFOcorrencia
       ScrollBars = ssVertical
       TabOrder = 27
     end
+    object EdtFone7: TDBEdit
+      Left = 10
+      Top = 397
+      Width = 81
+      Height = 21
+      TabStop = False
+      DataField = 'FONE7'
+      DataSource = DSCliente
+      TabOrder = 28
+    end
+    object EdtFone7Obs: TDBEdit
+      Left = 93
+      Top = 397
+      Width = 148
+      Height = 21
+      TabStop = False
+      DataField = 'FONEOBS7'
+      DataSource = DSCliente
+      TabOrder = 29
+    end
+    object EdtFone8: TDBEdit
+      Left = 243
+      Top = 397
+      Width = 81
+      Height = 21
+      TabStop = False
+      DataField = 'FONE8'
+      DataSource = DSCliente
+      TabOrder = 30
+    end
+    object EdtFone8Obs: TDBEdit
+      Left = 326
+      Top = 397
+      Width = 140
+      Height = 21
+      TabStop = False
+      DataField = 'FONEOBS8'
+      DataSource = DSCliente
+      TabOrder = 31
+    end
+    object EdtNomeFantasia: TDBEdit
+      Left = 235
+      Top = 136
+      Width = 207
+      Height = 21
+      TabStop = False
+      DataField = 'NMFANTASIA'
+      DataSource = DSCliente
+      TabOrder = 32
+    end
   end
   object Panel2: TPanel
     Left = 483
     Top = 2
     Width = 462
-    Height = 470
+    Height = 509
     TabOrder = 1
     object Label13: TLabel
       Left = 11
@@ -747,7 +842,7 @@ object FOcorrencia: TFOcorrencia
     end
     object Label31: TLabel
       Left = 11
-      Top = 394
+      Top = 426
       Width = 88
       Height = 13
       Caption = 'Ocorr'#234'ncia Policial'
@@ -892,7 +987,7 @@ object FOcorrencia: TFOcorrencia
       Left = 10
       Top = 294
       Width = 440
-      Height = 99
+      Height = 131
       DataField = 'PROCEDIMENTOS'
       DataSource = DSProcedimeto
       ScrollBars = ssVertical
@@ -900,7 +995,7 @@ object FOcorrencia: TFOcorrencia
     end
     object EdtOcorrenciaPolicial: TDBMemo
       Left = 10
-      Top = 409
+      Top = 441
       Width = 440
       Height = 57
       DataField = 'OCORRENCIAPOLICIAL'
@@ -1061,7 +1156,7 @@ object FOcorrencia: TFOcorrencia
   end
   object PCGrids: TPageControl
     Left = 3
-    Top = 479
+    Top = 519
     Width = 946
     Height = 179
     ActivePage = TSSetores
@@ -1178,12 +1273,14 @@ object FOcorrencia: TFOcorrencia
     CachedUpdates = False
     SQL.Strings = (
       
-        'SELECT C.CDCLIENTE, C.NMCLIENTE, C.ENDERECO, C.BAIRRO, C.CIDADE,' +
-        ' C.PONTOREF, '
+        'SELECT C.CDCLIENTE, C.NMCLIENTE, C.NMFANTASIA, C.ENDERECO, C.BAI' +
+        'RRO, C.CIDADE, C.PONTOREF, '
       
         '    C.FONE1, C.FONEOBS1, C.FONE2, C.FONEOBS2, C.FONE3,C.FONEOBS3' +
         ',C.FONE4,C.FONEOBS4,'
-      '    C.FONE5,C.FONEOBS5,C.FONE6,C.FONEOBS6, C.OBSERVACAO'
+      
+        '    C.FONE5,C.FONEOBS5,C.FONE6,C.FONEOBS6,  C.FONE7,C.FONEOBS7,C' +
+        '.FONE8,C.FONEOBS8, C.OBSERVACAO'
       'FROM CLIENTE C WHERE C.CDCLIENTE = :CDCLIENTE;')
     UniDirectional = True
     Left = 264
@@ -1290,6 +1387,31 @@ object FOcorrencia: TFOcorrencia
       Origin = 'CLIENTE.OBSERVACAO'
       Size = 2000
     end
+    object IBQClienteFONE7: TIBStringField
+      FieldName = 'FONE7'
+      Origin = 'CLIENTE.FONE7'
+      Size = 13
+    end
+    object IBQClienteFONEOBS7: TIBStringField
+      FieldName = 'FONEOBS7'
+      Origin = 'CLIENTE.FONEOBS7'
+      Size = 200
+    end
+    object IBQClienteFONE8: TIBStringField
+      FieldName = 'FONE8'
+      Origin = 'CLIENTE.FONE8'
+      Size = 13
+    end
+    object IBQClienteFONEOBS8: TIBStringField
+      FieldName = 'FONEOBS8'
+      Origin = 'CLIENTE.FONEOBS8'
+      Size = 200
+    end
+    object IBQClienteNMFANTASIA: TIBStringField
+      FieldName = 'NMFANTASIA'
+      Origin = 'CLIENTE.NMFANTASIA'
+      Size = 256
+    end
   end
   object DSPCliente: TDataSetProvider
     DataSet = IBQCliente
@@ -1383,6 +1505,26 @@ object FOcorrencia: TFOcorrencia
     end
     object CDSClienteIBQContato: TDataSetField
       FieldName = 'IBQContato'
+    end
+    object CDSClienteFONE7: TStringField
+      FieldName = 'FONE7'
+      Size = 13
+    end
+    object CDSClienteFONEOBS7: TStringField
+      FieldName = 'FONEOBS7'
+      Size = 200
+    end
+    object CDSClienteFONE8: TStringField
+      FieldName = 'FONE8'
+      Size = 13
+    end
+    object CDSClienteFONEOBS8: TStringField
+      FieldName = 'FONEOBS8'
+      Size = 200
+    end
+    object CDSClienteNMFANTASIA: TStringField
+      FieldName = 'NMFANTASIA'
+      Size = 256
     end
   end
   object DSCliente: TDataSource
@@ -2571,45 +2713,5 @@ object FOcorrencia: TFOcorrencia
       FieldName = 'DATANASCIMENTO'
       Origin = 'CLIENTECONTATO.DATANASCIMENTO'
     end
-  end
-  object IBQCodificador: TIBQuery
-    Database = DModule.IBCONAzsim
-    Transaction = IBTCodificador
-    BufferChunks = 1000
-    CachedUpdates = False
-    SQL.Strings = (
-      'SELECT DISTINCT L.EQUIPAMENTO'
-      'FROM LOGEVENTO L'
-      
-        'WHERE L.DATAEVENTO BETWEEN DATEADD(DAY, -120, CURRENT_DATE) AND ' +
-        'CURRENT_DATE AND L.CDCLIENTE = :CDCLIENTE;')
-    UniDirectional = True
-    Left = 897
-    Top = 566
-    ParamData = <
-      item
-        DataType = ftInteger
-        Name = 'CDCLIENTE'
-        ParamType = ptUnknown
-        Size = 4
-      end>
-    object IntegerField1: TIntegerField
-      FieldName = 'CDCLIENTE'
-      Origin = 'CLIENTE.CDCLIENTE'
-      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
-      Required = True
-    end
-    object IBStringField1: TIBStringField
-      FieldName = 'PROCEDIMENTOS'
-      Origin = 'CLIENTE.PROCEDIMENTOS'
-      Size = 2000
-    end
-  end
-  object IBTCodificador: TIBTransaction
-    Active = False
-    DefaultDatabase = DModule.IBCONAzsim
-    AutoStopAction = saNone
-    Left = 867
-    Top = 566
   end
 end

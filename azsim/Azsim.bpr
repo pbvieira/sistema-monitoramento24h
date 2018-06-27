@@ -4,28 +4,30 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="Azsim.exe"/>
-    <OBJFILES value="Azsim.obj Home.obj DMApp.obj CadCliente.obj CadContrato.obj 
-      ConsCliente.obj Ocorrencia.obj CadProcedimento.obj CadFilial.obj 
-      CadUsuario.obj Login.obj CadMonitoramento.obj DMCliente.obj CadSenhas.obj 
+    <OBJFILES value="Azsim.obj Home.obj DMApp.obj CadCliente.obj ConsCliente.obj Ocorrencia.obj 
+      CadProcedimento.obj CadFilial.obj CadUsuario.obj Login.obj 
+      CadMonitoramento.obj DMCliente.obj CadSenhas.obj 
       CadClienteProcedimento.obj CadContratoBasico.obj FaltaComunicacaoCTX.obj 
       RelTopEventos.obj ListRelatoriosAtendimento.obj 
       RelTopEventosClienteHora.obj RelTopEventosClienteData.obj 
       RelEventosClienteDataHora.obj BufferResumoOcorrencias.obj 
       RelOcorrenciasEncerradas.obj CadOrdemServico.obj ConsOrdemServico.obj 
-      RelOrdemServicos.obj CadBase.obj CadCodificadores.obj RelClientes.obj"/>
+      RelOrdemServicos.obj CadBase.obj CadCodificadores.obj RelClientes.obj 
+      RelFichaClientes.obj"/>
     <RESFILES value="Azsim.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
     <DEFFILE value=""/>
-    <RESDEPEN value="$(RESFILES) Home.dfm DMApp.dfm CadCliente.dfm CadContrato.dfm 
-      ConsCliente.dfm Ocorrencia.dfm CadProcedimento.dfm CadFilial.dfm 
-      CadUsuario.dfm Login.dfm CadMonitoramento.dfm DMCliente.dfm CadSenhas.dfm 
+    <RESDEPEN value="$(RESFILES) Home.dfm DMApp.dfm CadCliente.dfm ConsCliente.dfm 
+      Ocorrencia.dfm CadProcedimento.dfm CadFilial.dfm CadUsuario.dfm Login.dfm 
+      CadMonitoramento.dfm DMCliente.dfm CadSenhas.dfm 
       CadClienteProcedimento.dfm CadContratoBasico.dfm FaltaComunicacaoCTX.dfm 
       RelTopEventos.dfm ListRelatoriosAtendimento.dfm 
       RelTopEventosClienteHora.dfm RelTopEventosClienteData.dfm 
       RelEventosClienteDataHora.dfm BufferResumoOcorrencias.dfm 
       RelOcorrenciasEncerradas.dfm CadOrdemServico.dfm ConsOrdemServico.dfm 
-      RelOrdemServicos.dfm CadBase.dfm CadCodificadores.dfm RelClientes.dfm"/>
+      RelOrdemServicos.dfm CadBase.dfm CadCodificadores.dfm RelClientes.dfm 
+      RelFichaClientes.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value="bcbie.lib bcb2kaxserver.lib vclx.lib qrpt.lib bdertl.lib vcldb.lib 
       dbexpress.lib dsnap.lib cds.lib ibxpress.lib dbrtl.lib rtl.lib vcl.lib"/>
@@ -77,7 +79,6 @@
       <FILE FILENAME="Home.cpp" FORMNAME="FHome" UNITNAME="Home" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="DMApp.cpp" FORMNAME="DModule" UNITNAME="DMApp" CONTAINERID="CCompiler" DESIGNCLASS="TDataModule" LOCALCOMMAND=""/>
       <FILE FILENAME="CadCliente.cpp" FORMNAME="FCadCliente" UNITNAME="CadCliente" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="CadContrato.cpp" FORMNAME="FCadContrato" UNITNAME="CadContrato" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ConsCliente.cpp" FORMNAME="FConsCliente" UNITNAME="ConsCliente" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Ocorrencia.cpp" FORMNAME="FOcorrencia" UNITNAME="Ocorrencia" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="CadProcedimento.cpp" FORMNAME="FCadProcedimento" UNITNAME="CadProcedimento" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
@@ -103,6 +104,7 @@
       <FILE FILENAME="CadBase.cpp" FORMNAME="FCadBase" UNITNAME="CadBase" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="CadCodificadores.cpp" FORMNAME="FCadCodificadores" UNITNAME="CadCodificadores" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="RelClientes.cpp" FORMNAME="QRPClientes" UNITNAME="RelClientes" CONTAINERID="CCompiler" DESIGNCLASS="TQuickRep" LOCALCOMMAND=""/>
+      <FILE FILENAME="RelFichaClientes.cpp" FORMNAME="QrpFichaCliente" UNITNAME="RelFichaClientes" CONTAINERID="CCompiler" DESIGNCLASS="TQuickRep" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
@@ -134,6 +136,22 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
+
+[HistoryLists\hlIncludePath]
+Count=1
+Item0=C:\Arquivos de programas\Borland\CBuilder6\Projects;C:\azmonitoramento\azsim;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=1
+Item0=C:\Arquivos de programas\Borland\CBuilder6\Projects;C:\azmonitoramento\azsim;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl

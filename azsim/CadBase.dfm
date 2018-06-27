@@ -1,6 +1,6 @@
 object FCadBase: TFCadBase
-  Left = 740
-  Top = 181
+  Left = 818
+  Top = 155
   Width = 602
   Height = 539
   Caption = 'FCadBase'
@@ -11,6 +11,7 @@ object FCadBase: TFCadBase
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poMainFormCenter
   OnClose = FormClose
   OnCreate = FormCreate
   PixelsPerInch = 96
