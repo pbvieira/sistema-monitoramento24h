@@ -1,6 +1,6 @@
 object FCadProcedimento: TFCadProcedimento
-  Left = 503
-  Top = 209
+  Left = 685
+  Top = 205
   Anchors = [akLeft, akTop, akRight, akBottom]
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle

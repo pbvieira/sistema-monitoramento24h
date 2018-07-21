@@ -31,8 +31,6 @@ __published:	// IDE-managed Components
     TEdit *EdtCodCliente;
     TEdit *EdtNome;
     TEdit *EdtCdOrdemServico;
-    TPanel *Panel1;
-    TDBGrid *DBGClientes;
     TSpeedButton *BtnConsultar;
     TPanel *PMenu;
     TPanel *PFechar;
@@ -40,6 +38,9 @@ __published:	// IDE-managed Components
     TSpeedButton *BtnImprimir;
     TCheckBox *CkbEncerradas;
     TSpeedButton *BtnNovaOS;
+    TPanel *pnlTituloForm;
+    TDBGrid *DBGClientes;
+    TStatusBar *sbarConsulta;
     void __fastcall BtnConsultarClick(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall BtnFecharClick(TObject *Sender);
@@ -47,6 +48,12 @@ __published:	// IDE-managed Components
     void __fastcall BtnImprimirClick(TObject *Sender);
     void __fastcall DBGClientesDblClick(TObject *Sender);
     void __fastcall BtnNovaOSClick(TObject *Sender);
+    void __fastcall DBGClientesDrawColumnCell(TObject *Sender,
+          const TRect &Rect, int DataCol, TColumn *Column,
+          TGridDrawState State);
+    void __fastcall ConfiguraEventosForm(void);
+    void __fastcall ChangeExit(TObject *Sender);
+    void __fastcall ChangeEnter(TObject * Sender);
 private:	// User declarations
     void __fastcall ConfiguraCriteriosOSSQL();
     void __fastcall ConfiguraCriteriosRelatorioOSSQL();

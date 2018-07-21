@@ -4,6 +4,7 @@
 #pragma hdrstop
 
 #include "CadUsuario.h"
+#include "Login.h"
 #include "DMApp.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -40,19 +41,19 @@ void __fastcall TFCadUsuario::FormCreate(TObject *Sender)
 void __fastcall TFCadUsuario::ChangeEnter(TObject *Sender)
 {
     if(dynamic_cast <TDBEdit*> (Sender) != NULL){
-        dynamic_cast <TDBEdit*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBEdit*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TEdit*> (Sender) != NULL){
-        dynamic_cast <TEdit*> (Sender)->Color = 15138520;
+        dynamic_cast <TEdit*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TDBLookupComboBox*> (Sender) != NULL){
-        dynamic_cast <TDBLookupComboBox*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBLookupComboBox*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TDBComboBox*> (Sender) != NULL){
-        dynamic_cast <TDBComboBox*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBComboBox*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TDBMemo*> (Sender) != NULL){
-        dynamic_cast <TDBMemo*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBMemo*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
     }
 }
 //---------------------------------------------------------------------------
@@ -109,13 +110,7 @@ void __fastcall TFCadUsuario::HabilitaCamposFormulario(bool Status)
 
         } else if(dynamic_cast <TDBCheckBox*> (Components[i]) != NULL){
             dynamic_cast <TDBCheckBox*> (Components[i])->Enabled = Status;
-
-        }/* else if(dynamic_cast <TDBNavigator*> (Components[i]) != NULL){
-            dynamic_cast <TDBNavigator*> (Components[i])->Enabled = Status;
-
-        } else if(dynamic_cast <TDBGrid*> (Components[i]) != NULL){
-            dynamic_cast <TDBGrid*> (Components[i])->Enabled = Status;
-        }*/
+        }
     }
 }
 //---------------------------------------------------------------------------
@@ -136,10 +131,10 @@ void __fastcall TFCadUsuario::ConfiguraEventosForm(void)
             dynamic_cast <TDBEdit*> (Components[i])->OnExit = ChangeExit;
         }
 
-        /*if(dynamic_cast <TEdit*> (Components[i]) != NULL){
+         if(dynamic_cast <TEdit*> (Components[i]) != NULL){
             dynamic_cast <TEdit*> (Components[i])->OnEnter = ChangeEnter;
             dynamic_cast <TEdit*> (Components[i])->OnExit = ChangeExit;
-        }*/
+        }
 
         if(dynamic_cast <TDBLookupComboBox*> (Components[i]) != NULL){
             dynamic_cast <TDBLookupComboBox*> (Components[i])->OnEnter = ChangeEnter;
@@ -323,12 +318,13 @@ void __fastcall TFCadUsuario::DBGUsuarioDrawColumnCell(TObject *Sender,
       TGridDrawState State)
 {
     if(DModule->CDSUsuario->RecNo % 2){
-        DBGUsuario->Canvas->Brush->Color = clCream;
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_ALTERNATE_ROW;
     }else{
-        DBGUsuario->Canvas->Brush->Color = clWindow;
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = clWindow;
     }
+
     if(State.Contains(gdSelected)){
-        DBGUsuario->Canvas->Brush->Color = clMoneyGreen;
+        DBGUsuario->Canvas->Brush->Color = COLOR_GRID_SELECTED_ROW;
     }
     DBGUsuario->DefaultDrawColumnCell(Rect, DataCol, Column, State);
 }

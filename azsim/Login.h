@@ -34,4 +34,10 @@ extern AnsiString NMUSUARIO;
 extern AnsiString USUARIO;
 extern bool ISADMINISTRADOR;
 extern bool ATENDEROCORRENCIAS;
+
+extern TColor COLOR_HEADER_FORM;
+extern TColor COLOR_GRID_SELECTED_ROW;
+extern TColor COLOR_GRID_ALTERNATE_ROW;
+extern TColor COLOR_FIELD_FORM_FOCUS;
+extern TColor COLOR_FIELD_FORM_OCORRENCIA_FOCUS;
 #endif

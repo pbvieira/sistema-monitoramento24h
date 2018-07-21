@@ -15,6 +15,7 @@
 #include <ToolWin.hpp>
 #include <DBGrids.hpp>
 #include <Grids.hpp>
+#include <Graphics.hpp>
 //---------------------------------------------------------------------------
 class TFCadContratoBasico : public TForm
 {
@@ -32,16 +33,10 @@ __published:	// IDE-managed Components
     TToolButton *BtnVoltar;
     TToolButton *BtnAvancar;
     TPageControl *PgcContrato;
-    TTabSheet *TabSheet1;
-    TTabSheet *TabSheet2;
-    TLabel *Label1;
-    TLabel *Label3;
-    TLabel *Label5;
-    TLabel *Label2;
-    TDBMemo *EdtInfoComercial;
-    TDBEdit *EdtLocalInstalacao;
-    TDBEdit *EdtInfoTecnica;
-    TDBGrid *DBGSetor;
+    TTabSheet *TbsContrato;
+    TTabSheet *TbsSetor;
+    TPanel *pnlTituloForm;
+    TPanel *Panel2;
     TLabel *Label4;
     TLabel *Label6;
     TLabel *Label9;
@@ -52,6 +47,19 @@ __published:	// IDE-managed Components
     TLabel *Label21;
     TLabel *Label15;
     TSpeedButton *BtnLocalizarCliente;
+    TLabel *Label17;
+    TLabel *Label7;
+    TLabel *Label8;
+    TLabel *Label10;
+    TLabel *Label11;
+    TLabel *Label12;
+    TLabel *Label13;
+    TLabel *Label14;
+    TLabel *Label28;
+    TLabel *Label29;
+    TLabel *Label30;
+    TLabel *Label31;
+    TLabel *Label32;
     TDBEdit *EdtCodigo;
     TDBEdit *EdtCodCodificador;
     TDBEdit *EdtCodCliente;
@@ -62,20 +70,6 @@ __published:	// IDE-managed Components
     TDBEdit *EdtUfMon;
     TDBEdit *EdtCepMon;
     TDBEdit *EdtChave;
-    TLabel *Label17;
-    TLabel *Label7;
-    TLabel *Label8;
-    TLabel *Label10;
-    TLabel *Label11;
-    TLabel *Label12;
-    TLabel *Label13;
-    TLabel *Label14;
-    TLabel *Label22;
-    TLabel *Label28;
-    TLabel *Label29;
-    TLabel *Label30;
-    TLabel *Label31;
-    TLabel *Label32;
     TDBEdit *EdtDataAtivacao;
     TDBEdit *EdtDataInicial;
     TDBEdit *EdtDataFinal;
@@ -84,7 +78,6 @@ __published:	// IDE-managed Components
     TDBLookupComboBox *CmbItem;
     TDBEdit *EdtValorInicial;
     TDBEdit *EdtValorAtual;
-    TDBEdit *DBEdit1;
     TDBLookupComboBox *CmbTipoCobranca;
     TDBEdit *EdtDiaVenc;
     TDBEdit *EdtTolerancia;
@@ -93,7 +86,17 @@ __published:	// IDE-managed Components
     TDBCheckBox *CkbLocacao;
     TDBLookupComboBox *CmbMotivoCancelamento;
     TDBCheckBox *CkbInativo;
+    TPanel *Panel3;
+    TLabel *Label1;
+    TLabel *Label3;
+    TLabel *Label5;
+    TLabel *Label2;
     TLabel *Label23;
+    TDBMemo *EdtInfoComercial;
+    TDBEdit *EdtLocalInstalacao;
+    TDBEdit *EdtInfoTecnica;
+    TDBGrid *DBGSetor;
+    TImage *Image1;
     void __fastcall FormCreate(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall ChangeEnter(TObject * Sender);

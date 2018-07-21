@@ -1,11 +1,11 @@
 object FCadOrdemServico: TFCadOrdemServico
-  Left = 858
-  Top = 151
+  Left = 904
+  Top = 101
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Cadastro de Ordens de Servi'#231'o'
-  ClientHeight = 583
-  ClientWidth = 495
+  Caption = 'AZSIM'
+  ClientHeight = 641
+  ClientWidth = 523
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -20,271 +20,14 @@ object FCadOrdemServico: TFCadOrdemServico
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object Label2: TLabel
-    Left = 19
-    Top = 12
-    Width = 62
-    Height = 13
-    Caption = 'N'#186' do Cliente'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-  end
-  object GroupBox1: TGroupBox
-    Left = 8
-    Top = 0
-    Width = 480
-    Height = 297
-    TabOrder = 0
-    object Label6: TLabel
-      Left = 12
-      Top = 52
-      Width = 62
-      Height = 13
-      Caption = 'N'#186' do Cliente'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label19: TLabel
-      Left = 11
-      Top = 91
-      Width = 134
-      Height = 13
-      Caption = 'Endere'#231'o de Monitoramento'
-    end
-    object Label18: TLabel
-      Left = 322
-      Top = 91
-      Width = 27
-      Height = 13
-      Caption = 'Bairro'
-    end
-    object Label16: TLabel
-      Left = 11
-      Top = 131
-      Width = 33
-      Height = 13
-      Caption = 'Cidade'
-    end
-    object Label20: TLabel
-      Left = 330
-      Top = 131
-      Width = 14
-      Height = 13
-      Caption = 'UF'
-    end
-    object Label21: TLabel
-      Left = 385
-      Top = 131
-      Width = 19
-      Height = 13
-      Caption = 'Cep'
-    end
-    object Label1: TLabel
-      Left = 13
-      Top = 168
-      Width = 85
-      Height = 13
-      Caption = 'Ordem de Servi'#231'o'
-    end
-    object Label8: TLabel
-      Left = 75
-      Top = 12
-      Width = 92
-      Height = 13
-      Caption = 'Data Hora Abertura'
-    end
-    object Label9: TLabel
-      Left = 192
-      Top = 13
-      Width = 117
-      Height = 13
-      Caption = 'Operador(a) Abertura OS'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-    end
-    object BtnLocalizarCliente: TSpeedButton
-      Left = 444
-      Top = 67
-      Width = 23
-      Height = 22
-      Flat = True
-      Glyph.Data = {
-        C6040000424DC60400000000000036040000280000000C0000000C0000000100
-        0800000000009000000000000000000000000001000000000000AC650000FCF1
-        DD00B36D0000BE770000A35E0000FCF2E000F3CE8A00FDF7EB00CA871200DAA0
-        3C00BA730000B56E0000C27B0000EABB6400A5600000F0C57500AA6500009F5A
-        0000FEFBF500AF6A0000FFFEFB00FAE6C300F6DAA600FAEACC00C37C0000F8E4
-        BD00BB740000A05B0000FFFFFF00FFFFFF000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        0000000000000000000000000000000000000000000000000000000000000000
-        00000000000000000000000000000000000000000000000000001C1C1C1C1C1C
-        1C1C1C1C04041C1C1C1C1C1C1C1C1C0008001C1C1C1C1C1C1C1C0209021C1C1C
-        1C1C1C1C1C1A0D1A1C1C1C1C1B1B111B1A0F0C1C1C1C1C0E191919191A1A1C1C
-        1C1C101717060617171B1C1C1C1C130116161616011B1C1C1C1C0B0715151515
-        071B1C1C1C1C0A1414050512141B1C1C1C1C1C031C1C1C1C031C1C1C1C1C1C1C
-        181818181C1C1C1C1C1C}
-      Transparent = False
-      OnClick = BtnLocalizarClienteClick
-    end
-    object Label10: TLabel
-      Left = 12
-      Top = 12
-      Width = 30
-      Height = 13
-      Caption = 'N'#186' OS'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-    end
-    object EdtCodCliente: TDBEdit
-      Left = 10
-      Top = 68
-      Width = 63
-      Height = 21
-      DataField = 'CDCLIENTE'
-      DataSource = DSOrdemServico
-      TabOrder = 2
-    end
-    object EdtNomeCliente: TEdit
-      Left = 76
-      Top = 68
-      Width = 365
-      Height = 21
-      ReadOnly = True
-      TabOrder = 3
-      OnEnter = EdtNomeClienteEnter
-    end
-    object EdtEnderecoMon: TEdit
-      Left = 10
-      Top = 107
-      Width = 309
-      Height = 21
-      TabStop = False
-      TabOrder = 4
-    end
-    object EdtBairroMon: TEdit
-      Left = 322
-      Top = 107
-      Width = 145
-      Height = 21
-      TabStop = False
-      TabOrder = 5
-    end
-    object EdtCidadeMon: TEdit
-      Left = 10
-      Top = 145
-      Width = 309
-      Height = 21
-      TabStop = False
-      TabOrder = 6
-    end
-    object EdtUfMon: TEdit
-      Left = 322
-      Top = 145
-      Width = 58
-      Height = 21
-      TabStop = False
-      TabOrder = 7
-    end
-    object EdtCepMon: TEdit
-      Left = 383
-      Top = 145
-      Width = 84
-      Height = 21
-      TabStop = False
-      TabOrder = 8
-    end
-    object EdtOrdemServico: TDBMemo
-      Left = 10
-      Top = 183
-      Width = 457
-      Height = 85
-      DataField = 'DEORDEMSERVICO'
-      DataSource = DSOrdemServico
-      TabOrder = 9
-    end
-    object CkbRetrabalho: TDBCheckBox
-      Left = 10
-      Top = 274
-      Width = 353
-      Height = 17
-      Caption = 
-        'Marque se esta ordem de servi'#231'o pode ser considerada um retrabal' +
-        'ho.'
-      DataField = 'ISRETRABALHO'
-      DataSource = DSOrdemServico
-      TabOrder = 10
-      ValueChecked = '1'
-      ValueUnchecked = '0'
-    end
-    object EdtDataAberturaOcorrencia: TDBEdit
-      Left = 74
-      Top = 28
-      Width = 115
-      Height = 21
-      TabStop = False
-      DataField = 'DATACADASTRO'
-      DataSource = DSOrdemServico
-      TabOrder = 0
-    end
-    object CmbOperadorAbertura: TDBLookupComboBox
-      Left = 192
-      Top = 28
-      Width = 197
-      Height = 21
-      DataField = 'NMOPABERTURA'
-      DataSource = DSOrdemServico
-      TabOrder = 1
-    end
-  end
   object PMenu: TPanel
     Left = 0
-    Top = 544
-    Width = 495
+    Top = 602
+    Width = 523
     Height = 39
     Align = alBottom
     BevelOuter = bvNone
-    TabOrder = 1
+    TabOrder = 0
     object POperacoes: TPanel
       Left = 0
       Top = 0
@@ -352,7 +95,7 @@ object FCadOrdemServico: TFCadOrdemServico
       end
     end
     object PFechar: TPanel
-      Left = 438
+      Left = 466
       Top = 0
       Width = 57
       Height = 39
@@ -397,163 +140,431 @@ object FCadOrdemServico: TFCadOrdemServico
       end
     end
   end
-  object GroupBox2: TGroupBox
+  object Panel1: TPanel
     Left = 8
-    Top = 298
-    Width = 481
-    Height = 127
-    TabOrder = 2
+    Top = 40
+    Width = 505
+    Height = 553
+    TabOrder = 1
+    object Label2: TLabel
+      Left = 19
+      Top = 12
+      Width = 62
+      Height = 13
+      Caption = 'N'#186' do Cliente'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label6: TLabel
+      Left = 20
+      Top = 52
+      Width = 62
+      Height = 13
+      Caption = 'N'#186' do Cliente'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label19: TLabel
+      Left = 19
+      Top = 91
+      Width = 134
+      Height = 13
+      Caption = 'Endere'#231'o de Monitoramento'
+    end
+    object Label18: TLabel
+      Left = 330
+      Top = 91
+      Width = 27
+      Height = 13
+      Caption = 'Bairro'
+    end
+    object Label16: TLabel
+      Left = 19
+      Top = 131
+      Width = 33
+      Height = 13
+      Caption = 'Cidade'
+    end
+    object Label20: TLabel
+      Left = 338
+      Top = 131
+      Width = 14
+      Height = 13
+      Caption = 'UF'
+    end
+    object Label21: TLabel
+      Left = 393
+      Top = 131
+      Width = 19
+      Height = 13
+      Caption = 'Cep'
+    end
+    object Label1: TLabel
+      Left = 21
+      Top = 168
+      Width = 85
+      Height = 13
+      Caption = 'Ordem de Servi'#231'o'
+    end
+    object Label8: TLabel
+      Left = 83
+      Top = 12
+      Width = 92
+      Height = 13
+      Caption = 'Data Hora Abertura'
+    end
+    object Label9: TLabel
+      Left = 200
+      Top = 13
+      Width = 117
+      Height = 13
+      Caption = 'Operador(a) Abertura OS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object BtnLocalizarCliente: TSpeedButton
+      Left = 452
+      Top = 67
+      Width = 23
+      Height = 22
+      Flat = True
+      Glyph.Data = {
+        C6040000424DC60400000000000036040000280000000C0000000C0000000100
+        0800000000009000000000000000000000000001000000000000AC650000FCF1
+        DD00B36D0000BE770000A35E0000FCF2E000F3CE8A00FDF7EB00CA871200DAA0
+        3C00BA730000B56E0000C27B0000EABB6400A5600000F0C57500AA6500009F5A
+        0000FEFBF500AF6A0000FFFEFB00FAE6C300F6DAA600FAEACC00C37C0000F8E4
+        BD00BB740000A05B0000FFFFFF00FFFFFF000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000000000000000
+        00000000000000000000000000000000000000000000000000001C1C1C1C1C1C
+        1C1C1C1C04041C1C1C1C1C1C1C1C1C0008001C1C1C1C1C1C1C1C0209021C1C1C
+        1C1C1C1C1C1A0D1A1C1C1C1C1B1B111B1A0F0C1C1C1C1C0E191919191A1A1C1C
+        1C1C101717060617171B1C1C1C1C130116161616011B1C1C1C1C0B0715151515
+        071B1C1C1C1C0A1414050512141B1C1C1C1C1C031C1C1C1C031C1C1C1C1C1C1C
+        181818181C1C1C1C1C1C}
+      Transparent = False
+      OnClick = BtnLocalizarClienteClick
+    end
+    object Label10: TLabel
+      Left = 20
+      Top = 12
+      Width = 30
+      Height = 13
+      Caption = 'N'#186' OS'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
     object Label3: TLabel
-      Left = 12
-      Top = 10
+      Left = 20
+      Top = 298
       Width = 105
       Height = 13
       Caption = 'Observa'#231#245'es T'#233'cnico'
     end
-    object EdtObservacoes: TDBMemo
-      Left = 10
+    object GroupBox3: TGroupBox
+      Left = 8
+      Top = 418
+      Width = 481
+      Height = 111
+      Caption = 'Dados de Encerramento'
+      TabOrder = 13
+      object Label7: TLabel
+        Left = 10
+        Top = 63
+        Width = 88
+        Height = 13
+        Caption = 'Data Execu'#231#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label4: TLabel
+        Left = 109
+        Top = 64
+        Width = 32
+        Height = 13
+        Caption = 'Inicio'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label5: TLabel
+        Left = 163
+        Top = 64
+        Width = 46
+        Height = 13
+        Caption = 'T'#233'rmino'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label32: TLabel
+        Left = 10
+        Top = 22
+        Width = 150
+        Height = 13
+        Caption = 'Operador(a) Encerramento'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label33: TLabel
+        Left = 210
+        Top = 22
+        Width = 124
+        Height = 13
+        Caption = 'T'#233'cnico Respons'#225'vel'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object EdtHoraInicio: TDBEdit
+        Left = 107
+        Top = 79
+        Width = 53
+        Height = 21
+        Hint = 'Duplo clique para setar a hora atual'
+        DataField = 'HORAINICIO'
+        DataSource = DSOrdemServico
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 3
+      end
+      object EdtHoraFim: TDBEdit
+        Left = 162
+        Top = 79
+        Width = 53
+        Height = 21
+        Hint = 'Duplo clique para setar a hora atual'
+        DataField = 'HORAFIM'
+        DataSource = DSOrdemServico
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 4
+      end
+      object EdtDataExecucao: TDBEdit
+        Left = 9
+        Top = 79
+        Width = 96
+        Height = 21
+        DataField = 'DATAEXECUCAO'
+        DataSource = DSOrdemServico
+        TabOrder = 2
+      end
+      object CmbOperadorEncerramento: TDBLookupComboBox
+        Left = 10
+        Top = 37
+        Width = 197
+        Height = 21
+        DataField = 'NMOPENCERRAMENTO'
+        DataSource = DSOrdemServico
+        TabOrder = 0
+      end
+      object CmbTecnico: TDBLookupComboBox
+        Left = 209
+        Top = 37
+        Width = 199
+        Height = 21
+        DataField = 'NMTECNICO'
+        DataSource = DSOrdemServico
+        TabOrder = 1
+      end
+    end
+    object EdtCodigoOS: TDBEdit
+      Left = 17
       Top = 28
+      Width = 63
+      Height = 21
+      TabStop = False
+      DataField = 'CDORDEMSERVICO'
+      DataSource = DSOrdemServico
+      ReadOnly = True
+      TabOrder = 0
+    end
+    object EdtCodCliente: TDBEdit
+      Left = 18
+      Top = 68
+      Width = 63
+      Height = 21
+      DataField = 'CDCLIENTE'
+      DataSource = DSOrdemServico
+      TabOrder = 3
+    end
+    object EdtNomeCliente: TEdit
+      Left = 84
+      Top = 68
+      Width = 365
+      Height = 21
+      ReadOnly = True
+      TabOrder = 4
+      OnEnter = EdtNomeClienteEnter
+    end
+    object EdtEnderecoMon: TEdit
+      Left = 18
+      Top = 107
+      Width = 309
+      Height = 21
+      TabStop = False
+      TabOrder = 5
+    end
+    object EdtBairroMon: TEdit
+      Left = 330
+      Top = 107
+      Width = 145
+      Height = 21
+      TabStop = False
+      TabOrder = 6
+    end
+    object EdtCidadeMon: TEdit
+      Left = 18
+      Top = 145
+      Width = 309
+      Height = 21
+      TabStop = False
+      TabOrder = 7
+    end
+    object EdtUfMon: TEdit
+      Left = 330
+      Top = 145
+      Width = 58
+      Height = 21
+      TabStop = False
+      TabOrder = 8
+    end
+    object EdtCepMon: TEdit
+      Left = 391
+      Top = 145
+      Width = 84
+      Height = 21
+      TabStop = False
+      TabOrder = 9
+    end
+    object EdtOrdemServico: TDBMemo
+      Left = 18
+      Top = 183
+      Width = 457
+      Height = 85
+      DataField = 'DEORDEMSERVICO'
+      DataSource = DSOrdemServico
+      TabOrder = 10
+    end
+    object CkbRetrabalho: TDBCheckBox
+      Left = 18
+      Top = 274
+      Width = 353
+      Height = 17
+      Caption = 
+        'Marque se esta ordem de servi'#231'o pode ser considerada um retrabal' +
+        'ho.'
+      DataField = 'ISRETRABALHO'
+      DataSource = DSOrdemServico
+      TabOrder = 11
+      ValueChecked = '1'
+      ValueUnchecked = '0'
+    end
+    object EdtDataAberturaOcorrencia: TDBEdit
+      Left = 82
+      Top = 28
+      Width = 115
+      Height = 21
+      TabStop = False
+      DataField = 'DATACADASTRO'
+      DataSource = DSOrdemServico
+      TabOrder = 1
+    end
+    object CmbOperadorAbertura: TDBLookupComboBox
+      Left = 200
+      Top = 28
+      Width = 197
+      Height = 21
+      DataField = 'NMOPABERTURA'
+      DataSource = DSOrdemServico
+      TabOrder = 2
+    end
+    object EdtObservacoes: TDBMemo
+      Left = 18
+      Top = 316
       Width = 457
       Height = 85
       DataField = 'OBSERVACAO'
       DataSource = DSOrdemServico
-      TabOrder = 0
+      TabOrder = 12
     end
   end
-  object GroupBox3: TGroupBox
-    Left = 8
-    Top = 426
-    Width = 481
-    Height = 111
-    Caption = 'Dados de Encerramento'
-    TabOrder = 3
-    object Label7: TLabel
-      Left = 10
-      Top = 63
-      Width = 88
-      Height = 13
-      Caption = 'Data Execu'#231#227'o'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label4: TLabel
-      Left = 109
-      Top = 64
-      Width = 32
-      Height = 13
-      Caption = 'Inicio'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label5: TLabel
-      Left = 163
-      Top = 64
-      Width = 46
-      Height = 13
-      Caption = 'T'#233'rmino'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label32: TLabel
-      Left = 10
-      Top = 22
-      Width = 150
-      Height = 13
-      Caption = 'Operador(a) Encerramento'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object Label33: TLabel
-      Left = 210
-      Top = 22
-      Width = 124
-      Height = 13
-      Caption = 'T'#233'cnico Respons'#225'vel'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = [fsBold]
-      ParentFont = False
-    end
-    object EdtHoraInicio: TDBEdit
-      Left = 107
-      Top = 79
-      Width = 53
-      Height = 21
-      Hint = 'Duplo clique para setar a hora atual'
-      DataField = 'HORAINICIO'
-      DataSource = DSOrdemServico
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 3
-    end
-    object EdtHoraFim: TDBEdit
-      Left = 162
-      Top = 79
-      Width = 53
-      Height = 21
-      Hint = 'Duplo clique para setar a hora atual'
-      DataField = 'HORAFIM'
-      DataSource = DSOrdemServico
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 4
-    end
-    object EdtDataExecucao: TDBEdit
-      Left = 9
-      Top = 79
-      Width = 96
-      Height = 21
-      DataField = 'DATAEXECUCAO'
-      DataSource = DSOrdemServico
-      TabOrder = 2
-    end
-    object CmbOperadorEncerramento: TDBLookupComboBox
-      Left = 10
-      Top = 37
-      Width = 197
-      Height = 21
-      DataField = 'NMOPENCERRAMENTO'
-      DataSource = DSOrdemServico
-      TabOrder = 0
-    end
-    object CmbTecnico: TDBLookupComboBox
-      Left = 209
-      Top = 37
-      Width = 199
-      Height = 21
-      DataField = 'NMTECNICO'
-      DataSource = DSOrdemServico
-      TabOrder = 1
-    end
-  end
-  object EdtCodigoOS: TDBEdit
-    Left = 17
-    Top = 28
-    Width = 63
-    Height = 21
-    TabStop = False
-    DataField = 'CDORDEMSERVICO'
-    DataSource = DSOrdemServico
-    ReadOnly = True
-    TabOrder = 4
+  object pnlTituloForm: TPanel
+    Left = 0
+    Top = 0
+    Width = 523
+    Height = 30
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    Caption = ' Cadastro de ordens de servi'#231'o'
+    Color = clPurple
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 2
   end
   object IBTOperadorAbertura: TIBTransaction
     Active = True

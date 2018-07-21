@@ -15,13 +15,26 @@
 #include <IBDatabase.hpp>
 #include <IBQuery.hpp>
 #include <Provider.hpp>
+#include <ExtCtrls.hpp>
 //---------------------------------------------------------------------------
 class TFListRelatoriosAtendimento : public TForm
 {
 __published:	// IDE-managed Components
+    TIBTransaction *IBTRelAtendimento;
+    TIBQuery *IBQRelAtendimento;
+    TDataSetProvider *DSPRelAtendimento;
+    TClientDataSet *CDSRelAtendimento;
+    TSpeedButton *BtnFechar;
+    TPanel *Panel1;
+    TSpeedButton *BtnTotalEveHoraCli;
+    TSpeedButton *BtnTotalEveDataCli;
+    TSpeedButton *BtnTotalEventos;
+    TSpeedButton *BtnOcorrenciasCliente;
+    TSpeedButton *BtnEventosClientesDataHora;
     TGroupBox *GroupBox2;
     TLabel *Label10;
     TLabel *Label11;
+    TLabel *Label1;
     TDateTimePicker *EdtDataFinalTotais;
     TDateTimePicker *EdtDataInicialTotais;
     TGroupBox *GroupBox3;
@@ -36,17 +49,7 @@ __published:	// IDE-managed Components
     TLabel *Label16;
     TEdit *EdtStatusTotais;
     TEdit *EdtStatusDescricaoTotais;
-    TSpeedButton *BtnTotalEveHoraCli;
-    TSpeedButton *BtnTotalEveDataCli;
-    TSpeedButton *BtnTotalEventos;
-    TLabel *Label1;
-    TSpeedButton *BtnOcorrenciasCliente;
-    TIBTransaction *IBTRelAtendimento;
-    TIBQuery *IBQRelAtendimento;
-    TDataSetProvider *DSPRelAtendimento;
-    TClientDataSet *CDSRelAtendimento;
-    TSpeedButton *BtnFechar;
-    TSpeedButton *BtnEventosClientesDataHora;
+    TPanel *pnlTituloOcorrencias;
     void __fastcall BtnTotalEveHoraCliClick(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall BtnFecharClick(TObject *Sender);

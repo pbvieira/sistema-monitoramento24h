@@ -18,6 +18,7 @@ __fastcall TFConsOrdemServico::TFConsOrdemServico(TComponent* Owner)
     : TForm(Owner)
 {
     QRPOrdemServicos = new TQRPOrdemServicos(this);
+    ConfiguraEventosForm();
 }
 
 //---------------------------------------------------------------------------
@@ -26,7 +27,7 @@ void __fastcall TFConsOrdemServico::FormShow(TObject *Sender)
 {
     EdtDataInicial->Date = IncDay(DModule->RetornaDataHoraAtual(), -1);
     EdtDataFinal->Date   = IncDay(DModule->RetornaDataHoraAtual(),  2);
-    EdtCodCliente->SetFocus();
+    EdtDataInicial->SetFocus();
 }
 
 //---------------------------------------------------------------------------
@@ -92,6 +93,9 @@ void __fastcall TFConsOrdemServico::BtnConsultarClick(TObject *Sender)
             BtnImprimir->Enabled = false;
             Application->MessageBox("Nenhum registro localizado", "Sucesso", MB_ICONINFORMATION|MB_OK);
         }
+
+        sbarConsulta->Panels->Items[1]->Text = "Total: " +
+            IntToStr(DModuleCliente->CDSConsOrdemServico->RecordCount);
 
         if(DModuleCliente->IBTConsOrdemServico->InTransaction){
             DModuleCliente->IBTConsOrdemServico->Commit();
@@ -263,6 +267,69 @@ void __fastcall TFConsOrdemServico::BtnNovaOSClick(TObject *Sender)
         FCadOrdemServico = new TFCadOrdemServico(FHome);
         FCadOrdemServico->ConsultaOrdemServico(0);
         FCadOrdemServico->Show();
+    }
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TFConsOrdemServico::DBGClientesDrawColumnCell(
+      TObject *Sender, const TRect &Rect, int DataCol, TColumn *Column,
+      TGridDrawState State)
+{
+    if(DModuleCliente->CDSConsOrdemServico->RecNo % 2){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_ALTERNATE_ROW;
+    }else{
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = clWindow;
+    }
+
+
+    if(State.Contains(gdSelected)){
+        DBGClientes->Canvas->Brush->Color = COLOR_GRID_SELECTED_ROW;
+    }
+    DBGClientes->DefaultDrawColumnCell(Rect, DataCol, Column, State);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFConsOrdemServico::ChangeEnter(TObject * Sender)
+{
+    if(dynamic_cast <TEdit*> (Sender) != NULL){
+        dynamic_cast <TEdit*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
+    }
+
+    if(dynamic_cast <TDateTimePicker*> (Sender) != NULL){
+        dynamic_cast <TDateTimePicker*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;;
+    }
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TFConsOrdemServico::ChangeExit(TObject *Sender)
+{
+    if(dynamic_cast <TEdit*> (Sender) != NULL){
+        TEdit *Edit = dynamic_cast <TEdit*> (Sender);
+        Edit->Color = clWindow;
+    }
+
+    if(dynamic_cast <TDateTimePicker*> (Sender) != NULL){
+        TDateTimePicker *ComboDate = dynamic_cast <TDateTimePicker*> (Sender);
+        ComboDate->Color = clWindow;
+    }
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TFConsOrdemServico::ConfiguraEventosForm(void)
+{
+    for(int i=0; i < ComponentCount; i++){
+        if(dynamic_cast <TEdit*> (Components[i]) != NULL){
+            dynamic_cast <TEdit*> (Components[i])->OnEnter = ChangeEnter;
+            dynamic_cast <TEdit*> (Components[i])->OnExit = ChangeExit;
+        }
+
+        if(dynamic_cast <TDateTimePicker*> (Components[i]) != NULL){
+            dynamic_cast <TDateTimePicker*> (Components[i])->OnEnter = ChangeEnter;
+            dynamic_cast <TDateTimePicker*> (Components[i])->OnExit = ChangeExit;
+        }
     }
 }
 

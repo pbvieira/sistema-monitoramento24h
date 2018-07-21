@@ -1,7 +1,7 @@
 object FCadFilial: TFCadFilial
-  Left = 732
-  Top = 392
-  Width = 605
+  Left = 441
+  Top = 345
+  Width = 399
   Height = 298
   BorderIcons = [biSystemMenu]
   Caption = 'Cadastro de Filiais'
@@ -20,7 +20,7 @@ object FCadFilial: TFCadFilial
   object PMenu: TPanel
     Left = 0
     Top = 232
-    Width = 597
+    Width = 391
     Height = 39
     Align = alBottom
     BevelOuter = bvNone
@@ -78,7 +78,7 @@ object FCadFilial: TFCadFilial
       end
     end
     object PFechar: TPanel
-      Left = 540
+      Left = 334
       Top = 0
       Width = 57
       Height = 39
@@ -126,7 +126,7 @@ object FCadFilial: TFCadFilial
   object DBGFilial: TDBGrid
     Left = 0
     Top = 0
-    Width = 597
+    Width = 391
     Height = 232
     Align = alClient
     DataSource = DModule.DSFilial

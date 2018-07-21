@@ -60,14 +60,33 @@ void __fastcall TFListRelatoriosAtendimento::BtnTotalEveHoraCliClick(
       TObject *Sender)
 {
     try{
-        AnsiString SQL_FILTRO_DATA = "SELECT TOTAL, CDCLIENTE, NMCLIENTE, EQUIPAMENTO, "
-            " DATAEVENTO, HORAEVENTO, DATAHORAEVENTO, STATUS, DESTATUS, LOCAL "
-            "FROM VLOGEVE_TOTAIS_CLIENTE_HORA WHERE DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL";
+        AnsiString SQL_FILTRO_DATA = " SELECT "
+            "     COUNT(EVE.STATUS) AS TOTAL, EVE.CDCLIENTE, EVE.NMCLIENTE, EVE.EQUIPAMENTO, "
+            "     CAST( "
+            "         LPAD(EXTRACT(YEAR FROM EVE.DATAEVENTO),4,'0') || '-' || "
+            "         LPAD(EXTRACT(MONTH FROM EVE.DATAEVENTO),2,'0') || '-' || "
+            "         LPAD(EXTRACT(DAY FROM EVE.DATAEVENTO),2,'0') "
+            "     AS DATE) AS DATAEVENTO, "
+            "     LPAD(EXTRACT(HOUR FROM EVE.DATAEVENTO),2,'0') AS HORAEVENTO, "
+            "     LPAD(EXTRACT(DAY FROM EVE.DATAEVENTO),2,'0') || '/' || "
+            "     LPAD(EXTRACT(MONTH FROM EVE.DATAEVENTO),2,'0') || '/' || "
+            "     LPAD(EXTRACT(YEAR FROM EVE.DATAEVENTO),4,'0') || ' - ' || "
+            "     LPAD(EXTRACT(HOUR FROM EVE.DATAEVENTO),2,'0') || 'H' AS DATAHORAEVENTO, "
+            "     EVE.STATUS || '.' || REPLACE(EVE.REFERENCIA, 'F', '*') AS STATUS, EVE.DESTATUS, "
+            "     CASE "
+            "         WHEN TRIM(EVE.NUMSETOR) <> '' AND TRIM(EVE.NUMSETOR) <> 'FF' THEN "
+            "             REPLACE(EVE.NUMSETOR, 'F', '') || ' - ' || EVE.LOCAL "
+            "         ELSE NULL END AS LOCAL "
+            " FROM LOGEVENTO EVE "
+            " WHERE EVE.CDCLIENTE > 0 AND EVE.DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL"
+            " GROUP BY EVE.CDCLIENTE, EVE.NMCLIENTE, EVE.EQUIPAMENTO, DATAEVENTO, HORAEVENTO, DATAHORAEVENTO, STATUS, EVE.DESTATUS, LOCAL "
+            " ORDER BY EVE.NMCLIENTE, DATAEVENTO, HORAEVENTO, TOTAL DESC";
+
 
         AnsiString SQL_FILTRO = SQL_FILTRO_DATA;
-        AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO_DATA + " AND CDCLIENTE = :CDCLIENTE";
-        AnsiString SQL_FILTRO_NOME = SQL_FILTRO_DATA   + " AND NMCLIENTE LIKE UPPER(:NMCLIENTE)";
-        AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO_DATA + " AND EQUIPAMENTO = :EQUIPAMENTO";
+        AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO_DATA + " AND EVE.CDCLIENTE = :CDCLIENTE";
+        AnsiString SQL_FILTRO_NOME = SQL_FILTRO_DATA   + " AND EVE.NMCLIENTE LIKE UPPER(:NMCLIENTE)";
+        AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO_DATA + " AND EVE.EQUIPAMENTO = :EQUIPAMENTO";
 
         CDSRelAtendimento->Close();
         IBQRelAtendimento->SQL->Clear();
@@ -101,14 +120,14 @@ void __fastcall TFListRelatoriosAtendimento::BtnTotalEveHoraCliClick(
         if(Estatus != ""){
             CDSRelAtendimento->Close();
             IBQRelAtendimento->SQL->Clear();
-            SQL_FILTRO = SQL_FILTRO + " AND STATUS LIKE :STATUS";
+            SQL_FILTRO = SQL_FILTRO + " AND EVE.STATUS LIKE :STATUS";
             IBQRelAtendimento->SQL->Text = SQL_FILTRO;
             IBQRelAtendimento->ParamByName("STATUS")->Size = 5;
 
         }else if(StatusDescricao != ""){
             CDSRelAtendimento->Close();
             IBQRelAtendimento->SQL->Clear();
-            SQL_FILTRO = SQL_FILTRO + " AND DESTATUS LIKE :DESTATUS";
+            SQL_FILTRO = SQL_FILTRO + " AND EVE.DESTATUS LIKE :DESTATUS";
             IBQRelAtendimento->SQL->Text = SQL_FILTRO;
         }
 

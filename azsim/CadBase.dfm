@@ -1,6 +1,6 @@
 object FCadBase: TFCadBase
-  Left = 818
-  Top = 155
+  Left = 595
+  Top = 152
   Width = 602
   Height = 539
   Caption = 'FCadBase'

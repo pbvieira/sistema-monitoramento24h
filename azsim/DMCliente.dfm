@@ -1,9 +1,8 @@
 object DModuleCliente: TDModuleCliente
   OldCreateOrder = False
-  Left = 263
-  Top = 297
-  Height = 543
-  Width = 1176
+  Top = 144
+  Height = 545
+  Width = 1024
   object IBQContato: TIBQuery
     Database = DModule.IBCONAzsim
     Transaction = IBTCliente
@@ -1704,6 +1703,11 @@ object DModuleCliente: TDModuleCliente
       #9'C.TPPESSOA,'
       #9'C.NMCLIENTE,'
       #9'C.NMFANTASIA,'
+      '    CASE '
+      
+        '      WHEN C.NMFANTASIA IS NULL THEN C.NMCLIENTE ELSE C.NMFANTAS' +
+        'IA'
+      '    END AS NOME,'
       #9'C.DOCUMENTO,'
       #9'C.INSCMUNICIPAL,'
       #9'C.ENDERECO,'
@@ -1936,6 +1940,10 @@ object DModuleCliente: TDModuleCliente
       Origin = 'CONTRATO.MODELOCENTRAL'
       Size = 120
     end
+    object IBQConsClienteNOME: TIBStringField
+      FieldName = 'NOME'
+      Size = 256
+    end
   end
   object DSConsCliente: TDataSource
     DataSet = CDSConsCliente
@@ -1943,7 +1951,7 @@ object DModuleCliente: TDModuleCliente
     Top = 254
   end
   object IBTConsCliente: TIBTransaction
-    Active = False
+    Active = True
     DefaultDatabase = DModule.IBCONAzsim
     Params.Strings = (
       'concurrency'
@@ -2149,6 +2157,19 @@ object DModuleCliente: TDModuleCliente
         Size = 120
       end
       item
+        Name = 'NOME'
+        DataType = ftString
+        Size = 256
+      end
+      item
+        Name = 'IBQConsSetores'
+        DataType = ftDataSet
+      end
+      item
+        Name = 'IBQConsContato'
+        DataType = ftDataSet
+      end
+      item
         Name = 'IBQConsContrato'
         DataType = ftDataSet
       end>
@@ -2178,144 +2199,189 @@ object DModuleCliente: TDModuleCliente
       Origin = 'CLIENTE.ENDERECO'
       Size = 60
     end
-    object CDSConsClienteIBQConsContrato: TDataSetField
-      FieldName = 'IBQConsContrato'
-    end
     object CDSConsClienteCDFILIAL: TIntegerField
       FieldName = 'CDFILIAL'
+      Origin = 'CLIENTE.CDFILIAL'
     end
     object CDSConsClienteTPPESSOA: TStringField
       FieldName = 'TPPESSOA'
+      Origin = 'CLIENTE.TPPESSOA'
       FixedChar = True
       Size = 1
     end
     object CDSConsClienteNMFANTASIA: TStringField
       FieldName = 'NMFANTASIA'
+      Origin = 'CLIENTE.NMFANTASIA'
       Size = 256
     end
     object CDSConsClienteDOCUMENTO: TStringField
       FieldName = 'DOCUMENTO'
+      Origin = 'CLIENTE.DOCUMENTO'
     end
     object CDSConsClienteINSCMUNICIPAL: TStringField
       FieldName = 'INSCMUNICIPAL'
+      Origin = 'CLIENTE.INSCMUNICIPAL'
       Size = 15
     end
     object CDSConsClienteBAIRRO: TStringField
       FieldName = 'BAIRRO'
+      Origin = 'CLIENTE.BAIRRO'
       Size = 60
     end
     object CDSConsClienteUF: TStringField
       FieldName = 'UF'
+      Origin = 'CLIENTE.UF'
       Size = 2
     end
     object CDSConsClienteCEP: TStringField
       FieldName = 'CEP'
+      Origin = 'CLIENTE.CEP'
       Size = 9
     end
     object CDSConsClientePONTOREF: TStringField
       FieldName = 'PONTOREF'
+      Origin = 'CLIENTE.PONTOREF'
       Size = 200
     end
     object CDSConsClienteCHAVE: TStringField
       FieldName = 'CHAVE'
+      Origin = 'CLIENTE.CHAVE'
       Size = 15
     end
     object CDSConsClienteKMBASE: TBCDField
       FieldName = 'KMBASE'
+      Origin = 'CLIENTE.KMBASE'
       Precision = 18
     end
     object CDSConsClienteOBSERVACAO: TStringField
       FieldName = 'OBSERVACAO'
+      Origin = 'CLIENTE.OBSERVACAO'
       Size = 2000
     end
     object CDSConsClientePROCEDIMENTOS: TStringField
       FieldName = 'PROCEDIMENTOS'
+      Origin = 'CLIENTE.PROCEDIMENTOS'
       Size = 2000
     end
     object CDSConsClienteDATACADASTRO: TDateTimeField
       FieldName = 'DATACADASTRO'
+      Origin = 'CLIENTE.DATACADASTRO'
     end
     object CDSConsClienteDATAALTERACAO: TDateTimeField
       FieldName = 'DATAALTERACAO'
+      Origin = 'CLIENTE.DATAALTERACAO'
     end
     object CDSConsClienteFONE1: TStringField
       FieldName = 'FONE1'
+      Origin = 'CLIENTE.FONE1'
       Size = 13
     end
     object CDSConsClienteFONEOBS1: TStringField
       FieldName = 'FONEOBS1'
+      Origin = 'CLIENTE.FONEOBS1'
       Size = 200
     end
     object CDSConsClienteFONE2: TStringField
       FieldName = 'FONE2'
+      Origin = 'CLIENTE.FONE2'
       Size = 13
     end
     object CDSConsClienteFONEOBS2: TStringField
       FieldName = 'FONEOBS2'
+      Origin = 'CLIENTE.FONEOBS2'
       Size = 200
     end
     object CDSConsClienteFONE3: TStringField
       FieldName = 'FONE3'
+      Origin = 'CLIENTE.FONE3'
       Size = 13
     end
     object CDSConsClienteFONEOBS3: TStringField
       FieldName = 'FONEOBS3'
+      Origin = 'CLIENTE.FONEOBS3'
       Size = 200
     end
     object CDSConsClienteFONE4: TStringField
       FieldName = 'FONE4'
+      Origin = 'CLIENTE.FONE4'
       Size = 13
     end
     object CDSConsClienteFONEOBS4: TStringField
       FieldName = 'FONEOBS4'
+      Origin = 'CLIENTE.FONEOBS4'
       Size = 200
     end
     object CDSConsClienteFONE5: TStringField
       FieldName = 'FONE5'
+      Origin = 'CLIENTE.FONE5'
       Size = 13
     end
     object CDSConsClienteFONEOBS5: TStringField
       FieldName = 'FONEOBS5'
+      Origin = 'CLIENTE.FONEOBS5'
       Size = 200
     end
     object CDSConsClienteFONE6: TStringField
       FieldName = 'FONE6'
+      Origin = 'CLIENTE.FONE6'
       Size = 13
     end
     object CDSConsClienteFONEOBS6: TStringField
       FieldName = 'FONEOBS6'
+      Origin = 'CLIENTE.FONEOBS6'
       Size = 200
     end
     object CDSConsClienteFONE7: TStringField
       FieldName = 'FONE7'
+      Origin = 'CLIENTE.FONE7'
       Size = 13
     end
     object CDSConsClienteFONEOBS7: TStringField
       FieldName = 'FONEOBS7'
+      Origin = 'CLIENTE.FONEOBS7'
       Size = 200
     end
     object CDSConsClienteFONE8: TStringField
       FieldName = 'FONE8'
+      Origin = 'CLIENTE.FONE8'
       Size = 13
     end
     object CDSConsClienteFONEOBS8: TStringField
       FieldName = 'FONEOBS8'
+      Origin = 'CLIENTE.FONEOBS8'
       Size = 200
     end
     object CDSConsClienteCDCONTRATO: TIntegerField
       FieldName = 'CDCONTRATO'
+      Origin = 'CONTRATO.CDCONTRATO'
       Required = True
     end
     object CDSConsClienteCDCODIFICADOR: TIntegerField
       FieldName = 'CDCODIFICADOR'
+      Origin = 'CONTRATO.CDCODIFICADOR'
     end
     object CDSConsClienteLOCALINSTALCENTRAL: TStringField
       FieldName = 'LOCALINSTALCENTRAL'
+      Origin = 'CONTRATO.LOCALINSTALCENTRAL'
       Size = 400
     end
     object CDSConsClienteMODELOCENTRAL: TStringField
       FieldName = 'MODELOCENTRAL'
+      Origin = 'CONTRATO.MODELOCENTRAL'
       Size = 120
+    end
+    object CDSConsClienteNOME: TStringField
+      FieldName = 'NOME'
+      Size = 256
+    end
+    object CDSConsClienteIBQConsContato: TDataSetField
+      FieldName = 'IBQConsContato'
+    end
+    object CDSConsClienteIBQConsContrato: TDataSetField
+      FieldName = 'IBQConsContrato'
+    end
+    object CDSConsClienteIBQConsSetores: TDataSetField
+      FieldName = 'IBQConsSetores'
     end
   end
   object DSPConsCliente: TDataSetProvider
@@ -3189,6 +3255,466 @@ object DModuleCliente: TDModuleCliente
     object CDSRelOrdemServicoLOCAL: TStringField
       FieldName = 'LOCAL'
       Size = 100
+    end
+  end
+  object DSConsContato: TDataSource
+    DataSet = CDSConsContato
+    Left = 926
+    Top = 256
+  end
+  object CDSConsContato: TClientDataSet
+    Aggregates = <>
+    DataSetField = CDSConsClienteIBQConsContato
+    FieldDefs = <
+      item
+        Name = 'CDCLIENTECONTATO'
+        Attributes = [faRequired]
+        DataType = ftInteger
+      end
+      item
+        Name = 'CDCLIENTE'
+        DataType = ftInteger
+      end
+      item
+        Name = 'NMCONTATO'
+        DataType = ftString
+        Size = 60
+      end
+      item
+        Name = 'CDTIPOCONTATO'
+        DataType = ftInteger
+      end
+      item
+        Name = 'PARENTESCO'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'ENDERECO'
+        DataType = ftString
+        Size = 60
+      end
+      item
+        Name = 'BAIRRO'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'CIDADE'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'UF'
+        DataType = ftString
+        Size = 2
+      end
+      item
+        Name = 'CEP'
+        DataType = ftString
+        Size = 9
+      end
+      item
+        Name = 'FONE1'
+        DataType = ftString
+        Size = 13
+      end
+      item
+        Name = 'FONE1OBS'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'FONE2'
+        DataType = ftString
+        Size = 13
+      end
+      item
+        Name = 'FONE2OBS'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'FONE3'
+        DataType = ftString
+        Size = 13
+      end
+      item
+        Name = 'FONE3OBS'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'FONE4'
+        DataType = ftString
+        Size = 13
+      end
+      item
+        Name = 'FONE4OBS'
+        DataType = ftString
+        Size = 30
+      end
+      item
+        Name = 'OBSERVACAO'
+        DataType = ftString
+        Size = 600
+      end
+      item
+        Name = 'SENHA'
+        DataType = ftString
+        Size = 100
+      end
+      item
+        Name = 'CONTRASENHA'
+        DataType = ftString
+        Size = 100
+      end
+      item
+        Name = 'DATANASCIMENTO'
+        DataType = ftDate
+      end>
+    IndexDefs = <>
+    Params = <>
+    StoreDefs = True
+    Left = 926
+    Top = 208
+    object CDSConsContatoCDCLIENTECONTATO: TIntegerField
+      FieldName = 'CDCLIENTECONTATO'
+      Origin = 'CLIENTECONTATO.CDCLIENTECONTATO'
+      Required = True
+    end
+    object CDSConsContatoCDCLIENTE: TIntegerField
+      FieldName = 'CDCLIENTE'
+      Origin = 'CLIENTECONTATO.CDCLIENTE'
+    end
+    object CDSConsContatoNMCONTATO: TStringField
+      FieldName = 'NMCONTATO'
+      Origin = 'CLIENTECONTATO.NMCONTATO'
+      Size = 60
+    end
+    object CDSConsContatoCDTIPOCONTATO: TIntegerField
+      FieldName = 'CDTIPOCONTATO'
+      Origin = 'CLIENTECONTATO.CDTIPOCONTATO'
+    end
+    object CDSConsContatoPARENTESCO: TStringField
+      FieldName = 'PARENTESCO'
+      Origin = 'CLIENTECONTATO.PARENTESCO'
+      Size = 30
+    end
+    object CDSConsContatoENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Origin = 'CLIENTECONTATO.ENDERECO'
+      Size = 60
+    end
+    object CDSConsContatoBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Origin = 'CLIENTECONTATO.BAIRRO'
+      Size = 30
+    end
+    object CDSConsContatoCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Origin = 'CLIENTECONTATO.CIDADE'
+      Size = 30
+    end
+    object CDSConsContatoUF: TStringField
+      FieldName = 'UF'
+      Origin = 'CLIENTECONTATO.UF'
+      Size = 2
+    end
+    object CDSConsContatoCEP: TStringField
+      FieldName = 'CEP'
+      Origin = 'CLIENTECONTATO.CEP'
+      Size = 9
+    end
+    object CDSConsContatoFONE1: TStringField
+      FieldName = 'FONE1'
+      Origin = 'CLIENTECONTATO.FONE1'
+      Size = 13
+    end
+    object CDSConsContatoFONE1OBS: TStringField
+      FieldName = 'FONE1OBS'
+      Origin = 'CLIENTECONTATO.FONE1OBS'
+      Size = 30
+    end
+    object CDSConsContatoFONE2: TStringField
+      FieldName = 'FONE2'
+      Origin = 'CLIENTECONTATO.FONE2'
+      Size = 13
+    end
+    object CDSConsContatoFONE2OBS: TStringField
+      FieldName = 'FONE2OBS'
+      Origin = 'CLIENTECONTATO.FONE2OBS'
+      Size = 30
+    end
+    object CDSConsContatoFONE3: TStringField
+      FieldName = 'FONE3'
+      Origin = 'CLIENTECONTATO.FONE3'
+      Size = 13
+    end
+    object CDSConsContatoFONE3OBS: TStringField
+      FieldName = 'FONE3OBS'
+      Origin = 'CLIENTECONTATO.FONE3OBS'
+      Size = 30
+    end
+    object CDSConsContatoFONE4: TStringField
+      FieldName = 'FONE4'
+      Origin = 'CLIENTECONTATO.FONE4'
+      Size = 13
+    end
+    object CDSConsContatoFONE4OBS: TStringField
+      FieldName = 'FONE4OBS'
+      Origin = 'CLIENTECONTATO.FONE4OBS'
+      Size = 30
+    end
+    object CDSConsContatoOBSERVACAO: TStringField
+      FieldName = 'OBSERVACAO'
+      Origin = 'CLIENTECONTATO.OBSERVACAO'
+      Size = 600
+    end
+    object CDSConsContatoSENHA: TStringField
+      FieldName = 'SENHA'
+      Origin = 'CLIENTECONTATO.SENHA'
+      Size = 100
+    end
+    object CDSConsContatoCONTRASENHA: TStringField
+      FieldName = 'CONTRASENHA'
+      Origin = 'CLIENTECONTATO.CONTRASENHA'
+      Size = 100
+    end
+    object CDSConsContatoDATANASCIMENTO: TDateField
+      FieldName = 'DATANASCIMENTO'
+      Origin = 'CLIENTECONTATO.DATANASCIMENTO'
+    end
+  end
+  object IBQConsContato: TIBQuery
+    Database = DModule.IBCONAzsim
+    Transaction = IBTConsCliente
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DSLinkConsCliente
+    SQL.Strings = (
+      
+        'SELECT CDCLIENTECONTATO, CDCLIENTE, NMCONTATO, CDTIPOCONTATO, PA' +
+        'RENTESCO, ENDERECO, BAIRRO, CIDADE, UF, CEP, FONE1, FONE1OBS, FO' +
+        'NE2, FONE2OBS, FONE3, FONE3OBS, FONE4, FONE4OBS, OBSERVACAO, SEN' +
+        'HA, CONTRASENHA, DATANASCIMENTO FROM CLIENTECONTATO WHERE CDCLIE' +
+        'NTE= :CDCLIENTE;'
+      ''
+      '    ')
+    UniDirectional = True
+    Left = 924
+    Top = 160
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'CDCLIENTE'
+        ParamType = ptUnknown
+        Size = 4
+      end>
+    object IBQConsContatoCDCLIENTECONTATO: TIntegerField
+      FieldName = 'CDCLIENTECONTATO'
+      Origin = 'CLIENTECONTATO.CDCLIENTECONTATO'
+      Required = True
+    end
+    object IBQConsContatoCDCLIENTE: TIntegerField
+      FieldName = 'CDCLIENTE'
+      Origin = 'CLIENTECONTATO.CDCLIENTE'
+    end
+    object IBQConsContatoNMCONTATO: TIBStringField
+      FieldName = 'NMCONTATO'
+      Origin = 'CLIENTECONTATO.NMCONTATO'
+      Size = 60
+    end
+    object IBQConsContatoCDTIPOCONTATO: TIntegerField
+      FieldName = 'CDTIPOCONTATO'
+      Origin = 'CLIENTECONTATO.CDTIPOCONTATO'
+    end
+    object IBQConsContatoPARENTESCO: TIBStringField
+      FieldName = 'PARENTESCO'
+      Origin = 'CLIENTECONTATO.PARENTESCO'
+      Size = 30
+    end
+    object IBQConsContatoENDERECO: TIBStringField
+      FieldName = 'ENDERECO'
+      Origin = 'CLIENTECONTATO.ENDERECO'
+      Size = 60
+    end
+    object IBQConsContatoBAIRRO: TIBStringField
+      FieldName = 'BAIRRO'
+      Origin = 'CLIENTECONTATO.BAIRRO'
+      Size = 30
+    end
+    object IBQConsContatoCIDADE: TIBStringField
+      FieldName = 'CIDADE'
+      Origin = 'CLIENTECONTATO.CIDADE'
+      Size = 30
+    end
+    object IBQConsContatoUF: TIBStringField
+      FieldName = 'UF'
+      Origin = 'CLIENTECONTATO.UF'
+      Size = 2
+    end
+    object IBQConsContatoCEP: TIBStringField
+      FieldName = 'CEP'
+      Origin = 'CLIENTECONTATO.CEP'
+      Size = 9
+    end
+    object IBQConsContatoFONE1: TIBStringField
+      FieldName = 'FONE1'
+      Origin = 'CLIENTECONTATO.FONE1'
+      Size = 13
+    end
+    object IBQConsContatoFONE1OBS: TIBStringField
+      FieldName = 'FONE1OBS'
+      Origin = 'CLIENTECONTATO.FONE1OBS'
+      Size = 30
+    end
+    object IBQConsContatoFONE2: TIBStringField
+      FieldName = 'FONE2'
+      Origin = 'CLIENTECONTATO.FONE2'
+      Size = 13
+    end
+    object IBQConsContatoFONE2OBS: TIBStringField
+      FieldName = 'FONE2OBS'
+      Origin = 'CLIENTECONTATO.FONE2OBS'
+      Size = 30
+    end
+    object IBQConsContatoFONE3: TIBStringField
+      FieldName = 'FONE3'
+      Origin = 'CLIENTECONTATO.FONE3'
+      Size = 13
+    end
+    object IBQConsContatoFONE3OBS: TIBStringField
+      FieldName = 'FONE3OBS'
+      Origin = 'CLIENTECONTATO.FONE3OBS'
+      Size = 30
+    end
+    object IBQConsContatoFONE4: TIBStringField
+      FieldName = 'FONE4'
+      Origin = 'CLIENTECONTATO.FONE4'
+      Size = 13
+    end
+    object IBQConsContatoFONE4OBS: TIBStringField
+      FieldName = 'FONE4OBS'
+      Origin = 'CLIENTECONTATO.FONE4OBS'
+      Size = 30
+    end
+    object IBQConsContatoOBSERVACAO: TIBStringField
+      FieldName = 'OBSERVACAO'
+      Origin = 'CLIENTECONTATO.OBSERVACAO'
+      Size = 600
+    end
+    object IBQConsContatoSENHA: TIBStringField
+      FieldName = 'SENHA'
+      Origin = 'CLIENTECONTATO.SENHA'
+      Size = 100
+    end
+    object IBQConsContatoCONTRASENHA: TIBStringField
+      FieldName = 'CONTRASENHA'
+      Origin = 'CLIENTECONTATO.CONTRASENHA'
+      Size = 100
+    end
+    object IBQConsContatoDATANASCIMENTO: TDateField
+      FieldName = 'DATANASCIMENTO'
+      Origin = 'CLIENTECONTATO.DATANASCIMENTO'
+    end
+  end
+  object DSConsSetores: TDataSource
+    DataSet = CDSConsSetores
+    Left = 926
+    Top = 400
+  end
+  object CDSConsSetores: TClientDataSet
+    Aggregates = <>
+    DataSetField = CDSConsClienteIBQConsSetores
+    FieldDefs = <
+      item
+        Name = 'NUMSETOR'
+        Attributes = [faRequired]
+        DataType = ftInteger
+      end
+      item
+        Name = 'LOCAL'
+        DataType = ftString
+        Size = 100
+      end
+      item
+        Name = 'MODELOCENTRAL'
+        DataType = ftString
+        Size = 120
+      end
+      item
+        Name = 'LOCALINSTALCENTRAL'
+        DataType = ftString
+        Size = 400
+      end>
+    IndexDefs = <>
+    Params = <>
+    StoreDefs = True
+    Left = 926
+    Top = 352
+    object CDSConsSetoresNUMSETOR: TIntegerField
+      FieldName = 'NUMSETOR'
+      Origin = 'SETOR.NUMSETOR'
+      Required = True
+    end
+    object CDSConsSetoresLOCAL: TStringField
+      FieldName = 'LOCAL'
+      Origin = 'SETOR.LOCAL'
+      Size = 100
+    end
+    object CDSConsSetoresMODELOCENTRAL: TStringField
+      FieldName = 'MODELOCENTRAL'
+      Origin = 'CONTRATO.MODELOCENTRAL'
+      Size = 120
+    end
+    object CDSConsSetoresLOCALINSTALCENTRAL: TStringField
+      FieldName = 'LOCALINSTALCENTRAL'
+      Origin = 'CONTRATO.LOCALINSTALCENTRAL'
+      Size = 400
+    end
+  end
+  object IBQConsSetores: TIBQuery
+    Database = DModule.IBCONAzsim
+    Transaction = IBTConsCliente
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DSLinkConsCliente
+    SQL.Strings = (
+      
+        'SELECT S.NUMSETOR, S.LOCAL, CO.MODELOCENTRAL, CO.LOCALINSTALCENT' +
+        'RAL FROM SETOR S'
+      'INNER JOIN CONTRATO CO ON CO.CDCONTRATO = S.CDCONTRATO'
+      'WHERE CO.CDCODIFICADOR = :CDCODIFICADOR ORDER BY S.NUMSETOR;')
+    UniDirectional = True
+    Left = 924
+    Top = 304
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'CDCODIFICADOR'
+        ParamType = ptUnknown
+        Size = 4
+      end>
+    object IBQConsSetoresNUMSETOR: TIntegerField
+      FieldName = 'NUMSETOR'
+      Origin = 'SETOR.NUMSETOR'
+      Required = True
+    end
+    object IBQConsSetoresLOCAL: TIBStringField
+      FieldName = 'LOCAL'
+      Origin = 'SETOR.LOCAL'
+      Size = 100
+    end
+    object IBQConsSetoresMODELOCENTRAL: TIBStringField
+      FieldName = 'MODELOCENTRAL'
+      Origin = 'CONTRATO.MODELOCENTRAL'
+      Size = 120
+    end
+    object IBQConsSetoresLOCALINSTALCENTRAL: TIBStringField
+      FieldName = 'LOCALINSTALCENTRAL'
+      Origin = 'CONTRATO.LOCALINSTALCENTRAL'
+      Size = 400
     end
   end
 end

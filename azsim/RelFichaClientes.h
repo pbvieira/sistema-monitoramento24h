@@ -93,6 +93,8 @@ __published:
     TQRDBText *QrdbSetor;
     TQRLabel *QrlSetores;
     TQRDBText *QrdbLocal;
+    TQRDBText *qrdbCodificador;
+    TQRLabel *QRLabel20;
         void __fastcall QuickRepBeforePrint(TCustomQuickRep *Sender,
           bool &PrintReport);
         void __fastcall QrbDetalheClienteAfterPrint(TQRCustomBand *Sender,

@@ -30,6 +30,7 @@ __published:	// IDE-managed Components
     TToolButton *BtnDeletar;
     TPanel *PFechar;
     TSpeedButton *BtnFechar;
+    TPanel *Panel1;
     TGroupBox *GRPObs;
     TDBMemo *EdtObservacao;
     TGroupBox *GRPCliente;
@@ -46,6 +47,7 @@ __published:	// IDE-managed Components
     TLabel *Label22;
     TLabel *Label20;
     TLabel *Label25;
+    TLabel *Label1;
     TDBLookupComboBox *CmbFilial;
     TDBEdit *EdtCodigo;
     TDBEdit *EdtNmCliente;
@@ -59,6 +61,7 @@ __published:	// IDE-managed Components
     TDBEdit *EdtIcm;
     TDBEdit *EdtPontoRef;
     TDBEdit *EdtKmBase;
+    TDBEdit *EdtNomeFantasia;
     TGroupBox *GRPContatos;
     TLabel *Label34;
     TLabel *Label35;
@@ -68,6 +71,14 @@ __published:	// IDE-managed Components
     TLabel *Label39;
     TLabel *Label40;
     TLabel *Label41;
+    TLabel *Label3;
+    TLabel *Label5;
+    TLabel *Label14;
+    TLabel *Label15;
+    TLabel *Label17;
+    TLabel *Label16;
+    TLabel *Label18;
+    TLabel *Label19;
     TDBEdit *EdtFone1;
     TDBEdit *EdtFone1Obs;
     TDBEdit *EdtFone2;
@@ -76,28 +87,19 @@ __published:	// IDE-managed Components
     TDBEdit *EdtFone3Obs;
     TDBEdit *EdtFone4;
     TDBEdit *EdtFone4Obs;
-    TSpeedButton *BtnProcedimentos;
-    TSpeedButton *BtnSenhas;
-    TLabel *Label3;
-    TLabel *Label5;
-    TLabel *Label14;
-    TLabel *Label15;
     TDBEdit *EdtFone5;
     TDBEdit *EdtFone5Obs;
     TDBEdit *EdtFone6;
     TDBEdit *EdtFone6Obs;
+    TDBEdit *EdtFone7;
+    TDBEdit *EdtFone7Obs;
+    TDBEdit *EdtFone8;
+    TDBEdit *EdtFone8Obs;
     TSpeedButton *BtnPesquisa;
     TSpeedButton *BtnContratos;
-        TLabel *Label1;
-        TDBEdit *EdtNomeFantasia;
-        TLabel *Label16;
-        TLabel *Label17;
-        TLabel *Label18;
-        TLabel *Label19;
-        TDBEdit *EdtFone7;
-        TDBEdit *EdtFone7Obs;
-        TDBEdit *EdtFone8;
-        TDBEdit *EdtFone8Obs;
+    TSpeedButton *BtnSenhas;
+    TSpeedButton *BtnProcedimentos;
+    TPanel *pnlTituloForm;
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall BtnFecharClick(TObject *Sender);
     void __fastcall BtnNovoClick(TObject *Sender);
@@ -118,6 +120,7 @@ __published:	// IDE-managed Components
     void __fastcall BtnSenhasClick(TObject *Sender);
     void __fastcall BtnPesquisaClick(TObject *Sender);
     void __fastcall BtnContratosClick(TObject *Sender);
+    void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
     void __fastcall GeraClienteId(void);
 public:		// User declarations

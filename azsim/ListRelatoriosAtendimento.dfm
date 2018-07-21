@@ -1,11 +1,11 @@
 object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
-  Left = 455
-  Top = 245
+  Left = 389
+  Top = 205
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Selecionar Relat'#243'rios de Eventos e Ocorr'#234'ncias'
-  ClientHeight = 251
-  ClientWidth = 705
+  Caption = 'AZSIM'
+  ClientHeight = 306
+  ClientWidth = 722
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -18,45 +18,9 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
-  object BtnTotalEveHoraCli: TSpeedButton
-    Left = 456
-    Top = 14
-    Width = 240
-    Height = 35
-    Caption = 'Totais de Eventos do Cliente por Hora'
-    Flat = True
-    OnClick = BtnTotalEveHoraCliClick
-  end
-  object BtnTotalEveDataCli: TSpeedButton
-    Left = 456
-    Top = 51
-    Width = 240
-    Height = 35
-    Caption = 'Totais de Eventos do Cliente'
-    Flat = True
-    OnClick = BtnTotalEveDataCliClick
-  end
-  object BtnTotalEventos: TSpeedButton
-    Left = 456
-    Top = 88
-    Width = 240
-    Height = 35
-    Caption = 'Totais de Eventos (Prioridade na Manuten'#231#227'o)'
-    Flat = True
-    OnClick = BtnTotalEventosClick
-  end
-  object BtnOcorrenciasCliente: TSpeedButton
-    Left = 456
-    Top = 162
-    Width = 240
-    Height = 35
-    Caption = 'Ocorr'#234'ncias do Cliente'
-    Flat = True
-    OnClick = BtnOcorrenciasClienteClick
-  end
   object BtnFechar: TSpeedButton
-    Left = 640
-    Top = 209
+    Left = 656
+    Top = 265
     Width = 57
     Height = 36
     Flat = True
@@ -90,195 +54,256 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
     Layout = blGlyphTop
     OnClick = BtnFecharClick
   end
-  object BtnEventosClientesDataHora: TSpeedButton
-    Left = 456
-    Top = 125
-    Width = 240
-    Height = 35
-    Caption = 'Eventos do Cliente'
-    Flat = True
-    OnClick = BtnEventosClientesDataHoraClick
-  end
-  object GroupBox2: TGroupBox
-    Left = 11
-    Top = 8
-    Width = 438
-    Height = 62
-    Caption = 'Selecione o Intervalo da Consulta'
+  object Panel1: TPanel
+    Left = 8
+    Top = 40
+    Width = 708
+    Height = 213
     TabOrder = 0
-    object Label10: TLabel
-      Left = 106
-      Top = 17
-      Width = 48
-      Height = 13
-      Caption = 'Data Final'
+    object BtnTotalEveHoraCli: TSpeedButton
+      Left = 456
+      Top = 14
+      Width = 240
+      Height = 35
+      Caption = 'Totais de Eventos do Cliente por Hora'
+      Transparent = False
+      OnClick = BtnTotalEveHoraCliClick
     end
-    object Label11: TLabel
-      Left = 9
-      Top = 17
-      Width = 53
-      Height = 13
-      Caption = 'Data Inicial'
+    object BtnTotalEveDataCli: TSpeedButton
+      Left = 456
+      Top = 51
+      Width = 240
+      Height = 35
+      Caption = 'Totais de Eventos do Cliente'
+      Transparent = False
+      OnClick = BtnTotalEveDataCliClick
     end
-    object Label1: TLabel
-      Left = 208
-      Top = 36
-      Width = 190
-      Height = 13
-      Caption = 'Obrigat'#243'rio informar o intervalo de datas.'
+    object BtnTotalEventos: TSpeedButton
+      Left = 456
+      Top = 88
+      Width = 240
+      Height = 35
+      Caption = 'Totais de Eventos (Prioridade na Manuten'#231#227'o)'
+      Transparent = False
+      OnClick = BtnTotalEventosClick
     end
-    object EdtDataFinalTotais: TDateTimePicker
-      Left = 106
-      Top = 32
-      Width = 96
-      Height = 21
-      CalAlignment = dtaLeft
-      Date = 42183.6729884259
-      Format = 'dd/MM/yyyy'
-      Time = 42183.6729884259
-      DateFormat = dfShort
-      DateMode = dmComboBox
-      Kind = dtkDate
-      ParseInput = False
-      TabOrder = 1
+    object BtnOcorrenciasCliente: TSpeedButton
+      Left = 456
+      Top = 162
+      Width = 240
+      Height = 35
+      Caption = 'Ocorr'#234'ncias do Cliente'
+      Transparent = False
+      OnClick = BtnOcorrenciasClienteClick
     end
-    object EdtDataInicialTotais: TDateTimePicker
-      Left = 9
-      Top = 32
-      Width = 96
-      Height = 21
-      CalAlignment = dtaLeft
-      Date = 42183.6729884259
-      Format = 'dd/MM/yyyy'
-      Time = 42183.6729884259
-      DateFormat = dfShort
-      DateMode = dmComboBox
-      Kind = dtkDate
-      ParseInput = False
+    object BtnEventosClientesDataHora: TSpeedButton
+      Left = 456
+      Top = 125
+      Width = 240
+      Height = 35
+      Caption = 'Eventos do Cliente'
+      Transparent = False
+      OnClick = BtnEventosClientesDataHoraClick
+    end
+    object GroupBox2: TGroupBox
+      Left = 11
+      Top = 8
+      Width = 438
+      Height = 62
+      Caption = 'Selecione o Intervalo da Consulta'
       TabOrder = 0
+      object Label10: TLabel
+        Left = 106
+        Top = 17
+        Width = 48
+        Height = 13
+        Caption = 'Data Final'
+      end
+      object Label11: TLabel
+        Left = 9
+        Top = 17
+        Width = 53
+        Height = 13
+        Caption = 'Data Inicial'
+      end
+      object Label1: TLabel
+        Left = 208
+        Top = 36
+        Width = 190
+        Height = 13
+        Caption = 'Obrigat'#243'rio informar o intervalo de datas.'
+      end
+      object EdtDataFinalTotais: TDateTimePicker
+        Left = 106
+        Top = 32
+        Width = 96
+        Height = 21
+        CalAlignment = dtaLeft
+        Date = 42183.6729884259
+        Format = 'dd/MM/yyyy'
+        Time = 42183.6729884259
+        DateFormat = dfShort
+        DateMode = dmComboBox
+        Kind = dtkDate
+        ParseInput = False
+        TabOrder = 1
+      end
+      object EdtDataInicialTotais: TDateTimePicker
+        Left = 9
+        Top = 32
+        Width = 96
+        Height = 21
+        CalAlignment = dtaLeft
+        Date = 42183.6729884259
+        Format = 'dd/MM/yyyy'
+        Time = 42183.6729884259
+        DateFormat = dfShort
+        DateMode = dmComboBox
+        Kind = dtkDate
+        ParseInput = False
+        TabOrder = 0
+      end
     end
-  end
-  object GroupBox3: TGroupBox
-    Left = 11
-    Top = 72
-    Width = 438
-    Height = 62
-    Caption = ' Cliente ou Codificador '
-    TabOrder = 1
-    object Label12: TLabel
-      Left = 13
-      Top = 17
-      Width = 47
-      Height = 13
-      Caption = 'N'#186' Cliente'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label13: TLabel
-      Left = 361
-      Top = 17
-      Width = 68
-      Height = 13
-      Caption = 'N'#186' Codificador'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label14: TLabel
-      Left = 85
-      Top = 17
-      Width = 78
-      Height = 13
-      Caption = 'Nome do Cliente'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-    end
-    object EdtCodClienteTotais: TEdit
-      Left = 12
-      Top = 32
-      Width = 70
-      Height = 21
-      CharCase = ecUpperCase
-      TabOrder = 0
-    end
-    object EdtNomeTotais: TEdit
-      Left = 84
-      Top = 32
-      Width = 274
-      Height = 21
-      CharCase = ecUpperCase
+    object GroupBox3: TGroupBox
+      Left = 11
+      Top = 72
+      Width = 438
+      Height = 62
+      Caption = ' Cliente ou Codificador '
       TabOrder = 1
+      object Label12: TLabel
+        Left = 13
+        Top = 17
+        Width = 47
+        Height = 13
+        Caption = 'N'#186' Cliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label13: TLabel
+        Left = 361
+        Top = 17
+        Width = 68
+        Height = 13
+        Caption = 'N'#186' Codificador'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label14: TLabel
+        Left = 85
+        Top = 17
+        Width = 78
+        Height = 13
+        Caption = 'Nome do Cliente'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+      end
+      object EdtCodClienteTotais: TEdit
+        Left = 12
+        Top = 32
+        Width = 70
+        Height = 21
+        CharCase = ecUpperCase
+        TabOrder = 0
+      end
+      object EdtNomeTotais: TEdit
+        Left = 84
+        Top = 32
+        Width = 274
+        Height = 21
+        CharCase = ecUpperCase
+        TabOrder = 1
+      end
+      object EdtCodificadorTotais: TEdit
+        Left = 360
+        Top = 32
+        Width = 70
+        Height = 21
+        CharCase = ecUpperCase
+        TabOrder = 2
+      end
     end
-    object EdtCodificadorTotais: TEdit
-      Left = 360
-      Top = 32
-      Width = 70
-      Height = 21
-      CharCase = ecUpperCase
+    object GroupBox4: TGroupBox
+      Left = 11
+      Top = 136
+      Width = 438
+      Height = 62
+      Caption = ' Estatus ou Descri'#231#227'o'
       TabOrder = 2
+      object Label15: TLabel
+        Left = 13
+        Top = 17
+        Width = 35
+        Height = 13
+        Caption = 'Estatus'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+      end
+      object Label16: TLabel
+        Left = 85
+        Top = 17
+        Width = 101
+        Height = 13
+        Caption = 'Descri'#231#227'o do Estatus'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+      end
+      object EdtStatusTotais: TEdit
+        Left = 12
+        Top = 33
+        Width = 70
+        Height = 21
+        Hint = 'Exemplo: 0.0*'
+        CharCase = ecUpperCase
+        TabOrder = 0
+      end
+      object EdtStatusDescricaoTotais: TEdit
+        Left = 84
+        Top = 33
+        Width = 346
+        Height = 21
+        CharCase = ecUpperCase
+        TabOrder = 1
+      end
     end
   end
-  object GroupBox4: TGroupBox
-    Left = 11
-    Top = 136
-    Width = 438
-    Height = 62
-    Caption = ' Estatus ou Descri'#231#227'o'
-    TabOrder = 2
-    object Label15: TLabel
-      Left = 13
-      Top = 17
-      Width = 35
-      Height = 13
-      Caption = 'Estatus'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label16: TLabel
-      Left = 85
-      Top = 17
-      Width = 101
-      Height = 13
-      Caption = 'Descri'#231#227'o do Estatus'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-    end
-    object EdtStatusTotais: TEdit
-      Left = 12
-      Top = 33
-      Width = 70
-      Height = 21
-      Hint = 'Exemplo: 0.0*'
-      CharCase = ecUpperCase
-      TabOrder = 0
-    end
-    object EdtStatusDescricaoTotais: TEdit
-      Left = 84
-      Top = 33
-      Width = 346
-      Height = 21
-      CharCase = ecUpperCase
-      TabOrder = 1
-    end
+  object pnlTituloOcorrencias: TPanel
+    Left = 0
+    Top = 0
+    Width = 722
+    Height = 30
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    Caption = ' Selecionar Relat'#243'rios de Eventos e Ocorr'#234'ncias'
+    Color = clPurple
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 1
   end
   object IBTRelAtendimento: TIBTransaction
     Active = False

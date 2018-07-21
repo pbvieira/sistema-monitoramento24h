@@ -23,6 +23,8 @@ __fastcall TFCadContratoBasico::TFCadContratoBasico(TComponent* Owner)
 
 void __fastcall TFCadContratoBasico::FormCreate(TObject *Sender)
 {
+    pnlTituloForm->Color = COLOR_HEADER_FORM;
+    PgcContrato->ActivePageIndex = 0;
     ConfiguraEventosForm();
     ConfiguraCharCaseForm();
 }
@@ -97,19 +99,19 @@ void __fastcall TFCadContratoBasico::FormClose(TObject *Sender,
 void __fastcall TFCadContratoBasico::ChangeEnter(TObject * Sender)
 {
     if(dynamic_cast <TDBEdit*> (Sender) != NULL){
-        dynamic_cast <TDBEdit*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBEdit*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TEdit*> (Sender) != NULL){
-        dynamic_cast <TEdit*> (Sender)->Color = 15138520;
+        dynamic_cast <TEdit*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TDBLookupComboBox*> (Sender) != NULL){
-        dynamic_cast <TDBLookupComboBox*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBLookupComboBox*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TDBComboBox*> (Sender) != NULL){
-        dynamic_cast <TDBComboBox*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBComboBox*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TDBMemo*> (Sender) != NULL){
-        dynamic_cast <TDBMemo*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBMemo*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
     }
 }
 
@@ -201,12 +203,13 @@ void __fastcall TFCadContratoBasico::ConfiguraEventosForm(void)
         if(dynamic_cast <TDBEdit*> (Components[i]) != NULL){
             dynamic_cast <TDBEdit*> (Components[i])->OnEnter = ChangeEnter;
             dynamic_cast <TDBEdit*> (Components[i])->OnExit = ChangeExit;
+
         }
 
-        /*if(dynamic_cast <TEdit*> (Components[i]) != NULL){
+        if(dynamic_cast <TEdit*> (Components[i]) != NULL){
             dynamic_cast <TEdit*> (Components[i])->OnEnter = ChangeEnter;
             dynamic_cast <TEdit*> (Components[i])->OnExit = ChangeExit;
-        }*/
+        }
 
         if(dynamic_cast <TDBLookupComboBox*> (Components[i]) != NULL){
             dynamic_cast <TDBLookupComboBox*> (Components[i])->OnEnter = ChangeEnter;
@@ -330,7 +333,8 @@ void __fastcall TFCadContratoBasico::ConsultaCliente(int CdCliente, bool Atualiz
 {
     try{
         AnsiString SQL_FILTRO =
-            "SELECT C.CDCLIENTE, C.NMCLIENTE, C.ENDERECO, C.BAIRRO, C.CIDADE, C.UF, C.CEP "
+            "SELECT C.CDCLIENTE, CASE WHEN C.NMFANTASIA IS NULL THEN C.NMCLIENTE ELSE C.NMFANTASIA END AS NOME, "
+            "C.NMCLIENTE, C.NMFANTASIA, C.ENDERECO, C.BAIRRO, C.CIDADE, C.UF, C.CEP "
             "FROM CLIENTE C WHERE C.CDCLIENTE = :CDCLIENTE";
 
         AnsiString Nome;
@@ -352,7 +356,7 @@ void __fastcall TFCadContratoBasico::ConsultaCliente(int CdCliente, bool Atualiz
             DModule->IBQConsAuxCadastros->Open();
 
             if(DModule->IBQConsAuxCadastros->RecordCount > 0){
-                Nome = DModule->IBQConsAuxCadastros->FieldByName("NMCLIENTE")->AsString;
+                Nome = DModule->IBQConsAuxCadastros->FieldByName("NOME")->AsString;
                 EnderecoCob = DModule->IBQConsAuxCadastros->FieldByName("ENDERECO")->AsString;
                 BairroCob = DModule->IBQConsAuxCadastros->FieldByName("BAIRRO")->AsString;
                 CidadeCob = DModule->IBQConsAuxCadastros->FieldByName("CIDADE")->AsString;
@@ -444,13 +448,14 @@ void __fastcall TFCadContratoBasico::DBGSetorDrawColumnCell(
       TObject *Sender, const TRect &Rect, int DataCol, TColumn *Column,
       TGridDrawState State)
 {
-    if(DModuleCliente->CDSContrato->RecNo % 2){
-        DBGSetor->Canvas->Brush->Color = clCream;
+    if(DModuleCliente->CDSSetor->RecNo % 2){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_ALTERNATE_ROW;
     }else{
-        DBGSetor->Canvas->Brush->Color = clWindow;
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = clWindow;
     }
+
     if(State.Contains(gdSelected)){
-        DBGSetor->Canvas->Brush->Color = clMoneyGreen;
+        DBGSetor->Canvas->Brush->Color = COLOR_GRID_SELECTED_ROW;
     }
     DBGSetor->DefaultDrawColumnCell(Rect, DataCol, Column, State);
 }
@@ -464,18 +469,20 @@ void __fastcall TFCadContratoBasico::BtnLocalizarClienteClick(
         FConsCliente = new TFConsCliente(this);
     }
 
-    FConsCliente->Width = 487;
-    FConsCliente->GPBConsEndereco->Visible = false;
-    FConsCliente->GPBNomeSelecionado->Visible = false;
+    FConsCliente->Width = 1010;
+    FConsCliente->GrpEndereco->Visible = true;
+    FConsCliente->GrpNomeSelecionado->Visible = true;
     FConsCliente->BtnTodos->Visible = false;
     FConsCliente->BtnAbrirClientes->Visible = false;
     FConsCliente->BtnAbrirContratos->Visible = false;
     FConsCliente->BtnRelatorioClientes->Visible = false;
     FConsCliente->BtnSelecionar->Visible = true;
+    FConsCliente->ImgSelecionarCliente->Visible = true;
+    FConsCliente->LblOR->Visible = false;
     FConsCliente->SetarObjetoCodigoCliente(DModuleCliente->CDSContratoCDCLIENTE);
     FConsCliente->Show();
-    FConsCliente->Left = 10;
 }
 
 //---------------------------------------------------------------------------
+
 

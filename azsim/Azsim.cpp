@@ -32,6 +32,11 @@ USEFORM("CadBase.cpp", FCadBase);
 USEFORM("CadCodificadores.cpp", FCadCodificadores);
 USEFORM("RelClientes.cpp", QRPClientes); /* TQuickRep: File Type */
 USEFORM("RelFichaClientes.cpp", QrpFichaCliente); /* TQuickRep: File Type */
+USEFORM("DMInfo.cpp", fdmInfo); /* TDataModule: File Type */
+USEFORM("DMOcorrencia.cpp", fdmOcorrencia); /* TDataModule: File Type */
+USEFORM("DialogGeracaoRelClientes.cpp", dlgGeracaoRelClientes);
+USEFORM("ListaClientes.cpp", FListaClientes);
+USEFORM("FichaCliente.cpp", FFichaCliente);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {
@@ -42,6 +47,9 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
          Application->CreateForm(__classid(TFLogin), &FLogin);
          Application->CreateForm(__classid(TDModule), &DModule);
          Application->CreateForm(__classid(TDModuleCliente), &DModuleCliente);
+         Application->CreateForm(__classid(TfdmInfo), &fdmInfo);
+         Application->CreateForm(__classid(TfdmOcorrencia), &fdmOcorrencia);
+         Application->CreateForm(__classid(TdlgGeracaoRelClientes), &dlgGeracaoRelClientes);
          Application->Run();
    }
     catch (Exception &exception)

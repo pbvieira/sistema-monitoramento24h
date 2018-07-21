@@ -1,11 +1,11 @@
 object FConsOrdemServico: TFConsOrdemServico
-  Left = 374
-  Top = 152
+  Left = 393
+  Top = 246
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Consulta de Ordens de Servi'#231'os'
-  ClientHeight = 561
-  ClientWidth = 900
+  Caption = 'AZSIM'
+  ClientHeight = 474
+  ClientWidth = 1002
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,7 +21,7 @@ object FConsOrdemServico: TFConsOrdemServico
   TextHeight = 13
   object BtnConsultar: TSpeedButton
     Left = 12
-    Top = 78
+    Top = 110
     Width = 138
     Height = 22
     Caption = 'Executar Consulta'
@@ -57,7 +57,7 @@ object FConsOrdemServico: TFConsOrdemServico
   end
   object BtnImprimir: TSpeedButton
     Left = 152
-    Top = 78
+    Top = 110
     Width = 115
     Height = 22
     Caption = 'Imprimir'
@@ -107,11 +107,11 @@ object FConsOrdemServico: TFConsOrdemServico
   end
   object GroupBox2: TGroupBox
     Left = 11
-    Top = 8
+    Top = 40
     Width = 438
     Height = 62
     Caption = 'Selecione o Intervalo da Consulta'
-    TabOrder = 0
+    TabOrder = 2
     object Label10: TLabel
       Left = 106
       Top = 17
@@ -166,11 +166,11 @@ object FConsOrdemServico: TFConsOrdemServico
   end
   object GroupBox3: TGroupBox
     Left = 453
-    Top = 8
-    Width = 438
+    Top = 40
+    Width = 540
     Height = 62
     Caption = 'C'#243'digo da Ordem de Servi'#231'o ou Cliente'
-    TabOrder = 1
+    TabOrder = 3
     object Label12: TLabel
       Left = 80
       Top = 17
@@ -216,15 +216,15 @@ object FConsOrdemServico: TFConsOrdemServico
       Width = 70
       Height = 21
       CharCase = ecUpperCase
-      TabOrder = 0
+      TabOrder = 1
     end
     object EdtNome: TEdit
       Left = 150
       Top = 32
-      Width = 278
+      Width = 379
       Height = 21
       CharCase = ecUpperCase
-      TabOrder = 1
+      TabOrder = 2
     end
     object EdtCdOrdemServico: TEdit
       Left = 8
@@ -232,84 +232,17 @@ object FConsOrdemServico: TFConsOrdemServico
       Width = 70
       Height = 21
       CharCase = ecUpperCase
-      TabOrder = 2
-    end
-  end
-  object Panel1: TPanel
-    Left = 12
-    Top = 112
-    Width = 878
-    Height = 401
-    BevelOuter = bvNone
-    TabOrder = 2
-    object DBGClientes: TDBGrid
-      Left = 0
-      Top = 0
-      Width = 878
-      Height = 401
-      Align = alClient
-      DataSource = DModuleCliente.DSConsOrdemServico
-      Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
       TabOrder = 0
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'MS Sans Serif'
-      TitleFont.Style = []
-      OnDblClick = DBGClientesDblClick
-      Columns = <
-        item
-          Alignment = taCenter
-          Expanded = False
-          FieldName = 'CDORDEMSERVICO'
-          Title.Caption = 'C'#243'd.'
-          Width = 35
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'DATACADASTRO'
-          Title.Caption = 'Data OS'
-          Visible = True
-        end
-        item
-          Alignment = taCenter
-          Expanded = False
-          FieldName = 'EQUIPAMENTO'
-          Title.Caption = 'Codificador'
-          Visible = True
-        end
-        item
-          Alignment = taLeftJustify
-          Expanded = False
-          FieldName = 'CDCLIENTE'
-          Title.Caption = 'C'#243'digo'
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'NMCLIENTE'
-          Title.Caption = 'Cliente'
-          Width = 300
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'DEORDEMSERVICO'
-          Title.Caption = 'Ordem Servi'#231'o'
-          Width = 800
-          Visible = True
-        end>
     end
   end
   object PMenu: TPanel
     Left = 0
-    Top = 522
-    Width = 900
+    Top = 416
+    Width = 1002
     Height = 39
     Align = alBottom
     BevelOuter = bvNone
-    TabOrder = 3
+    TabOrder = 1
     object BtnNovaOS: TSpeedButton
       Left = 4
       Top = 1
@@ -360,7 +293,7 @@ object FConsOrdemServico: TFConsOrdemServico
       OnClick = BtnNovaOSClick
     end
     object PFechar: TPanel
-      Left = 843
+      Left = 945
       Top = 0
       Width = 57
       Height = 39
@@ -407,10 +340,102 @@ object FConsOrdemServico: TFConsOrdemServico
   end
   object CkbEncerradas: TCheckBox
     Left = 272
-    Top = 80
+    Top = 112
     Width = 217
     Height = 17
     Caption = 'Apresentar ordens de servi'#231'o encerradas.'
     TabOrder = 4
+  end
+  object pnlTituloForm: TPanel
+    Left = 0
+    Top = 0
+    Width = 1002
+    Height = 30
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    Caption = ' Consulta de ordens de servi'#231'o'
+    Color = clPurple
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 0
+  end
+  object DBGClientes: TDBGrid
+    Left = 0
+    Top = 144
+    Width = 1001
+    Height = 265
+    Align = alCustom
+    DataSource = DModuleCliente.DSConsOrdemServico
+    Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    TabOrder = 5
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+    OnDrawColumnCell = DBGClientesDrawColumnCell
+    OnDblClick = DBGClientesDblClick
+    Columns = <
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'CDORDEMSERVICO'
+        Title.Caption = 'C'#243'd.'
+        Width = 35
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DATACADASTRO'
+        Title.Caption = 'Data OS'
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'EQUIPAMENTO'
+        Title.Caption = 'Codificador'
+        Visible = True
+      end
+      item
+        Alignment = taLeftJustify
+        Expanded = False
+        FieldName = 'CDCLIENTE'
+        Title.Caption = 'C'#243'digo'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'NMCLIENTE'
+        Title.Caption = 'Cliente'
+        Width = 300
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'DEORDEMSERVICO'
+        Title.Caption = 'Ordem Servi'#231'o'
+        Width = 800
+        Visible = True
+      end>
+  end
+  object sbarConsulta: TStatusBar
+    Left = 0
+    Top = 455
+    Width = 1002
+    Height = 19
+    Panels = <
+      item
+        Width = 800
+      end
+      item
+        Width = 150
+      end>
+    SimplePanel = False
   end
 end

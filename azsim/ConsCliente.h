@@ -20,20 +20,17 @@
 class TFConsCliente : public TForm
 {
 __published:	// IDE-managed Components
-    TPageControl *PCResultado;
-    TTabSheet *TabSheet1;
-    TDBGrid *DBGClientes;
-    TGroupBox *GroupBox1;
+    TGroupBox *GrpCliente;
     TEdit *EdtNome;
     TEdit *EdtCodigo;
     TLabel *Label4;
     TLabel *Label6;
     TSpeedButton *BtnConsultar;
-    TGroupBox *GPBConsEndereco;
-    TEdit *EdtCidade;
+    TGroupBox *GrpEndereco;
+    TEdit *EdtEndereco;
     TSpeedButton *BtnTodos;
-    TStatusBar *SBarConsCliente;
-    TGroupBox *GPBNomeSelecionado;
+    TStatusBar *sbarConsulta;
+    TGroupBox *GrpNomeSelecionado;
     TDBText *TXTNome;
     TDBText *TXTCodigo;
     TPanel *PMenu;
@@ -43,13 +40,20 @@ __published:	// IDE-managed Components
     TSpeedButton *BtnAbrirContratos;
     TSpeedButton *BtnSelecionar;
     TSpeedButton *BtnRelatorioClientes;
-    TGroupBox *GroupBox2;
+    TGroupBox *GrpFilial;
     TDBLookupComboBox *CmbFilial;
-    TCheckBox *CkbAtivos;
         TDBText *TXTCodificador;
         TDBText *TXTModeloCentral;
         TDBText *TXTLocalInstalacao;
-    TPanel *Panel1;
+    TPanel *pnlTituloForm;
+    TLabel *Label1;
+    TLabel *Label2;
+    TLabel *Label3;
+    TDBGrid *DBGClientes;
+    TLabel *LblOR;
+    TRadioGroup *RgpOrdenacao;
+    TImage *ImgSelecionarCliente;
+    TRadioGroup *rgClientesAtivos;
     void __fastcall BtnConsultarClick(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall DBGClientesDblClick(TObject *Sender);
@@ -57,12 +61,19 @@ __published:	// IDE-managed Components
     void __fastcall EdtNomeKeyPress(TObject *Sender, char &Key);
     void __fastcall DBGContratosKeyPress(TObject *Sender, char &Key);
     void __fastcall DBGContratosDblClick(TObject *Sender);
-    void __fastcall FormShow(TObject *Sender);
     void __fastcall BtnFecharClick(TObject *Sender);
     void __fastcall EdtNomeKeyUp(TObject *Sender, WORD &Key,
           TShiftState Shift);
     void __fastcall BtnSelecionarClick(TObject *Sender);
     void __fastcall BtnRelatorioClientesClick(TObject *Sender);
+    void __fastcall FormCreate(TObject *Sender);
+    void __fastcall ConfiguraEventosForm(void);
+    void __fastcall ChangeEnter(TObject * Sender);
+    void __fastcall ChangeExit(TObject *Sender);
+    void __fastcall DBGClientesDrawColumnCell(TObject *Sender,
+          const TRect &Rect, int DataCol, TColumn *Column,
+          TGridDrawState State);
+    void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
     TIntegerField *ObjetoCodigoCliente;
 public:		// User declarations

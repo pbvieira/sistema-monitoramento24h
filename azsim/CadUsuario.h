@@ -29,7 +29,8 @@ __published:	// IDE-managed Components
     TToolButton *BtnDeletar;
     TPanel *PFechar;
     TSpeedButton *BtnFechar;
-    TGroupBox *GroupBox1;
+    TPanel *Panel1;
+    TDBGrid *DBGUsuario;
     TLabel *Label6;
     TLabel *Label10;
     TLabel *Label3;
@@ -39,8 +40,8 @@ __published:	// IDE-managed Components
     TDBCheckBox *CkbAdmin;
     TDBEdit *EdtNmUsuario;
     TDBLookupComboBox *CmbTipoUsuario;
-    TGroupBox *GroupBox2;
-    TDBGrid *DBGUsuario;
+    TLabel *Label1;
+    TPanel *pnlTituloForm;
     void __fastcall FormCreate(TObject *Sender);
     void __fastcall BtnNovoClick(TObject *Sender);
     void __fastcall BtnGravarClick(TObject *Sender);

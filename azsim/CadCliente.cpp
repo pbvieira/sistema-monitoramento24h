@@ -216,16 +216,16 @@ void __fastcall TFCadCliente::BtnDeletarClick(TObject *Sender)
 void __fastcall TFCadCliente::ChangeEnter(TObject *Sender)
 {
     if(dynamic_cast <TDBEdit*> (Sender) != NULL){
-        dynamic_cast <TDBEdit*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBEdit*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TDBLookupComboBox*> (Sender) != NULL){
-        dynamic_cast <TDBLookupComboBox*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBLookupComboBox*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TDBComboBox*> (Sender) != NULL){
-        dynamic_cast <TDBComboBox*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBComboBox*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TDBMemo*> (Sender) != NULL){
-        dynamic_cast <TDBMemo*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBMemo*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
     }
 }
 
@@ -459,5 +459,11 @@ void __fastcall TFCadCliente::BtnContratosClick(TObject *Sender)
     }
 }
 
+//---------------------------------------------------------------------------
+
+void __fastcall TFCadCliente::FormShow(TObject *Sender)
+{
+    pnlTituloForm->Color = COLOR_HEADER_FORM;    
+}
 //---------------------------------------------------------------------------
 

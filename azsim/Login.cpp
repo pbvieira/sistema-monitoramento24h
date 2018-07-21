@@ -15,6 +15,12 @@ AnsiString USUARIO;
 bool ISADMINISTRADOR;
 bool ATENDEROCORRENCIAS;
 
+TColor COLOR_HEADER_FORM;
+TColor COLOR_GRID_SELECTED_ROW;
+TColor COLOR_GRID_ALTERNATE_ROW;
+TColor COLOR_FIELD_FORM_FOCUS;
+TColor COLOR_FIELD_FORM_OCORRENCIA_FOCUS;
+
 TFLogin *FLogin;
 //---------------------------------------------------------------------------
 __fastcall TFLogin::TFLogin(TComponent* Owner)
@@ -38,6 +44,14 @@ void __fastcall TFLogin::BtnEntrarClick(TObject *Sender)
             USUARIO = DModule->IBQLoginLOGIN->AsString;
             ISADMINISTRADOR = DModule->IBQLoginISADMIN->AsInteger > 0;
             ATENDEROCORRENCIAS = CkbAtenderOC->Checked;
+
+            // Temas visuais
+            COLOR_HEADER_FORM = clPurple;
+            COLOR_GRID_SELECTED_ROW = clHighlight;
+            COLOR_GRID_ALTERNATE_ROW = 0x00FAE6E6;
+            COLOR_FIELD_FORM_FOCUS = 0x00FFC4FF;
+            COLOR_FIELD_FORM_OCORRENCIA_FOCUS = 0x00F2E5D6;
+
             FHome = new TFHome(this);
             FHome->Show();
             this->Visible = false;

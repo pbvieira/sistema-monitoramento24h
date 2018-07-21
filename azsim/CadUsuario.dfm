@@ -1,11 +1,11 @@
 object FCadUsuario: TFCadUsuario
-  Left = 297
-  Top = 185
+  Left = 896
+  Top = 131
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
-  Caption = 'Cadastro de Usu'#225'rios'
-  ClientHeight = 455
-  ClientWidth = 505
+  Caption = 'AZSIM'
+  ClientHeight = 491
+  ClientWidth = 514
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -21,8 +21,8 @@ object FCadUsuario: TFCadUsuario
   TextHeight = 13
   object PMenu: TPanel
     Left = 0
-    Top = 416
-    Width = 505
+    Top = 452
+    Width = 514
     Height = 39
     Align = alBottom
     BevelOuter = bvNone
@@ -87,7 +87,7 @@ object FCadUsuario: TFCadUsuario
       end
     end
     object PFechar: TPanel
-      Left = 448
+      Left = 457
       Top = 0
       Width = 57
       Height = 39
@@ -132,16 +132,15 @@ object FCadUsuario: TFCadUsuario
       end
     end
   end
-  object GroupBox1: TGroupBox
+  object Panel1: TPanel
     Left = 8
-    Top = 8
-    Width = 489
-    Height = 137
-    Caption = 'Usu'#225'rio'
+    Top = 40
+    Width = 497
+    Height = 401
     TabOrder = 1
     object Label6: TLabel
       Left = 13
-      Top = 20
+      Top = 12
       Width = 28
       Height = 13
       Caption = 'Nome'
@@ -154,7 +153,7 @@ object FCadUsuario: TFCadUsuario
     end
     object Label10: TLabel
       Left = 164
-      Top = 60
+      Top = 52
       Width = 31
       Height = 13
       Caption = 'Senha'
@@ -167,7 +166,7 @@ object FCadUsuario: TFCadUsuario
     end
     object Label3: TLabel
       Left = 12
-      Top = 60
+      Top = 52
       Width = 36
       Height = 13
       Caption = 'Usu'#225'rio'
@@ -180,7 +179,7 @@ object FCadUsuario: TFCadUsuario
     end
     object Label2: TLabel
       Left = 317
-      Top = 60
+      Top = 52
       Width = 75
       Height = 13
       Caption = 'Tipo do Usu'#225'rio'
@@ -191,76 +190,33 @@ object FCadUsuario: TFCadUsuario
       Font.Style = []
       ParentFont = False
     end
-    object EdtSenha: TDBEdit
-      Left = 165
-      Top = 76
-      Width = 149
-      Height = 21
-      DataField = 'SENHA'
-      DataSource = DModule.DSUsuario
-      PasswordChar = '*'
-      TabOrder = 0
+    object Label1: TLabel
+      Left = 12
+      Top = 124
+      Width = 102
+      Height = 13
+      Caption = 'Usu'#225'rios cadastrados'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
     end
-    object EdtUsuario: TDBEdit
-      Left = 13
-      Top = 76
-      Width = 149
-      Height = 21
-      DataField = 'LOGIN'
-      DataSource = DModule.DSUsuario
-      TabOrder = 1
-    end
-    object CkbAdmin: TDBCheckBox
-      Left = 13
-      Top = 108
-      Width = 193
-      Height = 17
-      Caption = 'Habilitar permiss'#227'o de administrador'
-      DataField = 'ISADMIN'
-      DataSource = DModule.DSUsuario
-      TabOrder = 2
-      ValueChecked = '1'
-      ValueUnchecked = '0'
-    end
-    object EdtNmUsuario: TDBEdit
-      Left = 13
-      Top = 36
-      Width = 460
-      Height = 21
-      DataField = 'NMUSUARIO'
-      DataSource = DModule.DSUsuario
-      TabOrder = 3
-    end
-    object CmbTipoUsuario: TDBLookupComboBox
-      Left = 317
-      Top = 76
-      Width = 158
-      Height = 21
-      DataField = 'DETIPOUSUARIO'
-      DataSource = DModule.DSUsuario
-      TabOrder = 4
-    end
-  end
-  object GroupBox2: TGroupBox
-    Left = 8
-    Top = 152
-    Width = 489
-    Height = 257
-    Caption = 'Usu'#225'rios Cadastrados'
-    TabOrder = 2
     object DBGUsuario: TDBGrid
-      Left = 9
-      Top = 19
-      Width = 466
+      Left = 13
+      Top = 139
+      Width = 462
       Height = 227
       DataSource = DModule.DSUsuario
       Options = [dgIndicator, dgRowLines, dgTabs, dgConfirmDelete]
-      TabOrder = 0
+      TabOrder = 5
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
       TitleFont.Height = -11
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
+      OnDrawColumnCell = DBGUsuarioDrawColumnCell
       Columns = <
         item
           Expanded = False
@@ -269,5 +225,72 @@ object FCadUsuario: TFCadUsuario
           Visible = True
         end>
     end
+    object EdtSenha: TDBEdit
+      Left = 165
+      Top = 68
+      Width = 149
+      Height = 21
+      DataField = 'SENHA'
+      DataSource = DModule.DSUsuario
+      PasswordChar = '*'
+      TabOrder = 2
+    end
+    object EdtUsuario: TDBEdit
+      Left = 13
+      Top = 68
+      Width = 149
+      Height = 21
+      DataField = 'LOGIN'
+      DataSource = DModule.DSUsuario
+      TabOrder = 1
+    end
+    object CkbAdmin: TDBCheckBox
+      Left = 13
+      Top = 100
+      Width = 193
+      Height = 17
+      Caption = 'Habilitar permiss'#227'o de administrador'
+      DataField = 'ISADMIN'
+      DataSource = DModule.DSUsuario
+      TabOrder = 4
+      ValueChecked = '1'
+      ValueUnchecked = '0'
+    end
+    object EdtNmUsuario: TDBEdit
+      Left = 13
+      Top = 28
+      Width = 460
+      Height = 21
+      DataField = 'NMUSUARIO'
+      DataSource = DModule.DSUsuario
+      TabOrder = 0
+    end
+    object CmbTipoUsuario: TDBLookupComboBox
+      Left = 317
+      Top = 68
+      Width = 158
+      Height = 21
+      DataField = 'DETIPOUSUARIO'
+      DataSource = DModule.DSUsuario
+      TabOrder = 3
+    end
+  end
+  object pnlTituloForm: TPanel
+    Left = 0
+    Top = 0
+    Width = 514
+    Height = 30
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    Caption = ' Cadastro de usu'#225'rios'
+    Color = clPurple
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 2
   end
 end

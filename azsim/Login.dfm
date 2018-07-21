@@ -1,6 +1,6 @@
 object FLogin: TFLogin
-  Left = 744
-  Top = 183
+  Left = 649
+  Top = 163
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'AZSIM'

@@ -26,7 +26,6 @@ void __fastcall TFCadOrdemServico::FormCreate(TObject *Sender)
 {
     ConfiguraEventosForm();
     ConfiguraCharCaseForm();
-
     this->ObjetoCodigoOS = NULL;
     this->ObjetoResumoOC = NULL;
 }
@@ -141,19 +140,19 @@ void __fastcall TFCadOrdemServico::ConfiguraEventosForm(void)
 void __fastcall TFCadOrdemServico::ChangeEnter(TObject *Sender)
 {
     if(dynamic_cast <TDBEdit*> (Sender) != NULL){
-        dynamic_cast <TDBEdit*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBEdit*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TEdit*> (Sender) != NULL){
-        dynamic_cast <TEdit*> (Sender)->Color = 15138520;
+        dynamic_cast <TEdit*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TDBLookupComboBox*> (Sender) != NULL){
-        dynamic_cast <TDBLookupComboBox*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBLookupComboBox*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TDBComboBox*> (Sender) != NULL){
-        dynamic_cast <TDBComboBox*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBComboBox*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
 
     } else if(dynamic_cast <TDBMemo*> (Sender) != NULL){
-        dynamic_cast <TDBMemo*> (Sender)->Color = 15138520;
+        dynamic_cast <TDBMemo*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
     }
 }
 
@@ -260,7 +259,7 @@ void __fastcall TFCadOrdemServico::ConsultaCliente(int CdCliente)
 {
     try{
         AnsiString SQL_FILTRO =
-            "SELECT C.CDCLIENTE, C.NMCLIENTE, C.ENDERECO, C.BAIRRO, C.CIDADE, C.UF, C.CEP "
+            "SELECT C.CDCLIENTE, C.NMFANTASIA, C.ENDERECO, C.BAIRRO, C.CIDADE, C.UF, C.CEP "
             "FROM CLIENTE C WHERE C.CDCLIENTE = :CDCLIENTE";
 
         AnsiString Nome;
@@ -282,7 +281,7 @@ void __fastcall TFCadOrdemServico::ConsultaCliente(int CdCliente)
             DModule->IBQConsAuxCadastros->Open();
 
             if(DModule->IBQConsAuxCadastros->RecordCount > 0){
-                EdtNomeCliente->Text = DModule->IBQConsAuxCadastros->FieldByName("NMCLIENTE")->AsString;
+                EdtNomeCliente->Text = DModule->IBQConsAuxCadastros->FieldByName("NMFANTASIA")->AsString;
                 EdtEnderecoMon->Text = DModule->IBQConsAuxCadastros->FieldByName("ENDERECO")->AsString;
                 EdtBairroMon->Text = DModule->IBQConsAuxCadastros->FieldByName("BAIRRO")->AsString;
                 EdtCidadeMon->Text = DModule->IBQConsAuxCadastros->FieldByName("CIDADE")->AsString;
@@ -508,30 +507,22 @@ void __fastcall TFCadOrdemServico::GeraOrdemServicoId(void)
 void __fastcall TFCadOrdemServico::BtnLocalizarClienteClick(
       TObject *Sender)
 {
-    if(FHome->FormEstaAberto("FConsCliente")){
-        FConsCliente->Left = 10;
-        FConsCliente->Width = 375;
-        FConsCliente->GPBConsEndereco->Visible = false;
-        FConsCliente->GPBNomeSelecionado->Visible = false;
-        FConsCliente->BtnTodos->Visible = false;
-        FConsCliente->BtnAbrirClientes->Visible = false;
-        FConsCliente->BtnAbrirContratos->Visible = false;
-        FConsCliente->BtnSelecionar->Visible = true;
-        FConsCliente->SetarObjetoCodigoCliente(CDSOrdemServicoCDCLIENTE);
-        FConsCliente->Show();
-    }else{
+    if(!FHome->FormEstaAberto("FConsCliente")){
         FConsCliente = new TFConsCliente(this);
-        FConsCliente->Width = 375;
-        FConsCliente->GPBConsEndereco->Visible = false;
-        FConsCliente->GPBNomeSelecionado->Visible = false;
-        FConsCliente->BtnTodos->Visible = false;
-        FConsCliente->BtnAbrirClientes->Visible = false;
-        FConsCliente->BtnAbrirContratos->Visible = false;
-        FConsCliente->BtnSelecionar->Visible = true;
-        FConsCliente->SetarObjetoCodigoCliente(CDSOrdemServicoCDCLIENTE);
-        FConsCliente->Show();
-        FConsCliente->Left = 10;
     }
+
+    FConsCliente->Width = 1010;
+    FConsCliente->GrpEndereco->Visible = true;
+    FConsCliente->GrpNomeSelecionado->Visible = true;
+    FConsCliente->BtnTodos->Visible = false;
+    FConsCliente->BtnAbrirClientes->Visible = false;
+    FConsCliente->BtnAbrirContratos->Visible = false;
+    FConsCliente->BtnRelatorioClientes->Visible = false;
+    FConsCliente->BtnSelecionar->Visible = true;
+    FConsCliente->ImgSelecionarCliente->Visible = true;
+    FConsCliente->LblOR->Visible = false;
+    FConsCliente->SetarObjetoCodigoCliente(CDSOrdemServicoCDCLIENTE);
+    FConsCliente->Show();
 }
 
 //---------------------------------------------------------------------------
@@ -555,4 +546,3 @@ void __fastcall TFCadOrdemServico::BtnConsultarClick(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
-
