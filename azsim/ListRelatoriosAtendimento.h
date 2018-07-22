@@ -26,11 +26,8 @@ __published:	// IDE-managed Components
     TClientDataSet *CDSRelAtendimento;
     TSpeedButton *BtnFechar;
     TPanel *Panel1;
-    TSpeedButton *BtnTotalEveHoraCli;
-    TSpeedButton *BtnTotalEveDataCli;
-    TSpeedButton *BtnTotalEventos;
-    TSpeedButton *BtnOcorrenciasCliente;
-    TSpeedButton *BtnEventosClientesDataHora;
+    TSpeedButton *BtnOcorrencias;
+    TSpeedButton *BtnEventos;
     TGroupBox *GroupBox2;
     TLabel *Label10;
     TLabel *Label11;
@@ -50,13 +47,10 @@ __published:	// IDE-managed Components
     TEdit *EdtStatusTotais;
     TEdit *EdtStatusDescricaoTotais;
     TPanel *pnlTituloOcorrencias;
-    void __fastcall BtnTotalEveHoraCliClick(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall BtnFecharClick(TObject *Sender);
-    void __fastcall BtnTotalEveDataCliClick(TObject *Sender);
-    void __fastcall BtnTotalEventosClick(TObject *Sender);
-    void __fastcall BtnEventosClientesDataHoraClick(TObject *Sender);
-    void __fastcall BtnOcorrenciasClienteClick(TObject *Sender);
+    void __fastcall BtnEventosClick(TObject *Sender);
+    void __fastcall BtnOcorrenciasClick(TObject *Sender);
 private:	// User declarations
     void __fastcall ConfiguraCriteriosSQL();
 public:		// User declarations

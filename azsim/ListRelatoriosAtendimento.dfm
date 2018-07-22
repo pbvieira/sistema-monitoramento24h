@@ -4,7 +4,7 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'AZSIM'
-  ClientHeight = 306
+  ClientHeight = 296
   ClientWidth = 722
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,7 +20,7 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
   TextHeight = 13
   object BtnFechar: TSpeedButton
     Left = 656
-    Top = 265
+    Top = 257
     Width = 57
     Height = 36
     Flat = True
@@ -60,50 +60,23 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
     Width = 708
     Height = 213
     TabOrder = 0
-    object BtnTotalEveHoraCli: TSpeedButton
+    object BtnOcorrencias: TSpeedButton
       Left = 456
-      Top = 14
+      Top = 50
       Width = 240
       Height = 35
-      Caption = 'Totais de Eventos do Cliente por Hora'
+      Caption = 'Registro de ocorr'#234'ncias'
       Transparent = False
-      OnClick = BtnTotalEveHoraCliClick
+      OnClick = BtnOcorrenciasClick
     end
-    object BtnTotalEveDataCli: TSpeedButton
+    object BtnEventos: TSpeedButton
       Left = 456
-      Top = 51
+      Top = 13
       Width = 240
       Height = 35
-      Caption = 'Totais de Eventos do Cliente'
+      Caption = 'Monitor de eventos'
       Transparent = False
-      OnClick = BtnTotalEveDataCliClick
-    end
-    object BtnTotalEventos: TSpeedButton
-      Left = 456
-      Top = 88
-      Width = 240
-      Height = 35
-      Caption = 'Totais de Eventos (Prioridade na Manuten'#231#227'o)'
-      Transparent = False
-      OnClick = BtnTotalEventosClick
-    end
-    object BtnOcorrenciasCliente: TSpeedButton
-      Left = 456
-      Top = 162
-      Width = 240
-      Height = 35
-      Caption = 'Ocorr'#234'ncias do Cliente'
-      Transparent = False
-      OnClick = BtnOcorrenciasClienteClick
-    end
-    object BtnEventosClientesDataHora: TSpeedButton
-      Left = 456
-      Top = 125
-      Width = 240
-      Height = 35
-      Caption = 'Eventos do Cliente'
-      Transparent = False
-      OnClick = BtnEventosClientesDataHoraClick
+      OnClick = BtnEventosClick
     end
     object GroupBox2: TGroupBox
       Left = 11
@@ -295,7 +268,7 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
     Align = alTop
     Alignment = taLeftJustify
     BevelOuter = bvNone
-    Caption = ' Selecionar Relat'#243'rios de Eventos e Ocorr'#234'ncias'
+    Caption = ' Relat'#243'rios'
     Color = clPurple
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
@@ -309,28 +282,28 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 10
-    Top = 201
+    Left = 26
+    Top = 257
   end
   object IBQRelAtendimento: TIBQuery
     Database = DModule.IBCONAzsim
     Transaction = IBTRelAtendimento
     BufferChunks = 1000
     CachedUpdates = False
-    Left = 41
-    Top = 200
+    Left = 57
+    Top = 256
   end
   object DSPRelAtendimento: TDataSetProvider
     DataSet = IBQRelAtendimento
     Constraints = True
-    Left = 72
-    Top = 201
+    Left = 88
+    Top = 257
   end
   object CDSRelAtendimento: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPRelAtendimento'
-    Left = 104
-    Top = 200
+    Left = 120
+    Top = 256
   end
 end

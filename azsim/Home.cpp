@@ -282,8 +282,8 @@ void __fastcall TFHome::MnConsClientesClick(TObject *Sender)
     FConsCliente->BtnAbrirClientes->Visible = true;
     FConsCliente->BtnAbrirContratos->Visible = true;
     FConsCliente->BtnRelatorioClientes->Visible = true;
-    FConsCliente->BtnSelecionar->Visible = true;
-    FConsCliente->ImgSelecionarCliente->Visible = true;
+    FConsCliente->BtnSelecionar->Visible = false;
+    FConsCliente->ImgSelecionarCliente->Visible = false;
     FConsCliente->LblOR->Visible = true;
     FConsCliente->Show();
 }
