@@ -53,15 +53,17 @@ object FHome: TFHome
       Height = 701
       ActivePage = TSRegistroEventos
       Align = alClient
+      MultiLine = True
       TabIndex = 0
       TabOrder = 0
+      TabPosition = tpLeft
       object TSRegistroEventos: TTabSheet
-        Caption = 'Registro de Eventos'
+        Caption = 'Atendimento'
         ImageIndex = 1
         object Splitter1: TSplitter
           Left = 0
           Top = 441
-          Width = 1234
+          Width = 1215
           Height = 9
           Cursor = crVSplit
           Align = alTop
@@ -70,16 +72,16 @@ object FHome: TFHome
         object pnlEventos: TPanel
           Left = 0
           Top = 450
-          Width = 1234
-          Height = 223
+          Width = 1215
+          Height = 243
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
           object gridEventos: TDBGrid
             Left = 0
             Top = 30
-            Width = 1234
-            Height = 145
+            Width = 1215
+            Height = 165
             Align = alClient
             BorderStyle = bsNone
             Ctl3D = True
@@ -89,7 +91,7 @@ object FHome: TFHome
             Font.Height = -11
             Font.Name = 'MS Sans Serif'
             Font.Style = []
-            Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+            Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
             ParentCtl3D = False
             ParentFont = False
             TabOrder = 0
@@ -98,6 +100,7 @@ object FHome: TFHome
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnDrawColumnCell = gridEventosDrawColumnCell
             Columns = <
               item
                 Expanded = False
@@ -185,10 +188,11 @@ object FHome: TFHome
           end
           object pnlConsultaEventos: TPanel
             Left = 0
-            Top = 175
-            Width = 1234
+            Top = 195
+            Width = 1215
             Height = 48
             Align = alBottom
+            BevelOuter = bvNone
             TabOrder = 1
             object Label2: TLabel
               Left = 9
@@ -404,7 +408,7 @@ object FHome: TFHome
           object pnlSubTituloForm: TPanel
             Left = 0
             Top = 0
-            Width = 1234
+            Width = 1215
             Height = 30
             Align = alTop
             Alignment = taLeftJustify
@@ -423,15 +427,15 @@ object FHome: TFHome
         object pnlOcorrencias: TPanel
           Left = 0
           Top = 0
-          Width = 1234
+          Width = 1215
           Height = 441
           Align = alTop
           TabOrder = 1
           object gridOcorrencias: TDBGrid
             Left = 1
             Top = 31
-            Width = 1232
-            Height = 361
+            Width = 1213
+            Height = 345
             Align = alClient
             BorderStyle = bsNone
             Ctl3D = True
@@ -441,7 +445,7 @@ object FHome: TFHome
             Font.Height = -11
             Font.Name = 'MS Sans Serif'
             Font.Style = []
-            Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+            Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
             ParentCtl3D = False
             ParentFont = False
             TabOrder = 0
@@ -450,6 +454,7 @@ object FHome: TFHome
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnDrawColumnCell = gridOcorrenciasDrawColumnCell
             OnDblClick = gridOcorrenciasDblClick
             Columns = <
               item
@@ -539,7 +544,7 @@ object FHome: TFHome
           object pnlTituloForm: TPanel
             Left = 1
             Top = 1
-            Width = 1232
+            Width = 1213
             Height = 30
             Align = alTop
             Alignment = taLeftJustify
@@ -556,14 +561,15 @@ object FHome: TFHome
           end
           object Panel1: TPanel
             Left = 1
-            Top = 392
-            Width = 1232
-            Height = 48
+            Top = 376
+            Width = 1213
+            Height = 64
             Align = alBottom
+            BevelOuter = bvNone
             TabOrder = 2
             object Label17: TLabel
               Left = 11
-              Top = 4
+              Top = 21
               Width = 47
               Height = 13
               Caption = 'N'#186' Cliente'
@@ -576,7 +582,7 @@ object FHome: TFHome
             end
             object Label18: TLabel
               Left = 83
-              Top = 4
+              Top = 21
               Width = 78
               Height = 13
               Caption = 'Nome do Cliente'
@@ -587,9 +593,9 @@ object FHome: TFHome
               Font.Style = []
               ParentFont = False
             end
-            object SpeedButton1: TSpeedButton
+            object BtnConsultaRapida: TSpeedButton
               Left = 305
-              Top = 18
+              Top = 35
               Width = 128
               Height = 22
               Caption = '&Executar Consulta'
@@ -634,19 +640,32 @@ object FHome: TFHome
                 1C1C101717060617171B1C1C1C1C130116161616011B1C1C1C1C0B0715151515
                 071B1C1C1C1C0A1414050512141B1C1C1C1C1C031C1C1C1C031C1C1C1C1C1C1C
                 181818181C1C1C1C1C1C}
-              OnClick = BtnConsultarClick
+              OnClick = BtnConsultaRapidaClick
             end
-            object Edit1: TEdit
+            object Label15: TLabel
+              Left = 11
+              Top = 6
+              Width = 94
+              Height = 13
+              Caption = 'Consulta R'#225'pida'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = [fsBold]
+              ParentFont = False
+            end
+            object EdtCodigoConsultaRapida: TEdit
               Left = 10
-              Top = 19
+              Top = 36
               Width = 70
               Height = 21
               CharCase = ecUpperCase
               TabOrder = 0
             end
-            object Edit2: TEdit
+            object EdtNomeConsultaRapida: TEdit
               Left = 82
-              Top = 19
+              Top = 36
               Width = 219
               Height = 21
               CharCase = ecUpperCase
@@ -656,13 +675,13 @@ object FHome: TFHome
         end
       end
       object TSResgistroOcorrencia: TTabSheet
-        Caption = 'Registro de Ocorr'#234'ncias'
+        Caption = 'HIst'#243'rico'
         ImageIndex = 2
         object Panel2: TPanel
           Left = 0
           Top = 0
-          Width = 1234
-          Height = 673
+          Width = 1215
+          Height = 693
           Align = alClient
           TabOrder = 0
           object BtnConsultarOC: TSpeedButton
@@ -820,8 +839,8 @@ object FHome: TFHome
           object DBGOcorrenciasHist: TDBGrid
             Left = 1
             Top = 144
-            Width = 1232
-            Height = 528
+            Width = 1213
+            Height = 548
             Align = alBottom
             Anchors = [akLeft, akTop, akRight, akBottom]
             BorderStyle = bsNone
@@ -1052,7 +1071,7 @@ object FHome: TFHome
           object Panel3: TPanel
             Left = 1
             Top = 1
-            Width = 1232
+            Width = 1213
             Height = 30
             Align = alTop
             Alignment = taLeftJustify
@@ -2933,6 +2952,7 @@ object FHome: TFHome
   end
   object IBQCliConsOrdemServico: TIBQuery
     Database = DModule.IBCONAzsim
+    Transaction = DModule.IBTFilial
     BufferChunks = 1000
     CachedUpdates = False
     DataSource = DSMasterCliConsOrdemServico
@@ -3035,6 +3055,7 @@ object FHome: TFHome
   end
   object IBQCliConsArmeDesarme: TIBQuery
     Database = DModule.IBCONAzsim
+    Transaction = DModule.IBTFilial
     BufferChunks = 1000
     CachedUpdates = False
     DataSource = DSMasterCliConsArmeDesarme
@@ -3164,6 +3185,7 @@ object FHome: TFHome
   end
   object IBQCliConsLogEvento: TIBQuery
     Database = DModule.IBCONAzsim
+    Transaction = DModule.IBTFilial
     BufferChunks = 1000
     CachedUpdates = False
     DataSource = DSMasterCliConsLogEvento
@@ -3236,6 +3258,7 @@ object FHome: TFHome
   end
   object IBQCliConsOcorrencia: TIBQuery
     Database = DModule.IBCONAzsim
+    Transaction = DModule.IBTFilial
     BufferChunks = 1000
     CachedUpdates = False
     DataSource = DSMasterCliConsOcorrencia

@@ -16,6 +16,8 @@
 #include "CadCodificadores.h"
 #include "RelOcorrenciasEncerradas.h"
 #include "DMCliente.h"
+#include "FichaCliente.h"
+#include "ListaClientes.h"
 
 #pragma hdrstop
 //---------------------------------------------------------------------------
@@ -179,57 +181,6 @@ void __fastcall TFHome::FormShow(TObject *Sender)
 
 void __fastcall TFHome::FormClose(TObject *Sender, TCloseAction &Action)
 {
-    // Fecha o monitor de eventos
-    /*
-    if(apphwnd1 != NULL)
-        PostMessage(apphwnd1, WM_CLOSE, 0, 0);
-
-    if(apphwnd2 != NULL)
-        PostMessage(apphwnd2, WM_CLOSE, 0, 0);
-
-    if(apphwnd3 != NULL)
-        PostMessage(apphwnd3, WM_CLOSE, 0, 0);
-
-    if(apphwnd4 != NULL)
-        PostMessage(apphwnd4, WM_CLOSE, 0, 0);
-
-    if(apphwnd5 != NULL)
-        PostMessage(apphwnd5, WM_CLOSE, 0, 0);
-
-    if(apphwnd6 != NULL)
-        PostMessage(apphwnd6, WM_CLOSE, 0, 0);
-
-    if(apphwnd7 != NULL)
-        PostMessage(apphwnd7, WM_CLOSE, 0, 0);
-
-    if(apphwnd8 != NULL)
-        PostMessage(apphwnd8, WM_CLOSE, 0, 0);
-
-    if(apphwnd9 != NULL)
-        PostMessage(apphwnd9, WM_CLOSE, 0, 0);
-
-    if(apphwnd10 != NULL)
-        PostMessage(apphwnd10, WM_CLOSE, 0, 0);
-
-    if(apphwnd11 != NULL)
-        PostMessage(apphwnd11, WM_CLOSE, 0, 0);
-
-    if(apphwnd12 != NULL)
-        PostMessage(apphwnd12, WM_CLOSE, 0, 0);
-
-    if(apphwnd13 != NULL)
-        PostMessage(apphwnd13, WM_CLOSE, 0, 0);
-
-    if(apphwnd14 != NULL)
-        PostMessage(apphwnd14, WM_CLOSE, 0, 0);
-
-    if(apphwnd15 != NULL)
-        PostMessage(apphwnd15, WM_CLOSE, 0, 0);
-
-    if(apphwnd16 != NULL)
-        PostMessage(apphwnd16, WM_CLOSE, 0, 0);
-    */
-
     CDSConsFaltaComunicacao->Active = false;
     CDSConsEventos->Active = false;
     CDSRelAtendimento->Active = false;
@@ -419,10 +370,16 @@ void __fastcall TFHome::BtnConsultarClick(TObject *Sender)
         if(!CkbAtualizar->Checked){
             LIMITA_CONSULTA = "SELECT";
         }
-        AnsiString SQL_ORDER_BY = " ORDER BY DATAEVENTO DESC";
-        AnsiString SQL_FILTRO_DATA = Format("%s DATAEVENTO, CTX, PORTACOM, EQUIPAMENTO, "
-          "  STATUS, DESTATUS, CDCLIENTE, NMCLIENTE, ENDERECO, CIDADE "
-          "  FROM VLOGEVENTO WHERE DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL %s",
+        AnsiString SQL_ORDER_BY = " ORDER BY E.DATAEVENTO DESC";
+        AnsiString SQL_FILTRO_DATA = Format("%s "
+            "    E.DATAEVENTO, E.CTX, E.PORTACOM, E.EQUIPAMENTO, "
+            "    E.STATUS || '.' || REPLACE(E.REFERENCIA, 'F', '*') AS STATUS, "
+            "    E.DESTATUS, E.CDCLIENTE, "
+            "    CASE "
+            "    	WHEN C.NMFANTASIA IS NULL THEN E.NMCLIENTE ELSE C.NMFANTASIA "
+            "    END AS NMCLIENTE, E.ENDERECO, E.CIDADE "
+            "FROM LOGEVENTO E INNER JOIN CLIENTE C ON E.CDCLIENTE = C.CDCLIENTE "
+            "WHERE E.DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL %s",
           ARRAYOFCONST((LIMITA_CONSULTA, SQL_ORDER_BY)));
 
         AnsiString SQL_FILTRO = SQL_FILTRO_DATA;
@@ -463,7 +420,7 @@ void __fastcall TFHome::BtnConsultarClick(TObject *Sender)
             CDSConsEventos->Close();
             IBQConsEventos->SQL->Clear();
             SQL_FILTRO = SQL_FILTRO.SubString(0, StrLen(SQL_FILTRO.c_str()) - StrLen(SQL_ORDER_BY.c_str())) +
-                " AND STATUS LIKE :STATUS" + SQL_ORDER_BY;
+                " AND E.STATUS LIKE :STATUS" + SQL_ORDER_BY;
             IBQConsEventos->SQL->Text = SQL_FILTRO;
             IBQConsEventos->ParamByName("STATUS")->Size = 5;
 
@@ -471,7 +428,7 @@ void __fastcall TFHome::BtnConsultarClick(TObject *Sender)
             CDSConsEventos->Close();
             IBQConsEventos->SQL->Clear();
             SQL_FILTRO = SQL_FILTRO.SubString(0, StrLen(SQL_FILTRO.c_str()) - StrLen(SQL_ORDER_BY.c_str())) +
-                " AND DESTATUS LIKE :DESTATUS" + SQL_ORDER_BY;
+                " AND E.DESTATUS LIKE :DESTATUS" + SQL_ORDER_BY;
             IBQConsEventos->SQL->Text = SQL_FILTRO;
         }
 
@@ -1178,5 +1135,116 @@ void __fastcall TFHome::DBGCliConsOrdensAbertasDblClick(TObject *Sender)
     }
 }
 
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::BtnConsultaRapidaClick(TObject *Sender)
+{
+    try{
+        AnsiString ORDER_BY = " ORDER BY C.NMCLIENTE";
+
+        AnsiString SQL_FILTRO_TODOS = "SELECT C.CDCLIENTE, C.CDFILIAL, C.TPPESSOA, "
+            "CASE WHEN C.NMFANTASIA IS NULL THEN C.NMCLIENTE ELSE C.NMFANTASIA END AS NOME, C.NMCLIENTE, C.NMFANTASIA, "
+            "C.DOCUMENTO, C.INSCMUNICIPAL, C.ENDERECO, C.BAIRRO, C.CIDADE, C.UF, C.CEP, "
+	        "C.PONTOREF, C.CHAVE, C.KMBASE, C.OBSERVACAO, C.PROCEDIMENTOS, C.DATACADASTRO, "
+	        "C.DATAALTERACAO, C.FONE1, C.FONEOBS1, C.FONE2, C.FONEOBS2, C.FONE3, C.FONEOBS3, "
+	        "C.FONE4, C.FONEOBS4, C.FONE5, C.FONEOBS5, C.FONE6, C.FONEOBS6, C.FONE7, C.FONEOBS7, "
+	        "C.FONE8, C.FONEOBS8, CR.CDCONTRATO, CR.CDCODIFICADOR, CR.LOCALINSTALCENTRAL, CR.MODELOCENTRAL "
+          "FROM CLIENTE C INNER JOIN CONTRATO CR ON C.CDCLIENTE = CR.CDCLIENTE ";
+
+        AnsiString SQL_FILTRO_POR_CODIGO = Format(
+            "%s WHERE C.CDCLIENTE = :CDCLIENTE %s",
+                ARRAYOFCONST((SQL_FILTRO_TODOS, ORDER_BY)));
+
+        AnsiString SQL_FILTRO_POR_NOME = Format(
+            "%s WHERE C.NMCLIENTE LIKE UPPER(:NMCLIENTE) OR C.NMFANTASIA LIKE UPPER(:NMCLIENTE) %s",
+                ARRAYOFCONST((SQL_FILTRO_TODOS, ORDER_BY)));
+
+        int CodigoCliente = StrToIntDef(EdtCodigoConsultaRapida->Text, 0);
+        String NomeCliente = EdtNomeConsultaRapida->Text;
+
+        if(CodigoCliente > 0){
+            DModuleCliente->CDSConsCliente->Close();
+            DModuleCliente->IBQConsCliente->SQL->Clear();
+            DModuleCliente->IBQConsCliente->SQL->Text = SQL_FILTRO_POR_CODIGO;
+            DModuleCliente->IBQConsCliente->ParamByName("CDCLIENTE")->AsInteger = CodigoCliente;
+            DModuleCliente->CDSConsCliente->Active = true;
+            if(DModuleCliente->IBTConsCliente->InTransaction){
+                DModuleCliente->IBTConsCliente->Commit();
+            }
+        }else if(NomeCliente != ""){
+            DModuleCliente->CDSConsCliente->Close();
+            DModuleCliente->IBQConsCliente->SQL->Clear();
+            DModuleCliente->IBQConsCliente->SQL->Text = SQL_FILTRO_POR_NOME;
+            DModuleCliente->IBQConsCliente->ParamByName("NMCLIENTE")->AsString = "%" + NomeCliente + "%";
+            DModuleCliente->CDSConsCliente->Active = true;
+            if(DModuleCliente->IBTConsCliente->InTransaction){
+                DModuleCliente->IBTConsCliente->Commit();
+            }
+        }
+
+        if(DModuleCliente->CDSConsCliente->Active){
+           if(DModuleCliente->CDSConsCliente->RecordCount > 0){
+                if(DModuleCliente->CDSConsCliente->RecordCount == 1){
+                 if(FormEstaAberto("FFichaCliente")){
+                      FFichaCliente->Show();
+                  }else{
+                      FFichaCliente = new TFFichaCliente(FHome);
+                      FFichaCliente->Show();
+                  }
+                }else{
+                 if(FormEstaAberto("FFichaCliente")){
+                      FListaClientes->Show();
+                  }else{
+                      FListaClientes = new TFListaClientes(FHome);
+                      FListaClientes->Show();
+                  }
+                }
+            }else{
+                Application->MessageBox("Nenhum cliente foi localizado","",MB_ICONINFORMATION|MB_OK);
+            }
+        }
+
+    }catch(Exception &excecao){
+        AnsiString erro = excecao.Message;
+        String ErroNaConexao =
+            "Ocorreu um erro ao consultar o cadastro de clientes.\n\nDescrição do erro:\n" + erro;
+        Application->MessageBox(ErroNaConexao.c_str(),"Atenção",MB_ICONERROR|MB_OK);
+    }
+
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::gridOcorrenciasDrawColumnCell(TObject *Sender,
+      const TRect &Rect, int DataCol, TColumn *Column,
+      TGridDrawState State)
+{
+    if(CDSOcorrenciasAbertas->RecNo % 2){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_ALTERNATE_ROW;
+    }else{
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = clWindow;
+    }
+
+    if(State.Contains(gdSelected)){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_SELECTED_ROW;
+    }
+    (dynamic_cast <TDBGrid*> (Sender))->DefaultDrawColumnCell(Rect, DataCol, Column, State);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::gridEventosDrawColumnCell(TObject *Sender,
+      const TRect &Rect, int DataCol, TColumn *Column,
+      TGridDrawState State)
+{
+    if(CDSConsEventos->RecNo % 2){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_ALTERNATE_ROW;
+    }else{
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = clWindow;
+    }
+
+    if(State.Contains(gdSelected)){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_SELECTED_ROW;
+    }
+    (dynamic_cast <TDBGrid*> (Sender))->DefaultDrawColumnCell(Rect, DataCol, Column, State);
+}
 //---------------------------------------------------------------------------
 

@@ -336,9 +336,9 @@ __published:	// IDE-managed Components
     TPanel *Panel1;
     TLabel *Label17;
     TLabel *Label18;
-    TSpeedButton *SpeedButton1;
-    TEdit *Edit1;
-    TEdit *Edit2;
+    TSpeedButton *BtnConsultaRapida;
+    TEdit *EdtCodigoConsultaRapida;
+    TEdit *EdtNomeConsultaRapida;
     TPanel *Panel2;
     TSpeedButton *BtnConsultarOC;
     TSpeedButton *BtnImprimirOC;
@@ -361,6 +361,7 @@ __published:	// IDE-managed Components
     TEdit *EdtStatusOC;
     TEdit *EdtStatusDescricaoOC;
     TPanel *Panel3;
+    TLabel *Label15;
     void __fastcall MnSairClick(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall MnCadContratoClick(TObject *Sender);
@@ -406,6 +407,13 @@ __published:	// IDE-managed Components
     void __fastcall MnAbrirOcorrenciaClick(TObject *Sender);
     void __fastcall DBGCliConsOrdensAbertasDblClick(TObject *Sender);
     void __fastcall DBGCliConsOcorrenciasDblClick(TObject *Sender);
+    void __fastcall BtnConsultaRapidaClick(TObject *Sender);
+    void __fastcall gridOcorrenciasDrawColumnCell(TObject *Sender,
+          const TRect &Rect, int DataCol, TColumn *Column,
+          TGridDrawState State);
+    void __fastcall gridEventosDrawColumnCell(TObject *Sender,
+          const TRect &Rect, int DataCol, TColumn *Column,
+          TGridDrawState State);
 private:	// User declarations
     // Métodos
     HWND __fastcall CarregaMonitor(LPCTSTR program, LPCTSTR args);
