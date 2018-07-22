@@ -122,6 +122,9 @@ __fastcall TFHome::TFHome(TComponent* Owner)
 
 void __fastcall TFHome::FormShow(TObject *Sender)
 {
+    pnlTituloForm->Color = COLOR_HEADER_FORM;
+    pnlSubTituloForm->Color = COLOR_HEADER_FORM;
+
     if(ATENDEROCORRENCIAS){
         PGCHome->ActivePageIndex = 0;
         TMRConsulta->Enabled = true;

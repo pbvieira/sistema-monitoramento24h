@@ -1,10 +1,10 @@
 object FHome: TFHome
-  Left = 192
-  Top = 104
+  Left = 190
+  Top = 103
   AutoScroll = False
   Caption = 'AZSIM - Sistema Integrado de Monitoramento - Vers'#227'o 1.0.0.35'
-  ClientHeight = 719
-  ClientWidth = 1242
+  ClientHeight = 720
+  ClientWidth = 1244
   Color = clBtnFace
   Constraints.MinHeight = 592
   Constraints.MinWidth = 800
@@ -23,8 +23,8 @@ object FHome: TFHome
   TextHeight = 13
   object SBarHome: TStatusBar
     Left = 0
-    Top = 702
-    Width = 1242
+    Top = 703
+    Width = 1244
     Height = 17
     Panels = <
       item
@@ -41,16 +41,16 @@ object FHome: TFHome
   object PHome: TPanel
     Left = 0
     Top = 0
-    Width = 1242
-    Height = 702
+    Width = 1244
+    Height = 703
     Align = alClient
     BevelOuter = bvLowered
     TabOrder = 1
     object PGCHome: TPageControl
       Left = 1
       Top = 1
-      Width = 1240
-      Height = 700
+      Width = 1242
+      Height = 701
       ActivePage = TSRegistroEventos
       Align = alClient
       TabIndex = 0
@@ -61,7 +61,7 @@ object FHome: TFHome
         object Splitter1: TSplitter
           Left = 0
           Top = 441
-          Width = 1232
+          Width = 1234
           Height = 9
           Cursor = crVSplit
           Align = alTop
@@ -70,16 +70,16 @@ object FHome: TFHome
         object pnlEventos: TPanel
           Left = 0
           Top = 450
-          Width = 1232
-          Height = 222
+          Width = 1234
+          Height = 223
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
           object gridEventos: TDBGrid
             Left = 0
-            Top = 0
-            Width = 1232
-            Height = 174
+            Top = 30
+            Width = 1234
+            Height = 145
             Align = alClient
             BorderStyle = bsNone
             Ctl3D = True
@@ -185,8 +185,8 @@ object FHome: TFHome
           end
           object pnlConsultaEventos: TPanel
             Left = 0
-            Top = 174
-            Width = 1232
+            Top = 175
+            Width = 1234
             Height = 48
             Align = alBottom
             TabOrder = 1
@@ -218,7 +218,7 @@ object FHome: TFHome
               ParentFont = False
             end
             object Label8: TLabel
-              Left = 275
+              Left = 259
               Top = 4
               Width = 78
               Height = 13
@@ -231,7 +231,7 @@ object FHome: TFHome
               ParentFont = False
             end
             object Label4: TLabel
-              Left = 495
+              Left = 446
               Top = 4
               Width = 68
               Height = 13
@@ -244,8 +244,8 @@ object FHome: TFHome
               ParentFont = False
             end
             object Label5: TLabel
-              Left = 566
-              Top = 3
+              Left = 517
+              Top = 4
               Width = 35
               Height = 13
               Caption = 'Estatus'
@@ -257,8 +257,8 @@ object FHome: TFHome
               ParentFont = False
             end
             object Label9: TLabel
-              Left = 638
-              Top = 3
+              Left = 589
+              Top = 4
               Width = 101
               Height = 13
               Caption = 'Descri'#231#227'o do Estatus'
@@ -270,9 +270,9 @@ object FHome: TFHome
               ParentFont = False
             end
             object BtnConsultar: TSpeedButton
-              Left = 857
+              Left = 772
               Top = 18
-              Width = 138
+              Width = 113
               Height = 22
               Caption = '&Executar Consulta'
               Flat = True
@@ -351,21 +351,21 @@ object FHome: TFHome
             object EdtCodCliente: TEdit
               Left = 202
               Top = 19
-              Width = 70
+              Width = 53
               Height = 21
               CharCase = ecUpperCase
               TabOrder = 2
             end
             object EdtNome: TEdit
-              Left = 274
+              Left = 257
               Top = 19
-              Width = 219
+              Width = 185
               Height = 21
               CharCase = ecUpperCase
               TabOrder = 3
             end
             object EdtCodificador: TEdit
-              Left = 494
+              Left = 443
               Top = 19
               Width = 70
               Height = 21
@@ -373,7 +373,7 @@ object FHome: TFHome
               TabOrder = 4
             end
             object EdtStatus: TEdit
-              Left = 565
+              Left = 514
               Top = 19
               Width = 70
               Height = 21
@@ -382,38 +382,56 @@ object FHome: TFHome
               TabOrder = 5
             end
             object EdtStatusDescricao: TEdit
-              Left = 637
+              Left = 585
               Top = 19
-              Width = 219
+              Width = 185
               Height = 21
               CharCase = ecUpperCase
               TabOrder = 6
             end
             object CkbAtualizar: TCheckBox
-              Left = 1002
-              Top = 20
-              Width = 86
+              Left = 889
+              Top = 21
+              Width = 111
               Height = 17
-              Caption = 'Ligar Monitor'
+              Caption = 'Monitorar eventos'
               Checked = True
               State = cbChecked
               TabOrder = 7
               OnClick = CkbAtualizarClick
             end
           end
+          object pnlSubTituloForm: TPanel
+            Left = 0
+            Top = 0
+            Width = 1234
+            Height = 30
+            Align = alTop
+            Alignment = taLeftJustify
+            BevelOuter = bvNone
+            Caption = ' Monitor de eventos'
+            Color = clPurple
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -16
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 2
+          end
         end
         object pnlOcorrencias: TPanel
           Left = 0
           Top = 0
-          Width = 1232
+          Width = 1234
           Height = 441
           Align = alTop
           TabOrder = 1
           object gridOcorrencias: TDBGrid
             Left = 1
-            Top = 1
-            Width = 1230
-            Height = 439
+            Top = 31
+            Width = 1232
+            Height = 361
             Align = alClient
             BorderStyle = bsNone
             Ctl3D = True
@@ -518,393 +536,536 @@ object FHome: TFHome
                 Visible = True
               end>
           end
+          object pnlTituloForm: TPanel
+            Left = 1
+            Top = 1
+            Width = 1232
+            Height = 30
+            Align = alTop
+            Alignment = taLeftJustify
+            BevelOuter = bvNone
+            Caption = ' Atendimento de ocorr'#234'ncias'
+            Color = clPurple
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -16
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 1
+          end
+          object Panel1: TPanel
+            Left = 1
+            Top = 392
+            Width = 1232
+            Height = 48
+            Align = alBottom
+            TabOrder = 2
+            object Label17: TLabel
+              Left = 11
+              Top = 4
+              Width = 47
+              Height = 13
+              Caption = 'N'#186' Cliente'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label18: TLabel
+              Left = 83
+              Top = 4
+              Width = 78
+              Height = 13
+              Caption = 'Nome do Cliente'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
+            end
+            object SpeedButton1: TSpeedButton
+              Left = 305
+              Top = 18
+              Width = 128
+              Height = 22
+              Caption = '&Executar Consulta'
+              Flat = True
+              Glyph.Data = {
+                C6040000424DC60400000000000036040000280000000C0000000C0000000100
+                0800000000009000000000000000000000000001000000000000AC650000FCF1
+                DD00B36D0000BE770000A35E0000FCF2E000F3CE8A00FDF7EB00CA871200DAA0
+                3C00BA730000B56E0000C27B0000EABB6400A5600000F0C57500AA6500009F5A
+                0000FEFBF500AF6A0000FFFEFB00FAE6C300F6DAA600FAEACC00C37C0000F8E4
+                BD00BB740000A05B0000FFFFFF00FFFFFF000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                0000000000000000000000000000000000000000000000000000000000000000
+                00000000000000000000000000000000000000000000000000001C1C1C1C1C1C
+                1C1C1C1C04041C1C1C1C1C1C1C1C1C0008001C1C1C1C1C1C1C1C0209021C1C1C
+                1C1C1C1C1C1A0D1A1C1C1C1C1B1B111B1A0F0C1C1C1C1C0E191919191A1A1C1C
+                1C1C101717060617171B1C1C1C1C130116161616011B1C1C1C1C0B0715151515
+                071B1C1C1C1C0A1414050512141B1C1C1C1C1C031C1C1C1C031C1C1C1C1C1C1C
+                181818181C1C1C1C1C1C}
+              OnClick = BtnConsultarClick
+            end
+            object Edit1: TEdit
+              Left = 10
+              Top = 19
+              Width = 70
+              Height = 21
+              CharCase = ecUpperCase
+              TabOrder = 0
+            end
+            object Edit2: TEdit
+              Left = 82
+              Top = 19
+              Width = 219
+              Height = 21
+              CharCase = ecUpperCase
+              TabOrder = 1
+            end
+          end
         end
       end
       object TSResgistroOcorrencia: TTabSheet
         Caption = 'Registro de Ocorr'#234'ncias'
         ImageIndex = 2
-        object BtnConsultarOC: TSpeedButton
-          Left = 9
-          Top = 67
-          Width = 138
-          Height = 22
-          Caption = '&Executar Consulta'
-          Flat = True
-          Glyph.Data = {
-            C6040000424DC60400000000000036040000280000000C0000000C0000000100
-            0800000000009000000000000000000000000001000000000000AC650000FCF1
-            DD00B36D0000BE770000A35E0000FCF2E000F3CE8A00FDF7EB00CA871200DAA0
-            3C00BA730000B56E0000C27B0000EABB6400A5600000F0C57500AA6500009F5A
-            0000FEFBF500AF6A0000FFFEFB00FAE6C300F6DAA600FAEACC00C37C0000F8E4
-            BD00BB740000A05B0000FFFFFF00FFFFFF000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            00000000000000000000000000000000000000000000000000001C1C1C1C1C1C
-            1C1C1C1C04041C1C1C1C1C1C1C1C1C0008001C1C1C1C1C1C1C1C0209021C1C1C
-            1C1C1C1C1C1A0D1A1C1C1C1C1B1B111B1A0F0C1C1C1C1C0E191919191A1A1C1C
-            1C1C101717060617171B1C1C1C1C130116161616011B1C1C1C1C0B0715151515
-            071B1C1C1C1C0A1414050512141B1C1C1C1C1C031C1C1C1C031C1C1C1C1C1C1C
-            181818181C1C1C1C1C1C}
-          OnClick = BtnConsultarOCClick
-        end
-        object BtnImprimirOC: TSpeedButton
-          Left = 150
-          Top = 67
-          Width = 115
-          Height = 22
-          Caption = 'Imprimir'
-          Enabled = False
-          Flat = True
-          Glyph.Data = {
-            C6040000424DC60400000000000036040000280000000C0000000C0000000100
-            0800000000009000000000000000000000000001000000000000E3A32700DE97
-            0A00E6CB9D00E7AE3F00EDBE6600863B1A00EDE9E300EEDAB400EAD0A100C37C
-            0000ECE1D0009F5A0000FFFFFF00FFFFFF000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            0000000000000000000000000000000000000000000000000000000000000000
-            00000000000000000000000000000000000000000000000000000C0C09090909
-            090909090C0C0C0B090C0C0C0C0C0C090B0C0B020505050505050505020B0B08
-            0808080808080808080B0B070707070707070707070B0B0A0A0A0A0A0A0A0A0A
-            0A0B0B060606060606060606060B0C0B0B0B0B0B0B0B0B0B0B0C0C0C010C0C0C
-            0C0C0C010C0C0C0C000C0C0C0C0C0C030C0C0C0C000C0C0C0C0C03030C0C0C0C
-            040404040404040C0C0C}
-          Visible = False
-          OnClick = BtnImprimirOCClick
-        end
-        object GroupBox1: TGroupBox
-          Left = 8
-          Top = 0
-          Width = 209
-          Height = 62
-          Caption = 'Selecione o Intervalo da Consulta'
-          TabOrder = 0
-          object Label1: TLabel
-            Left = 106
-            Top = 17
-            Width = 48
-            Height = 13
-            Caption = 'Data Final'
-          end
-          object Label7: TLabel
-            Left = 9
-            Top = 17
-            Width = 53
-            Height = 13
-            Caption = 'Data Inicial'
-          end
-          object EdtDataFinalOC: TDateTimePicker
-            Left = 106
-            Top = 32
-            Width = 96
-            Height = 21
-            CalAlignment = dtaLeft
-            Date = 42183.6729884259
-            Format = 'dd/MM/yyyy'
-            Time = 42183.6729884259
-            DateFormat = dfShort
-            DateMode = dmComboBox
-            Kind = dtkDate
-            ParseInput = False
-            TabOrder = 1
-          end
-          object EdtDataInicialOC: TDateTimePicker
-            Left = 9
-            Top = 32
-            Width = 96
-            Height = 21
-            CalAlignment = dtaLeft
-            Date = 42183.6729884259
-            Format = 'dd/MM/yyyy'
-            Time = 42183.6729884259
-            DateFormat = dfShort
-            DateMode = dmComboBox
-            Kind = dtkDate
-            ParseInput = False
-            TabOrder = 0
-          end
-        end
-        object DBGOcorrenciasHist: TDBGrid
+        object Panel2: TPanel
           Left = 0
-          Top = 96
-          Width = 1232
-          Height = 576
-          Align = alBottom
-          Anchors = [akLeft, akTop, akRight, akBottom]
-          BorderStyle = bsNone
-          Ctl3D = True
-          DataSource = DSRelAtendimento
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clWindowText
-          Font.Height = -11
-          Font.Name = 'MS Sans Serif'
-          Font.Style = []
-          Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-          ParentCtl3D = False
-          ParentFont = False
-          TabOrder = 1
-          TitleFont.Charset = DEFAULT_CHARSET
-          TitleFont.Color = clWindowText
-          TitleFont.Height = -11
-          TitleFont.Name = 'MS Sans Serif'
-          TitleFont.Style = []
-          OnDblClick = DBGOcorrenciasHistDblClick
-          Columns = <
-            item
-              Expanded = False
-              FieldName = 'DATAEVENTO'
-              Title.Caption = 'Data Evento'
-              Visible = True
-            end
-            item
-              Alignment = taCenter
-              Expanded = False
-              FieldName = 'CTX'
-              Title.Caption = 'Ctx'
-              Width = 35
-              Visible = True
-            end
-            item
-              Alignment = taCenter
-              Expanded = False
-              FieldName = 'PORTACOM'
-              Title.Alignment = taCenter
-              Title.Caption = 'Com'
-              Width = 25
-              Visible = True
-            end
-            item
-              Alignment = taLeftJustify
-              Expanded = False
-              FieldName = 'EQUIPAMENTO'
-              Title.Caption = 'Codificador'
-              Width = 60
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'CDCLIENTE'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              Title.Caption = 'C'#243'd.'
-              Width = 40
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'NMCLIENTE'
-              Title.Caption = 'Cliente'
-              Width = 250
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'STATUS'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              Title.Caption = 'Status'
-              Width = 35
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'DESTATUS'
-              Title.Caption = 'Descri'#231#227'o'
-              Width = 250
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'ENDERECO'
-              Title.Caption = 'Endere'#231'o'
-              Width = 290
-              Visible = True
-            end
-            item
-              Expanded = False
-              FieldName = 'CIDADE'
-              Title.Caption = 'Cidade'
-              Width = 1024
-              Visible = True
-            end>
-        end
-        object GroupBox2: TGroupBox
-          Left = 220
           Top = 0
-          Width = 437
-          Height = 62
-          Caption = ' Cliente ou Codificador '
-          TabOrder = 2
-          object Label10: TLabel
-            Left = 13
-            Top = 17
-            Width = 47
-            Height = 13
-            Caption = 'N'#186' Cliente'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label11: TLabel
-            Left = 361
-            Top = 17
-            Width = 68
-            Height = 13
-            Caption = 'N'#186' Codificador'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = []
-            ParentFont = False
-          end
-          object Label12: TLabel
-            Left = 85
-            Top = 17
-            Width = 78
-            Height = 13
-            Caption = 'Nome do Cliente'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = []
-            ParentFont = False
-          end
-          object EdtCodClienteOC: TEdit
-            Left = 12
-            Top = 32
-            Width = 70
-            Height = 21
-            CharCase = ecUpperCase
-            TabOrder = 0
-          end
-          object EdtNomeOC: TEdit
-            Left = 84
-            Top = 32
-            Width = 274
-            Height = 21
-            CharCase = ecUpperCase
-            TabOrder = 1
-          end
-          object EdtCodificadorOC: TEdit
-            Left = 360
-            Top = 32
-            Width = 70
-            Height = 21
-            CharCase = ecUpperCase
-            TabOrder = 2
-          end
-        end
-        object GroupBox3: TGroupBox
-          Left = 660
-          Top = 0
-          Width = 343
-          Height = 62
-          Caption = ' Estatus ou Descri'#231#227'o'
-          TabOrder = 3
-          object Label13: TLabel
+          Width = 1234
+          Height = 673
+          Align = alClient
+          TabOrder = 0
+          object BtnConsultarOC: TSpeedButton
             Left = 9
-            Top = 17
-            Width = 35
-            Height = 13
-            Caption = 'Estatus'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = []
-            ParentFont = False
+            Top = 107
+            Width = 138
+            Height = 22
+            Caption = '&Executar Consulta'
+            Flat = True
+            Glyph.Data = {
+              C6040000424DC60400000000000036040000280000000C0000000C0000000100
+              0800000000009000000000000000000000000001000000000000AC650000FCF1
+              DD00B36D0000BE770000A35E0000FCF2E000F3CE8A00FDF7EB00CA871200DAA0
+              3C00BA730000B56E0000C27B0000EABB6400A5600000F0C57500AA6500009F5A
+              0000FEFBF500AF6A0000FFFEFB00FAE6C300F6DAA600FAEACC00C37C0000F8E4
+              BD00BB740000A05B0000FFFFFF00FFFFFF000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              00000000000000000000000000000000000000000000000000001C1C1C1C1C1C
+              1C1C1C1C04041C1C1C1C1C1C1C1C1C0008001C1C1C1C1C1C1C1C0209021C1C1C
+              1C1C1C1C1C1A0D1A1C1C1C1C1B1B111B1A0F0C1C1C1C1C0E191919191A1A1C1C
+              1C1C101717060617171B1C1C1C1C130116161616011B1C1C1C1C0B0715151515
+              071B1C1C1C1C0A1414050512141B1C1C1C1C1C031C1C1C1C031C1C1C1C1C1C1C
+              181818181C1C1C1C1C1C}
+            OnClick = BtnConsultarOCClick
           end
-          object Label14: TLabel
-            Left = 81
-            Top = 17
-            Width = 101
-            Height = 13
-            Caption = 'Descri'#231#227'o do Estatus'
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = []
-            ParentFont = False
+          object BtnImprimirOC: TSpeedButton
+            Left = 150
+            Top = 107
+            Width = 115
+            Height = 22
+            Caption = 'Imprimir'
+            Enabled = False
+            Flat = True
+            Glyph.Data = {
+              C6040000424DC60400000000000036040000280000000C0000000C0000000100
+              0800000000009000000000000000000000000001000000000000E3A32700DE97
+              0A00E6CB9D00E7AE3F00EDBE6600863B1A00EDE9E300EEDAB400EAD0A100C37C
+              0000ECE1D0009F5A0000FFFFFF00FFFFFF000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              00000000000000000000000000000000000000000000000000000C0C09090909
+              090909090C0C0C0B090C0C0C0C0C0C090B0C0B020505050505050505020B0B08
+              0808080808080808080B0B070707070707070707070B0B0A0A0A0A0A0A0A0A0A
+              0A0B0B060606060606060606060B0C0B0B0B0B0B0B0B0B0B0B0C0C0C010C0C0C
+              0C0C0C010C0C0C0C000C0C0C0C0C0C030C0C0C0C000C0C0C0C0C03030C0C0C0C
+              040404040404040C0C0C}
+            Visible = False
+            OnClick = BtnImprimirOCClick
           end
-          object EdtStatusOC: TEdit
+          object GroupBox1: TGroupBox
             Left = 8
-            Top = 33
-            Width = 70
-            Height = 21
-            Hint = 'Exemplo: 0.0*'
-            CharCase = ecUpperCase
+            Top = 40
+            Width = 209
+            Height = 62
+            Caption = 'Selecione o Intervalo da Consulta'
             TabOrder = 0
+            object Label1: TLabel
+              Left = 106
+              Top = 17
+              Width = 48
+              Height = 13
+              Caption = 'Data Final'
+            end
+            object Label7: TLabel
+              Left = 9
+              Top = 17
+              Width = 53
+              Height = 13
+              Caption = 'Data Inicial'
+            end
+            object EdtDataFinalOC: TDateTimePicker
+              Left = 106
+              Top = 32
+              Width = 96
+              Height = 21
+              CalAlignment = dtaLeft
+              Date = 42183.6729884259
+              Format = 'dd/MM/yyyy'
+              Time = 42183.6729884259
+              DateFormat = dfShort
+              DateMode = dmComboBox
+              Kind = dtkDate
+              ParseInput = False
+              TabOrder = 1
+            end
+            object EdtDataInicialOC: TDateTimePicker
+              Left = 9
+              Top = 32
+              Width = 96
+              Height = 21
+              CalAlignment = dtaLeft
+              Date = 42183.6729884259
+              Format = 'dd/MM/yyyy'
+              Time = 42183.6729884259
+              DateFormat = dfShort
+              DateMode = dmComboBox
+              Kind = dtkDate
+              ParseInput = False
+              TabOrder = 0
+            end
           end
-          object EdtStatusDescricaoOC: TEdit
-            Left = 80
-            Top = 33
-            Width = 254
-            Height = 21
-            CharCase = ecUpperCase
+          object DBGOcorrenciasHist: TDBGrid
+            Left = 1
+            Top = 144
+            Width = 1232
+            Height = 528
+            Align = alBottom
+            Anchors = [akLeft, akTop, akRight, akBottom]
+            BorderStyle = bsNone
+            Ctl3D = True
+            DataSource = DSRelAtendimento
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+            ParentCtl3D = False
+            ParentFont = False
             TabOrder = 1
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'MS Sans Serif'
+            TitleFont.Style = []
+            OnDblClick = DBGOcorrenciasHistDblClick
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'DATAEVENTO'
+                Title.Caption = 'Data Evento'
+                Visible = True
+              end
+              item
+                Alignment = taCenter
+                Expanded = False
+                FieldName = 'CTX'
+                Title.Caption = 'Ctx'
+                Width = 35
+                Visible = True
+              end
+              item
+                Alignment = taCenter
+                Expanded = False
+                FieldName = 'PORTACOM'
+                Title.Alignment = taCenter
+                Title.Caption = 'Com'
+                Width = 25
+                Visible = True
+              end
+              item
+                Alignment = taLeftJustify
+                Expanded = False
+                FieldName = 'EQUIPAMENTO'
+                Title.Caption = 'Codificador'
+                Width = 60
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CDCLIENTE'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'MS Sans Serif'
+                Font.Style = [fsBold]
+                Title.Caption = 'C'#243'd.'
+                Width = 40
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'NMCLIENTE'
+                Title.Caption = 'Cliente'
+                Width = 250
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'STATUS'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'MS Sans Serif'
+                Font.Style = [fsBold]
+                Title.Caption = 'Status'
+                Width = 35
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DESTATUS'
+                Title.Caption = 'Descri'#231#227'o'
+                Width = 250
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'ENDERECO'
+                Title.Caption = 'Endere'#231'o'
+                Width = 290
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CIDADE'
+                Title.Caption = 'Cidade'
+                Width = 1024
+                Visible = True
+              end>
+          end
+          object GroupBox2: TGroupBox
+            Left = 220
+            Top = 40
+            Width = 437
+            Height = 62
+            Caption = ' Cliente ou Codificador '
+            TabOrder = 2
+            object Label10: TLabel
+              Left = 13
+              Top = 17
+              Width = 47
+              Height = 13
+              Caption = 'N'#186' Cliente'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label11: TLabel
+              Left = 361
+              Top = 17
+              Width = 68
+              Height = 13
+              Caption = 'N'#186' Codificador'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label12: TLabel
+              Left = 85
+              Top = 17
+              Width = 78
+              Height = 13
+              Caption = 'Nome do Cliente'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
+            end
+            object EdtCodClienteOC: TEdit
+              Left = 12
+              Top = 32
+              Width = 70
+              Height = 21
+              CharCase = ecUpperCase
+              TabOrder = 0
+            end
+            object EdtNomeOC: TEdit
+              Left = 84
+              Top = 32
+              Width = 274
+              Height = 21
+              CharCase = ecUpperCase
+              TabOrder = 1
+            end
+            object EdtCodificadorOC: TEdit
+              Left = 360
+              Top = 32
+              Width = 70
+              Height = 21
+              CharCase = ecUpperCase
+              TabOrder = 2
+            end
+          end
+          object GroupBox3: TGroupBox
+            Left = 660
+            Top = 40
+            Width = 343
+            Height = 62
+            Caption = ' Estatus ou Descri'#231#227'o'
+            TabOrder = 3
+            object Label13: TLabel
+              Left = 9
+              Top = 17
+              Width = 35
+              Height = 13
+              Caption = 'Estatus'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label14: TLabel
+              Left = 81
+              Top = 17
+              Width = 101
+              Height = 13
+              Caption = 'Descri'#231#227'o do Estatus'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
+            end
+            object EdtStatusOC: TEdit
+              Left = 8
+              Top = 33
+              Width = 70
+              Height = 21
+              Hint = 'Exemplo: 0.0*'
+              CharCase = ecUpperCase
+              TabOrder = 0
+            end
+            object EdtStatusDescricaoOC: TEdit
+              Left = 80
+              Top = 33
+              Width = 254
+              Height = 21
+              CharCase = ecUpperCase
+              TabOrder = 1
+            end
+          end
+          object Panel3: TPanel
+            Left = 1
+            Top = 1
+            Width = 1232
+            Height = 30
+            Align = alTop
+            Alignment = taLeftJustify
+            BevelOuter = bvNone
+            Caption = ' Registro de ocorr'#234'ncias'
+            Color = clPurple
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -16
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 4
           end
         end
       end
