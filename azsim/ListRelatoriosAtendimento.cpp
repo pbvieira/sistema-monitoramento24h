@@ -190,7 +190,8 @@ void __fastcall TFListRelatoriosAtendimento::BtnOcorrenciasClick(
         AnsiString SQL_FILTRO_DATA =
             "SELECT "
             "    O.CDOCORRENCIA, O.DATAEVENTO, O.DATAATENDIMENTO, O.DATAENCERRAMENTO, O.CTX, O.PORTACOM, O.EQUIPAMENTO, "
-            "    C.CDCLIENTE, C.NMCLIENTE, C.ENDERECO, C.CIDADE, "
+            "    C.CDCLIENTE, C.ENDERECO, C.CIDADE, "
+            "    CASE WHEN C.NMFANTASIA IS NULL THEN C.NMCLIENTE ELSE C.NMFANTASIA END AS NMCLIENTE, "
             "    O.STATUS || '.' || REPLACE(O.REFERENCIA, 'F', '*') AS STATUS,  O.DESTATUS, "
             "    CASE "
             "        WHEN TRIM(O.NUMSETOR) <> '' AND TRIM(O.NUMSETOR) <> 'FF' THEN "
@@ -205,9 +206,9 @@ void __fastcall TFListRelatoriosAtendimento::BtnOcorrenciasClick(
             "WHERE O.ISOCORRENCIAENCERRADA = 1 AND O.DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL" + SQL_ORDER_BY;
 
         AnsiString SQL_FILTRO = SQL_FILTRO_DATA;
-        AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND CDCLIENTE = :CDCLIENTE" + SQL_ORDER_BY;
-        AnsiString SQL_FILTRO_NOME = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND NMCLIENTE LIKE UPPER(:NMCLIENTE)" + SQL_ORDER_BY;
-        AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND EQUIPAMENTO = :EQUIPAMENTO" + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND O.CDCLIENTE = :CDCLIENTE" + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_NOME = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND C.NMCLIENTE LIKE UPPER(:NMCLIENTE) OR C.NMFANTASIA LIKE UPPER(:NMCLIENTE)" + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND O.EQUIPAMENTO = :EQUIPAMENTO" + SQL_ORDER_BY;
 
         CDSRelAtendimento->Close();
         IBQRelAtendimento->SQL->Clear();

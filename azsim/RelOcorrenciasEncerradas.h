@@ -41,6 +41,9 @@ __published:
     TQRDBText *QRDBTDATAATENDIMENTO;
     TQRLabel *QRLabel5;
     TQRDBText *QRDBTEQUIPAMENTO;
+    TQRBand *QRBand1;
+    TQRSysData *QRSysData1;
+    TQRSysData *QRSysData2;
 private:
 public:
    __fastcall TQRPOcorrenciasEncerradas::TQRPOcorrenciasEncerradas(TComponent* Owner);

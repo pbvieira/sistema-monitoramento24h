@@ -30,7 +30,6 @@ USEFORM("ConsOrdemServico.cpp", FConsOrdemServico);
 USEFORM("RelOrdemServicos.cpp", QRPOrdemServicos); /* TQuickRep: File Type */
 USEFORM("CadBase.cpp", FCadBase);
 USEFORM("CadCodificadores.cpp", FCadCodificadores);
-USEFORM("RelClientes.cpp", QRPClientes); /* TQuickRep: File Type */
 USEFORM("RelFichaClientes.cpp", QrpFichaCliente); /* TQuickRep: File Type */
 USEFORM("DMInfo.cpp", fdmInfo); /* TDataModule: File Type */
 USEFORM("DMOcorrencia.cpp", fdmOcorrencia); /* TDataModule: File Type */

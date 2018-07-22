@@ -12,9 +12,9 @@
       RelTopEventosClienteHora.obj RelTopEventosClienteData.obj 
       RelEventosClienteDataHora.obj BufferResumoOcorrencias.obj 
       RelOcorrenciasEncerradas.obj CadOrdemServico.obj ConsOrdemServico.obj 
-      RelOrdemServicos.obj CadBase.obj CadCodificadores.obj RelClientes.obj 
-      RelFichaClientes.obj DMInfo.obj DMOcorrencia.obj 
-      DialogGeracaoRelClientes.obj ListaClientes.obj FichaCliente.obj"/>
+      RelOrdemServicos.obj CadBase.obj CadCodificadores.obj RelFichaClientes.obj 
+      DMInfo.obj DMOcorrencia.obj DialogGeracaoRelClientes.obj ListaClientes.obj 
+      FichaCliente.obj"/>
     <RESFILES value="Azsim.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -27,9 +27,9 @@
       RelTopEventosClienteHora.dfm RelTopEventosClienteData.dfm 
       RelEventosClienteDataHora.dfm BufferResumoOcorrencias.dfm 
       RelOcorrenciasEncerradas.dfm CadOrdemServico.dfm ConsOrdemServico.dfm 
-      RelOrdemServicos.dfm CadBase.dfm CadCodificadores.dfm RelClientes.dfm 
-      RelFichaClientes.dfm DMInfo.dfm DMOcorrencia.dfm 
-      DialogGeracaoRelClientes.dfm ListaClientes.dfm FichaCliente.dfm"/>
+      RelOrdemServicos.dfm CadBase.dfm CadCodificadores.dfm RelFichaClientes.dfm 
+      DMInfo.dfm DMOcorrencia.dfm DialogGeracaoRelClientes.dfm ListaClientes.dfm 
+      FichaCliente.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value="bcbie.lib bcb2kaxserver.lib vclx.lib qrpt.lib bdertl.lib vcldb.lib 
       dbexpress.lib dsnap.lib cds.lib ibxpress.lib dbrtl.lib rtl.lib vcl.lib"/>
@@ -105,7 +105,6 @@
       <FILE FILENAME="RelOrdemServicos.cpp" FORMNAME="QRPOrdemServicos" UNITNAME="RelOrdemServicos" CONTAINERID="CCompiler" DESIGNCLASS="TQuickRep" LOCALCOMMAND=""/>
       <FILE FILENAME="CadBase.cpp" FORMNAME="FCadBase" UNITNAME="CadBase" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="CadCodificadores.cpp" FORMNAME="FCadCodificadores" UNITNAME="CadCodificadores" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="RelClientes.cpp" FORMNAME="QRPClientes" UNITNAME="RelClientes" CONTAINERID="CCompiler" DESIGNCLASS="TQuickRep" LOCALCOMMAND=""/>
       <FILE FILENAME="RelFichaClientes.cpp" FORMNAME="QrpFichaCliente" UNITNAME="RelFichaClientes" CONTAINERID="CCompiler" DESIGNCLASS="TQuickRep" LOCALCOMMAND=""/>
       <FILE FILENAME="DMInfo.cpp" FORMNAME="fdmInfo" UNITNAME="DMInfo" CONTAINERID="CCompiler" DESIGNCLASS="TDataModule" LOCALCOMMAND=""/>
       <FILE FILENAME="DMOcorrencia.cpp" FORMNAME="fdmOcorrencia" UNITNAME="DMOcorrencia" CONTAINERID="CCompiler" DESIGNCLASS="TDataModule" LOCALCOMMAND=""/>

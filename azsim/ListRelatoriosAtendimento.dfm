@@ -65,7 +65,7 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
       Top = 50
       Width = 240
       Height = 35
-      Caption = 'Registro de ocorr'#234'ncias'
+      Caption = 'Ocorr'#234'ncias atendidas'
       Transparent = False
       OnClick = BtnOcorrenciasClick
     end
@@ -74,7 +74,7 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
       Top = 13
       Width = 240
       Height = 35
-      Caption = 'Monitor de eventos'
+      Caption = 'Eventos recebidos'
       Transparent = False
       OnClick = BtnEventosClick
     end

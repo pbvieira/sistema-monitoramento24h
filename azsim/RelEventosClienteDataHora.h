@@ -26,6 +26,7 @@ __published:
     TQRSysData *QRSysData1;
     TQRLabel *QRLabel1;
     TQRDBText *QRDBText7;
+    TQRSysData *QRSysData2;
 private:
 public:
     __fastcall TQRPEventosClienteDataHora::TQRPEventosClienteDataHora(TComponent* Owner);
