@@ -384,7 +384,7 @@ void __fastcall TFHome::BtnConsultarClick(TObject *Sender)
 
         AnsiString SQL_FILTRO = SQL_FILTRO_DATA;
         AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND E.CDCLIENTE = :CDCLIENTE" + SQL_ORDER_BY;
-        AnsiString SQL_FILTRO_NOME = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND E.NMCLIENTE LIKE UPPER(:NMCLIENTE)" + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_NOME = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND (C.NMCLIENTE LIKE UPPER(:NMCLIENTE) OR C.NMFANTASIA LIKE UPPER(:NMCLIENTE))" + SQL_ORDER_BY;
         AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND E.EQUIPAMENTO = :EQUIPAMENTO" + SQL_ORDER_BY;
 
         CDSConsEventos->Close();
@@ -472,15 +472,27 @@ void __fastcall TFHome::BtnConsultarOCClick(TObject *Sender)
         AnsiString SQL_ORDER_BY = " ORDER BY DATAEVENTO, CDOCORRENCIA";
 
         AnsiString SQL_FILTRO_DATA =
-            "SELECT CDOCORRENCIA, DATAEVENTO, DATAATENDIMENTO, DATAENCERRAMENTO, CTX, PORTACOM, EQUIPAMENTO, CDCLIENTE, NMCLIENTE, ENDERECO, CIDADE, STATUS, "
-                "DESTATUS, LOCAL, RESUMO, OPERADORABERTURA, OPERADORENCERRAMENTO, AGENTE, KMTOTALPERCORRIDO "
-            "FROM VOCORRENCIAS_ENCERRADAS "
-            "WHERE DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL" + SQL_ORDER_BY;
+            "SELECT "
+            "    O.CDOCORRENCIA, O.DATAEVENTO, O.DATAATENDIMENTO, O.DATAENCERRAMENTO, O.CTX, O.PORTACOM, O.EQUIPAMENTO, "
+            "    C.CDCLIENTE, C.ENDERECO, C.CIDADE, "
+            "    CASE WHEN C.NMFANTASIA IS NULL THEN C.NMCLIENTE ELSE C.NMFANTASIA END AS NMCLIENTE, "
+            "    O.STATUS || '.' || REPLACE(O.REFERENCIA, 'F', '*') AS STATUS,  O.DESTATUS, "
+            "    CASE "
+            "        WHEN TRIM(O.NUMSETOR) <> '' AND TRIM(O.NUMSETOR) <> 'FF' THEN "
+            "            REPLACE(O.NUMSETOR, 'F', '') || ' - ' || O.LOCAL "
+            "        ELSE NULL END AS LOCAL, "
+            "    O.RESUMO, OPA.LOGIN AS OPERADORABERTURA, OPE.LOGIN AS OPERADORENCERRAMENTO, AG.LOGIN AS AGENTE, O.KMTOTALPERCORRIDO "
+            "FROM OCORRENCIA O "
+            "    INNER JOIN CLIENTE C ON O.CDCLIENTE = C.CDCLIENTE "
+            "    INNER JOIN USUARIO OPA ON O.CDOPERADORABERTURA = OPA.CDUSUARIO "
+            "    INNER JOIN USUARIO OPE ON O.CDOPERADORENCERRAMENTO = OPE.CDUSUARIO "
+            "    LEFT JOIN USUARIO AG ON O.CDAGENTE = AG.CDUSUARIO "
+            "WHERE O.ISOCORRENCIAENCERRADA = 1 AND O.DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL" + SQL_ORDER_BY;
 
         AnsiString SQL_FILTRO = SQL_FILTRO_DATA;
-        AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND CDCLIENTE = :CDCLIENTE" + SQL_ORDER_BY;
-        AnsiString SQL_FILTRO_NOME = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND NMCLIENTE LIKE UPPER(:NMCLIENTE)" + SQL_ORDER_BY;
-        AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND EQUIPAMENTO = :EQUIPAMENTO" + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND O.CDCLIENTE = :CDCLIENTE" + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_NOME = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND (C.NMCLIENTE LIKE UPPER(:NMCLIENTE) OR C.NMFANTASIA LIKE UPPER(:NMCLIENTE))" + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO_DATA.SubString(0, StrLen(SQL_FILTRO_DATA.c_str()) - StrLen(SQL_ORDER_BY.c_str())) + " AND O.EQUIPAMENTO = :EQUIPAMENTO" + SQL_ORDER_BY;
 
         CDSRelAtendimento->Close();
         IBQRelAtendimento->SQL->Clear();
@@ -515,7 +527,7 @@ void __fastcall TFHome::BtnConsultarOCClick(TObject *Sender)
             CDSRelAtendimento->Close();
             IBQRelAtendimento->SQL->Clear();
             SQL_FILTRO = SQL_FILTRO.SubString(0, StrLen(SQL_FILTRO.c_str()) - StrLen(SQL_ORDER_BY.c_str())) +
-                " AND STATUS LIKE :STATUS" + SQL_ORDER_BY;
+                " AND O.STATUS LIKE :STATUS" + SQL_ORDER_BY;
             IBQRelAtendimento->SQL->Text = SQL_FILTRO;
             IBQRelAtendimento->ParamByName("STATUS")->Size = 5;
 
@@ -523,7 +535,7 @@ void __fastcall TFHome::BtnConsultarOCClick(TObject *Sender)
             CDSRelAtendimento->Close();
             IBQRelAtendimento->SQL->Clear();
             SQL_FILTRO = SQL_FILTRO.SubString(0, StrLen(SQL_FILTRO.c_str()) - StrLen(SQL_ORDER_BY.c_str())) +
-                " AND DESTATUS LIKE :DESTATUS" + SQL_ORDER_BY;
+                " AND O.DESTATUS LIKE :DESTATUS" + SQL_ORDER_BY;
             IBQRelAtendimento->SQL->Text = SQL_FILTRO;
         }
 
@@ -1236,6 +1248,23 @@ void __fastcall TFHome::gridEventosDrawColumnCell(TObject *Sender,
       TGridDrawState State)
 {
     if(CDSConsEventos->RecNo % 2){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_ALTERNATE_ROW;
+    }else{
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = clWindow;
+    }
+
+    if(State.Contains(gdSelected)){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_SELECTED_ROW;
+    }
+    (dynamic_cast <TDBGrid*> (Sender))->DefaultDrawColumnCell(Rect, DataCol, Column, State);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::DBGOcorrenciasHistDrawColumnCell(TObject *Sender,
+      const TRect &Rect, int DataCol, TColumn *Column,
+      TGridDrawState State)
+{
+    if(CDSRelAtendimento->RecNo % 2){
         (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_ALTERNATE_ROW;
     }else{
         (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = clWindow;

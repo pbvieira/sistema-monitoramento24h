@@ -414,6 +414,9 @@ __published:	// IDE-managed Components
     void __fastcall gridEventosDrawColumnCell(TObject *Sender,
           const TRect &Rect, int DataCol, TColumn *Column,
           TGridDrawState State);
+    void __fastcall DBGOcorrenciasHistDrawColumnCell(TObject *Sender,
+          const TRect &Rect, int DataCol, TColumn *Column,
+          TGridDrawState State);
 private:	// User declarations
     // Métodos
     HWND __fastcall CarregaMonitor(LPCTSTR program, LPCTSTR args);

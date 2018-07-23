@@ -10,7 +10,7 @@ object fdmOcorrencia: TfdmOcorrencia
     Top = 20
   end
   object IBTCliente: TIBTransaction
-    Active = False
+    Active = True
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
     Left = 184
@@ -293,10 +293,15 @@ object fdmOcorrencia: TfdmOcorrencia
       Origin = 'CLIENTE.PONTOREF'
       Size = 200
     end
+    object IBQClienteNMFANTASIA: TIBStringField
+      FieldName = 'NMFANTASIA'
+      Origin = 'CLIENTE.NMFANTASIA'
+      Size = 256
+    end
     object IBQClienteFONE1: TIBStringField
       FieldName = 'FONE1'
       Origin = 'CLIENTE.FONE1'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS1: TIBStringField
       FieldName = 'FONEOBS1'
@@ -306,7 +311,7 @@ object fdmOcorrencia: TfdmOcorrencia
     object IBQClienteFONE2: TIBStringField
       FieldName = 'FONE2'
       Origin = 'CLIENTE.FONE2'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS2: TIBStringField
       FieldName = 'FONEOBS2'
@@ -316,7 +321,7 @@ object fdmOcorrencia: TfdmOcorrencia
     object IBQClienteFONE3: TIBStringField
       FieldName = 'FONE3'
       Origin = 'CLIENTE.FONE3'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS3: TIBStringField
       FieldName = 'FONEOBS3'
@@ -326,7 +331,7 @@ object fdmOcorrencia: TfdmOcorrencia
     object IBQClienteFONE4: TIBStringField
       FieldName = 'FONE4'
       Origin = 'CLIENTE.FONE4'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS4: TIBStringField
       FieldName = 'FONEOBS4'
@@ -336,7 +341,7 @@ object fdmOcorrencia: TfdmOcorrencia
     object IBQClienteFONE5: TIBStringField
       FieldName = 'FONE5'
       Origin = 'CLIENTE.FONE5'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS5: TIBStringField
       FieldName = 'FONEOBS5'
@@ -346,22 +351,17 @@ object fdmOcorrencia: TfdmOcorrencia
     object IBQClienteFONE6: TIBStringField
       FieldName = 'FONE6'
       Origin = 'CLIENTE.FONE6'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS6: TIBStringField
       FieldName = 'FONEOBS6'
       Origin = 'CLIENTE.FONEOBS6'
       Size = 200
     end
-    object IBQClienteOBSERVACAO: TIBStringField
-      FieldName = 'OBSERVACAO'
-      Origin = 'CLIENTE.OBSERVACAO'
-      Size = 2000
-    end
     object IBQClienteFONE7: TIBStringField
       FieldName = 'FONE7'
       Origin = 'CLIENTE.FONE7'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS7: TIBStringField
       FieldName = 'FONEOBS7'
@@ -371,17 +371,17 @@ object fdmOcorrencia: TfdmOcorrencia
     object IBQClienteFONE8: TIBStringField
       FieldName = 'FONE8'
       Origin = 'CLIENTE.FONE8'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS8: TIBStringField
       FieldName = 'FONEOBS8'
       Origin = 'CLIENTE.FONEOBS8'
       Size = 200
     end
-    object IBQClienteNMFANTASIA: TIBStringField
-      FieldName = 'NMFANTASIA'
-      Origin = 'CLIENTE.NMFANTASIA'
-      Size = 256
+    object IBQClienteOBSERVACAO: TIBStringField
+      FieldName = 'OBSERVACAO'
+      Origin = 'CLIENTE.OBSERVACAO'
+      Size = 2000
     end
   end
   object DSPCliente: TDataSetProvider
@@ -422,54 +422,6 @@ object fdmOcorrencia: TfdmOcorrencia
       FieldName = 'PONTOREF'
       Size = 200
     end
-    object CDSClienteFONE1: TStringField
-      FieldName = 'FONE1'
-      Size = 13
-    end
-    object CDSClienteFONEOBS1: TStringField
-      FieldName = 'FONEOBS1'
-      Size = 200
-    end
-    object CDSClienteFONE2: TStringField
-      FieldName = 'FONE2'
-      Size = 13
-    end
-    object CDSClienteFONEOBS2: TStringField
-      FieldName = 'FONEOBS2'
-      Size = 200
-    end
-    object CDSClienteFONE3: TStringField
-      FieldName = 'FONE3'
-      Size = 13
-    end
-    object CDSClienteFONEOBS3: TStringField
-      FieldName = 'FONEOBS3'
-      Size = 200
-    end
-    object CDSClienteFONE4: TStringField
-      FieldName = 'FONE4'
-      Size = 13
-    end
-    object CDSClienteFONEOBS4: TStringField
-      FieldName = 'FONEOBS4'
-      Size = 200
-    end
-    object CDSClienteFONE5: TStringField
-      FieldName = 'FONE5'
-      Size = 13
-    end
-    object CDSClienteFONEOBS5: TStringField
-      FieldName = 'FONEOBS5'
-      Size = 200
-    end
-    object CDSClienteFONE6: TStringField
-      FieldName = 'FONE6'
-      Size = 13
-    end
-    object CDSClienteFONEOBS6: TStringField
-      FieldName = 'FONEOBS6'
-      Size = 200
-    end
     object CDSClienteOBSERVACAO: TStringField
       FieldName = 'OBSERVACAO'
       Size = 2000
@@ -477,9 +429,61 @@ object fdmOcorrencia: TfdmOcorrencia
     object CDSClienteIBQContato: TDataSetField
       FieldName = 'IBQContato'
     end
+    object CDSClienteNMFANTASIA: TStringField
+      FieldName = 'NMFANTASIA'
+      Size = 256
+    end
+    object CDSClienteFONE1: TStringField
+      FieldName = 'FONE1'
+      Size = 14
+    end
+    object CDSClienteFONEOBS1: TStringField
+      FieldName = 'FONEOBS1'
+      Size = 200
+    end
+    object CDSClienteFONE2: TStringField
+      FieldName = 'FONE2'
+      Size = 14
+    end
+    object CDSClienteFONEOBS2: TStringField
+      FieldName = 'FONEOBS2'
+      Size = 200
+    end
+    object CDSClienteFONE3: TStringField
+      FieldName = 'FONE3'
+      Size = 14
+    end
+    object CDSClienteFONEOBS3: TStringField
+      FieldName = 'FONEOBS3'
+      Size = 200
+    end
+    object CDSClienteFONE4: TStringField
+      FieldName = 'FONE4'
+      Size = 14
+    end
+    object CDSClienteFONEOBS4: TStringField
+      FieldName = 'FONEOBS4'
+      Size = 200
+    end
+    object CDSClienteFONE5: TStringField
+      FieldName = 'FONE5'
+      Size = 14
+    end
+    object CDSClienteFONEOBS5: TStringField
+      FieldName = 'FONEOBS5'
+      Size = 200
+    end
+    object CDSClienteFONE6: TStringField
+      FieldName = 'FONE6'
+      Size = 14
+    end
+    object CDSClienteFONEOBS6: TStringField
+      FieldName = 'FONEOBS6'
+      Size = 200
+    end
     object CDSClienteFONE7: TStringField
       FieldName = 'FONE7'
-      Size = 13
+      Size = 14
     end
     object CDSClienteFONEOBS7: TStringField
       FieldName = 'FONEOBS7'
@@ -487,15 +491,11 @@ object fdmOcorrencia: TfdmOcorrencia
     end
     object CDSClienteFONE8: TStringField
       FieldName = 'FONE8'
-      Size = 13
+      Size = 14
     end
     object CDSClienteFONEOBS8: TStringField
       FieldName = 'FONEOBS8'
       Size = 200
-    end
-    object CDSClienteNMFANTASIA: TStringField
-      FieldName = 'NMFANTASIA'
-      Size = 256
     end
   end
   object CDSAgente: TClientDataSet

@@ -26,9 +26,9 @@ object FConsCliente: TFConsCliente
   object BtnConsultar: TSpeedButton
     Left = 8
     Top = 196
-    Width = 248
+    Width = 255
     Height = 22
-    Caption = 'Realizar consulta pelos filtros informados acima'
+    Caption = 'Executar consulta pelos filtros informados acima'
     Flat = True
     Glyph.Data = {
       36030000424D3603000000000000360000002800000010000000100000000100
@@ -60,7 +60,7 @@ object FConsCliente: TFConsCliente
     OnClick = BtnConsultarClick
   end
   object BtnTodos: TSpeedButton
-    Left = 278
+    Left = 289
     Top = 196
     Width = 128
     Height = 22
@@ -96,7 +96,7 @@ object FConsCliente: TFConsCliente
     OnClick = BtnConsultarClick
   end
   object BtnAbrirClientes: TSpeedButton
-    Left = 408
+    Left = 419
     Top = 196
     Width = 174
     Height = 22
@@ -146,7 +146,7 @@ object FConsCliente: TFConsCliente
     OnClick = DBGClientesDblClick
   end
   object BtnAbrirContratos: TSpeedButton
-    Left = 584
+    Left = 595
     Top = 196
     Width = 174
     Height = 22
@@ -196,7 +196,7 @@ object FConsCliente: TFConsCliente
     OnClick = DBGContratosDblClick
   end
   object BtnRelatorioClientes: TSpeedButton
-    Left = 760
+    Left = 771
     Top = 196
     Width = 162
     Height = 22
@@ -246,7 +246,7 @@ object FConsCliente: TFConsCliente
     OnClick = BtnRelatorioClientesClick
   end
   object LblOR: TLabel
-    Left = 259
+    Left = 268
     Top = 201
     Width = 15
     Height = 13
@@ -638,9 +638,9 @@ object FConsCliente: TFConsCliente
       end>
   end
   object RgpOrdenacao: TRadioGroup
-    Left = 497
+    Left = 493
     Top = 108
-    Width = 273
+    Width = 266
     Height = 77
     Caption = 'Ordena'#231#227'o do resultado'
     ItemIndex = 0

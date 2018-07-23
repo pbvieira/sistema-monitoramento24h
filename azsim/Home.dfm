@@ -2,7 +2,7 @@ object FHome: TFHome
   Left = 190
   Top = 103
   AutoScroll = False
-  Caption = 'AZSIM - Sistema Integrado de Monitoramento - Vers'#227'o 1.0.0.35'
+  Caption = 'AZSIM - Sistema Integrado de Monitoramento - Vers'#227'o 1.2.0'
   ClientHeight = 720
   ClientWidth = 1244
   Color = clBtnFace
@@ -51,10 +51,10 @@ object FHome: TFHome
       Top = 1
       Width = 1242
       Height = 701
-      ActivePage = TSRegistroEventos
+      ActivePage = TSResgistroOcorrencia
       Align = alClient
       MultiLine = True
-      TabIndex = 0
+      TabIndex = 1
       TabOrder = 0
       TabPosition = tpLeft
       object TSRegistroEventos: TTabSheet
@@ -851,15 +851,16 @@ object FHome: TFHome
             Font.Height = -11
             Font.Name = 'MS Sans Serif'
             Font.Style = []
-            Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+            Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
             ParentCtl3D = False
             ParentFont = False
-            TabOrder = 1
+            TabOrder = 4
             TitleFont.Charset = DEFAULT_CHARSET
             TitleFont.Color = clWindowText
             TitleFont.Height = -11
             TitleFont.Name = 'MS Sans Serif'
             TitleFont.Style = []
+            OnDrawColumnCell = DBGOcorrenciasHistDrawColumnCell
             OnDblClick = DBGOcorrenciasHistDblClick
             Columns = <
               item
@@ -952,7 +953,7 @@ object FHome: TFHome
             Width = 437
             Height = 62
             Caption = ' Cliente ou Codificador '
-            TabOrder = 2
+            TabOrder = 1
             object Label10: TLabel
               Left = 13
               Top = 17
@@ -1023,7 +1024,7 @@ object FHome: TFHome
             Width = 343
             Height = 62
             Caption = ' Estatus ou Descri'#231#227'o'
-            TabOrder = 3
+            TabOrder = 2
             object Label13: TLabel
               Left = 9
               Top = 17
@@ -1076,7 +1077,7 @@ object FHome: TFHome
             Align = alTop
             Alignment = taLeftJustify
             BevelOuter = bvNone
-            Caption = ' Registro de ocorr'#234'ncias'
+            Caption = ' Hist'#243'rico de atendimentos'
             Color = clPurple
             Font.Charset = DEFAULT_CHARSET
             Font.Color = clWhite
@@ -1084,7 +1085,7 @@ object FHome: TFHome
             Font.Name = 'MS Sans Serif'
             Font.Style = [fsBold]
             ParentFont = False
-            TabOrder = 4
+            TabOrder = 3
           end
         end
       end
@@ -2662,8 +2663,11 @@ object FHome: TFHome
         'TO, O.STATUS || '#39'.'#39' || REPLACE(O.REFERENCIA, '#39'F'#39', '#39'*'#39') AS STATUS' +
         ','
       
-        '    O.DESTATUS, C.CDCLIENTE, C.NMCLIENTE, C.ENDERECO, C.BAIRRO, ' +
-        'C.CIDADE, O.CDOPERADORENCERRAMENTO,'
+        '    O.DESTATUS, C.CDCLIENTE,  C.ENDERECO, C.BAIRRO, C.CIDADE, O.' +
+        'CDOPERADORENCERRAMENTO,'
+      
+        '    CASE WHEN C.NMFANTASIA IS NULL THEN C.NMCLIENTE ELSE C.NMFAN' +
+        'TASIA END AS NMCLIENTE, '
       '    O.CDTIPOOCORRENCIA, O.CDSUBTIPOOCORRENCIA, O.RESUMO'
       
         'FROM OCORRENCIA O INNER JOIN CLIENTE C ON O.CDCLIENTE = C.CDCLIE' +

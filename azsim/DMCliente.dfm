@@ -1,6 +1,7 @@
 object DModuleCliente: TDModuleCliente
   OldCreateOrder = False
-  Top = 144
+  Left = 396
+  Top = 189
   Height = 545
   Width = 1024
   object IBQContato: TIBQuery
@@ -301,9 +302,10 @@ object DModuleCliente: TDModuleCliente
       Size = 2000
     end
     object IBQClienteFONE1: TIBStringField
+      DisplayWidth = 14
       FieldName = 'FONE1'
       Origin = 'CLIENTE.FONE1'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS1: TIBStringField
       FieldName = 'FONEOBS1'
@@ -311,9 +313,10 @@ object DModuleCliente: TDModuleCliente
       Size = 200
     end
     object IBQClienteFONE2: TIBStringField
+      DisplayWidth = 14
       FieldName = 'FONE2'
       Origin = 'CLIENTE.FONE2'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS2: TIBStringField
       FieldName = 'FONEOBS2'
@@ -321,9 +324,10 @@ object DModuleCliente: TDModuleCliente
       Size = 200
     end
     object IBQClienteFONE3: TIBStringField
+      DisplayWidth = 14
       FieldName = 'FONE3'
       Origin = 'CLIENTE.FONE3'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS3: TIBStringField
       FieldName = 'FONEOBS3'
@@ -331,9 +335,10 @@ object DModuleCliente: TDModuleCliente
       Size = 200
     end
     object IBQClienteFONE4: TIBStringField
+      DisplayWidth = 14
       FieldName = 'FONE4'
       Origin = 'CLIENTE.FONE4'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS4: TIBStringField
       FieldName = 'FONEOBS4'
@@ -341,9 +346,10 @@ object DModuleCliente: TDModuleCliente
       Size = 200
     end
     object IBQClienteFONE5: TIBStringField
+      DisplayWidth = 14
       FieldName = 'FONE5'
       Origin = 'CLIENTE.FONE5'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS5: TIBStringField
       FieldName = 'FONEOBS5'
@@ -351,9 +357,10 @@ object DModuleCliente: TDModuleCliente
       Size = 200
     end
     object IBQClienteFONE6: TIBStringField
+      DisplayWidth = 14
       FieldName = 'FONE6'
       Origin = 'CLIENTE.FONE6'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS6: TIBStringField
       FieldName = 'FONEOBS6'
@@ -361,9 +368,10 @@ object DModuleCliente: TDModuleCliente
       Size = 200
     end
     object IBQClienteFONE7: TIBStringField
+      DisplayWidth = 14
       FieldName = 'FONE7'
       Origin = 'CLIENTE.FONE7'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS7: TIBStringField
       FieldName = 'FONEOBS7'
@@ -371,9 +379,10 @@ object DModuleCliente: TDModuleCliente
       Size = 200
     end
     object IBQClienteFONE8: TIBStringField
+      DisplayWidth = 14
       FieldName = 'FONE8'
       Origin = 'CLIENTE.FONE8'
-      Size = 13
+      Size = 14
     end
     object IBQClienteFONEOBS8: TIBStringField
       FieldName = 'FONEOBS8'
@@ -694,8 +703,8 @@ object DModuleCliente: TDModuleCliente
     object CDSClienteFONE1: TStringField
       FieldName = 'FONE1'
       Origin = 'CLIENTE.FONE1'
-      EditMask = '!\(99\)9999-9999;1;_'
-      Size = 13
+      EditMask = '!\(99\)99999-9999;1;_'
+      Size = 14
     end
     object CDSClienteFONEOBS1: TStringField
       FieldName = 'FONEOBS1'
@@ -705,8 +714,8 @@ object DModuleCliente: TDModuleCliente
     object CDSClienteFONE2: TStringField
       FieldName = 'FONE2'
       Origin = 'CLIENTE.FONE2'
-      EditMask = '!\(99\)9999-9999;1;_'
-      Size = 13
+      EditMask = '!\(99\)99999-9999;1;_'
+      Size = 14
     end
     object CDSClienteFONEOBS2: TStringField
       FieldName = 'FONEOBS2'
@@ -716,8 +725,8 @@ object DModuleCliente: TDModuleCliente
     object CDSClienteFONE3: TStringField
       FieldName = 'FONE3'
       Origin = 'CLIENTE.FONE3'
-      EditMask = '!\(99\)9999-9999;1;_'
-      Size = 13
+      EditMask = '!\(99\)99999-9999;1;_'
+      Size = 14
     end
     object CDSClienteFONEOBS3: TStringField
       FieldName = 'FONEOBS3'
@@ -727,8 +736,8 @@ object DModuleCliente: TDModuleCliente
     object CDSClienteFONE4: TStringField
       FieldName = 'FONE4'
       Origin = 'CLIENTE.FONE4'
-      EditMask = '!\(99\)9999-9999;1;_'
-      Size = 13
+      EditMask = '!\(99\)99999-9999;1;_'
+      Size = 14
     end
     object CDSClienteFONEOBS4: TStringField
       FieldName = 'FONEOBS4'
@@ -738,8 +747,8 @@ object DModuleCliente: TDModuleCliente
     object CDSClienteFONE5: TStringField
       FieldName = 'FONE5'
       Origin = 'CLIENTE.FONE5'
-      EditMask = '!\(99\)9999-9999;1;_'
-      Size = 13
+      EditMask = '!\(99\)99999-9999;1;_'
+      Size = 14
     end
     object CDSClienteFONEOBS5: TStringField
       FieldName = 'FONEOBS5'
@@ -749,8 +758,8 @@ object DModuleCliente: TDModuleCliente
     object CDSClienteFONE6: TStringField
       FieldName = 'FONE6'
       Origin = 'CLIENTE.FONE6'
-      EditMask = '!\(99\)9999-9999;1;_'
-      Size = 13
+      EditMask = '!\(99\)99999-9999;1;_'
+      Size = 14
     end
     object CDSClienteFONEOBS6: TStringField
       FieldName = 'FONEOBS6'
@@ -759,7 +768,8 @@ object DModuleCliente: TDModuleCliente
     end
     object CDSClienteFONE7: TStringField
       FieldName = 'FONE7'
-      Size = 13
+      EditMask = '!\(99\)99999-9999;1;_'
+      Size = 14
     end
     object CDSClienteFONEOBS7: TStringField
       FieldName = 'FONEOBS7'
@@ -767,7 +777,8 @@ object DModuleCliente: TDModuleCliente
     end
     object CDSClienteFONE8: TStringField
       FieldName = 'FONE8'
-      Size = 13
+      EditMask = '!\(99\)99999-9999;1;_'
+      Size = 14
     end
     object CDSClienteFONEOBS8: TStringField
       FieldName = 'FONEOBS8'
@@ -1844,7 +1855,7 @@ object DModuleCliente: TDModuleCliente
     object IBQConsClienteFONE1: TIBStringField
       FieldName = 'FONE1'
       Origin = 'CLIENTE.FONE1'
-      Size = 13
+      Size = 14
     end
     object IBQConsClienteFONEOBS1: TIBStringField
       FieldName = 'FONEOBS1'
@@ -1854,7 +1865,7 @@ object DModuleCliente: TDModuleCliente
     object IBQConsClienteFONE2: TIBStringField
       FieldName = 'FONE2'
       Origin = 'CLIENTE.FONE2'
-      Size = 13
+      Size = 14
     end
     object IBQConsClienteFONEOBS2: TIBStringField
       FieldName = 'FONEOBS2'
@@ -1864,7 +1875,7 @@ object DModuleCliente: TDModuleCliente
     object IBQConsClienteFONE3: TIBStringField
       FieldName = 'FONE3'
       Origin = 'CLIENTE.FONE3'
-      Size = 13
+      Size = 14
     end
     object IBQConsClienteFONEOBS3: TIBStringField
       FieldName = 'FONEOBS3'
@@ -1874,7 +1885,7 @@ object DModuleCliente: TDModuleCliente
     object IBQConsClienteFONE4: TIBStringField
       FieldName = 'FONE4'
       Origin = 'CLIENTE.FONE4'
-      Size = 13
+      Size = 14
     end
     object IBQConsClienteFONEOBS4: TIBStringField
       FieldName = 'FONEOBS4'
@@ -1884,7 +1895,7 @@ object DModuleCliente: TDModuleCliente
     object IBQConsClienteFONE5: TIBStringField
       FieldName = 'FONE5'
       Origin = 'CLIENTE.FONE5'
-      Size = 13
+      Size = 14
     end
     object IBQConsClienteFONEOBS5: TIBStringField
       FieldName = 'FONEOBS5'
@@ -1894,7 +1905,7 @@ object DModuleCliente: TDModuleCliente
     object IBQConsClienteFONE6: TIBStringField
       FieldName = 'FONE6'
       Origin = 'CLIENTE.FONE6'
-      Size = 13
+      Size = 14
     end
     object IBQConsClienteFONEOBS6: TIBStringField
       FieldName = 'FONEOBS6'
@@ -1904,7 +1915,7 @@ object DModuleCliente: TDModuleCliente
     object IBQConsClienteFONE7: TIBStringField
       FieldName = 'FONE7'
       Origin = 'CLIENTE.FONE7'
-      Size = 13
+      Size = 14
     end
     object IBQConsClienteFONEOBS7: TIBStringField
       FieldName = 'FONEOBS7'
@@ -1914,7 +1925,7 @@ object DModuleCliente: TDModuleCliente
     object IBQConsClienteFONE8: TIBStringField
       FieldName = 'FONE8'
       Origin = 'CLIENTE.FONE8'
-      Size = 13
+      Size = 14
     end
     object IBQConsClienteFONEOBS8: TIBStringField
       FieldName = 'FONEOBS8'
@@ -2060,7 +2071,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE1'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS1'
@@ -2070,7 +2081,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE2'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS2'
@@ -2080,7 +2091,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE3'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS3'
@@ -2090,7 +2101,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE4'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS4'
@@ -2100,7 +2111,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE5'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS5'
@@ -2110,7 +2121,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE6'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS6'
@@ -2120,7 +2131,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE7'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS7'
@@ -2130,7 +2141,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE8'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS8'
@@ -2271,86 +2282,6 @@ object DModuleCliente: TDModuleCliente
       FieldName = 'DATAALTERACAO'
       Origin = 'CLIENTE.DATAALTERACAO'
     end
-    object CDSConsClienteFONE1: TStringField
-      FieldName = 'FONE1'
-      Origin = 'CLIENTE.FONE1'
-      Size = 13
-    end
-    object CDSConsClienteFONEOBS1: TStringField
-      FieldName = 'FONEOBS1'
-      Origin = 'CLIENTE.FONEOBS1'
-      Size = 200
-    end
-    object CDSConsClienteFONE2: TStringField
-      FieldName = 'FONE2'
-      Origin = 'CLIENTE.FONE2'
-      Size = 13
-    end
-    object CDSConsClienteFONEOBS2: TStringField
-      FieldName = 'FONEOBS2'
-      Origin = 'CLIENTE.FONEOBS2'
-      Size = 200
-    end
-    object CDSConsClienteFONE3: TStringField
-      FieldName = 'FONE3'
-      Origin = 'CLIENTE.FONE3'
-      Size = 13
-    end
-    object CDSConsClienteFONEOBS3: TStringField
-      FieldName = 'FONEOBS3'
-      Origin = 'CLIENTE.FONEOBS3'
-      Size = 200
-    end
-    object CDSConsClienteFONE4: TStringField
-      FieldName = 'FONE4'
-      Origin = 'CLIENTE.FONE4'
-      Size = 13
-    end
-    object CDSConsClienteFONEOBS4: TStringField
-      FieldName = 'FONEOBS4'
-      Origin = 'CLIENTE.FONEOBS4'
-      Size = 200
-    end
-    object CDSConsClienteFONE5: TStringField
-      FieldName = 'FONE5'
-      Origin = 'CLIENTE.FONE5'
-      Size = 13
-    end
-    object CDSConsClienteFONEOBS5: TStringField
-      FieldName = 'FONEOBS5'
-      Origin = 'CLIENTE.FONEOBS5'
-      Size = 200
-    end
-    object CDSConsClienteFONE6: TStringField
-      FieldName = 'FONE6'
-      Origin = 'CLIENTE.FONE6'
-      Size = 13
-    end
-    object CDSConsClienteFONEOBS6: TStringField
-      FieldName = 'FONEOBS6'
-      Origin = 'CLIENTE.FONEOBS6'
-      Size = 200
-    end
-    object CDSConsClienteFONE7: TStringField
-      FieldName = 'FONE7'
-      Origin = 'CLIENTE.FONE7'
-      Size = 13
-    end
-    object CDSConsClienteFONEOBS7: TStringField
-      FieldName = 'FONEOBS7'
-      Origin = 'CLIENTE.FONEOBS7'
-      Size = 200
-    end
-    object CDSConsClienteFONE8: TStringField
-      FieldName = 'FONE8'
-      Origin = 'CLIENTE.FONE8'
-      Size = 13
-    end
-    object CDSConsClienteFONEOBS8: TStringField
-      FieldName = 'FONEOBS8'
-      Origin = 'CLIENTE.FONEOBS8'
-      Size = 200
-    end
     object CDSConsClienteCDCONTRATO: TIntegerField
       FieldName = 'CDCONTRATO'
       Origin = 'CONTRATO.CDCONTRATO'
@@ -2382,6 +2313,70 @@ object DModuleCliente: TDModuleCliente
     end
     object CDSConsClienteIBQConsSetores: TDataSetField
       FieldName = 'IBQConsSetores'
+    end
+    object CDSConsClienteFONE1: TStringField
+      FieldName = 'FONE1'
+      Size = 14
+    end
+    object CDSConsClienteFONEOBS1: TStringField
+      FieldName = 'FONEOBS1'
+      Size = 200
+    end
+    object CDSConsClienteFONE2: TStringField
+      FieldName = 'FONE2'
+      Size = 14
+    end
+    object CDSConsClienteFONEOBS2: TStringField
+      FieldName = 'FONEOBS2'
+      Size = 200
+    end
+    object CDSConsClienteFONE3: TStringField
+      FieldName = 'FONE3'
+      Size = 14
+    end
+    object CDSConsClienteFONEOBS3: TStringField
+      FieldName = 'FONEOBS3'
+      Size = 200
+    end
+    object CDSConsClienteFONE4: TStringField
+      FieldName = 'FONE4'
+      Size = 14
+    end
+    object CDSConsClienteFONEOBS4: TStringField
+      FieldName = 'FONEOBS4'
+      Size = 200
+    end
+    object CDSConsClienteFONE5: TStringField
+      FieldName = 'FONE5'
+      Size = 14
+    end
+    object CDSConsClienteFONEOBS5: TStringField
+      FieldName = 'FONEOBS5'
+      Size = 200
+    end
+    object CDSConsClienteFONE6: TStringField
+      FieldName = 'FONE6'
+      Size = 14
+    end
+    object CDSConsClienteFONEOBS6: TStringField
+      FieldName = 'FONEOBS6'
+      Size = 200
+    end
+    object CDSConsClienteFONE7: TStringField
+      FieldName = 'FONE7'
+      Size = 14
+    end
+    object CDSConsClienteFONEOBS7: TStringField
+      FieldName = 'FONEOBS7'
+      Size = 200
+    end
+    object CDSConsClienteFONE8: TStringField
+      FieldName = 'FONE8'
+      Size = 14
+    end
+    object CDSConsClienteFONEOBS8: TStringField
+      FieldName = 'FONEOBS8'
+      Size = 200
     end
   end
   object DSPConsCliente: TDataSetProvider
