@@ -40,9 +40,9 @@ object FFichaCliente: TFFichaCliente
     Top = 40
     Width = 521
     Height = 552
-    ActivePage = TSSetores
+    ActivePage = tbsDadosBasicos
     Style = tsFlatButtons
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 1
     TabStop = False
     object tbsDadosBasicos: TTabSheet

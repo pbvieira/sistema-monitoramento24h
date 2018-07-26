@@ -13,8 +13,6 @@
 class TQRPTopEventosClienteHora : public TQuickRep
 {
 __published:
-    TQRBand *QRBand1;
-    TQRSysData *QRSysData1;
     TQRBand *QRBand2;
     TQRDBText *QRDBText2;
     TQRDBText *QRDBText3;
@@ -29,6 +27,9 @@ __published:
     TQRLabel *QRLabel1;
     TQRBand *QRBand3;
     TQRLabel *QRLabel3;
+    TQRBand *QRBand1;
+    TQRSysData *QRSysData1;
+    TQRSysData *QRSysData2;
 private:
 public:
    __fastcall TQRPTopEventosClienteHora::TQRPTopEventosClienteHora(TComponent* Owner);

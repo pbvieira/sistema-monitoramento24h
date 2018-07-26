@@ -54,6 +54,9 @@ __published:	// IDE-managed Components
     TRadioGroup *RgpOrdenacao;
     TImage *ImgSelecionarCliente;
     TRadioGroup *rgClientesAtivos;
+    TDBText *TXTNomeFantasia;
+    TLabel *Label5;
+    TLabel *Label7;
     void __fastcall BtnConsultarClick(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall DBGClientesDblClick(TObject *Sender);

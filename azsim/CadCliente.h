@@ -100,6 +100,12 @@ __published:	// IDE-managed Components
     TSpeedButton *BtnSenhas;
     TSpeedButton *BtnProcedimentos;
     TPanel *pnlTituloForm;
+    TDBEdit *EdtCodigoHabil;
+    TLabel *Label21;
+    TDBEdit *EdtCodigoCondor;
+    TLabel *Label23;
+    TDBEdit *EdtCodCodificador;
+    TLabel *Label24;
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall BtnFecharClick(TObject *Sender);
     void __fastcall BtnNovoClick(TObject *Sender);

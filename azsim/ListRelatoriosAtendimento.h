@@ -42,15 +42,19 @@ __published:	// IDE-managed Components
     TEdit *EdtNomeTotais;
     TEdit *EdtCodificadorTotais;
     TGroupBox *GroupBox4;
-    TLabel *Label15;
     TLabel *Label16;
-    TEdit *EdtStatusTotais;
     TEdit *EdtStatusDescricaoTotais;
     TPanel *pnlTituloOcorrencias;
+    TSpeedButton *BtnTotalEventosHora;
+    TSpeedButton *BtnTotalEventosDia;
+    TLabel *Label15;
+    TEdit *EdtStatusTotais;
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall BtnFecharClick(TObject *Sender);
     void __fastcall BtnEventosClick(TObject *Sender);
     void __fastcall BtnOcorrenciasClick(TObject *Sender);
+    void __fastcall BtnTotalEventosHoraClick(TObject *Sender);
+    void __fastcall BtnTotalEventosDiaClick(TObject *Sender);
 private:	// User declarations
     void __fastcall ConfiguraCriteriosSQL();
 public:		// User declarations

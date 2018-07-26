@@ -259,7 +259,8 @@ void __fastcall TFCadOrdemServico::ConsultaCliente(int CdCliente)
 {
     try{
         AnsiString SQL_FILTRO =
-            "SELECT C.CDCLIENTE, C.NMFANTASIA, C.ENDERECO, C.BAIRRO, C.CIDADE, C.UF, C.CEP "
+            "SELECT C.CDCLIENTE, C.ENDERECO, C.BAIRRO, C.CIDADE, C.UF, C.CEP, "
+            "CASE WHEN C.NMFANTASIA IS NULL THEN C.NMCLIENTE ELSE C.NMFANTASIA END AS NOME, C.NMCLIENTE, C.NMFANTASIA "
             "FROM CLIENTE C WHERE C.CDCLIENTE = :CDCLIENTE";
 
         AnsiString Nome;
@@ -281,7 +282,7 @@ void __fastcall TFCadOrdemServico::ConsultaCliente(int CdCliente)
             DModule->IBQConsAuxCadastros->Open();
 
             if(DModule->IBQConsAuxCadastros->RecordCount > 0){
-                EdtNomeCliente->Text = DModule->IBQConsAuxCadastros->FieldByName("NMFANTASIA")->AsString;
+                EdtNomeCliente->Text = DModule->IBQConsAuxCadastros->FieldByName("NOME")->AsString;
                 EdtEnderecoMon->Text = DModule->IBQConsAuxCadastros->FieldByName("ENDERECO")->AsString;
                 EdtBairroMon->Text = DModule->IBQConsAuxCadastros->FieldByName("BAIRRO")->AsString;
                 EdtCidadeMon->Text = DModule->IBQConsAuxCadastros->FieldByName("CIDADE")->AsString;

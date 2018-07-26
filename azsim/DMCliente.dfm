@@ -1962,7 +1962,7 @@ object DModuleCliente: TDModuleCliente
     Top = 254
   end
   object IBTConsCliente: TIBTransaction
-    Active = True
+    Active = False
     DefaultDatabase = DModule.IBCONAzsim
     Params.Strings = (
       'concurrency'

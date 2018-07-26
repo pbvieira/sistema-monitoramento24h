@@ -78,6 +78,24 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
       Transparent = False
       OnClick = BtnEventosClick
     end
+    object BtnTotalEventosHora: TSpeedButton
+      Left = 456
+      Top = 87
+      Width = 240
+      Height = 35
+      Caption = 'Totais eventos por hora'
+      Transparent = False
+      OnClick = BtnTotalEventosHoraClick
+    end
+    object BtnTotalEventosDia: TSpeedButton
+      Left = 456
+      Top = 125
+      Width = 240
+      Height = 35
+      Caption = 'Totais eventos por dia'
+      Transparent = False
+      OnClick = BtnTotalEventosDiaClick
+    end
     object GroupBox2: TGroupBox
       Left = 11
       Top = 8
@@ -215,19 +233,6 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
       Height = 62
       Caption = ' Estatus ou Descri'#231#227'o'
       TabOrder = 2
-      object Label15: TLabel
-        Left = 13
-        Top = 17
-        Width = 35
-        Height = 13
-        Caption = 'Estatus'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -11
-        Font.Name = 'MS Sans Serif'
-        Font.Style = []
-        ParentFont = False
-      end
       object Label16: TLabel
         Left = 85
         Top = 17
@@ -241,20 +246,33 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
         Font.Style = []
         ParentFont = False
       end
-      object EdtStatusTotais: TEdit
-        Left = 12
-        Top = 33
-        Width = 70
-        Height = 21
-        Hint = 'Exemplo: 0.0*'
-        CharCase = ecUpperCase
-        TabOrder = 0
+      object Label15: TLabel
+        Left = 13
+        Top = 17
+        Width = 35
+        Height = 13
+        Caption = 'Estatus'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
       end
       object EdtStatusDescricaoTotais: TEdit
         Left = 84
         Top = 33
         Width = 346
         Height = 21
+        CharCase = ecUpperCase
+        TabOrder = 0
+      end
+      object EdtStatusTotais: TEdit
+        Left = 12
+        Top = 33
+        Width = 70
+        Height = 21
+        Hint = 'Exemplo: 0.0*'
         CharCase = ecUpperCase
         TabOrder = 1
       end

@@ -51,10 +51,10 @@ object FHome: TFHome
       Top = 1
       Width = 1242
       Height = 701
-      ActivePage = TSResgistroOcorrencia
+      ActivePage = TSRegistroEventos
       Align = alClient
       MultiLine = True
-      TabIndex = 1
+      TabIndex = 0
       TabOrder = 0
       TabPosition = tpLeft
       object TSRegistroEventos: TTabSheet

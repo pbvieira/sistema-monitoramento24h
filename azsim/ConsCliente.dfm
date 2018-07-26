@@ -338,15 +338,15 @@ object FConsCliente: TFConsCliente
     Left = 8
     Top = 219
     Width = 988
-    Height = 100
+    Height = 118
     Anchors = [akLeft, akTop, akRight]
     TabOrder = 6
     object TXTNome: TDBText
-      Left = 147
+      Left = 324
       Top = 16
-      Width = 828
+      Width = 651
       Height = 17
-      DataField = 'NOME'
+      DataField = 'NMCLIENTE'
       DataSource = DModuleCliente.DSConsCliente
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -371,7 +371,7 @@ object FConsCliente: TFConsCliente
     end
     object TXTCodificador: TDBText
       Left = 76
-      Top = 40
+      Top = 64
       Width = 63
       Height = 17
       DataField = 'CDCODIFICADOR'
@@ -385,7 +385,7 @@ object FConsCliente: TFConsCliente
     end
     object TXTModeloCentral: TDBText
       Left = 147
-      Top = 40
+      Top = 64
       Width = 828
       Height = 17
       DataField = 'MODELOCENTRAL'
@@ -399,7 +399,7 @@ object FConsCliente: TFConsCliente
     end
     object TXTLocalInstalacao: TDBText
       Left = 147
-      Top = 64
+      Top = 88
       Width = 828
       Height = 17
       DataField = 'LOCALINSTALCENTRAL'
@@ -426,7 +426,7 @@ object FConsCliente: TFConsCliente
     end
     object Label2: TLabel
       Left = 8
-      Top = 40
+      Top = 64
       Width = 64
       Height = 20
       Caption = 'Central:'
@@ -439,10 +439,50 @@ object FConsCliente: TFConsCliente
     end
     object Label3: TLabel
       Left = 8
-      Top = 64
+      Top = 88
       Width = 136
       Height = 20
       Caption = 'Local instala'#231#227'o:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object TXTNomeFantasia: TDBText
+      Left = 139
+      Top = 40
+      Width = 836
+      Height = 17
+      DataField = 'NMFANTASIA'
+      DataSource = DModuleCliente.DSConsCliente
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      ParentFont = False
+    end
+    object Label5: TLabel
+      Left = 148
+      Top = 16
+      Width = 173
+      Height = 20
+      Caption = 'Nome / Raz'#227'o Social:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Label7: TLabel
+      Left = 8
+      Top = 40
+      Width = 127
+      Height = 20
+      Caption = 'Nome Fantasia:'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -16
@@ -586,9 +626,9 @@ object FConsCliente: TFConsCliente
   end
   object DBGClientes: TDBGrid
     Left = 0
-    Top = 324
+    Top = 344
     Width = 1002
-    Height = 273
+    Height = 253
     Align = alBottom
     DataSource = DModuleCliente.DSConsCliente
     Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
@@ -643,7 +683,7 @@ object FConsCliente: TFConsCliente
     Width = 266
     Height = 77
     Caption = 'Ordena'#231#227'o do resultado'
-    ItemIndex = 0
+    ItemIndex = 1
     Items.Strings = (
       'Nome / Raz'#227'o Social'
       'Codificador')

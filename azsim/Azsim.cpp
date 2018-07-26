@@ -22,7 +22,6 @@ USEFORM("RelTopEventos.cpp", QRPTopEventos); /* TQuickRep: File Type */
 USEFORM("ListRelatoriosAtendimento.cpp", FListRelatoriosAtendimento);
 USEFORM("RelTopEventosClienteHora.cpp", QRPTopEventosClienteHora); /* TQuickRep: File Type */
 USEFORM("RelTopEventosClienteData.cpp", QRPTopEventosClienteData); /* TQuickRep: File Type */
-USEFORM("RelEventosClienteDataHora.cpp", QRPEventosClienteDataHora); /* TQuickRep: File Type */
 USEFORM("BufferResumoOcorrencias.cpp", FBufferResumoOcorrencias);
 USEFORM("RelOcorrenciasEncerradas.cpp", QRPOcorrenciasEncerradas); /* TQuickRep: File Type */
 USEFORM("CadOrdemServico.cpp", FCadOrdemServico);
@@ -36,6 +35,7 @@ USEFORM("DMOcorrencia.cpp", fdmOcorrencia); /* TDataModule: File Type */
 USEFORM("DialogGeracaoRelClientes.cpp", dlgGeracaoRelClientes);
 USEFORM("ListaClientes.cpp", FListaClientes);
 USEFORM("FichaCliente.cpp", FFichaCliente);
+USEFORM("ReportEventosUnit.cpp", ReportEventos); /* TQuickRep: File Type */
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {

@@ -76,6 +76,12 @@ void __fastcall TFOcorrencia::AbrirManualmente()
         if(fdmOcorrencia->IBTOcorrencia->InTransaction)
             fdmOcorrencia->IBTOcorrencia->Commit();
 
+        // Desbloqueia a edição das datas OC e Atendimento
+        EdtDataEvento->ReadOnly = false;
+        EdtDataAberturaOcorrencia->ReadOnly = false;
+        fdmOcorrencia->CDSOcorrenciaDATAEVENTO->ReadOnly = false;
+        fdmOcorrencia->CDSOcorrenciaDATAATENDIMENTO->ReadOnly = false;
+
         fdmOcorrencia->CDSOcorrencia->Edit();
         GeraOcorrenciaId();
 
@@ -246,12 +252,22 @@ void __fastcall TFOcorrencia::FormClose(TObject *Sender, TCloseAction &Action)
 
             bool ConfirmaAberturaManual = Application->MessageBox(
                 "É necessário preencher os valores destacados em negrito para "
-                "gravar uma ocorrência corretamente. Deseja cancelar "
+                "gravar uma ocorrência corretamente.\nDeseja cancelar "
                 "o cadastro e fechar tela?","Confirmar", MB_ICONINFORMATION|MB_YESNO) == IDYES;
             if(!ConfirmaAberturaManual){
                 Action = caNone;
                 return;
             }
+
+            fdmOcorrencia->CDSProcedimento->Active = false;
+            fdmOcorrencia->CDSContato->Active = false;
+            fdmOcorrencia->CDSCliente->Active = false;
+            fdmOcorrencia->CDSAgente->Active = false;
+            fdmOcorrencia->CDSOperador->Active = false;
+            fdmOcorrencia->CDSTipoOcorrencia->Active = false;
+            fdmOcorrencia->CDSSubTipoOcorrencia->Active = false;
+            fdmOcorrencia->CDSOcorrencia->Active = false;
+            fdmOcorrencia->CDSSetores->Active = false;            
         }
 
     }catch(Exception &excecao){
@@ -376,7 +392,7 @@ void __fastcall TFOcorrencia::BtnOrdemServicoClick(TObject *Sender)
 void __fastcall TFOcorrencia::BtnLocalizarClienteClick(TObject *Sender)
 {
     if(!FHome->FormEstaAberto("FConsCliente")){
-        FConsCliente = new TFConsCliente(this);
+        FConsCliente = new TFConsCliente(NULL);
     }
 
     FConsCliente->Width = 1010;
@@ -407,7 +423,7 @@ void __fastcall TFOcorrencia::EdtDataEventoDblClick(TObject *Sender)
 {
     if(!EdtDataEvento->ReadOnly){
         fdmOcorrencia->CDSOcorrenciaDATAEVENTO->AsDateTime = Now();
-    }
+    }       
 }
 
 //---------------------------------------------------------------------------
@@ -587,3 +603,4 @@ void __fastcall TFOcorrencia::CDSOcorrenciaCDCLIENTEChange(TField *Sender)
 }
 
 //---------------------------------------------------------------------------
+

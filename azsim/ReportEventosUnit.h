@@ -1,6 +1,6 @@
 //----------------------------------------------------------------------------
-#ifndef RelEventosClienteDataHoraH
-#define RelEventosClienteDataHoraH
+#ifndef TReportEventosH
+#define TReportEventosH
 //----------------------------------------------------------------------------
 #include <vcl\Classes.hpp>
 #include <vcl\Controls.hpp>
@@ -10,7 +10,7 @@
 #include <vcl\QRCtrls.hpp>
 #include <ExtCtrls.hpp>
 //----------------------------------------------------------------------------
-class TQRPEventosClienteDataHora : public TQuickRep
+class TReportEventos : public TQuickRep
 {
 __published:
     TQRBand *TitleBand1;
@@ -29,9 +29,9 @@ __published:
     TQRSysData *QRSysData2;
 private:
 public:
-    __fastcall TQRPEventosClienteDataHora::TQRPEventosClienteDataHora(TComponent* Owner);
+    __fastcall TReportEventos::TReportEventos(TComponent* Owner);
 };
 //----------------------------------------------------------------------------
-extern TQRPEventosClienteDataHora *QRPEventosClienteDataHora;
+extern TReportEventos *ReportEventos;
 //----------------------------------------------------------------------------
 #endif

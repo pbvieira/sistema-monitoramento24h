@@ -2,13 +2,13 @@
 #include <vcl\vcl.h>
 #pragma hdrstop
 
-#include "RelEventosClienteDataHora.h"
+#include "ReportEventosUnit.h"
 #include "ListRelatoriosAtendimento.h"
 //----------------------------------------------------------------------------
 #pragma resource "*.dfm"
-TQRPEventosClienteDataHora *QRPEventosClienteDataHora;
+TReportEventos *ReportEventos;
 //----------------------------------------------------------------------------
-__fastcall TQRPEventosClienteDataHora::TQRPEventosClienteDataHora(TComponent* Owner)
+__fastcall TReportEventos::TReportEventos(TComponent* Owner)
     : TQuickRep(Owner)
 {
 }

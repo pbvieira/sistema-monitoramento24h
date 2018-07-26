@@ -1,6 +1,6 @@
 object FCadCliente: TFCadCliente
-  Left = 366
-  Top = 128
+  Left = 402
+  Top = 165
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'AZSIM'
@@ -329,13 +329,13 @@ object FCadCliente: TFCadCliente
       object Label4: TLabel
         Left = 212
         Top = 12
-        Width = 62
+        Width = 58
         Height = 13
-        Caption = 'N'#186' do Cliente'
+        Caption = 'C'#243'd. AZSIM'
       end
       object Label6: TLabel
-        Left = 283
-        Top = 13
+        Left = 8
+        Top = 57
         Width = 102
         Height = 13
         Caption = 'Nome / Raz'#227'o Social'
@@ -347,8 +347,8 @@ object FCadCliente: TFCadCliente
         ParentFont = False
       end
       object Label7: TLabel
-        Left = 600
-        Top = 59
+        Left = 341
+        Top = 12
         Width = 58
         Height = 13
         Caption = 'CPF / CNPJ'
@@ -360,8 +360,8 @@ object FCadCliente: TFCadCliente
         ParentFont = False
       end
       object Label8: TLabel
-        Left = 543
-        Top = 59
+        Left = 284
+        Top = 12
         Width = 43
         Height = 13
         Caption = 'Natureza'
@@ -432,8 +432,8 @@ object FCadCliente: TFCadCliente
         Caption = 'Cep'
       end
       object Label22: TLabel
-        Left = 755
-        Top = 59
+        Left = 496
+        Top = 12
         Width = 91
         Height = 13
         Caption = 'Inscri'#231#227'o Municipal'
@@ -465,8 +465,8 @@ object FCadCliente: TFCadCliente
         ParentFont = False
       end
       object Label1: TLabel
-        Left = 9
-        Top = 59
+        Left = 415
+        Top = 57
         Width = 71
         Height = 13
         Caption = 'Nome Fantasia'
@@ -476,6 +476,36 @@ object FCadCliente: TFCadCliente
         Font.Name = 'MS Sans Serif'
         Font.Style = []
         ParentFont = False
+      end
+      object Label21: TLabel
+        Left = 609
+        Top = 11
+        Width = 49
+        Height = 13
+        Caption = 'C'#243'd. H'#225'bil'
+        Visible = False
+      end
+      object Label23: TLabel
+        Left = 680
+        Top = 11
+        Width = 59
+        Height = 13
+        Caption = 'C'#243'd. Condor'
+        Visible = False
+      end
+      object Label24: TLabel
+        Left = 751
+        Top = 12
+        Width = 57
+        Height = 13
+        Caption = 'Codificador*'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        Visible = False
       end
       object CmbFilial: TDBLookupComboBox
         Left = 8
@@ -496,26 +526,26 @@ object FCadCliente: TFCadCliente
         TabOrder = 1
       end
       object EdtNmCliente: TDBEdit
-        Left = 283
-        Top = 29
-        Width = 582
+        Left = 8
+        Top = 73
+        Width = 403
         Height = 21
         DataField = 'NMCLIENTE'
         DataSource = DModuleCliente.DSCliente
-        TabOrder = 2
+        TabOrder = 8
       end
       object EdtDocumento: TDBEdit
-        Left = 600
-        Top = 75
+        Left = 341
+        Top = 28
         Width = 150
         Height = 21
         DataField = 'DOCUMENTO'
         DataSource = DModuleCliente.DSCliente
-        TabOrder = 5
+        TabOrder = 3
       end
       object CmbNatureza: TDBComboBox
-        Left = 541
-        Top = 75
+        Left = 282
+        Top = 28
         Width = 57
         Height = 21
         Style = csDropDownList
@@ -527,7 +557,7 @@ object FCadCliente: TFCadCliente
         Items.Strings = (
           'F'
           'J')
-        TabOrder = 4
+        TabOrder = 2
       end
       object EdtEndereco: TDBEdit
         Left = 8
@@ -536,7 +566,7 @@ object FCadCliente: TFCadCliente
         Height = 21
         DataField = 'ENDERECO'
         DataSource = DModuleCliente.DSCliente
-        TabOrder = 7
+        TabOrder = 10
       end
       object EdtBairro: TDBEdit
         Left = 341
@@ -545,7 +575,7 @@ object FCadCliente: TFCadCliente
         Height = 21
         DataField = 'BAIRRO'
         DataSource = DModuleCliente.DSCliente
-        TabOrder = 8
+        TabOrder = 11
       end
       object EdtCidade: TDBEdit
         Left = 506
@@ -554,7 +584,7 @@ object FCadCliente: TFCadCliente
         Height = 21
         DataField = 'CIDADE'
         DataSource = DModuleCliente.DSCliente
-        TabOrder = 9
+        TabOrder = 12
       end
       object EdtUf: TDBEdit
         Left = 727
@@ -563,7 +593,7 @@ object FCadCliente: TFCadCliente
         Height = 21
         DataField = 'UF'
         DataSource = DModuleCliente.DSCliente
-        TabOrder = 10
+        TabOrder = 13
       end
       object EdtCep: TDBEdit
         Left = 786
@@ -572,16 +602,16 @@ object FCadCliente: TFCadCliente
         Height = 21
         DataField = 'CEP'
         DataSource = DModuleCliente.DSCliente
-        TabOrder = 11
+        TabOrder = 14
       end
       object EdtIcm: TDBEdit
-        Left = 752
-        Top = 75
+        Left = 493
+        Top = 28
         Width = 113
         Height = 21
         DataField = 'INSCMUNICIPAL'
         DataSource = DModuleCliente.DSCliente
-        TabOrder = 6
+        TabOrder = 4
       end
       object EdtPontoRef: TDBEdit
         Left = 8
@@ -590,7 +620,7 @@ object FCadCliente: TFCadCliente
         Height = 21
         DataField = 'PONTOREF'
         DataSource = DModuleCliente.DSCliente
-        TabOrder = 12
+        TabOrder = 15
       end
       object EdtKmBase: TDBEdit
         Left = 787
@@ -599,16 +629,44 @@ object FCadCliente: TFCadCliente
         Height = 21
         DataField = 'KMBASE'
         DataSource = DModuleCliente.DSCliente
-        TabOrder = 13
+        TabOrder = 16
       end
       object EdtNomeFantasia: TDBEdit
-        Left = 9
-        Top = 75
-        Width = 529
+        Left = 414
+        Top = 72
+        Width = 451
         Height = 21
         DataField = 'NMFANTASIA'
         DataSource = DModuleCliente.DSCliente
-        TabOrder = 3
+        TabOrder = 9
+      end
+      object EdtCodigoHabil: TDBEdit
+        Left = 608
+        Top = 28
+        Width = 69
+        Height = 21
+        DataField = 'CDCLIENTE'
+        DataSource = DModuleCliente.DSCliente
+        TabOrder = 5
+        Visible = False
+      end
+      object EdtCodigoCondor: TDBEdit
+        Left = 679
+        Top = 28
+        Width = 69
+        Height = 21
+        DataField = 'CDCLIENTE'
+        DataSource = DModuleCliente.DSCliente
+        TabOrder = 6
+        Visible = False
+      end
+      object EdtCodCodificador: TDBEdit
+        Left = 750
+        Top = 28
+        Width = 115
+        Height = 21
+        TabOrder = 7
+        Visible = False
       end
     end
     object GRPContatos: TGroupBox
