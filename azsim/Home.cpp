@@ -18,6 +18,7 @@
 #include "DMCliente.h"
 #include "FichaCliente.h"
 #include "ListaClientes.h"
+#include "SelectReportOcorrenciaUnit.h"
 
 #pragma hdrstop
 //---------------------------------------------------------------------------
@@ -1072,7 +1073,7 @@ void __fastcall TFHome::DSPConsFaltaComunicacaoGetTableName(
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFHome::MnRelAtendimentoClick(TObject *Sender)
+void __fastcall TFHome::MnRelEventosClick(TObject *Sender)
 {
     if(FormEstaAberto("FListRelatoriosAtendimento")){
         FListRelatoriosAtendimento->Show();
@@ -1274,6 +1275,17 @@ void __fastcall TFHome::DBGOcorrenciasHistDrawColumnCell(TObject *Sender,
         (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_SELECTED_ROW;
     }
     (dynamic_cast <TDBGrid*> (Sender))->DefaultDrawColumnCell(Rect, DataCol, Column, State);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::MnRelOcorrenciasClick(TObject *Sender)
+{
+    if(FormEstaAberto("FSelectReportOcorrencia")){
+        FSelectReportOcorrencia->Show();
+    }else{
+        FSelectReportOcorrencia = new TFSelectReportOcorrencia(this);
+        FSelectReportOcorrencia->Show();
+    }
 }
 //---------------------------------------------------------------------------
 

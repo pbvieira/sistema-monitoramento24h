@@ -1,34 +1,25 @@
 //---------------------------------------------------------------------------
 
-#ifndef ListRelatoriosAtendimentoH
-#define ListRelatoriosAtendimentoH
+#ifndef SelectReportOcorrenciaUnitH
+#define SelectReportOcorrenciaUnitH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
-#include <Buttons.hpp>
 #include <ComCtrls.hpp>
 #include <DB.hpp>
 #include <DBClient.hpp>
+#include <ExtCtrls.hpp>
 #include <IBCustomDataSet.hpp>
 #include <IBDatabase.hpp>
 #include <IBQuery.hpp>
 #include <Provider.hpp>
-#include <ExtCtrls.hpp>
+#include <Buttons.hpp>
 //---------------------------------------------------------------------------
-class TFListRelatoriosAtendimento : public TForm
+class TFSelectReportOcorrencia : public TForm
 {
 __published:	// IDE-managed Components
-    TIBTransaction *IBTRelAtendimento;
-    TIBQuery *IBQRelAtendimento;
-    TDataSetProvider *DSPRelAtendimento;
-    TClientDataSet *CDSRelAtendimento;
-    TSpeedButton *BtnFechar;
-    TPanel *pnlTituloOcorrencias;
-    TSpeedButton *BtnEventos;
-    TSpeedButton *BtnTotalEventosHora;
-    TSpeedButton *BtnTotalEventosDia;
     TGroupBox *GroupBox2;
     TLabel *Label10;
     TLabel *Label11;
@@ -42,24 +33,22 @@ __published:	// IDE-managed Components
     TEdit *EdtCodClienteTotais;
     TEdit *EdtNomeTotais;
     TEdit *EdtCodificadorTotais;
-    TGroupBox *GroupBox4;
-    TLabel *Label16;
-    TLabel *Label15;
-    TEdit *EdtStatusDescricaoTotais;
-    TEdit *EdtStatusTotais;
-    TSpeedButton *BtnTotaisEventos;
-    void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
-    void __fastcall BtnFecharClick(TObject *Sender);
-    void __fastcall BtnEventosClick(TObject *Sender);
-    void __fastcall BtnTotalEventosHoraClick(TObject *Sender);
-    void __fastcall BtnTotalEventosDiaClick(TObject *Sender);
-    void __fastcall BtnTotaisEventosClick(TObject *Sender);
-private:	// User declarations
+    TClientDataSet *CDSRelAtendimento;
+    TDataSetProvider *DSPRelAtendimento;
+    TIBQuery *IBQRelAtendimento;
+    TIBTransaction *IBTRelAtendimento;
+    TPanel *pnlTituloOcorrencias;
+    TSpeedButton *BtnOcorrencias;
+    TSpeedButton *BtnFechar;
+    void __fastcall BtnOcorrenciasClick(TObject *Sender);
     void __fastcall ConfiguraCriteriosSQL();
+    void __fastcall BtnFecharClick(TObject *Sender);
+    void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+private:	// User declarations
 public:		// User declarations
-    __fastcall TFListRelatoriosAtendimento(TComponent* Owner);
+    __fastcall TFSelectReportOcorrencia(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TFListRelatoriosAtendimento *FListRelatoriosAtendimento;
+extern PACKAGE TFSelectReportOcorrencia *FSelectReportOcorrencia;
 //---------------------------------------------------------------------------
 #endif

@@ -165,7 +165,7 @@ __published:	// IDE-managed Components
     TStringField *CDSConsFaltaComunicacaoMOTIVO_DESATIVOU;
     TIntegerField *IBQConsFaltaComunicacaoMONITORAMENTO_ATIVO;
     TIntegerField *CDSConsFaltaComunicacaoMONITORAMENTO_ATIVO;
-    TMenuItem *MnRelAtendimento;
+    TMenuItem *MnRelEventos;
     TMenuItem *MnCadastrarOS;
     TMenuItem *MnConsultarOS;
     TMenuItem *MnCadCodificador;
@@ -362,6 +362,9 @@ __published:	// IDE-managed Components
     TEdit *EdtStatusDescricaoOC;
     TPanel *Panel3;
     TLabel *Label15;
+    TMenuItem *MnRelOcorrencias;
+    TMenuItem *N2;
+    TMenuItem *MnRelContratosAtivos;
     void __fastcall MnSairClick(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall MnCadContratoClick(TObject *Sender);
@@ -399,7 +402,7 @@ __published:	// IDE-managed Components
     void __fastcall gridOcorrenciasDblClick(TObject *Sender);
     void __fastcall DSPConsFaltaComunicacaoGetTableName(TObject *Sender,
           TDataSet *DataSet, AnsiString &TableName);
-    void __fastcall MnRelAtendimentoClick(TObject *Sender);
+    void __fastcall MnRelEventosClick(TObject *Sender);
     void __fastcall MnCadastrarOSClick(TObject *Sender);
     void __fastcall MnConsultarOSClick(TObject *Sender);
     void __fastcall MnCadCodificadorClick(TObject *Sender);
@@ -417,6 +420,7 @@ __published:	// IDE-managed Components
     void __fastcall DBGOcorrenciasHistDrawColumnCell(TObject *Sender,
           const TRect &Rect, int DataCol, TColumn *Column,
           TGridDrawState State);
+    void __fastcall MnRelOcorrenciasClick(TObject *Sender);
 private:	// User declarations
     // Métodos
     HWND __fastcall CarregaMonitor(LPCTSTR program, LPCTSTR args);

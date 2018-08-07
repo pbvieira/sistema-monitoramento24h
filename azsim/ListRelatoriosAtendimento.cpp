@@ -179,105 +179,6 @@ void __fastcall TFListRelatoriosAtendimento::BtnEventosClick(
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFListRelatoriosAtendimento::BtnOcorrenciasClick(
-      TObject *Sender)
-{
-    try{
-        AnsiString SQL_ORDER_BY = " ORDER BY O.DATAEVENTO, O.CDOCORRENCIA";
-        AnsiString SQL_FILTRO_DATA =
-            "SELECT "
-            "    O.CDOCORRENCIA, O.DATAEVENTO, O.DATAATENDIMENTO, O.DATAENCERRAMENTO, O.CTX, O.PORTACOM, O.EQUIPAMENTO, "
-            "    C.CDCLIENTE, C.ENDERECO, C.CIDADE, "
-            "    CASE WHEN C.NMFANTASIA IS NULL THEN C.NMCLIENTE ELSE C.NMFANTASIA END AS NMCLIENTE, "
-            "    O.STATUS || '.' || REPLACE(O.REFERENCIA, 'F', '*') AS STATUS,  O.DESTATUS, "
-            "    CASE "
-            "        WHEN TRIM(S.SETOR) <> '' AND TRIM(O.NUMSETOR) <> 'FF' THEN "
-            "            REPLACE(O.NUMSETOR, 'F', '') || ' - ' || O.LOCAL "
-            "        ELSE NULL END AS LOCAL, "
-            "    O.RESUMO, OPA.LOGIN AS OPERADORABERTURA, OPE.LOGIN AS OPERADORENCERRAMENTO, AG.LOGIN AS AGENTE, O.KMTOTALPERCORRIDO "
-            "FROM OCORRENCIA O JOIN STATUS S ON O.STATUS = S.ESTATUS AND O.REFERENCIA = S.REFERENCIA1 "
-            "    INNER JOIN CLIENTE C ON O.CDCLIENTE = C.CDCLIENTE "
-            "    INNER JOIN USUARIO OPA ON O.CDOPERADORABERTURA = OPA.CDUSUARIO "
-            "    INNER JOIN USUARIO OPE ON O.CDOPERADORENCERRAMENTO = OPE.CDUSUARIO "
-            "    LEFT JOIN USUARIO AG ON O.CDAGENTE = AG.CDUSUARIO "
-            "WHERE O.ISOCORRENCIAENCERRADA = 1 AND O.DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL ";
-
-        AnsiString SQL_FILTRO = SQL_FILTRO_DATA + SQL_ORDER_BY;
-        AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO_DATA + " AND O.CDCLIENTE = :CDCLIENTE" + SQL_ORDER_BY;
-        AnsiString SQL_FILTRO_NOME   = SQL_FILTRO_DATA + " AND (C.NMCLIENTE LIKE UPPER(:NMCLIENTE) OR C.NMFANTASIA LIKE UPPER(:NMCLIENTE))" + SQL_ORDER_BY;
-        AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO_DATA + " AND O.EQUIPAMENTO = :EQUIPAMENTO" + SQL_ORDER_BY;
-
-        CDSRelAtendimento->Close();
-        IBQRelAtendimento->SQL->Clear();
-        IBQRelAtendimento->SQL->Text = SQL_FILTRO_DATA;
-
-        int CodigoCliente = StrToIntDef(EdtCodClienteTotais->Text, 0);
-        AnsiString NomeCliente = EdtNomeTotais->Text;
-        int Codificador = StrToIntDef(EdtCodificadorTotais->Text, 0);;
-        AnsiString Estatus = EdtStatusTotais->Text;
-        AnsiString StatusDescricao = EdtStatusDescricaoTotais->Text;
-
-        if(CodigoCliente > 0){
-            CDSRelAtendimento->Close();
-            IBQRelAtendimento->SQL->Clear();
-            SQL_FILTRO = SQL_FILTRO_CODIGO;
-            IBQRelAtendimento->SQL->Text = SQL_FILTRO;
-
-        }else if(NomeCliente != ""){
-            CDSRelAtendimento->Close();
-            IBQRelAtendimento->SQL->Clear();
-            SQL_FILTRO = SQL_FILTRO_NOME;
-            IBQRelAtendimento->SQL->Text = SQL_FILTRO;
-
-        }else if(Codificador > 0){
-            CDSRelAtendimento->Close();
-            IBQRelAtendimento->SQL->Clear();
-            SQL_FILTRO = SQL_FILTRO_CODIFICADOR;
-            IBQRelAtendimento->SQL->Text = SQL_FILTRO;
-        }
-
-        if(Estatus != ""){
-            CDSRelAtendimento->Close();
-            IBQRelAtendimento->SQL->Clear();
-            SQL_FILTRO = SQL_FILTRO_DATA + " AND O.STATUS LIKE :STATUS" + SQL_ORDER_BY;
-            IBQRelAtendimento->SQL->Text = SQL_FILTRO;
-            IBQRelAtendimento->ParamByName("STATUS")->Size = 5;
-
-        }else if(StatusDescricao != ""){
-            CDSRelAtendimento->Close();
-            IBQRelAtendimento->SQL->Clear();
-            SQL_FILTRO = SQL_FILTRO_DATA + " AND O.DESTATUS LIKE :DESTATUS" + SQL_ORDER_BY;
-            IBQRelAtendimento->SQL->Text = SQL_FILTRO;
-        }
-
-        ConfiguraCriteriosSQL();
-
-        IBQRelAtendimento->ParamByName("DATAINICIAL")->AsDate = EdtDataInicialTotais->Date;
-        IBQRelAtendimento->ParamByName("DATAFINAL")->AsDate = EdtDataFinalTotais->Date;
-        CDSRelAtendimento->Active = true;
-        int totalRegistros = CDSRelAtendimento->RecordCount;
-
-        if(totalRegistros > 0){
-            QRPOcorrenciasEncerradas->DataSet = CDSRelAtendimento;
-            QRPOcorrenciasEncerradas->PreviewModal();
-        }else{
-            Application->MessageBox("Nenhum registro localizado", "Sucesso", MB_ICONINFORMATION|MB_OK);
-        }
-
-        if(IBTRelAtendimento->InTransaction){
-            IBTRelAtendimento->Commit();
-        }
-
-    }catch(Exception &excecao){
-        AnsiString erro = excecao.Message;
-        String ErroNaConexao =
-            "Ocorreu um erro ao consultar as ocorrências do cliente.\n\nDescrição do erro:\n" + erro;
-        Application->MessageBox(ErroNaConexao.c_str(),"Atenção",MB_ICONERROR|MB_OK);
-    }
-}
-
-//---------------------------------------------------------------------------
-
 void __fastcall TFListRelatoriosAtendimento::BtnTotalEventosHoraClick(TObject *Sender)
 {
     try{
@@ -475,5 +376,111 @@ void __fastcall TFListRelatoriosAtendimento::BtnTotalEventosDiaClick(TObject *Se
     }
 }
 
+//---------------------------------------------------------------------------
+
+
+void __fastcall TFListRelatoriosAtendimento::BtnTotaisEventosClick(
+      TObject *Sender)
+{
+    try{
+        AnsiString SQL_FILTRO_DATA = "SELECT TOTAL, CDCLIENTE, NMCLIENTE, EQUIPAMENTO, "
+            " DATAEVENTO, STATUS, DESTATUS, LOCAL "
+            "FROM VLOGEVE_TOTAIS WHERE DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL";
+
+
+        "SELECT "
+        "    COUNT(EVE.STATUS) AS TOTAL, EVE.CDCLIENTE, EVE.NMCLIENTE, EVE.EQUIPAMENTO, "
+        "    CAST( "
+        "        LPAD(EXTRACT(YEAR FROM EVE.DATAEVENTO),4,'0') || '-' || "
+        "        LPAD(EXTRACT(MONTH FROM EVE.DATAEVENTO),2,'0') || '-' || "
+        "        LPAD(EXTRACT(DAY FROM EVE.DATAEVENTO),2,'0') "
+        "    AS DATE) AS DATAEVENTO, "
+        "    EVE.STATUS || '.' || REPLACE(EVE.REFERENCIA, 'F', '*') AS STATUS, EVE.DESTATUS, "
+        "    CASE "
+        "        WHEN TRIM(EVE.NUMSETOR) <> '' AND TRIM(EVE.NUMSETOR) <> 'FF' THEN "
+        "            REPLACE(EVE.NUMSETOR, 'F', '') || ' - ' || EVE.LOCAL "
+        "        ELSE NULL END AS LOCAL "
+        "FROM LOGEVENTO EVE "
+        "WHERE EVE.CDCLIENTE > 0 AND EVE.DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL ";
+
+        // PENDENTE
+
+        "GROUP BY EVE.CDCLIENTE, EVE.NMCLIENTE, EVE.EQUIPAMENTO, DATAEVENTO, STATUS, EVE.DESTATUS, LOCAL "
+        "HAVING COUNT(EVE.STATUS) > 2 "
+        "ORDER BY TOTAL DESC, DATAEVENTO"
+
+        AnsiString SQL_FILTRO = SQL_FILTRO_DATA;
+        AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO_DATA + " AND CDCLIENTE = :CDCLIENTE";
+        AnsiString SQL_FILTRO_NOME = SQL_FILTRO_DATA   + " AND NMCLIENTE LIKE UPPER(:NMCLIENTE)";
+        AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO_DATA + " AND EQUIPAMENTO = :EQUIPAMENTO";
+
+        CDSRelAtendimento->Close();
+        IBQRelAtendimento->SQL->Clear();
+        IBQRelAtendimento->SQL->Text = SQL_FILTRO;
+
+        int CodigoCliente = StrToIntDef(EdtCodClienteTotais->Text, 0);
+        AnsiString NomeCliente = EdtNomeTotais->Text;
+        int Codificador = StrToIntDef(EdtCodificadorTotais->Text, 0);;
+        AnsiString Estatus = EdtStatusTotais->Text;
+        AnsiString StatusDescricao = EdtStatusDescricaoTotais->Text;
+
+        if(CodigoCliente > 0){
+            CDSRelAtendimento->Close();
+            IBQRelAtendimento->SQL->Clear();
+            SQL_FILTRO = SQL_FILTRO_CODIGO;
+            IBQRelAtendimento->SQL->Text = SQL_FILTRO;
+
+        }else if(NomeCliente != ""){
+            CDSRelAtendimento->Close();
+            IBQRelAtendimento->SQL->Clear();
+            SQL_FILTRO = SQL_FILTRO_NOME;
+            IBQRelAtendimento->SQL->Text = SQL_FILTRO;
+
+        }else if(Codificador > 0){
+            CDSRelAtendimento->Close();
+            IBQRelAtendimento->SQL->Clear();
+            SQL_FILTRO = SQL_FILTRO_CODIFICADOR;
+            IBQRelAtendimento->SQL->Text = SQL_FILTRO;
+        }
+
+        if(Estatus != ""){
+            CDSRelAtendimento->Close();
+            IBQRelAtendimento->SQL->Clear();
+            SQL_FILTRO = SQL_FILTRO + " AND STATUS LIKE :STATUS";
+            IBQRelAtendimento->SQL->Text = SQL_FILTRO;
+            IBQRelAtendimento->ParamByName("STATUS")->Size = 5;
+
+        }else if(StatusDescricao != ""){
+            CDSRelAtendimento->Close();
+            IBQRelAtendimento->SQL->Clear();
+            SQL_FILTRO = SQL_FILTRO + " AND DESTATUS LIKE :DESTATUS";
+            IBQRelAtendimento->SQL->Text = SQL_FILTRO;
+        }
+
+        ConfiguraCriteriosSQL();
+
+        IBQRelAtendimento->ParamByName("DATAINICIAL")->AsDate = EdtDataInicialTotais->Date;
+        IBQRelAtendimento->ParamByName("DATAFINAL")->AsDate = EdtDataFinalTotais->Date;
+        CDSRelAtendimento->Active = true;
+        int totalRegistros = CDSRelAtendimento->RecordCount;
+
+        if(totalRegistros > 0){
+            QRPTopEventos->DataSet = CDSRelAtendimento;
+            QRPTopEventos->PreviewModal();
+        }else{
+            Application->MessageBox("Nenhum registro localizado", "Sucesso", MB_ICONINFORMATION|MB_OK);
+        }
+
+        if(IBTRelAtendimento->InTransaction){
+            IBTRelAtendimento->Commit();
+        }
+
+    }catch(Exception &excecao){
+        AnsiString erro = excecao.Message;
+        String ErroNaConexao =
+            "Ocorreu um erro ao consultar os totais de eventos (Prioridade na Manutenção).\n\nDescrição do erro:\n" + erro;
+        Application->MessageBox(ErroNaConexao.c_str(),"Atenção",MB_ICONERROR|MB_OK);
+    }    
+}
 //---------------------------------------------------------------------------
 

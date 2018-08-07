@@ -4,6 +4,7 @@
 
 #include "RelOcorrenciasEncerradas.h"
 #include "ListRelatoriosAtendimento.h"
+#include "SelectReportOcorrenciaUnit.h"
 //----------------------------------------------------------------------------
 #pragma resource "*.dfm"
 TQRPOcorrenciasEncerradas *QRPOcorrenciasEncerradas;

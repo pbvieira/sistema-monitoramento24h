@@ -252,7 +252,7 @@ void __fastcall TFOcorrencia::FormClose(TObject *Sender, TCloseAction &Action)
 
             bool ConfirmaAberturaManual = Application->MessageBox(
                 "É necessário preencher os valores destacados em negrito para "
-                "gravar uma ocorrência corretamente.\nDeseja cancelar "
+                "gravar\n uma ocorrência corretamente. Deseja cancelar "
                 "o cadastro e fechar tela?","Confirmar", MB_ICONINFORMATION|MB_YESNO) == IDYES;
             if(!ConfirmaAberturaManual){
                 Action = caNone;

@@ -1,11 +1,11 @@
-object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
-  Left = 558
-  Top = 191
-  BorderIcons = [biSystemMenu]
+object FSelectReportOcorrencia: TFSelectReportOcorrencia
+  Left = 531
+  Top = 373
+  BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'AZSIM'
-  ClientHeight = 220
-  ClientWidth = 705
+  ClientHeight = 182
+  ClientWidth = 707
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,13 +14,21 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
   Font.Style = []
   FormStyle = fsStayOnTop
   OldCreateOrder = False
-  Position = poDesktopCenter
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
+  object BtnOcorrencias: TSpeedButton
+    Left = 11
+    Top = 139
+    Width = 139
+    Height = 35
+    Caption = 'Ocorr'#234'ncias atendidas'
+    Transparent = False
+    OnClick = BtnOcorrenciasClick
+  end
   object BtnFechar: TSpeedButton
     Left = 640
-    Top = 177
+    Top = 139
     Width = 57
     Height = 34
     Flat = True
@@ -54,67 +62,13 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
     Layout = blGlyphTop
     OnClick = BtnFecharClick
   end
-  object BtnEventos: TSpeedButton
-    Left = 8
-    Top = 176
-    Width = 139
-    Height = 35
-    Caption = 'Eventos recebidos'
-    Transparent = False
-    OnClick = BtnEventosClick
-  end
-  object BtnTotalEventosHora: TSpeedButton
-    Left = 152
-    Top = 176
-    Width = 139
-    Height = 35
-    Caption = 'Totais eventos por hora'
-    Transparent = False
-    OnClick = BtnTotalEventosHoraClick
-  end
-  object BtnTotalEventosDia: TSpeedButton
-    Left = 296
-    Top = 176
-    Width = 139
-    Height = 35
-    Caption = 'Totais eventos por dia'
-    Transparent = False
-    OnClick = BtnTotalEventosDiaClick
-  end
-  object BtnTotaisEventos: TSpeedButton
-    Left = 439
-    Top = 176
-    Width = 139
-    Height = 35
-    Caption = 'Totais eventos'
-    Transparent = False
-    OnClick = BtnTotaisEventosClick
-  end
-  object pnlTituloOcorrencias: TPanel
-    Left = 0
-    Top = 0
-    Width = 705
-    Height = 30
-    Align = alTop
-    Alignment = taLeftJustify
-    BevelOuter = bvNone
-    Caption = ' Relat'#243'rios de eventos do cliente'
-    Color = clPurple
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWhite
-    Font.Height = -16
-    Font.Name = 'MS Sans Serif'
-    Font.Style = [fsBold]
-    ParentFont = False
-    TabOrder = 0
-  end
   object GroupBox2: TGroupBox
     Left = 11
     Top = 40
     Width = 246
-    Height = 126
+    Height = 89
     Caption = 'Selecione o Intervalo da Consulta'
-    TabOrder = 1
+    TabOrder = 0
     object Label10: TLabel
       Left = 106
       Top = 17
@@ -168,12 +122,12 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
     end
   end
   object GroupBox3: TGroupBox
-    Left = 259
+    Left = 261
     Top = 39
     Width = 438
-    Height = 62
+    Height = 90
     Caption = ' Cliente ou Codificador '
-    TabOrder = 2
+    TabOrder = 1
     object Label12: TLabel
       Left = 13
       Top = 17
@@ -238,83 +192,50 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
       TabOrder = 2
     end
   end
-  object GroupBox4: TGroupBox
-    Left = 259
-    Top = 104
-    Width = 438
-    Height = 62
-    Caption = ' Estatus ou Descri'#231#227'o'
-    TabOrder = 3
-    object Label16: TLabel
-      Left = 85
-      Top = 17
-      Width = 101
-      Height = 13
-      Caption = 'Descri'#231#227'o do Estatus'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-    end
-    object Label15: TLabel
-      Left = 13
-      Top = 17
-      Width = 35
-      Height = 13
-      Caption = 'Estatus'
-      Font.Charset = DEFAULT_CHARSET
-      Font.Color = clWindowText
-      Font.Height = -11
-      Font.Name = 'MS Sans Serif'
-      Font.Style = []
-      ParentFont = False
-    end
-    object EdtStatusDescricaoTotais: TEdit
-      Left = 84
-      Top = 33
-      Width = 346
-      Height = 21
-      CharCase = ecUpperCase
-      TabOrder = 0
-    end
-    object EdtStatusTotais: TEdit
-      Left = 12
-      Top = 33
-      Width = 70
-      Height = 21
-      Hint = 'Exemplo: 0.0*'
-      CharCase = ecUpperCase
-      TabOrder = 1
-    end
+  object pnlTituloOcorrencias: TPanel
+    Left = 0
+    Top = 0
+    Width = 707
+    Height = 30
+    Align = alTop
+    Alignment = taLeftJustify
+    BevelOuter = bvNone
+    Caption = ' Relat'#243'rios de eventos do cliente'
+    Color = clPurple
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWhite
+    Font.Height = -16
+    Font.Name = 'MS Sans Serif'
+    Font.Style = [fsBold]
+    ParentFont = False
+    TabOrder = 2
   end
-  object IBTRelAtendimento: TIBTransaction
-    Active = False
-    DefaultDatabase = DModule.IBCONAzsim
-    AutoStopAction = saNone
-    Left = 58
-    Top = 121
+  object CDSRelAtendimento: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DSPRelAtendimento'
+    Left = 496
+    Top = 88
+  end
+  object DSPRelAtendimento: TDataSetProvider
+    DataSet = IBQRelAtendimento
+    Constraints = True
+    Left = 464
+    Top = 89
   end
   object IBQRelAtendimento: TIBQuery
     Database = DModule.IBCONAzsim
     Transaction = IBTRelAtendimento
     BufferChunks = 1000
     CachedUpdates = False
-    Left = 89
-    Top = 120
+    Left = 433
+    Top = 88
   end
-  object DSPRelAtendimento: TDataSetProvider
-    DataSet = IBQRelAtendimento
-    Constraints = True
-    Left = 120
-    Top = 121
-  end
-  object CDSRelAtendimento: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'DSPRelAtendimento'
-    Left = 152
-    Top = 120
+  object IBTRelAtendimento: TIBTransaction
+    Active = False
+    DefaultDatabase = DModule.IBCONAzsim
+    AutoStopAction = saNone
+    Left = 402
+    Top = 89
   end
 end

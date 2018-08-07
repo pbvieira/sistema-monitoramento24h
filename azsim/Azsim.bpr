@@ -14,7 +14,7 @@
       CadOrdemServico.obj ConsOrdemServico.obj RelOrdemServicos.obj CadBase.obj 
       CadCodificadores.obj RelFichaClientes.obj DMInfo.obj DMOcorrencia.obj 
       DialogGeracaoRelClientes.obj ListaClientes.obj FichaCliente.obj 
-      ReportEventosUnit.obj"/>
+      ReportEventosUnit.obj SelectReportOcorrenciaUnit.obj"/>
     <RESFILES value="Azsim.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -29,7 +29,7 @@
       CadOrdemServico.dfm ConsOrdemServico.dfm RelOrdemServicos.dfm CadBase.dfm 
       CadCodificadores.dfm RelFichaClientes.dfm DMInfo.dfm DMOcorrencia.dfm 
       DialogGeracaoRelClientes.dfm ListaClientes.dfm FichaCliente.dfm 
-      ReportEventosUnit.dfm"/>
+      ReportEventosUnit.dfm SelectReportOcorrenciaUnit.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value="bcbie.lib bcb2kaxserver.lib vclx.lib qrpt.lib bdertl.lib vcldb.lib 
       dbexpress.lib dsnap.lib cds.lib ibxpress.lib dbrtl.lib rtl.lib vcl.lib"/>
@@ -49,7 +49,7 @@
     <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
     <RELEASELIBPATH value="$(BCB)\lib\release"/>
     <LINKER value="ilink32"/>
-    <USERDEFINES value=""/>
+    <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT"/>
     <MAINSOURCE value="Azsim.cpp"/>
     <INCLUDEPATH value="&quot;C:\Arquivos de programas\Borland\CBuilder6\Projects&quot;;C:\azmonitoramento\azsim;$(BCB)\include;$(BCB)\include\vcl"/>
@@ -60,12 +60,13 @@
   <OPTIONS>
     <IDLCFLAGS value="-I&quot;C:\Arquivos de programas\Borland\CBuilder6\Projects&quot; 
       -IC:\azmonitoramento\azsim -I$(BCB)\include -I$(BCB)\include\vcl 
-      -src_suffix cpp -boa"/>
-    <CFLAG1 value="-O2 -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -a4 -b- -k- -vi -c -tW -tWM"/>
-    <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
+      -src_suffix cpp -D_DEBUG -boa"/>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a4 -b- -k -y -v -vi- -c 
+      -tW -tWM"/>
+    <PFLAGS value="-$Y+ -$W -$O- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
-    <AFLAGS value="/mx /w2 /zn"/>
-    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn"/>
+    <AFLAGS value="/mx /w2 /zi"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
     <OTHERFILES value=""/>
   </OPTIONS>
   <LINKER>
@@ -110,6 +111,7 @@
       <FILE FILENAME="ListaClientes.cpp" FORMNAME="FListaClientes" UNITNAME="ListaClientes" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="FichaCliente.cpp" FORMNAME="FFichaCliente" UNITNAME="FichaCliente" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ReportEventosUnit.cpp" FORMNAME="ReportEventos" UNITNAME="ReportEventosUnit" CONTAINERID="CCompiler" DESIGNCLASS="TQuickRep" LOCALCOMMAND=""/>
+      <FILE FILENAME="SelectReportOcorrenciaUnit.cpp" FORMNAME="FSelectReportOcorrencia" UNITNAME="SelectReportOcorrenciaUnit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
@@ -121,7 +123,7 @@ AutoIncBuild=1
 MajorVer=1
 MinorVer=2
 Release=0
-Build=4
+Build=5
 Debug=0
 PreRelease=0
 Special=0
@@ -133,7 +135,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=
 FileDescription=
-FileVersion=1.2.0.4
+FileVersion=1.2.0.5
 InternalName=
 LegalCopyright=
 LegalTrademarks=

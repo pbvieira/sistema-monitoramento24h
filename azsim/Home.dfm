@@ -2243,7 +2243,7 @@ object FHome: TFHome
     end
     object MnRelatorios: TMenuItem
       Caption = '&Relat'#243'rios'
-      object MnRelAtendimento: TMenuItem
+      object MnRelEventos: TMenuItem
         Bitmap.Data = {
           C6040000424DC60400000000000036040000280000000C0000000C0000000100
           0800000000009000000000000000000000000001000000000000E3A32700DE97
@@ -2284,8 +2284,18 @@ object FHome: TFHome
           0A0B0B060606060606060606060B0C0B0B0B0B0B0B0B0B0B0B0C0C0C010C0C0C
           0C0C0C010C0C0C0C000C0C0C0C0C0C030C0C0C0C000C0C0C0C0C03030C0C0C0C
           040404040404040C0C0C}
-        Caption = 'Relat'#243'rios de Atendimento'
-        OnClick = MnRelAtendimentoClick
+        Caption = 'Relat'#243'rios de Eventos'
+        OnClick = MnRelEventosClick
+      end
+      object MnRelOcorrencias: TMenuItem
+        Caption = 'Relat'#243'rio de Ocorr'#234'ncias'
+        OnClick = MnRelOcorrenciasClick
+      end
+      object N2: TMenuItem
+        Caption = '-'
+      end
+      object MnRelContratosAtivos: TMenuItem
+        Caption = 'Relat'#243'rio de Clientes Ativos'
       end
     end
     object MnAjuda: TMenuItem
