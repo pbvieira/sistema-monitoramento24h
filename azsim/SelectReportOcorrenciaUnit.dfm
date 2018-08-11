@@ -1,11 +1,11 @@
 object FSelectReportOcorrencia: TFSelectReportOcorrencia
-  Left = 531
-  Top = 373
+  Left = 700
+  Top = 409
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'AZSIM'
   ClientHeight = 182
-  ClientWidth = 707
+  ClientWidth = 705
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,6 +14,7 @@ object FSelectReportOcorrencia: TFSelectReportOcorrencia
   Font.Style = []
   FormStyle = fsStayOnTop
   OldCreateOrder = False
+  Position = poDesktopCenter
   OnClose = FormClose
   PixelsPerInch = 96
   TextHeight = 13
@@ -27,7 +28,7 @@ object FSelectReportOcorrencia: TFSelectReportOcorrencia
     OnClick = BtnOcorrenciasClick
   end
   object BtnFechar: TSpeedButton
-    Left = 640
+    Left = 641
     Top = 139
     Width = 57
     Height = 34
@@ -195,12 +196,12 @@ object FSelectReportOcorrencia: TFSelectReportOcorrencia
   object pnlTituloOcorrencias: TPanel
     Left = 0
     Top = 0
-    Width = 707
+    Width = 705
     Height = 30
     Align = alTop
     Alignment = taLeftJustify
     BevelOuter = bvNone
-    Caption = ' Relat'#243'rios de eventos do cliente'
+    Caption = ' Relat'#243'rios de ocorr'#234'ncias do cliente'
     Color = clPurple
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite

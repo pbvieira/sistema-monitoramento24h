@@ -59,6 +59,11 @@ void __fastcall TFConsCliente::BtnConsultarClick(TObject *Sender)
 
         if(rgClientesAtivos->ItemIndex >= 1){
             RESTRINGI_CONTRATO = "INNER";
+
+          /*
+          Retirado os items do radio group! Achar alguma utilidade pra este código
+          antes de excluí-lo.
+
           if (rgClientesAtivos->ItemIndex == 2){
               // Restringi a clientes que tiveram ocorrências atendidas nos últimos 180 dias
               RESTRINGI_CONTRATO_ATIVOS = "	AND (SELECT COUNT(1) FROM OCORRENCIA O "
@@ -80,6 +85,7 @@ void __fastcall TFConsCliente::BtnConsultarClick(TObject *Sender)
                 "WHERE O.ISOCORRENCIAENCERRADA = 1 "
                 "AND O.CDCLIENTE = C.CDCLIENTE AND DATEDIFF(MONTH, O.DATAEVENTO, CURRENT_DATE) < 2) > 1 ";
           }
+          */
         }
 
         AnsiString ORDER_BY = " ORDER BY C.NMCLIENTE";

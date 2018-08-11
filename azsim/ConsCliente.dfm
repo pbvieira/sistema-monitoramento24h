@@ -1,6 +1,6 @@
 object FConsCliente: TFConsCliente
-  Left = 264
-  Top = 167
+  Left = 399
+  Top = 165
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'AZSIM'
@@ -25,7 +25,7 @@ object FConsCliente: TFConsCliente
   TextHeight = 13
   object BtnConsultar: TSpeedButton
     Left = 8
-    Top = 196
+    Top = 108
     Width = 255
     Height = 22
     Caption = 'Executar consulta pelos filtros informados acima'
@@ -61,7 +61,7 @@ object FConsCliente: TFConsCliente
   end
   object BtnTodos: TSpeedButton
     Left = 289
-    Top = 196
+    Top = 108
     Width = 128
     Height = 22
     Caption = 'Listar Todos Clientes'
@@ -97,7 +97,7 @@ object FConsCliente: TFConsCliente
   end
   object BtnAbrirClientes: TSpeedButton
     Left = 419
-    Top = 196
+    Top = 108
     Width = 174
     Height = 22
     Caption = 'Abrir Cadastro de Clientes'
@@ -147,7 +147,7 @@ object FConsCliente: TFConsCliente
   end
   object BtnAbrirContratos: TSpeedButton
     Left = 595
-    Top = 196
+    Top = 108
     Width = 174
     Height = 22
     Caption = 'Abrir Cadastro de Contratos'
@@ -197,7 +197,7 @@ object FConsCliente: TFConsCliente
   end
   object BtnRelatorioClientes: TSpeedButton
     Left = 771
-    Top = 196
+    Top = 108
     Width = 162
     Height = 22
     Caption = 'Gerar Relat'#243'ro de Clientes'
@@ -247,7 +247,7 @@ object FConsCliente: TFConsCliente
   end
   object LblOR: TLabel
     Left = 268
-    Top = 201
+    Top = 113
     Width = 15
     Height = 13
     Caption = 'ou'
@@ -678,8 +678,8 @@ object FConsCliente: TFConsCliente
       end>
   end
   object RgpOrdenacao: TRadioGroup
-    Left = 493
-    Top = 108
+    Left = 280
+    Top = 140
     Width = 266
     Height = 77
     Caption = 'Ordena'#231#227'o do resultado'
@@ -691,19 +691,14 @@ object FConsCliente: TFConsCliente
   end
   object rgClientesAtivos: TRadioGroup
     Left = 9
-    Top = 108
-    Width = 480
+    Top = 140
+    Width = 266
     Height = 77
     Caption = 'Op'#231#245'es de resultado'
-    Columns = 2
-    ItemIndex = 0
+    ItemIndex = 1
     Items.Strings = (
       'Todos'
-      'Com cadastro de contrato'
-      'Com atendimentos de OC. '#250'ltimos 180 dias'
-      'Com atendimentos de OC. '#250'ltimos 90 dias'
-      'Com atendimentos de OC. '#250'ltimos 60 dias'
-      'Com atendimentos de OC. '#250'ltimos 30 dias')
+      'Clientes com contrato ativo')
     TabOrder = 9
   end
 end
