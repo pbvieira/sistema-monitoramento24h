@@ -19,11 +19,13 @@ __published:
     TQRDBText *QRDBText3;
     TQRDBText *QRDBText5;
     TQRBand *QRBand3;
-    TQRLabel *QRLabel3;
     TQRSysData *QRSysData1;
     TQRDBText *QRDBText4;
     TQRDBText *QRDBText8;
     TQRDBText *QRDBText1;
+    TQRBand *QRBand4;
+    TQRLabel *QRLabel2;
+    TQRSysData *QRSysData2;
 private:
 public:
    __fastcall TQRPTopEventos::TQRPTopEventos(TComponent* Owner);

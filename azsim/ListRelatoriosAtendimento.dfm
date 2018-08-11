@@ -1,6 +1,6 @@
 object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
-  Left = 558
-  Top = 191
+  Left = 699
+  Top = 160
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'AZSIM'
@@ -86,7 +86,7 @@ object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
     Top = 176
     Width = 139
     Height = 35
-    Caption = 'Totais eventos'
+    Caption = 'Totais eventos priorit'#225'rios'
     Transparent = False
     OnClick = BtnTotaisEventosClick
   end

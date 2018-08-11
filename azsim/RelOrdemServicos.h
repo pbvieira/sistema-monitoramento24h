@@ -66,6 +66,12 @@ __published:
     TQRDBText *QRDBText24;
     TQRLabel *QRLabel19;
     TQRDBText *QRDBText25;
+    TQRLabel *QRLabel21;
+    TQRLabel *QRLabel20;
+    TQRDBText *QRDBText26;
+    TQRDBText *QRDBText27;
+    TQRDBText *QRDBText28;
+    TQRDBText *QRDBText29;
 private:
 public:
    __fastcall TQRPOrdemServicos::TQRPOrdemServicos(TComponent* Owner);

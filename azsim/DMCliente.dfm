@@ -1,9 +1,9 @@
 object DModuleCliente: TDModuleCliente
   OldCreateOrder = False
-  Left = 396
-  Top = 189
-  Height = 545
-  Width = 1024
+  Left = 220
+  Top = 203
+  Height = 576
+  Width = 1149
   object IBQContato: TIBQuery
     Database = DModule.IBCONAzsim
     Transaction = IBTCliente
@@ -18,7 +18,7 @@ object DModuleCliente: TDModuleCliente
         'HA, CONTRASENHA, DATANASCIMENTO FROM CLIENTECONTATO WHERE CDCLIE' +
         'NTE= :CDCLIENTE')
     UniDirectional = True
-    Left = 133
+    Left = 148
     Top = 14
     ParamData = <
       item
@@ -141,7 +141,7 @@ object DModuleCliente: TDModuleCliente
     DataSetField = CDSClienteIBQContato
     Params = <>
     BeforePost = CDSContatoBeforePost
-    Left = 133
+    Left = 148
     Top = 62
     object CDSContatoCDCLIENTECONTATO: TIntegerField
       FieldName = 'CDCLIENTECONTATO'
@@ -177,21 +177,21 @@ object DModuleCliente: TDModuleCliente
   end
   object DSContato: TDataSource
     DataSet = CDSContato
-    Left = 133
+    Left = 148
     Top = 110
   end
   object IBTGenIdContato: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 133
+    Left = 148
     Top = 158
   end
   object IBSPGenIdContato: TIBStoredProc
     Database = DModule.IBCONAzsim
     Transaction = IBTGenIdContato
     StoredProcName = 'SP_GEN_CLIENTECONTATO_ID'
-    Left = 133
+    Left = 148
     Top = 206
     ParamData = <
       item
@@ -215,7 +215,7 @@ object DModuleCliente: TDModuleCliente
         'E8, FONEOBS8 FROM CLIENTE WHERE CDCLIENTE = -1;')
     UniDirectional = True
     GeneratorField.ApplyEvent = gamOnPost
-    Left = 37
+    Left = 52
     Top = 62
     object IBQClienteCDCLIENTE: TIntegerField
       FieldName = 'CDCLIENTE'
@@ -399,7 +399,7 @@ object DModuleCliente: TDModuleCliente
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 37
+    Left = 52
     Top = 14
   end
   object DSPCliente: TDataSetProvider
@@ -407,7 +407,7 @@ object DModuleCliente: TDModuleCliente
     Constraints = True
     Options = [poCascadeDeletes, poCascadeUpdates, poAllowMultiRecordUpdates]
     UpdateMode = upWhereKeyOnly
-    Left = 37
+    Left = 52
     Top = 158
   end
   object CDSCliente: TClientDataSet
@@ -591,7 +591,7 @@ object DModuleCliente: TDModuleCliente
     ProviderName = 'DSPCliente'
     StoreDefs = True
     BeforePost = CDSClienteBeforePost
-    Left = 37
+    Left = 52
     Top = 206
     object CDSClienteCDCLIENTE: TIntegerField
       FieldName = 'CDCLIENTE'
@@ -792,26 +792,26 @@ object DModuleCliente: TDModuleCliente
   object DSCliente: TDataSource
     AutoEdit = False
     DataSet = CDSCliente
-    Left = 37
+    Left = 52
     Top = 254
   end
   object IBTGenIdCliente: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 37
+    Left = 52
     Top = 302
   end
   object DSLinkCliente: TDataSource
     DataSet = IBQCliente
-    Left = 37
+    Left = 52
     Top = 110
   end
   object IBSPGenIdCliente: TIBStoredProc
     Database = DModule.IBCONAzsim
     Transaction = IBTGenIdCliente
     StoredProcName = 'SP_GEN_CLIENTE_ID'
-    Left = 37
+    Left = 52
     Top = 350
     ParamData = <
       item
@@ -824,7 +824,7 @@ object DModuleCliente: TDModuleCliente
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 229
+    Left = 244
     Top = 14
   end
   object IBQContrato: TIBQuery
@@ -842,7 +842,7 @@ object DModuleCliente: TDModuleCliente
         'CIA, UF_MON, VALORATUAL, VALORINICIAL,MODELOCENTRAL,LOCALINSTALC' +
         'ENTRAL,OBSCENTRAL FROM CONTRATO;')
     UniDirectional = True
-    Left = 229
+    Left = 244
     Top = 62
     object IBQContratoBAIRRO_MON: TIBStringField
       DisplayWidth = 60
@@ -993,7 +993,7 @@ object DModuleCliente: TDModuleCliente
   object DSPContrato: TDataSetProvider
     DataSet = IBQContrato
     Constraints = True
-    Left = 229
+    Left = 244
     Top = 158
   end
   object CDSContrato: TClientDataSet
@@ -1152,7 +1152,7 @@ object DModuleCliente: TDModuleCliente
     ProviderName = 'DSPContrato'
     StoreDefs = True
     BeforePost = CDSContratoBeforePost
-    Left = 229
+    Left = 244
     Top = 206
     object CDSContratoDETIPOCONTRATO: TStringField
       FieldKind = fkLookup
@@ -1343,21 +1343,21 @@ object DModuleCliente: TDModuleCliente
   end
   object DSContrato: TDataSource
     DataSet = CDSContrato
-    Left = 229
+    Left = 244
     Top = 255
   end
   object IBTGenIdContrato: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 229
+    Left = 244
     Top = 302
   end
   object IBSPGenIdContrato: TIBStoredProc
     Database = DModule.IBCONAzsim
     Transaction = IBTGenIdContrato
     StoredProcName = 'SP_GEN_CONTRATO_ID'
-    Left = 229
+    Left = 244
     Top = 350
     ParamData = <
       item
@@ -1370,7 +1370,7 @@ object DModuleCliente: TDModuleCliente
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 377
+    Left = 392
     Top = 62
   end
   object IBQTipoContrato: TIBQuery
@@ -1381,7 +1381,7 @@ object DModuleCliente: TDModuleCliente
     SQL.Strings = (
       'SELECT CDTIPOCONTRATO, DETIPOCONTRATO  FROM TIPOCONTRATO')
     UniDirectional = True
-    Left = 377
+    Left = 392
     Top = 13
     object IBQTipoContratoCDTIPOCONTRATO: TIntegerField
       FieldName = 'CDTIPOCONTRATO'
@@ -1398,14 +1398,14 @@ object DModuleCliente: TDModuleCliente
   object DSPTipoContrato: TDataSetProvider
     DataSet = IBQTipoContrato
     Constraints = True
-    Left = 377
+    Left = 392
     Top = 110
   end
   object CDSTipoContrato: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPTipoContrato'
-    Left = 377
+    Left = 392
     Top = 157
     object CDSTipoContratoCDTIPOCONTRATO: TIntegerField
       FieldName = 'CDTIPOCONTRATO'
@@ -1423,7 +1423,7 @@ object DModuleCliente: TDModuleCliente
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 457
+    Left = 472
     Top = 13
   end
   object IBQReceita: TIBQuery
@@ -1433,7 +1433,7 @@ object DModuleCliente: TDModuleCliente
     CachedUpdates = False
     SQL.Strings = (
       'SELECT CDCONTRATORECEITA, DERECEITA FROM CONTRATORECEITA')
-    Left = 457
+    Left = 472
     Top = 62
     object IBQReceitaCDCONTRATORECEITA: TIntegerField
       FieldName = 'CDCONTRATORECEITA'
@@ -1450,14 +1450,14 @@ object DModuleCliente: TDModuleCliente
   object DSPReceita: TDataSetProvider
     DataSet = IBQReceita
     Constraints = True
-    Left = 457
+    Left = 472
     Top = 110
   end
   object CDSReceita: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPReceita'
-    Left = 457
+    Left = 472
     Top = 157
     object CDSReceitaCDCONTRATORECEITA: TIntegerField
       FieldName = 'CDCONTRATORECEITA'
@@ -1475,7 +1475,7 @@ object DModuleCliente: TDModuleCliente
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 537
+    Left = 552
     Top = 13
   end
   object IBQTipoCobranca: TIBQuery
@@ -1485,7 +1485,7 @@ object DModuleCliente: TDModuleCliente
     CachedUpdates = False
     SQL.Strings = (
       'SELECT CDTIPOCOBRANCA, DETIPOCOBRANCA FROM TIPOCOBRANCA')
-    Left = 537
+    Left = 552
     Top = 62
     object IBQTipoCobrancaCDTIPOCOBRANCA: TIntegerField
       FieldName = 'CDTIPOCOBRANCA'
@@ -1502,14 +1502,14 @@ object DModuleCliente: TDModuleCliente
   object DSPTipoCobranca: TDataSetProvider
     DataSet = IBQTipoCobranca
     Constraints = True
-    Left = 537
+    Left = 552
     Top = 110
   end
   object CDSTipoCobranca: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPTipoCobranca'
-    Left = 537
+    Left = 552
     Top = 157
     object CDSTipoCobrancaCDTIPOCOBRANCA: TIntegerField
       FieldName = 'CDTIPOCOBRANCA'
@@ -1527,7 +1527,7 @@ object DModuleCliente: TDModuleCliente
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 632
+    Left = 647
     Top = 14
   end
   object IBQTipoContato: TIBQuery
@@ -1537,7 +1537,7 @@ object DModuleCliente: TDModuleCliente
     CachedUpdates = False
     SQL.Strings = (
       'SELECT CDTIPOCONTATO, DETIPOCONTATO FROM TIPOCONTATO')
-    Left = 632
+    Left = 647
     Top = 63
     object IBQTipoContatoCDTIPOCONTATO: TIntegerField
       FieldName = 'CDTIPOCONTATO'
@@ -1554,7 +1554,7 @@ object DModuleCliente: TDModuleCliente
   object DSPTipoContato: TDataSetProvider
     DataSet = IBQTipoContato
     Constraints = True
-    Left = 632
+    Left = 647
     Top = 111
   end
   object CDSTipoContato: TClientDataSet
@@ -1562,21 +1562,21 @@ object DModuleCliente: TDModuleCliente
     Params = <>
     ProviderName = 'DSPTipoContato'
     BeforePost = CDSContatoBeforePost
-    Left = 632
+    Left = 647
     Top = 158
   end
   object IBSPProcedimento: TIBStoredProc
     Database = DModule.IBCONAzsim
     Transaction = IBTGenIdProcedimento
     StoredProcName = 'SP_GEN_PROCEDIMENTO_ID'
-    Left = 725
+    Left = 740
     Top = 302
   end
   object IBTProcedimento: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 725
+    Left = 740
     Top = 14
   end
   object IBQProcedimento: TIBQuery
@@ -1589,7 +1589,7 @@ object DModuleCliente: TDModuleCliente
         'SELECT CDPROCEDIMENTO, DEPROCEDIMENTO FROM PROCEDIMENTO ORDER BY' +
         ' CDPROCEDIMENTO;')
     UniDirectional = True
-    Left = 725
+    Left = 740
     Top = 62
     object IBQProcedimentoCDPROCEDIMENTO: TIntegerField
       FieldName = 'CDPROCEDIMENTO'
@@ -1606,19 +1606,19 @@ object DModuleCliente: TDModuleCliente
   object DSPProcedimento: TDataSetProvider
     DataSet = IBQProcedimento
     Constraints = True
-    Left = 725
+    Left = 740
     Top = 110
   end
   object DSProcedimento: TDataSource
     DataSet = CDSProcedimento
-    Left = 725
+    Left = 740
     Top = 207
   end
   object IBTGenIdProcedimento: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 725
+    Left = 740
     Top = 254
   end
   object IBQSetor: TIBQuery
@@ -1632,7 +1632,7 @@ object DModuleCliente: TDModuleCliente
         'SELECT CDCONTRATO, LOCAL, NUMSETOR FROM SETOR WHERE CDCONTRATO =' +
         ' :CDCONTRATO  ORDER BY NUMSETOR')
     UniDirectional = True
-    Left = 301
+    Left = 316
     Top = 14
     ParamData = <
       item
@@ -1679,7 +1679,7 @@ object DModuleCliente: TDModuleCliente
     IndexDefs = <>
     Params = <>
     StoreDefs = True
-    Left = 301
+    Left = 316
     Top = 62
     object CDSSetorCDCONTRATO: TIntegerField
       FieldName = 'CDCONTRATO'
@@ -1699,7 +1699,7 @@ object DModuleCliente: TDModuleCliente
   end
   object DSSetor: TDataSource
     DataSet = CDSSetor
-    Left = 301
+    Left = 316
     Top = 110
   end
   object IBQConsCliente: TIBQuery
@@ -1757,7 +1757,7 @@ object DModuleCliente: TDModuleCliente
       #9'CLIENTE C'
       'JOIN CONTRATO CR ON C.CDCLIENTE = CR.CDCLIENTE;')
     UniDirectional = True
-    Left = 829
+    Left = 844
     Top = 62
     object IBQConsClienteCDCLIENTE: TIntegerField
       FieldName = 'CDCLIENTE'
@@ -1958,7 +1958,7 @@ object DModuleCliente: TDModuleCliente
   end
   object DSConsCliente: TDataSource
     DataSet = CDSConsCliente
-    Left = 829
+    Left = 844
     Top = 254
   end
   object IBTConsCliente: TIBTransaction
@@ -1968,7 +1968,7 @@ object DModuleCliente: TDModuleCliente
       'concurrency'
       'nowait')
     AutoStopAction = saNone
-    Left = 829
+    Left = 844
     Top = 14
   end
   object CDSConsCliente: TClientDataSet
@@ -2188,7 +2188,7 @@ object DModuleCliente: TDModuleCliente
     Params = <>
     ProviderName = 'DSPConsCliente'
     StoreDefs = True
-    Left = 829
+    Left = 844
     Top = 206
     object CDSConsClienteCDCLIENTE: TIntegerField
       FieldName = 'CDCLIENTE'
@@ -2383,7 +2383,7 @@ object DModuleCliente: TDModuleCliente
     DataSet = IBQConsCliente
     Constraints = True
     Options = [poReadOnly]
-    Left = 829
+    Left = 844
     Top = 160
   end
   object IBQConsContrato: TIBQuery
@@ -2404,7 +2404,7 @@ object DModuleCliente: TDModuleCliente
       ''
       '    ')
     UniDirectional = True
-    Left = 923
+    Left = 938
     Top = 14
     ParamData = <
       item
@@ -2554,12 +2554,12 @@ object DModuleCliente: TDModuleCliente
   end
   object DSLinkConsCliente: TDataSource
     DataSet = IBQConsCliente
-    Left = 828
+    Left = 843
     Top = 110
   end
   object DSConsContrato: TDataSource
     DataSet = CDSConsContrato
-    Left = 925
+    Left = 940
     Top = 110
   end
   object CDSConsContrato: TClientDataSet
@@ -2708,7 +2708,7 @@ object DModuleCliente: TDModuleCliente
     IndexDefs = <>
     Params = <>
     StoreDefs = True
-    Left = 925
+    Left = 940
     Top = 62
     object CDSConsContratoCDCODIFICADOR: TIntegerField
       FieldName = 'CDCODIFICADOR'
@@ -2738,7 +2738,7 @@ object DModuleCliente: TDModuleCliente
     SQL.Strings = (
       'SELECT CDTIPOCLIENTE, DETIPOCLIENTE FROM TIPOCLIENTE')
     UniDirectional = True
-    Left = 129
+    Left = 144
     Top = 302
     object IBQTipoClienteCDTIPOCLIENTE: TIntegerField
       FieldName = 'CDTIPOCLIENTE'
@@ -2756,21 +2756,21 @@ object DModuleCliente: TDModuleCliente
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 129
+    Left = 144
     Top = 256
   end
   object DSPTipoCliente: TDataSetProvider
     DataSet = IBQTipoCliente
     Constraints = True
     UpdateMode = upWhereChanged
-    Left = 129
+    Left = 144
     Top = 352
   end
   object CDSTipoCliente: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPTipoCliente'
-    Left = 129
+    Left = 144
     Top = 400
     object CDSTipoClienteCDTIPOCLIENTE: TIntegerField
       FieldName = 'CDTIPOCLIENTE'
@@ -2788,7 +2788,7 @@ object DModuleCliente: TDModuleCliente
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 381
+    Left = 396
     Top = 214
   end
   object IBQMotivoCancel: TIBQuery
@@ -2798,7 +2798,7 @@ object DModuleCliente: TDModuleCliente
     CachedUpdates = False
     SQL.Strings = (
       'SELECT CDMOTIVOCANCEL, DEMOTIVOCANCEL FROM MOTIVOCANCEL')
-    Left = 381
+    Left = 396
     Top = 263
     object IBQMotivoCancelCDMOTIVOCANCEL: TIntegerField
       FieldName = 'CDMOTIVOCANCEL'
@@ -2815,14 +2815,14 @@ object DModuleCliente: TDModuleCliente
   object DSPMotivoCancel: TDataSetProvider
     DataSet = IBQMotivoCancel
     Constraints = True
-    Left = 381
+    Left = 396
     Top = 311
   end
   object CDSMotivoCancel: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPMotivoCancel'
-    Left = 381
+    Left = 396
     Top = 357
     object CDSMotivoCancelCDMOTIVOCANCEL: TIntegerField
       FieldName = 'CDMOTIVOCANCEL'
@@ -2841,7 +2841,7 @@ object DModuleCliente: TDModuleCliente
     Params = <>
     ProviderName = 'DSPProcedimento'
     BeforePost = CDSProcedimentoBeforePost
-    Left = 727
+    Left = 742
     Top = 159
     object CDSProcedimentoCDPROCEDIMENTO: TIntegerField
       FieldName = 'CDPROCEDIMENTO'
@@ -2854,14 +2854,14 @@ object DModuleCliente: TDModuleCliente
   end
   object DSLinkContrato: TDataSource
     DataSet = IBQContrato
-    Left = 232
+    Left = 247
     Top = 112
   end
   object IBTConsOrdemServico: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 1037
+    Left = 1052
     Top = 14
   end
   object IBQConsOrdemServico: TIBQuery
@@ -2874,7 +2874,7 @@ object DModuleCliente: TDModuleCliente
         'SELECT DISTINCT CDORDEMSERVICO, CDCLIENTE, NMCLIENTE, DATACADAST' +
         'RO, DEORDEMSERVICO, EQUIPAMENTO FROM VORDEMSERVICOS;')
     UniDirectional = True
-    Left = 1037
+    Left = 1052
     Top = 62
     object IBQConsOrdemServicoCDORDEMSERVICO: TIntegerField
       FieldName = 'CDORDEMSERVICO'
@@ -2906,19 +2906,19 @@ object DModuleCliente: TDModuleCliente
   object DSPConsOrdemServico: TDataSetProvider
     DataSet = IBQConsOrdemServico
     Constraints = True
-    Left = 1037
+    Left = 1052
     Top = 110
   end
   object DSConsOrdemServico: TDataSource
     DataSet = CDSConsOrdemServico
-    Left = 1037
+    Left = 1052
     Top = 207
   end
   object CDSConsOrdemServico: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPConsOrdemServico'
-    Left = 1037
+    Left = 1052
     Top = 159
     object CDSConsOrdemServicoCDORDEMSERVICO: TIntegerField
       FieldName = 'CDORDEMSERVICO'
@@ -2942,10 +2942,10 @@ object DModuleCliente: TDModuleCliente
     end
   end
   object IBTRelOrdemServico: TIBTransaction
-    Active = False
+    Active = True
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 1037
+    Left = 1052
     Top = 262
   end
   object IBQRelOrdemServico: TIBQuery
@@ -2977,6 +2977,10 @@ object DModuleCliente: TDModuleCliente
       '    FONEOBS5,'
       '    FONE6,'
       '    FONEOBS6,'
+      '    FONE7,'
+      '    FONEOBS7,'
+      '    FONE8,'
+      '    FONEOBS8,'
       '    ISORDEMENCERRADA,'
       '    MODELOCENTRAL,'
       '    LOCALINSTALCENTRAL,'
@@ -2984,7 +2988,7 @@ object DModuleCliente: TDModuleCliente
       '    NUMSETOR,'
       '    LOCAL FROM VORDEMSERVICOS;')
     UniDirectional = True
-    Left = 1037
+    Left = 1052
     Top = 310
     object IBQRelOrdemServicoCDORDEMSERVICO: TIntegerField
       FieldName = 'CDORDEMSERVICO'
@@ -3039,7 +3043,7 @@ object DModuleCliente: TDModuleCliente
     object IBQRelOrdemServicoFONE1: TIBStringField
       FieldName = 'FONE1'
       Origin = 'VORDEMSERVICOS.FONE1'
-      Size = 13
+      Size = 14
     end
     object IBQRelOrdemServicoFONEOBS1: TIBStringField
       FieldName = 'FONEOBS1'
@@ -3049,7 +3053,7 @@ object DModuleCliente: TDModuleCliente
     object IBQRelOrdemServicoFONE2: TIBStringField
       FieldName = 'FONE2'
       Origin = 'VORDEMSERVICOS.FONE2'
-      Size = 13
+      Size = 14
     end
     object IBQRelOrdemServicoFONEOBS2: TIBStringField
       FieldName = 'FONEOBS2'
@@ -3059,7 +3063,7 @@ object DModuleCliente: TDModuleCliente
     object IBQRelOrdemServicoFONE3: TIBStringField
       FieldName = 'FONE3'
       Origin = 'VORDEMSERVICOS.FONE3'
-      Size = 13
+      Size = 14
     end
     object IBQRelOrdemServicoFONEOBS3: TIBStringField
       FieldName = 'FONEOBS3'
@@ -3069,7 +3073,7 @@ object DModuleCliente: TDModuleCliente
     object IBQRelOrdemServicoFONE4: TIBStringField
       FieldName = 'FONE4'
       Origin = 'VORDEMSERVICOS.FONE4'
-      Size = 13
+      Size = 14
     end
     object IBQRelOrdemServicoFONEOBS4: TIBStringField
       FieldName = 'FONEOBS4'
@@ -3079,7 +3083,7 @@ object DModuleCliente: TDModuleCliente
     object IBQRelOrdemServicoFONE5: TIBStringField
       FieldName = 'FONE5'
       Origin = 'VORDEMSERVICOS.FONE5'
-      Size = 13
+      Size = 14
     end
     object IBQRelOrdemServicoFONEOBS5: TIBStringField
       FieldName = 'FONEOBS5'
@@ -3089,11 +3093,31 @@ object DModuleCliente: TDModuleCliente
     object IBQRelOrdemServicoFONE6: TIBStringField
       FieldName = 'FONE6'
       Origin = 'VORDEMSERVICOS.FONE6'
-      Size = 13
+      Size = 14
     end
     object IBQRelOrdemServicoFONEOBS6: TIBStringField
       FieldName = 'FONEOBS6'
       Origin = 'VORDEMSERVICOS.FONEOBS6'
+      Size = 200
+    end
+    object IBQRelOrdemServicoFONE7: TIBStringField
+      FieldName = 'FONE7'
+      Origin = 'VORDEMSERVICOS.FONE7'
+      Size = 14
+    end
+    object IBQRelOrdemServicoFONEOBS7: TIBStringField
+      FieldName = 'FONEOBS7'
+      Origin = 'VORDEMSERVICOS.FONEOBS7'
+      Size = 200
+    end
+    object IBQRelOrdemServicoFONE8: TIBStringField
+      FieldName = 'FONE8'
+      Origin = 'VORDEMSERVICOS.FONE8'
+      Size = 14
+    end
+    object IBQRelOrdemServicoFONEOBS8: TIBStringField
+      FieldName = 'FONEOBS8'
+      Origin = 'VORDEMSERVICOS.FONEOBS8'
       Size = 200
     end
     object IBQRelOrdemServicoISORDEMENCERRADA: TIntegerField
@@ -3128,19 +3152,19 @@ object DModuleCliente: TDModuleCliente
   object DSPRelOrdemServico: TDataSetProvider
     DataSet = IBQRelOrdemServico
     Constraints = True
-    Left = 1037
+    Left = 1052
     Top = 358
   end
   object DSRelOrdemServico: TDataSource
     DataSet = CDSRelOrdemServico
-    Left = 1037
+    Left = 1052
     Top = 455
   end
   object CDSRelOrdemServico: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPRelOrdemServico'
-    Left = 1037
+    Left = 1052
     Top = 407
     object CDSRelOrdemServicoCDORDEMSERVICO: TIntegerField
       FieldName = 'CDORDEMSERVICO'
@@ -3183,7 +3207,7 @@ object DModuleCliente: TDModuleCliente
     end
     object CDSRelOrdemServicoFONE1: TStringField
       FieldName = 'FONE1'
-      Size = 13
+      Size = 14
     end
     object CDSRelOrdemServicoFONEOBS1: TStringField
       FieldName = 'FONEOBS1'
@@ -3191,7 +3215,7 @@ object DModuleCliente: TDModuleCliente
     end
     object CDSRelOrdemServicoFONE2: TStringField
       FieldName = 'FONE2'
-      Size = 13
+      Size = 14
     end
     object CDSRelOrdemServicoFONEOBS2: TStringField
       FieldName = 'FONEOBS2'
@@ -3199,7 +3223,7 @@ object DModuleCliente: TDModuleCliente
     end
     object CDSRelOrdemServicoFONE3: TStringField
       FieldName = 'FONE3'
-      Size = 13
+      Size = 14
     end
     object CDSRelOrdemServicoFONEOBS3: TStringField
       FieldName = 'FONEOBS3'
@@ -3207,7 +3231,7 @@ object DModuleCliente: TDModuleCliente
     end
     object CDSRelOrdemServicoFONE4: TStringField
       FieldName = 'FONE4'
-      Size = 13
+      Size = 14
     end
     object CDSRelOrdemServicoFONEOBS4: TStringField
       FieldName = 'FONEOBS4'
@@ -3215,7 +3239,7 @@ object DModuleCliente: TDModuleCliente
     end
     object CDSRelOrdemServicoFONE5: TStringField
       FieldName = 'FONE5'
-      Size = 13
+      Size = 14
     end
     object CDSRelOrdemServicoFONEOBS5: TStringField
       FieldName = 'FONEOBS5'
@@ -3223,10 +3247,26 @@ object DModuleCliente: TDModuleCliente
     end
     object CDSRelOrdemServicoFONE6: TStringField
       FieldName = 'FONE6'
-      Size = 13
+      Size = 14
     end
     object CDSRelOrdemServicoFONEOBS6: TStringField
       FieldName = 'FONEOBS6'
+      Size = 200
+    end
+    object CDSRelOrdemServicoFONE7: TStringField
+      FieldName = 'FONE7'
+      Size = 14
+    end
+    object CDSRelOrdemServicoFONEOBS7: TStringField
+      FieldName = 'FONEOBS7'
+      Size = 200
+    end
+    object CDSRelOrdemServicoFONE8: TStringField
+      FieldName = 'FONE8'
+      Size = 14
+    end
+    object CDSRelOrdemServicoFONEOBS8: TStringField
+      FieldName = 'FONEOBS8'
       Size = 200
     end
     object CDSRelOrdemServicoISORDEMENCERRADA: TIntegerField
@@ -3254,7 +3294,7 @@ object DModuleCliente: TDModuleCliente
   end
   object DSConsContato: TDataSource
     DataSet = CDSConsContato
-    Left = 926
+    Left = 941
     Top = 256
   end
   object CDSConsContato: TClientDataSet
@@ -3371,7 +3411,7 @@ object DModuleCliente: TDModuleCliente
     IndexDefs = <>
     Params = <>
     StoreDefs = True
-    Left = 926
+    Left = 941
     Top = 208
     object CDSConsContatoCDCLIENTECONTATO: TIntegerField
       FieldName = 'CDCLIENTECONTATO'
@@ -3497,7 +3537,7 @@ object DModuleCliente: TDModuleCliente
       ''
       '    ')
     UniDirectional = True
-    Left = 924
+    Left = 939
     Top = 160
     ParamData = <
       item
@@ -3616,7 +3656,7 @@ object DModuleCliente: TDModuleCliente
   end
   object DSConsSetores: TDataSource
     DataSet = CDSConsSetores
-    Left = 926
+    Left = 941
     Top = 400
   end
   object CDSConsSetores: TClientDataSet
@@ -3646,7 +3686,7 @@ object DModuleCliente: TDModuleCliente
     IndexDefs = <>
     Params = <>
     StoreDefs = True
-    Left = 926
+    Left = 941
     Top = 352
     object CDSConsSetoresNUMSETOR: TIntegerField
       FieldName = 'NUMSETOR'
@@ -3682,7 +3722,7 @@ object DModuleCliente: TDModuleCliente
       'INNER JOIN CONTRATO CO ON CO.CDCONTRATO = S.CDCONTRATO'
       'WHERE CO.CDCODIFICADOR = :CDCODIFICADOR ORDER BY S.NUMSETOR;')
     UniDirectional = True
-    Left = 924
+    Left = 939
     Top = 304
     ParamData = <
       item

@@ -383,12 +383,12 @@ void __fastcall TFListRelatoriosAtendimento::BtnTotaisEventosClick(
       TObject *Sender)
 {
     try{
-        AnsiString SQL_FILTRO_DATA = "SELECT TOTAL, CDCLIENTE, NMCLIENTE, EQUIPAMENTO, "
-            " DATAEVENTO, STATUS, DESTATUS, LOCAL "
-            "FROM VLOGEVE_TOTAIS WHERE DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL";
+        AnsiString SQL_ORDER_BY = " ORDER BY TOTAL DESC, DATAEVENTO ";
+          " GROUP BY EVE.CDCLIENTE, EVE.NMCLIENTE, EVE.EQUIPAMENTO, DATAEVENTO, STATUS, EVE.DESTATUS, LOCAL "
+          " HAVING COUNT(EVE.STATUS) > 2 ";
+        AnsiString SQL_GROUP_BY = " GROUP BY EVE.CDCLIENTE, EVE.NMCLIENTE, EVE.EQUIPAMENTO, DATAEVENTO, STATUS, EVE.DESTATUS, LOCAL";
 
-
-        "SELECT "
+        AnsiString SQL_FILTRO_DATA = "SELECT "
         "    COUNT(EVE.STATUS) AS TOTAL, EVE.CDCLIENTE, EVE.NMCLIENTE, EVE.EQUIPAMENTO, "
         "    CAST( "
         "        LPAD(EXTRACT(YEAR FROM EVE.DATAEVENTO),4,'0') || '-' || "
@@ -403,16 +403,10 @@ void __fastcall TFListRelatoriosAtendimento::BtnTotaisEventosClick(
         "FROM LOGEVENTO EVE "
         "WHERE EVE.CDCLIENTE > 0 AND EVE.DATAEVENTO BETWEEN :DATAINICIAL AND :DATAFINAL ";
 
-        // PENDENTE
-
-        "GROUP BY EVE.CDCLIENTE, EVE.NMCLIENTE, EVE.EQUIPAMENTO, DATAEVENTO, STATUS, EVE.DESTATUS, LOCAL "
-        "HAVING COUNT(EVE.STATUS) > 2 "
-        "ORDER BY TOTAL DESC, DATAEVENTO"
-
-        AnsiString SQL_FILTRO = SQL_FILTRO_DATA;
-        AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO_DATA + " AND CDCLIENTE = :CDCLIENTE";
-        AnsiString SQL_FILTRO_NOME = SQL_FILTRO_DATA   + " AND NMCLIENTE LIKE UPPER(:NMCLIENTE)";
-        AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO_DATA + " AND EQUIPAMENTO = :EQUIPAMENTO";
+        AnsiString SQL_FILTRO = SQL_FILTRO_DATA + SQL_GROUP_BY + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO_DATA + " AND EVE.CDCLIENTE = :CDCLIENTE" + SQL_GROUP_BY + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_NOME = SQL_FILTRO_DATA   + " AND (C.NMCLIENTE LIKE UPPER(:NMCLIENTE) OR C.NMFANTASIA LIKE UPPER(:NMCLIENTE))" + SQL_GROUP_BY + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO_DATA + " AND EQUIPAMENTO = :EQUIPAMENTO" + SQL_GROUP_BY + SQL_ORDER_BY;
 
         CDSRelAtendimento->Close();
         IBQRelAtendimento->SQL->Clear();
@@ -446,14 +440,14 @@ void __fastcall TFListRelatoriosAtendimento::BtnTotaisEventosClick(
         if(Estatus != ""){
             CDSRelAtendimento->Close();
             IBQRelAtendimento->SQL->Clear();
-            SQL_FILTRO = SQL_FILTRO + " AND STATUS LIKE :STATUS";
+            SQL_FILTRO = SQL_FILTRO + " AND EVE.STATUS LIKE :STATUS";
             IBQRelAtendimento->SQL->Text = SQL_FILTRO;
             IBQRelAtendimento->ParamByName("STATUS")->Size = 5;
 
         }else if(StatusDescricao != ""){
             CDSRelAtendimento->Close();
             IBQRelAtendimento->SQL->Clear();
-            SQL_FILTRO = SQL_FILTRO + " AND DESTATUS LIKE :DESTATUS";
+            SQL_FILTRO = SQL_FILTRO + " AND EVE.DESTATUS LIKE :DESTATUS";
             IBQRelAtendimento->SQL->Text = SQL_FILTRO;
         }
 
