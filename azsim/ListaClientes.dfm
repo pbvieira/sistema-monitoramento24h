@@ -4,7 +4,7 @@ object FListaClientes: TFListaClientes
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'AZSIM'
-  ClientHeight = 248
+  ClientHeight = 233
   ClientWidth = 940
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -20,11 +20,11 @@ object FListaClientes: TFListaClientes
   object Label1: TLabel
     Left = 8
     Top = 39
-    Width = 400
-    Height = 33
+    Width = 650
+    Height = 20
     AutoSize = False
     Caption = 
-      'A consutla retornou mais de um cliente com o nome infromado. Sel' +
+      'A consulta retornou mais de um cliente com o nome informado. Sel' +
       'ecione o cliente com um duplo clique no nome do cliente abaixo.'
     WordWrap = True
   end
@@ -48,7 +48,7 @@ object FListaClientes: TFListaClientes
   end
   object DBGClientes: TDBGrid
     Left = 0
-    Top = 77
+    Top = 62
     Width = 940
     Height = 171
     Align = alBottom

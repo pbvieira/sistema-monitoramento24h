@@ -1,6 +1,6 @@
 object FSelectReportOcorrencia: TFSelectReportOcorrencia
-  Left = 700
-  Top = 409
+  Left = 580
+  Top = 187
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'AZSIM'

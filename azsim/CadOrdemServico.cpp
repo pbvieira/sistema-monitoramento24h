@@ -9,6 +9,7 @@
 #include "Home.h"
 #include "ConsCliente.h"
 #include "ConsOrdemServico.h"
+#include "RelOrdemServicos.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -18,6 +19,7 @@ TFCadOrdemServico *FCadOrdemServico;
 __fastcall TFCadOrdemServico::TFCadOrdemServico(TComponent* Owner)
     : TForm(Owner)
 {
+    QRPOrdemServicos = new TQRPOrdemServicos(this);
 }
 
 //---------------------------------------------------------------------------
@@ -410,6 +412,7 @@ void __fastcall TFCadOrdemServico::FormClose(TObject *Sender,
         Action = caNone;
     }else{
         try{
+            QRPOrdemServicos->Free();
             CDSOrdemServico->Active = false;
         }catch(Exception &excecao){
             AnsiString erro = excecao.Message;
@@ -547,3 +550,39 @@ void __fastcall TFCadOrdemServico::BtnConsultarClick(TObject *Sender)
 }
 
 //---------------------------------------------------------------------------
+void __fastcall TFCadOrdemServico::BtnImprimirClick(TObject *Sender)
+{
+    try{
+        AnsiString SQL_FILTRO_CDORDEMSERVICO = "SELECT * "
+            "FROM VORDEMSERVICOS WHERE CDORDEMSERVICO = :CDORDEMSERVICO";
+        DModuleCliente->CDSRelOrdemServico->Close();
+        DModuleCliente->IBQRelOrdemServico->SQL->Clear();
+        DModuleCliente->IBQRelOrdemServico->SQL->Text = SQL_FILTRO_CDORDEMSERVICO;
+
+        int CdOrdemServico = CDSOrdemServicoCDORDEMSERVICO->AsInteger;
+        if(CdOrdemServico > 0){
+          DModuleCliente->IBQRelOrdemServico->SQL->Text = SQL_FILTRO_CDORDEMSERVICO;
+          DModuleCliente->IBQRelOrdemServico->ParamByName("CDORDEMSERVICO")->AsInteger = CdOrdemServico;
+          DModuleCliente->CDSRelOrdemServico->Active = true;
+          QRPOrdemServicos->DataSet = DModuleCliente->CDSRelOrdemServico;
+          QRPOrdemServicos->PreviewModal();
+
+          if(DModuleCliente->IBTRelOrdemServico->InTransaction){
+              DModuleCliente->IBTRelOrdemServico->Commit();
+          }
+          
+        }else{
+          String Aviso = "É necessário gravar a ordem de serviço antes de imprimir";
+          Application->MessageBox(Aviso.c_str(),"Atenção",MB_ICONINFORMATION|MB_OK);
+        }
+
+    }catch(Exception &excecao){
+        AnsiString erro = excecao.Message;
+        String ErroNaConexao =
+            "Ocorreu um erro ao gerar o relatório de ordem de serviços.\n\nDescrição do erro:\n" + erro;
+        Application->MessageBox(ErroNaConexao.c_str(),"Atenção",MB_ICONERROR|MB_OK);
+    }
+
+}
+//---------------------------------------------------------------------------
+

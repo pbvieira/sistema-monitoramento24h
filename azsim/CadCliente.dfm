@@ -1,6 +1,6 @@
 object FCadCliente: TFCadCliente
-  Left = 402
-  Top = 165
+  Left = 242
+  Top = 164
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'AZSIM'

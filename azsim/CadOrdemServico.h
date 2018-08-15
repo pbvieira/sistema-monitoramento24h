@@ -25,16 +25,6 @@ class TFCadOrdemServico : public TForm
 {
 __published:	// IDE-managed Components
     TPanel *PMenu;
-    TPanel *POperacoes;
-    TToolBar *TBOperacoes;
-    TToolButton *BtnNovo;
-    TToolButton *BtnGravar;
-    TToolButton *BtnEditar;
-    TToolButton *BtnCancelar;
-    TToolButton *BtnDeletar;
-    TPanel *PFechar;
-    TSpeedButton *BtnFechar;
-    TToolButton *BtnConsultar;
     TPanel *Panel1;
     TLabel *Label2;
     TGroupBox *GroupBox3;
@@ -138,6 +128,15 @@ __published:	// IDE-managed Components
     TLabel *Label3;
     TDBMemo *EdtObservacoes;
     TPanel *pnlTituloForm;
+    TToolBar *TBOperacoes;
+    TToolButton *BtnNovo;
+    TToolButton *BtnGravar;
+    TToolButton *BtnEditar;
+    TToolButton *BtnCancelar;
+    TToolButton *BtnDeletar;
+    TToolButton *BtnConsultar;
+    TToolButton *BtnImprimir;
+    TSpeedButton *BtnFechar;
     void __fastcall FormCreate(TObject *Sender);
     void __fastcall BtnFecharClick(TObject *Sender);
     void __fastcall BtnNovoClick(TObject *Sender);
@@ -151,6 +150,7 @@ __published:	// IDE-managed Components
     void __fastcall BtnLocalizarClienteClick(TObject *Sender);
     void __fastcall CDSOrdemServicoCDCLIENTEChange(TField *Sender);
     void __fastcall BtnConsultarClick(TObject *Sender);
+    void __fastcall BtnImprimirClick(TObject *Sender);
 
 private:	// User declarations
     void __fastcall ConfiguraCharCaseForm(void);

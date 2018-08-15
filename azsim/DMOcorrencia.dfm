@@ -10,7 +10,7 @@ object fdmOcorrencia: TfdmOcorrencia
     Top = 20
   end
   object IBTCliente: TIBTransaction
-    Active = True
+    Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
     Left = 184

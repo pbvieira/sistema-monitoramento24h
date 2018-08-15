@@ -134,6 +134,7 @@ void __fastcall TFConsOrdemServico::FormClose(TObject *Sender,
       TCloseAction &Action)
 {
     try{
+        QRPOrdemServicos->Free();
         DModuleCliente->CDSConsOrdemServico->Close();
     }catch(Exception &excecao){
         AnsiString erro = excecao.Message;
