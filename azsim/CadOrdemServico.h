@@ -59,7 +59,6 @@ __published:	// IDE-managed Components
     TIBQuery *IBQOrdemServico;
     TIntegerField *IBQOrdemServicoCDORDEMSERVICO;
     TIntegerField *IBQOrdemServicoCDCLIENTE;
-    TIBStringField *IBQOrdemServicoDEORDEMSERVICO;
     TIntegerField *IBQOrdemServicoISRETRABALHO;
     TIBStringField *IBQOrdemServicoOBSERVACAO;
     TIntegerField *IBQOrdemServicoISORDEMENCERRADA;
@@ -77,7 +76,6 @@ __published:	// IDE-managed Components
     TClientDataSet *CDSOrdemServico;
     TIntegerField *CDSOrdemServicoCDORDEMSERVICO;
     TIntegerField *CDSOrdemServicoCDCLIENTE;
-    TStringField *CDSOrdemServicoDEORDEMSERVICO;
     TIntegerField *CDSOrdemServicoISRETRABALHO;
     TStringField *CDSOrdemServicoOBSERVACAO;
     TIntegerField *CDSOrdemServicoISORDEMENCERRADA;
@@ -137,6 +135,9 @@ __published:	// IDE-managed Components
     TToolButton *BtnConsultar;
     TToolButton *BtnImprimir;
     TSpeedButton *BtnFechar;
+    TSpeedButton *BtnEncerrar;
+    TIBStringField *IBQOrdemServicoDEORDEMSERVICO;
+    TStringField *CDSOrdemServicoDEORDEMSERVICO;
     void __fastcall FormCreate(TObject *Sender);
     void __fastcall BtnFecharClick(TObject *Sender);
     void __fastcall BtnNovoClick(TObject *Sender);
@@ -151,6 +152,7 @@ __published:	// IDE-managed Components
     void __fastcall CDSOrdemServicoCDCLIENTEChange(TField *Sender);
     void __fastcall BtnConsultarClick(TObject *Sender);
     void __fastcall BtnImprimirClick(TObject *Sender);
+    void __fastcall BtnEncerrarClick(TObject *Sender);
 
 private:	// User declarations
     void __fastcall ConfiguraCharCaseForm(void);

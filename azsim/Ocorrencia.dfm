@@ -1,6 +1,6 @@
 object FOcorrencia: TFOcorrencia
-  Left = 583
-  Top = 108
+  Left = 303
+  Top = 76
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Atendimento'
@@ -966,7 +966,7 @@ object FOcorrencia: TFOcorrencia
     end
     object Label29: TLabel
       Left = 11
-      Top = 279
+      Top = 311
       Width = 70
       Height = 13
       Caption = 'Procedimentos'
@@ -1109,7 +1109,7 @@ object FOcorrencia: TFOcorrencia
       Left = 10
       Top = 231
       Width = 440
-      Height = 47
+      Height = 77
       Color = 14155775
       DataField = 'RESUMO'
       DataSource = fdmOcorrencia.DSOcorrencia
@@ -1119,9 +1119,9 @@ object FOcorrencia: TFOcorrencia
     end
     object EdtProcedimentos: TDBMemo
       Left = 10
-      Top = 294
+      Top = 328
       Width = 440
-      Height = 131
+      Height = 97
       Color = 14155775
       DataField = 'PROCEDIMENTOS'
       DataSource = fdmOcorrencia.DSProcedimeto

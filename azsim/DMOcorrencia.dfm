@@ -2,24 +2,24 @@ object fdmOcorrencia: TfdmOcorrencia
   OldCreateOrder = False
   Left = 379
   Top = 355
-  Height = 333
-  Width = 756
+  Height = 392
+  Width = 938
   object DSLinkCliente: TDataSource
     DataSet = IBQCliente
-    Left = 215
-    Top = 20
+    Left = 511
+    Top = 64
   end
   object IBTCliente: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 184
-    Top = 20
+    Left = 511
+    Top = 12
   end
   object DSContato: TDataSource
     DataSet = CDSContato
-    Left = 183
-    Top = 52
+    Left = 439
+    Top = 222
   end
   object IBQContato: TIBQuery
     Database = DModule.IBCONAzsim
@@ -35,8 +35,8 @@ object fdmOcorrencia: TfdmOcorrencia
         'HA, CONTRASENHA, DATANASCIMENTO FROM CLIENTECONTATO WHERE CDCLIE' +
         'NTE= :CDCLIENTE')
     UniDirectional = True
-    Left = 214
-    Top = 52
+    Left = 439
+    Top = 115
     ParamData = <
       item
         DataType = ftInteger
@@ -158,8 +158,8 @@ object fdmOcorrencia: TfdmOcorrencia
     DataSetField = CDSClienteIBQContato
     Params = <>
     ReadOnly = True
-    Left = 245
-    Top = 51
+    Left = 439
+    Top = 169
     object CDSContatoNMCONTATO: TStringField
       FieldName = 'NMCONTATO'
       Origin = 'CLIENTECONTATO.NMCONTATO'
@@ -234,8 +234,8 @@ object fdmOcorrencia: TfdmOcorrencia
   end
   object DSCliente: TDataSource
     DataSet = CDSCliente
-    Left = 246
-    Top = 20
+    Left = 511
+    Top = 274
   end
   object IBQCliente: TIBQuery
     Database = DModule.IBCONAzsim
@@ -254,8 +254,8 @@ object fdmOcorrencia: TfdmOcorrencia
         '.FONE8,C.FONEOBS8, C.OBSERVACAO'
       'FROM CLIENTE C WHERE C.CDCLIENTE = :CDCLIENTE;')
     UniDirectional = True
-    Left = 280
-    Top = 20
+    Left = 511
+    Top = 116
     ParamData = <
       item
         DataType = ftUnknown
@@ -388,16 +388,16 @@ object fdmOcorrencia: TfdmOcorrencia
     DataSet = IBQCliente
     Constraints = True
     UpdateMode = upWhereKeyOnly
-    Left = 312
-    Top = 20
+    Left = 511
+    Top = 169
   end
   object CDSCliente: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPCliente'
     ReadOnly = True
-    Left = 343
-    Top = 20
+    Left = 511
+    Top = 221
     object CDSClienteCDCLIENTE: TIntegerField
       FieldName = 'CDCLIENTE'
       Required = True
@@ -502,8 +502,8 @@ object fdmOcorrencia: TfdmOcorrencia
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPAgente'
-    Left = 136
-    Top = 19
+    Left = 104
+    Top = 179
     object CDSAgenteCDUSUARIO: TIntegerField
       FieldName = 'CDUSUARIO'
       Origin = 'USUARIO.CDUSUARIO'
@@ -519,7 +519,7 @@ object fdmOcorrencia: TfdmOcorrencia
     DataSet = IBQAgente
     Constraints = True
     Left = 104
-    Top = 19
+    Top = 123
   end
   object IBQAgente: TIBQuery
     Database = DModule.IBCONAzsim
@@ -531,8 +531,8 @@ object fdmOcorrencia: TfdmOcorrencia
         'SELECT CDUSUARIO, LOGIN FROM USUARIO WHERE CDTIPOUSUARIO = 2 ORD' +
         'ER BY LOGIN')
     UniDirectional = True
-    Left = 72
-    Top = 19
+    Left = 104
+    Top = 67
     object IBQAgenteCDUSUARIO: TIntegerField
       FieldName = 'CDUSUARIO'
       Origin = 'USUARIO.CDUSUARIO'
@@ -548,15 +548,15 @@ object fdmOcorrencia: TfdmOcorrencia
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 40
-    Top = 19
+    Left = 104
+    Top = 11
   end
   object IBTOperador: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 40
-    Top = 51
+    Left = 192
+    Top = 11
   end
   object IBQOperador: TIBQuery
     Database = DModule.IBCONAzsim
@@ -568,8 +568,8 @@ object fdmOcorrencia: TfdmOcorrencia
         'SELECT CDUSUARIO, LOGIN FROM USUARIO WHERE CDTIPOUSUARIO = 1 ORD' +
         'ER BY LOGIN')
     UniDirectional = True
-    Left = 72
-    Top = 51
+    Left = 192
+    Top = 63
     object IntegerField9: TIntegerField
       FieldName = 'CDUSUARIO'
       Origin = 'USUARIO.CDUSUARIO'
@@ -584,15 +584,15 @@ object fdmOcorrencia: TfdmOcorrencia
   object DSPOperador: TDataSetProvider
     DataSet = IBQOperador
     Constraints = True
-    Left = 104
-    Top = 51
+    Left = 192
+    Top = 115
   end
   object CDSOperador: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPOperador'
-    Left = 136
-    Top = 51
+    Left = 192
+    Top = 168
     object IntegerField10: TIntegerField
       FieldName = 'CDUSUARIO'
       Origin = 'USUARIO.CDUSUARIO'
@@ -608,25 +608,25 @@ object fdmOcorrencia: TfdmOcorrencia
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 34
-    Top = 172
+    Left = 274
+    Top = 13
   end
   object IBTOcorrencia: TIBTransaction
-    Active = False
+    Active = True
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 35
-    Top = 140
+    Left = 355
+    Top = 13
   end
   object DSSetores: TDataSource
     DataSet = CDSSetores
-    Left = 64
-    Top = 172
+    Left = 274
+    Top = 223
   end
   object DSOcorrencia: TDataSource
     DataSet = CDSOcorrencia
-    Left = 64
-    Top = 140
+    Left = 355
+    Top = 65
   end
   object IBQOcorrencia: TIBQuery
     Database = DModule.IBCONAzsim
@@ -661,8 +661,8 @@ object fdmOcorrencia: TfdmOcorrencia
         'FROM OCORRENCIA O  LEFT JOIN CONTRATO CN ON O.EQUIPAMENTO = CN.C' +
         'DCODIFICADOR WHERE O.CDOCORRENCIA = :CDOCORRENCIA;')
     UniDirectional = True
-    Left = 94
-    Top = 140
+    Left = 355
+    Top = 117
     ParamData = <
       item
         DataType = ftUnknown
@@ -804,11 +804,6 @@ object fdmOcorrencia: TfdmOcorrencia
       Precision = 18
       Size = 4
     end
-    object IBQOcorrenciaRESUMO: TIBStringField
-      FieldName = 'RESUMO'
-      Origin = 'OCORRENCIA.RESUMO'
-      Size = 1000
-    end
     object IBQOcorrenciaCDTIPOOCORRENCIA: TIntegerField
       FieldName = 'CDTIPOOCORRENCIA'
       Origin = 'OCORRENCIA.CDTIPOOCORRENCIA'
@@ -838,6 +833,11 @@ object fdmOcorrencia: TfdmOcorrencia
       FieldName = 'CHAVE'
       Origin = 'CONTRATO.CHAVE'
     end
+    object IBQOcorrenciaRESUMO: TIBStringField
+      FieldName = 'RESUMO'
+      Origin = 'OCORRENCIA.RESUMO'
+      Size = 2000
+    end
   end
   object IBQSetores: TIBQuery
     Database = DModule.IBCONAzsim
@@ -851,8 +851,8 @@ object fdmOcorrencia: TfdmOcorrencia
       'INNER JOIN CONTRATO CO ON CO.CDCONTRATO = S.CDCONTRATO'
       'WHERE CO.CDCODIFICADOR = :CDCODIFICADOR ORDER BY S.NUMSETOR;')
     UniDirectional = True
-    Left = 94
-    Top = 172
+    Left = 274
+    Top = 64
     ParamData = <
       item
         DataType = ftUnknown
@@ -883,16 +883,16 @@ object fdmOcorrencia: TfdmOcorrencia
   object DSPSetores: TDataSetProvider
     DataSet = IBQSetores
     Constraints = True
-    Left = 124
-    Top = 172
+    Left = 274
+    Top = 117
   end
   object DSPOcorrencia: TDataSetProvider
     DataSet = IBQOcorrencia
     Constraints = True
     UpdateMode = upWhereKeyOnly
     OnGetTableName = DSPOcorrenciaGetTableName
-    Left = 124
-    Top = 140
+    Left = 355
+    Top = 169
   end
   object CDSOcorrencia: TClientDataSet
     Aggregates = <>
@@ -1034,11 +1034,6 @@ object fdmOcorrencia: TfdmOcorrencia
         Size = 4
       end
       item
-        Name = 'RESUMO'
-        DataType = ftString
-        Size = 1000
-      end
-      item
         Name = 'CDTIPOOCORRENCIA'
         DataType = ftInteger
       end
@@ -1067,13 +1062,18 @@ object fdmOcorrencia: TfdmOcorrencia
         Name = 'CHAVE'
         DataType = ftString
         Size = 20
+      end
+      item
+        Name = 'RESUMO'
+        DataType = ftString
+        Size = 2000
       end>
     IndexDefs = <>
     Params = <>
     ProviderName = 'DSPOcorrencia'
     StoreDefs = True
-    Left = 154
-    Top = 140
+    Left = 355
+    Top = 222
     object CDSOcorrenciaCDOCORRENCIA: TIntegerField
       FieldName = 'CDOCORRENCIA'
       Required = True
@@ -1199,10 +1199,6 @@ object fdmOcorrencia: TfdmOcorrencia
       FieldName = 'KMTOTALPERCORRIDO'
       Precision = 18
     end
-    object CDSOcorrenciaRESUMO: TStringField
-      FieldName = 'RESUMO'
-      Size = 1000
-    end
     object CDSOcorrenciaCDTIPOOCORRENCIA: TIntegerField
       FieldName = 'CDTIPOOCORRENCIA'
     end
@@ -1262,13 +1258,17 @@ object fdmOcorrencia: TfdmOcorrencia
       KeyFields = 'CDSUBTIPOOCORRENCIA'
       Lookup = True
     end
+    object CDSOcorrenciaRESUMO: TStringField
+      FieldName = 'RESUMO'
+      Size = 2000
+    end
   end
   object CDSSetores: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPSetores'
-    Left = 154
-    Top = 172
+    Left = 274
+    Top = 169
     object CDSSetoresLOCAL: TStringField
       FieldName = 'LOCAL'
       Size = 100
@@ -1290,29 +1290,29 @@ object fdmOcorrencia: TfdmOcorrencia
     Database = DModule.IBCONAzsim
     Transaction = IBTGenIdOcorrencia
     StoredProcName = 'SP_GEN_OCORRENCIA_ID'
-    Left = 154
-    Top = 109
+    Left = 42
+    Top = 293
   end
   object IBTGenIdOcorrencia: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 123
-    Top = 109
+    Left = 43
+    Top = 237
   end
   object IBTSubTipoOcorrencia: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 195
-    Top = 172
+    Left = 731
+    Top = 14
   end
   object IBTTipoOcorrencia: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 195
-    Top = 141
+    Left = 611
+    Top = 13
   end
   object IBQTipoOcorrencia: TIBQuery
     Database = DModule.IBCONAzsim
@@ -1324,8 +1324,8 @@ object fdmOcorrencia: TfdmOcorrencia
         'SELECT CDTIPOOCORRENCIA, DETIPOOCORRENCIA FROM TIPOOCORRENCIA OR' +
         'DER BY DETIPOOCORRENCIA;')
     UniDirectional = True
-    Left = 227
-    Top = 141
+    Left = 611
+    Top = 65
     object IBQTipoOcorrenciaCDTIPOOCORRENCIA: TIntegerField
       FieldName = 'CDTIPOOCORRENCIA'
       Origin = 'TIPOOCORRENCIA.CDTIPOOCORRENCIA'
@@ -1347,8 +1347,8 @@ object fdmOcorrencia: TfdmOcorrencia
         'SELECT CDSUBTIPOOCORRENCIA, CDTIPOOCORRENCIA, DESUBTIPOOCORRENCI' +
         'A FROM SUBTIPOOCORRENCIA ORDER BY DESUBTIPOOCORRENCIA;')
     UniDirectional = True
-    Left = 227
-    Top = 172
+    Left = 731
+    Top = 66
     object IBQSubTipoOcorrenciaCDSUBTIPOOCORRENCIA: TIntegerField
       FieldName = 'CDSUBTIPOOCORRENCIA'
       Origin = 'SUBTIPOOCORRENCIA.CDSUBTIPOOCORRENCIA'
@@ -1367,21 +1367,21 @@ object fdmOcorrencia: TfdmOcorrencia
   object DSPSubTipoOcorrencia: TDataSetProvider
     DataSet = IBQSubTipoOcorrencia
     Constraints = True
-    Left = 259
-    Top = 172
+    Left = 731
+    Top = 118
   end
   object DSPTipoOcorrencia: TDataSetProvider
     DataSet = IBQTipoOcorrencia
     Constraints = True
-    Left = 259
-    Top = 141
+    Left = 611
+    Top = 117
   end
   object CDSTipoOcorrencia: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPTipoOcorrencia'
-    Left = 291
-    Top = 141
+    Left = 611
+    Top = 170
     object CDSTipoOcorrenciaCDTIPOOCORRENCIA: TIntegerField
       FieldName = 'CDTIPOOCORRENCIA'
       Origin = 'TIPOOCORRENCIA.CDTIPOOCORRENCIA'
@@ -1397,8 +1397,8 @@ object fdmOcorrencia: TfdmOcorrencia
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPSubTipoOcorrencia'
-    Left = 291
-    Top = 172
+    Left = 731
+    Top = 170
     object CDSSubTipoOcorrenciaCDSUBTIPOOCORRENCIA: TIntegerField
       FieldName = 'CDSUBTIPOOCORRENCIA'
       Origin = 'SUBTIPOOCORRENCIA.CDSUBTIPOOCORRENCIA'
@@ -1416,15 +1416,15 @@ object fdmOcorrencia: TfdmOcorrencia
   end
   object DSProcedimeto: TDataSource
     DataSet = CDSProcedimento
-    Left = 469
-    Top = 142
+    Left = 845
+    Top = 222
   end
   object IBTProcedimento: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 510
-    Top = 142
+    Left = 845
+    Top = 14
   end
   object IBQProcedimeto: TIBQuery
     Database = DModule.IBCONAzsim
@@ -1436,8 +1436,8 @@ object fdmOcorrencia: TfdmOcorrencia
         'SELECT CDCLIENTE, PROCEDIMENTOS FROM CLIENTE WHERE CDCLIENTE = :' +
         'CDCLIENTE;')
     UniDirectional = True
-    Left = 552
-    Top = 142
+    Left = 845
+    Top = 66
     ParamData = <
       item
         DataType = ftInteger
@@ -1460,15 +1460,15 @@ object fdmOcorrencia: TfdmOcorrencia
   object DSPProcedimento: TDataSetProvider
     DataSet = IBQProcedimeto
     Constraints = True
-    Left = 594
-    Top = 142
+    Left = 845
+    Top = 118
   end
   object CDSProcedimento: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPProcedimento'
-    Left = 636
-    Top = 142
+    Left = 845
+    Top = 170
     object CDSProcedimentoCDCLIENTE: TIntegerField
       FieldName = 'CDCLIENTE'
       Required = True

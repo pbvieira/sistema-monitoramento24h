@@ -49,7 +49,7 @@
     <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
     <RELEASELIBPATH value="$(BCB)\lib\release"/>
     <LINKER value="ilink32"/>
-    <USERDEFINES value=""/>
+    <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="NO_STRICT"/>
     <MAINSOURCE value="Azsim.cpp"/>
     <INCLUDEPATH value="&quot;C:\Arquivos de programas\Borland\CBuilder6\Projects&quot;;C:\azmonitoramento\azsim;$(BCB)\include;$(BCB)\include\vcl"/>
@@ -60,12 +60,13 @@
   <OPTIONS>
     <IDLCFLAGS value="-I&quot;C:\Arquivos de programas\Borland\CBuilder6\Projects&quot; 
       -IC:\azmonitoramento\azsim -I$(BCB)\include -I$(BCB)\include\vcl 
-      -src_suffix cpp -boa"/>
-    <CFLAG1 value="-O2 -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -a4 -b- -k- -vi -c -tW -tWM"/>
-    <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
+      -src_suffix cpp -D_DEBUG -boa"/>
+    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a4 -b- -k -y -v -vi- -c 
+      -tW -tWM"/>
+    <PFLAGS value="-$Y+ -$W -$O- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
-    <AFLAGS value="/mx /w2 /zn"/>
-    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn"/>
+    <AFLAGS value="/mx /w2 /zi"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
     <OTHERFILES value=""/>
   </OPTIONS>
   <LINKER>
@@ -122,7 +123,7 @@ AutoIncBuild=1
 MajorVer=1
 MinorVer=2
 Release=1
-Build=6
+Build=7
 Debug=0
 PreRelease=0
 Special=0
@@ -134,13 +135,13 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=
 FileDescription=
-FileVersion=1.2.1.6
+FileVersion=1.2.1.7
 InternalName=
 LegalCopyright=
 LegalTrademarks=
 OriginalFilename=
 ProductName=
-ProductVersion=
+ProductVersion=1.0.0.0
 Comments=
 
 [HistoryLists\hlIncludePath]

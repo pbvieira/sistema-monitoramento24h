@@ -365,6 +365,15 @@ object FCadOrdemServico: TFCadOrdemServico
         Font.Style = [fsBold]
         ParentFont = False
       end
+      object BtnEncerrar: TSpeedButton
+        Left = 225
+        Top = 77
+        Width = 160
+        Height = 22
+        Caption = 'Encerrar ordem de servi'#231'o'
+        Flat = True
+        OnClick = BtnEncerrarClick
+      end
       object EdtHoraInicio: TDBEdit
         Left = 107
         Top = 79
@@ -493,6 +502,7 @@ object FCadOrdemServico: TFCadOrdemServico
       Height = 85
       DataField = 'DEORDEMSERVICO'
       DataSource = DSOrdemServico
+      ScrollBars = ssVertical
       TabOrder = 10
     end
     object CkbRetrabalho: TDBCheckBox
@@ -535,6 +545,7 @@ object FCadOrdemServico: TFCadOrdemServico
       Height = 85
       DataField = 'OBSERVACAO'
       DataSource = DSOrdemServico
+      ScrollBars = ssVertical
       TabOrder = 12
     end
   end
@@ -557,7 +568,7 @@ object FCadOrdemServico: TFCadOrdemServico
     TabOrder = 2
   end
   object IBTOperadorAbertura: TIBTransaction
-    Active = True
+    Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
     Left = 208
@@ -593,7 +604,6 @@ object FCadOrdemServico: TFCadOrdemServico
     Top = 171
   end
   object CDSOperadorAbertura: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPOperadorAbertura'
@@ -611,7 +621,7 @@ object FCadOrdemServico: TFCadOrdemServico
     end
   end
   object IBTOperadorEncerramento: TIBTransaction
-    Active = True
+    Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
     Left = 208
@@ -647,7 +657,6 @@ object FCadOrdemServico: TFCadOrdemServico
     Top = 203
   end
   object CDSOperadorEncerramento: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPOperadorEncerramento'
@@ -665,7 +674,7 @@ object FCadOrdemServico: TFCadOrdemServico
     end
   end
   object IBTOrdemServico: TIBTransaction
-    Active = False
+    Active = True
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
     Left = 207
@@ -695,11 +704,6 @@ object FCadOrdemServico: TFCadOrdemServico
     object IBQOrdemServicoCDCLIENTE: TIntegerField
       FieldName = 'CDCLIENTE'
       Origin = 'ORDEMSERVICO.CDCLIENTE'
-    end
-    object IBQOrdemServicoDEORDEMSERVICO: TIBStringField
-      FieldName = 'DEORDEMSERVICO'
-      Origin = 'ORDEMSERVICO.DEORDEMSERVICO'
-      Size = 800
     end
     object IBQOrdemServicoISRETRABALHO: TIntegerField
       FieldName = 'ISRETRABALHO'
@@ -751,6 +755,11 @@ object FCadOrdemServico: TFCadOrdemServico
       Origin = 'ORDEMSERVICO.STATUS'
       Size = 10
     end
+    object IBQOrdemServicoDEORDEMSERVICO: TIBStringField
+      FieldName = 'DEORDEMSERVICO'
+      Origin = 'ORDEMSERVICO.DEORDEMSERVICO'
+      Size = 2000
+    end
   end
   object DSPOrdemServico: TDataSetProvider
     DataSet = IBQOrdemServico
@@ -780,11 +789,6 @@ object FCadOrdemServico: TFCadOrdemServico
       FieldName = 'CDCLIENTE'
       Origin = 'ORDEMSERVICO.CDCLIENTE'
       OnChange = CDSOrdemServicoCDCLIENTEChange
-    end
-    object CDSOrdemServicoDEORDEMSERVICO: TStringField
-      FieldName = 'DEORDEMSERVICO'
-      Origin = 'ORDEMSERVICO.DEORDEMSERVICO'
-      Size = 800
     end
     object CDSOrdemServicoISRETRABALHO: TIntegerField
       FieldName = 'ISRETRABALHO'
@@ -864,9 +868,13 @@ object FCadOrdemServico: TFCadOrdemServico
       FieldName = 'STATUS'
       Size = 10
     end
+    object CDSOrdemServicoDEORDEMSERVICO: TStringField
+      FieldName = 'DEORDEMSERVICO'
+      Size = 2000
+    end
   end
   object IBTTecnico: TIBTransaction
-    Active = True
+    Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
     Left = 208
@@ -902,7 +910,6 @@ object FCadOrdemServico: TFCadOrdemServico
     Top = 235
   end
   object CDSTecnico: TClientDataSet
-    Active = True
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPTecnico'

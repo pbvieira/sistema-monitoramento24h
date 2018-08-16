@@ -194,6 +194,12 @@ void __fastcall TFCadOrdemServico::HabilitaBarraBotoes(void)
     BtnDeletar->Enabled = (DSOrdemServico->State == dsBrowse || DSOrdemServico->State == dsEdit);
     BtnCancelar->Enabled = (DSOrdemServico->State == dsInsert || DSOrdemServico->State == dsEdit);
     BtnLocalizarCliente->Enabled = (DSOrdemServico->State == dsInsert || DSOrdemServico->State == dsEdit);
+
+    if(CDSOrdemServicoISORDEMENCERRADA->AsInteger != 1){
+        BtnEncerrar->Enabled = true;
+    }else{
+        BtnEncerrar->Enabled = false;
+    }
 }
 
 //---------------------------------------------------------------------------
@@ -348,7 +354,7 @@ void __fastcall TFCadOrdemServico::BtnGravarClick(TObject *Sender)
                     CDSOrdemServicoCDORDEMSERVICO->AsInteger,
                     CDSOrdemServicoDATACADASTRO->AsString
                 )));
-        this->ObjetoResumoOC->AsString  = ResumoOcorrencia;
+        this->ObjetoResumoOC->AsString  = this->ObjetoResumoOC->AsString + " ### " + ResumoOcorrencia + " ### ";
     }
 
     CDSOrdemServico->ApplyUpdates(0);
@@ -583,6 +589,33 @@ void __fastcall TFCadOrdemServico::BtnImprimirClick(TObject *Sender)
         Application->MessageBox(ErroNaConexao.c_str(),"Atenção",MB_ICONERROR|MB_OK);
     }
 
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TFCadOrdemServico::BtnEncerrarClick(TObject *Sender)
+{
+    try{
+      if(ValidaEncerramentoOrdemServico()){
+          bool ConfirmaEncerramento = Application->MessageBox("Deseja encerrar esta ordem de serviço agora?","Confirmar", MB_ICONINFORMATION|MB_YESNO) == IDYES;
+          if(ConfirmaEncerramento){
+              CDSOrdemServicoISORDEMENCERRADA->AsInteger = 1;
+              CDSOrdemServicoDATAENCERRAMENTO->AsDateTime = DModule->RetornaDataHoraAtual();
+
+              CDSOrdemServico->Post();
+              CDSOrdemServico->ApplyUpdates(0);
+              Application->MessageBox("Ordem de serviço encerrada com sucesso", "Sucesso", MB_ICONINFORMATION|MB_OK );
+              Close();
+          }
+      }else{
+        Application->MessageBox("Preencha todos os campos do encerramento para encerrar a ordem de serviço", "Aviso", MB_ICONINFORMATION|MB_OK );
+      }
+    }catch(Exception &excecao){
+        AnsiString erro = excecao.Message;
+        String ErroNaConexao =
+            "Ocorreu um erro ao encerrar ordem de serviços.\n\nDescrição do erro:\n" + erro;
+        Application->MessageBox(ErroNaConexao.c_str(),"Atenção",MB_ICONERROR|MB_OK);
+    }
 }
 //---------------------------------------------------------------------------
 

@@ -131,7 +131,6 @@ __published:	// IDE-managed Components
     TTimeField *IBQOcorrenciaTEMPORETORNO;
     TTimeField *IBQOcorrenciaTEMPOATENDIMENTO;
     TIBBCDField *IBQOcorrenciaKMTOTALPERCORRIDO;
-    TIBStringField *IBQOcorrenciaRESUMO;
     TIntegerField *IBQOcorrenciaCDTIPOOCORRENCIA;
     TIntegerField *IBQOcorrenciaCDSUBTIPOOCORRENCIA;
     TIBStringField *IBQOcorrenciaOCORRENCIAPOLICIAL;
@@ -176,7 +175,6 @@ __published:	// IDE-managed Components
     TTimeField *CDSOcorrenciaTEMPORETORNO;
     TTimeField *CDSOcorrenciaTEMPOATENDIMENTO;
     TBCDField *CDSOcorrenciaKMTOTALPERCORRIDO;
-    TStringField *CDSOcorrenciaRESUMO;
     TIntegerField *CDSOcorrenciaCDTIPOOCORRENCIA;
     TIntegerField *CDSOcorrenciaCDSUBTIPOOCORRENCIA;
     TStringField *CDSOcorrenciaOCORRENCIAPOLICIAL;
@@ -257,6 +255,8 @@ __published:	// IDE-managed Components
     TStringField *CDSClienteFONEOBS7;
     TStringField *CDSClienteFONE8;
     TStringField *CDSClienteFONEOBS8;
+    TIBStringField *IBQOcorrenciaRESUMO;
+    TStringField *CDSOcorrenciaRESUMO;
     void __fastcall DSPOcorrenciaGetTableName(TObject *Sender,
           TDataSet *DataSet, AnsiString &TableName);
 private:	// User declarations

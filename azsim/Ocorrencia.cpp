@@ -366,13 +366,7 @@ void __fastcall TFOcorrencia::BtnOrdemServicoClick(TObject *Sender)
             "esta aberta antes de vincular uma ocorrência.";
         Application->MessageBox(Alerta.c_str(),"Atenção",MB_ICONERROR|MB_OK);
     }else{
-        AnsiString DescricaoOrdemServico = Format(
-        "VERIFICAR: %s, SETORIZAÇÃO: %s %s",
-            ARRAYOFCONST((
-                fdmOcorrencia->CDSOcorrenciaDESTATUS->AsString,
-                fdmOcorrencia->CDSOcorrenciaNUMSETOR->AsString,
-                fdmOcorrencia->CDSOcorrenciaLOCAL->AsString)));
-
+        AnsiString DescricaoOrdemServico = fdmOcorrencia->CDSOcorrenciaRESUMO->AsString;
         FCadOrdemServico = new TFCadOrdemServico(this);
         FCadOrdemServico->ConsultaOrdemServico(0);
         FCadOrdemServico->CriarOrdemServicoOcorrencia(
