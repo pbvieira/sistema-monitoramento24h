@@ -365,6 +365,13 @@ __published:	// IDE-managed Components
     TMenuItem *MnRelOcorrencias;
     TMenuItem *N2;
     TMenuItem *MnRelContratosAtivos;
+    TMenuItem *MnRelContratosInativos;
+    TMenuItem *N4;
+    TMenuItem *Clientesativos1;
+    TMenuItem *Clientesinativos1;
+    TMenuItem *N5;
+    TMenuItem *Codificadores1;
+    TMenuItem *N6;
     void __fastcall MnSairClick(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall MnCadContratoClick(TObject *Sender);

@@ -1376,6 +1376,29 @@ object FHome: TFHome
         ShortCut = 16460
         OnClick = MnConsClientesClick
       end
+      object N4: TMenuItem
+        Caption = '-'
+        Visible = False
+      end
+      object Clientesativos1: TMenuItem
+        Caption = 'Clientes ativos'
+        Visible = False
+      end
+      object Clientesinativos1: TMenuItem
+        Caption = 'Clientes inativos'
+        Visible = False
+      end
+      object N5: TMenuItem
+        Caption = '-'
+        Visible = False
+      end
+      object Codificadores1: TMenuItem
+        Caption = 'Codificadores'
+      end
+      object N6: TMenuItem
+        Caption = '-'
+        Visible = False
+      end
     end
     object MnMonitorSerial: TMenuItem
       Caption = 'Monitor Serial'
@@ -2244,18 +2267,24 @@ object FHome: TFHome
     object MnRelatorios: TMenuItem
       Caption = '&Relat'#243'rios'
       object MnRelEventos: TMenuItem
-        Caption = 'Relat'#243'rios de Eventos'
+        Caption = 'Relat'#243'rios de Eventos...'
         OnClick = MnRelEventosClick
       end
       object MnRelOcorrencias: TMenuItem
-        Caption = 'Relat'#243'rio de Ocorr'#234'ncias'
+        Caption = 'Relat'#243'rio de Ocorr'#234'ncias...'
         OnClick = MnRelOcorrenciasClick
       end
       object N2: TMenuItem
         Caption = '-'
+        Visible = False
       end
       object MnRelContratosAtivos: TMenuItem
         Caption = 'Relat'#243'rio de Clientes Ativos'
+        Visible = False
+      end
+      object MnRelContratosInativos: TMenuItem
+        Caption = 'Relat'#243'rio de Clientes Inativos'
+        Visible = False
       end
     end
     object MnAjuda: TMenuItem
