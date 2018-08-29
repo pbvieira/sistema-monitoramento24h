@@ -1,6 +1,6 @@
 object FConsOrdemServico: TFConsOrdemServico
-  Left = 401
-  Top = 228
+  Left = 194
+  Top = 233
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'AZSIM'

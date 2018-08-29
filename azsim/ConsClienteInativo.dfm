@@ -1,6 +1,6 @@
-object FConsCliente: TFConsCliente
-  Left = 356
-  Top = 56
+object FConsClienteInativo: TFConsClienteInativo
+  Left = 402
+  Top = 141
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'AZSIM'
@@ -565,7 +565,7 @@ object FConsCliente: TFConsCliente
     Align = alTop
     Alignment = taLeftJustify
     BevelOuter = bvNone
-    Caption = ' Consulta completa de clientes'
+    Caption = ' Consulta de clientes com contratos inativos'
     Color = clPurple
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite

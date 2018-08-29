@@ -1,7 +1,7 @@
 object DModuleCliente: TDModuleCliente
   OldCreateOrder = False
-  Left = 220
-  Top = 203
+  Left = 210
+  Top = 162
   Height = 576
   Width = 1149
   object IBQContato: TIBQuery
@@ -2942,7 +2942,7 @@ object DModuleCliente: TDModuleCliente
     end
   end
   object IBTRelOrdemServico: TIBTransaction
-    Active = True
+    Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
     Left = 1052

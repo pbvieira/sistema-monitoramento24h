@@ -2,7 +2,7 @@
 #include <vcl.h>
 #pragma hdrstop
 
-#include "ConsCliente.h"
+#include "ConsClienteInativo.h"
 #include "DMApp.h"
 #include "Home.h"
 #include "CadCliente.h"
@@ -14,10 +14,10 @@
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
-TFConsCliente *FConsCliente;
+TFConsClienteInativo *FConsClienteInativo;
 //---------------------------------------------------------------------------
 
-__fastcall TFConsCliente::TFConsCliente(TComponent* Owner)
+__fastcall TFConsClienteInativo::TFConsClienteInativo(TComponent* Owner)
     : TForm(Owner)
 {
     DModule->CDSConsFilial->Active = true;
@@ -29,7 +29,7 @@ __fastcall TFConsCliente::TFConsCliente(TComponent* Owner)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::FormCreate(TObject *Sender)
+void __fastcall TFConsClienteInativo::FormCreate(TObject *Sender)
 {
     pnlTituloForm->Color = COLOR_HEADER_FORM;
     ConfiguraEventosForm();
@@ -37,21 +37,21 @@ void __fastcall TFConsCliente::FormCreate(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::FormShow(TObject *Sender)
+void __fastcall TFConsClienteInativo::FormShow(TObject *Sender)
 {
     EdtNome->SetFocus();
 }
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::BtnFecharClick(TObject *Sender)
+void __fastcall TFConsClienteInativo::BtnFecharClick(TObject *Sender)
 {
     Close();
 }
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::BtnConsultarClick(TObject *Sender)
+void __fastcall TFConsClienteInativo::BtnConsultarClick(TObject *Sender)
 {
     try{
         AnsiString ORDER_BY = " ORDER BY C.NMCLIENTE";
@@ -63,26 +63,26 @@ void __fastcall TFConsCliente::BtnConsultarClick(TObject *Sender)
 	        "C.DATAALTERACAO, C.FONE1, C.FONEOBS1, C.FONE2, C.FONEOBS2, C.FONE3, C.FONEOBS3, "
 	        "C.FONE4, C.FONEOBS4, C.FONE5, C.FONEOBS5, C.FONE6, C.FONEOBS6, C.FONE7, C.FONEOBS7, "
 	        "C.FONE8, C.FONEOBS8, CR.CDCONTRATO, CR.CDCODIFICADOR, CR.LOCALINSTALCENTRAL, CR.MODELOCENTRAL "
-          "FROM CLIENTE C LEFT JOIN CONTRATO CR ON C.CDCLIENTE = CR.CDCLIENTE ";
+          "FROM CLIENTE C INNER JOIN CONTRATO CR ON C.CDCLIENTE = CR.CDCLIENTE ";
 
         AnsiString SQL_FILTRO_POR_CODIGO = Format(
-            "%s WHERE C.CDCLIENTE = :CDCLIENTE %s",
+            "%s WHERE CR.INATIVO=1 AND C.CDCLIENTE= :CDCLIENTE %s",
                 ARRAYOFCONST((SQL_FILTRO_TODOS, ORDER_BY)));
 
         AnsiString SQL_FILTRO_POR_NOME = Format(
-            "%s WHERE C.NMCLIENTE LIKE UPPER(:NMCLIENTE) OR C.NMFANTASIA LIKE UPPER(:NMCLIENTE) %s",
+            "%s WHERE CR.INATIVO=1 AND C.NMCLIENTE LIKE UPPER(:NMCLIENTE) OR C.NMFANTASIA LIKE UPPER(:NMCLIENTE) %s",
                 ARRAYOFCONST((SQL_FILTRO_TODOS, ORDER_BY)));
 
         AnsiString SQL_FILTRO_POR_FILIAL = Format(
-            "%s WHERE C.CDFILIAL = :CDFILIAL %s",
+            "%s WHERE CR.INATIVO=1 AND C.CDFILIAL = :CDFILIAL %s",
                 ARRAYOFCONST((SQL_FILTRO_TODOS, ORDER_BY)));
 
         AnsiString SQL_FILTRO_POR_LOCAL =  Format(
-            "%s WHERE C.CIDADE LIKE UPPER(:LOCAL) OR C.ENDERECO LIKE UPPER(:LOCAL) OR C.BAIRRO LIKE UPPER(:LOCAL) %s",
+            "%s WHERE CR.INATIVO=1 AND C.CIDADE LIKE UPPER(:LOCAL) OR C.ENDERECO LIKE UPPER(:LOCAL) OR C.BAIRRO LIKE UPPER(:LOCAL) %s",
                 ARRAYOFCONST((SQL_FILTRO_TODOS, ORDER_BY)));
 
         // Apenas adiciona a ordenação
-        SQL_FILTRO_TODOS = Format("%s %s", ARRAYOFCONST((SQL_FILTRO_TODOS, ORDER_BY)));
+        SQL_FILTRO_TODOS = Format("%s WHERE CR.INATIVO=1 %s", ARRAYOFCONST((SQL_FILTRO_TODOS, ORDER_BY)));
 
         int CodigoCliente = StrToIntDef(EdtCodigo->Text, 0);
         String NomeCliente = EdtNome->Text;
@@ -161,7 +161,7 @@ void __fastcall TFConsCliente::BtnConsultarClick(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::FormClose(TObject *Sender,
+void __fastcall TFConsClienteInativo::FormClose(TObject *Sender,
       TCloseAction &Action)
 {
     try{
@@ -182,7 +182,7 @@ void __fastcall TFConsCliente::FormClose(TObject *Sender,
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::DBGClientesKeyPress(TObject *Sender,
+void __fastcall TFConsClienteInativo::DBGClientesKeyPress(TObject *Sender,
       char &Key)
 {
     if(Key == '\r'){
@@ -192,7 +192,7 @@ void __fastcall TFConsCliente::DBGClientesKeyPress(TObject *Sender,
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::EdtNomeKeyPress(TObject *Sender, char &Key)
+void __fastcall TFConsClienteInativo::EdtNomeKeyPress(TObject *Sender, char &Key)
 {
    if(Key == '\r'){
         BtnConsultarClick(NULL);
@@ -201,7 +201,7 @@ void __fastcall TFConsCliente::EdtNomeKeyPress(TObject *Sender, char &Key)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::EdtNomeKeyUp(TObject *Sender, WORD &Key,
+void __fastcall TFConsClienteInativo::EdtNomeKeyUp(TObject *Sender, WORD &Key,
       TShiftState Shift)
 {
     //if(BtnSelecionar->Visible){
@@ -211,7 +211,7 @@ void __fastcall TFConsCliente::EdtNomeKeyUp(TObject *Sender, WORD &Key,
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::DBGContratosKeyPress(TObject *Sender,
+void __fastcall TFConsClienteInativo::DBGContratosKeyPress(TObject *Sender,
       char &Key)
 {
     if(Key == '\r'){
@@ -221,7 +221,7 @@ void __fastcall TFConsCliente::DBGContratosKeyPress(TObject *Sender,
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::DBGContratosDblClick(TObject *Sender)
+void __fastcall TFConsClienteInativo::DBGContratosDblClick(TObject *Sender)
 {
     if(DModuleCliente->DSConsContrato->DataSet->Active &&
         DModuleCliente->DSConsContrato->DataSet->RecordCount > 0){
@@ -243,7 +243,7 @@ void __fastcall TFConsCliente::DBGContratosDblClick(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::DBGClientesDblClick(TObject *Sender)
+void __fastcall TFConsClienteInativo::DBGClientesDblClick(TObject *Sender)
 {
     if(DModuleCliente->DSConsCliente->DataSet->Active &&
         DModuleCliente->DSConsCliente->DataSet->RecordCount > 0){
@@ -262,14 +262,14 @@ void __fastcall TFConsCliente::DBGClientesDblClick(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::SetarObjetoCodigoCliente(TIntegerField *CampoCodigo)
+void __fastcall TFConsClienteInativo::SetarObjetoCodigoCliente(TIntegerField *CampoCodigo)
 {
     this->ObjetoCodigoCliente = CampoCodigo;
 }
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::BtnSelecionarClick(TObject *Sender)
+void __fastcall TFConsClienteInativo::BtnSelecionarClick(TObject *Sender)
 {
     if(this->ObjetoCodigoCliente != NULL){
         int CodigoCliente = DModuleCliente->CDSConsClienteCDCLIENTE->AsInteger;
@@ -280,7 +280,7 @@ void __fastcall TFConsCliente::BtnSelecionarClick(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::BtnRelatorioClientesClick(TObject *Sender)
+void __fastcall TFConsClienteInativo::BtnRelatorioClientesClick(TObject *Sender)
 {
     AnsiString Cabecalho = "";
     TStringList *ConteudoCSV = new TStringList();
@@ -318,7 +318,7 @@ void __fastcall TFConsCliente::BtnRelatorioClientesClick(TObject *Sender)
     }
 
     AnsiString NomeArquivo = Format(
-        "Clientes-todos-%s.csv",
+        "Clientes-inativo-%s.csv",
             ARRAYOFCONST((FormatDateTime("ddmmmyyyy", Date()))));
 
     AnsiString PathApp = ExtractFilePath(ParamStr(0));
@@ -330,7 +330,7 @@ void __fastcall TFConsCliente::BtnRelatorioClientesClick(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::ConfiguraEventosForm(void)
+void __fastcall TFConsClienteInativo::ConfiguraEventosForm(void)
 {
     for(int i=0; i < ComponentCount; i++){
         if(dynamic_cast <TEdit*> (Components[i]) != NULL){
@@ -352,7 +352,7 @@ void __fastcall TFConsCliente::ConfiguraEventosForm(void)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::ChangeEnter(TObject * Sender)
+void __fastcall TFConsClienteInativo::ChangeEnter(TObject * Sender)
 {
     if(dynamic_cast <TDBEdit*> (Sender) != NULL){
         dynamic_cast <TDBEdit*> (Sender)->Color = COLOR_FIELD_FORM_FOCUS;
@@ -373,7 +373,7 @@ void __fastcall TFConsCliente::ChangeEnter(TObject * Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::ChangeExit(TObject *Sender)
+void __fastcall TFConsClienteInativo::ChangeExit(TObject *Sender)
 {
     if(dynamic_cast <TDBEdit*> (Sender) != NULL){
         TDBEdit *Edit = dynamic_cast <TDBEdit*> (Sender);
@@ -399,7 +399,7 @@ void __fastcall TFConsCliente::ChangeExit(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFConsCliente::DBGClientesDrawColumnCell(TObject *Sender,
+void __fastcall TFConsClienteInativo::DBGClientesDrawColumnCell(TObject *Sender,
       const TRect &Rect, int DataCol, TColumn *Column,
       TGridDrawState State)
 {

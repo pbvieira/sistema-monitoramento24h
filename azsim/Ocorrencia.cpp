@@ -392,13 +392,11 @@ void __fastcall TFOcorrencia::BtnLocalizarClienteClick(TObject *Sender)
     FConsCliente->Width = 1010;
     FConsCliente->GrpEndereco->Visible = true;
     FConsCliente->GrpNomeSelecionado->Visible = true;
-    FConsCliente->BtnTodos->Visible = false;
     FConsCliente->BtnAbrirClientes->Visible = false;
     FConsCliente->BtnAbrirContratos->Visible = false;
     FConsCliente->BtnRelatorioClientes->Visible = false;
     FConsCliente->BtnSelecionar->Visible = true;
     FConsCliente->ImgSelecionarCliente->Visible = true;
-    FConsCliente->LblOR->Visible = false;
     FConsCliente->SetarObjetoCodigoCliente(fdmOcorrencia->CDSOcorrenciaCDCLIENTE);
     FConsCliente->Show();
 }

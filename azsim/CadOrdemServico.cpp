@@ -524,13 +524,11 @@ void __fastcall TFCadOrdemServico::BtnLocalizarClienteClick(
     FConsCliente->Width = 1010;
     FConsCliente->GrpEndereco->Visible = true;
     FConsCliente->GrpNomeSelecionado->Visible = true;
-    FConsCliente->BtnTodos->Visible = false;
     FConsCliente->BtnAbrirClientes->Visible = false;
     FConsCliente->BtnAbrirContratos->Visible = false;
     FConsCliente->BtnRelatorioClientes->Visible = false;
     FConsCliente->BtnSelecionar->Visible = true;
     FConsCliente->ImgSelecionarCliente->Visible = true;
-    FConsCliente->LblOR->Visible = false;
     FConsCliente->SetarObjetoCodigoCliente(CDSOrdemServicoCDCLIENTE);
     FConsCliente->Show();
 }

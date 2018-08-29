@@ -55,7 +55,6 @@ __published:	// IDE-managed Components
     TMenuItem *MnConsultas;
     TMenuItem *MnRelatorios;
     TMenuItem *MnConsClientes;
-    TMenuItem *MnAjuda;
     TMenuItem *MnCadCliente;
     TMenuItem *MnCadContrato;
     TMenuItem *N1;
@@ -428,6 +427,8 @@ __published:	// IDE-managed Components
           const TRect &Rect, int DataCol, TColumn *Column,
           TGridDrawState State);
     void __fastcall MnRelOcorrenciasClick(TObject *Sender);
+    void __fastcall Clientesativos1Click(TObject *Sender);
+    void __fastcall Clientesinativos1Click(TObject *Sender);
 private:	// User declarations
     // Métodos
     HWND __fastcall CarregaMonitor(LPCTSTR program, LPCTSTR args);

@@ -1,6 +1,6 @@
 object FOcorrencia: TFOcorrencia
-  Left = 303
-  Top = 76
+  Left = 288
+  Top = 2
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'Atendimento'

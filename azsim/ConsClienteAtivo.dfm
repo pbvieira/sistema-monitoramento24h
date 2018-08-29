@@ -1,6 +1,6 @@
-object FConsCliente: TFConsCliente
-  Left = 356
-  Top = 56
+object FConsClienteAtivo: TFConsClienteAtivo
+  Left = 416
+  Top = 140
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'AZSIM'
@@ -565,7 +565,7 @@ object FConsCliente: TFConsCliente
     Align = alTop
     Alignment = taLeftJustify
     BevelOuter = bvNone
-    Caption = ' Consulta completa de clientes'
+    Caption = ' Consulta de clientes com contratos ativos'
     Color = clPurple
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
@@ -593,6 +593,12 @@ object FConsCliente: TFConsCliente
     OnDblClick = DBGClientesDblClick
     OnKeyPress = DBGClientesKeyPress
     Columns = <
+      item
+        Expanded = False
+        FieldName = 'CDCODIFICADOR'
+        Title.Caption = 'Codificador'
+        Visible = True
+      end
       item
         Alignment = taCenter
         Expanded = False

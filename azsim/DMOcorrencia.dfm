@@ -1,7 +1,7 @@
 object fdmOcorrencia: TfdmOcorrencia
   OldCreateOrder = False
-  Left = 379
-  Top = 355
+  Left = 361
+  Top = 304
   Height = 392
   Width = 938
   object DSLinkCliente: TDataSource
@@ -612,7 +612,7 @@ object fdmOcorrencia: TfdmOcorrencia
     Top = 13
   end
   object IBTOcorrencia: TIBTransaction
-    Active = True
+    Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
     Left = 355

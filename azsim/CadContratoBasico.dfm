@@ -1,6 +1,6 @@
 object FCadContratoBasico: TFCadContratoBasico
-  Left = 908
-  Top = 156
+  Left = 859
+  Top = 134
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'AZSIM'

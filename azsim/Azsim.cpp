@@ -37,6 +37,8 @@ USEFORM("ListaClientes.cpp", FListaClientes);
 USEFORM("FichaCliente.cpp", FFichaCliente);
 USEFORM("ReportEventosUnit.cpp", ReportEventos); /* TQuickRep: File Type */
 USEFORM("SelectReportOcorrenciaUnit.cpp", FSelectReportOcorrencia);
+USEFORM("ConsClienteAtivo.cpp", FConsClienteAtivo);
+USEFORM("ConsClienteInativo.cpp", FConsClienteInativo);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {

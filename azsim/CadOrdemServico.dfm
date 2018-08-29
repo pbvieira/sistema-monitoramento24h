@@ -1,6 +1,6 @@
 object FCadOrdemServico: TFCadOrdemServico
-  Left = 761
-  Top = 118
+  Left = 723
+  Top = 71
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'AZSIM'
@@ -674,7 +674,7 @@ object FCadOrdemServico: TFCadOrdemServico
     end
   end
   object IBTOrdemServico: TIBTransaction
-    Active = True
+    Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
     Left = 207

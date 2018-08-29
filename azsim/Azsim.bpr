@@ -14,7 +14,8 @@
       CadOrdemServico.obj ConsOrdemServico.obj RelOrdemServicos.obj CadBase.obj 
       CadCodificadores.obj RelFichaClientes.obj DMInfo.obj DMOcorrencia.obj 
       DialogGeracaoRelClientes.obj ListaClientes.obj FichaCliente.obj 
-      ReportEventosUnit.obj SelectReportOcorrenciaUnit.obj"/>
+      ReportEventosUnit.obj SelectReportOcorrenciaUnit.obj ConsClienteAtivo.obj 
+      ConsClienteInativo.obj"/>
     <RESFILES value="Azsim.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -29,7 +30,8 @@
       CadOrdemServico.dfm ConsOrdemServico.dfm RelOrdemServicos.dfm CadBase.dfm 
       CadCodificadores.dfm RelFichaClientes.dfm DMInfo.dfm DMOcorrencia.dfm 
       DialogGeracaoRelClientes.dfm ListaClientes.dfm FichaCliente.dfm 
-      ReportEventosUnit.dfm SelectReportOcorrenciaUnit.dfm"/>
+      ReportEventosUnit.dfm SelectReportOcorrenciaUnit.dfm ConsClienteAtivo.dfm 
+      ConsClienteInativo.dfm"/>
     <LIBFILES value=""/>
     <LIBRARIES value="bcbie.lib bcb2kaxserver.lib vclx.lib qrpt.lib bdertl.lib vcldb.lib 
       dbexpress.lib dsnap.lib cds.lib ibxpress.lib dbrtl.lib rtl.lib vcl.lib"/>
@@ -49,7 +51,7 @@
     <DEBUGLIBPATH value="$(BCB)\lib\debug"/>
     <RELEASELIBPATH value="$(BCB)\lib\release"/>
     <LINKER value="ilink32"/>
-    <USERDEFINES value="_DEBUG"/>
+    <USERDEFINES value=""/>
     <SYSDEFINES value="NO_STRICT"/>
     <MAINSOURCE value="Azsim.cpp"/>
     <INCLUDEPATH value="&quot;C:\Arquivos de programas\Borland\CBuilder6\Projects&quot;;C:\azmonitoramento\azsim;$(BCB)\include;$(BCB)\include\vcl"/>
@@ -60,13 +62,12 @@
   <OPTIONS>
     <IDLCFLAGS value="-I&quot;C:\Arquivos de programas\Borland\CBuilder6\Projects&quot; 
       -IC:\azmonitoramento\azsim -I$(BCB)\include -I$(BCB)\include\vcl 
-      -src_suffix cpp -D_DEBUG -boa"/>
-    <CFLAG1 value="-Od -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -r- -a4 -b- -k -y -v -vi- -c 
-      -tW -tWM"/>
-    <PFLAGS value="-$Y+ -$W -$O- -$A8 -v -JPHNE -M"/>
+      -src_suffix cpp -boa"/>
+    <CFLAG1 value="-O2 -H=$(BCB)\lib\vcl60.csm -Hc -Vx -Ve -X- -a4 -b- -k- -vi -c -tW -tWM"/>
+    <PFLAGS value="-$Y- -$L- -$D- -$A8 -v -JPHNE -M"/>
     <RFLAGS value=""/>
-    <AFLAGS value="/mx /w2 /zi"/>
-    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn -v"/>
+    <AFLAGS value="/mx /w2 /zn"/>
+    <LFLAGS value="-D&quot;&quot; -aa -Tpe -x -Gn"/>
     <OTHERFILES value=""/>
   </OPTIONS>
   <LINKER>
@@ -112,6 +113,12 @@
       <FILE FILENAME="FichaCliente.cpp" FORMNAME="FFichaCliente" UNITNAME="FichaCliente" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ReportEventosUnit.cpp" FORMNAME="ReportEventos" UNITNAME="ReportEventosUnit" CONTAINERID="CCompiler" DESIGNCLASS="TQuickRep" LOCALCOMMAND=""/>
       <FILE FILENAME="SelectReportOcorrenciaUnit.cpp" FORMNAME="FSelectReportOcorrencia" UNITNAME="SelectReportOcorrenciaUnit" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ConsClienteInativo.h" FORMNAME="" UNITNAME="ConsClienteInativo.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ConsClienteAtivo.cpp" FORMNAME="FConsClienteAtivo" UNITNAME="ConsClienteAtivo" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ConsClienteAtivo.dfm" FORMNAME="" UNITNAME="ConsClienteAtivo.dfm" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ConsClienteAtivo.h" FORMNAME="" UNITNAME="ConsClienteAtivo.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ConsClienteInativo.cpp" FORMNAME="FConsClienteInativo" UNITNAME="ConsClienteInativo" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ConsClienteInativo.dfm" FORMNAME="" UNITNAME="ConsClienteInativo.dfm" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
@@ -122,7 +129,7 @@ IncludeVerInfo=1
 AutoIncBuild=1
 MajorVer=1
 MinorVer=2
-Release=1
+Release=2
 Build=7
 Debug=0
 PreRelease=0
@@ -135,13 +142,13 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=
 FileDescription=
-FileVersion=1.2.1.7
+FileVersion=1.2.2.7
 InternalName=
 LegalCopyright=
 LegalTrademarks=
 OriginalFilename=
 ProductName=
-ProductVersion=1.0.0.0
+ProductVersion=1.2.2.7
 Comments=
 
 [HistoryLists\hlIncludePath]

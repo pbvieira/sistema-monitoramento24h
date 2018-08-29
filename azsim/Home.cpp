@@ -19,6 +19,8 @@
 #include "FichaCliente.h"
 #include "ListaClientes.h"
 #include "SelectReportOcorrenciaUnit.h"
+#include "ConsClienteAtivo.h"
+#include "ConsClienteInativo.h"
 
 #pragma hdrstop
 //---------------------------------------------------------------------------
@@ -279,13 +281,11 @@ void __fastcall TFHome::MnConsClientesClick(TObject *Sender)
     FConsCliente->Width = 1010;
     FConsCliente->GrpEndereco->Visible = true;
     FConsCliente->GrpNomeSelecionado->Visible = true;
-    FConsCliente->BtnTodos->Visible = true;
     FConsCliente->BtnAbrirClientes->Visible = true;
     FConsCliente->BtnAbrirContratos->Visible = true;
     FConsCliente->BtnRelatorioClientes->Visible = true;
     FConsCliente->BtnSelecionar->Visible = false;
     FConsCliente->ImgSelecionarCliente->Visible = false;
-    FConsCliente->LblOR->Visible = true;
     FConsCliente->Show();
 }
 
@@ -1286,6 +1286,42 @@ void __fastcall TFHome::MnRelOcorrenciasClick(TObject *Sender)
         FSelectReportOcorrencia = new TFSelectReportOcorrencia(this);
         FSelectReportOcorrencia->Show();
     }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::Clientesativos1Click(TObject *Sender)
+{
+    if(!FHome->FormEstaAberto("FConsClienteAtivo")){
+        FConsClienteAtivo = new TFConsClienteAtivo(this);
+    }
+
+    FConsClienteAtivo->Width = 1010;
+    FConsClienteAtivo->GrpEndereco->Visible = true;
+    FConsClienteAtivo->GrpNomeSelecionado->Visible = true;
+    FConsClienteAtivo->BtnAbrirClientes->Visible = true;
+    FConsClienteAtivo->BtnAbrirContratos->Visible = true;
+    FConsClienteAtivo->BtnRelatorioClientes->Visible = true;
+    FConsClienteAtivo->BtnSelecionar->Visible = false;
+    FConsClienteAtivo->ImgSelecionarCliente->Visible = false;
+    FConsClienteAtivo->Show();
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::Clientesinativos1Click(TObject *Sender)
+{
+    if(!FHome->FormEstaAberto("FConsClienteInativo")){
+        FConsClienteInativo = new TFConsClienteInativo(this);
+    }
+
+    FConsClienteInativo->Width = 1010;
+    FConsClienteInativo->GrpEndereco->Visible = true;
+    FConsClienteInativo->GrpNomeSelecionado->Visible = true;
+    FConsClienteInativo->BtnAbrirClientes->Visible = true;
+    FConsClienteInativo->BtnAbrirContratos->Visible = true;
+    FConsClienteInativo->BtnRelatorioClientes->Visible = true;
+    FConsClienteInativo->BtnSelecionar->Visible = false;
+    FConsClienteInativo->ImgSelecionarCliente->Visible = false;
+    FConsClienteInativo->Show();
 }
 //---------------------------------------------------------------------------
 

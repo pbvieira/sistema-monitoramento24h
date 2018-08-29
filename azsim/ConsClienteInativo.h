@@ -1,7 +1,7 @@
 //---------------------------------------------------------------------------
 
-#ifndef ConsClienteH
-#define ConsClienteH
+#ifndef ConsClienteInativoH
+#define ConsClienteInativoH
 //---------------------------------------------------------------------------
 #include <Classes.hpp>
 #include <Controls.hpp>
@@ -17,7 +17,7 @@
 #include <Graphics.hpp>
 #include <ToolWin.hpp>
 //---------------------------------------------------------------------------
-class TFConsCliente : public TForm
+class TFConsClienteInativo : public TForm
 {
 __published:	// IDE-managed Components
     TGroupBox *GrpCliente;
@@ -76,10 +76,10 @@ __published:	// IDE-managed Components
 private:	// User declarations
     TIntegerField *ObjetoCodigoCliente;
 public:		// User declarations
-    __fastcall TFConsCliente(TComponent* Owner);
+    __fastcall TFConsClienteInativo(TComponent* Owner);
     void __fastcall SetarObjetoCodigoCliente(TIntegerField *CampoCodigo);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TFConsCliente *FConsCliente;
+extern PACKAGE TFConsClienteInativo *FConsClienteInativo;
 //---------------------------------------------------------------------------
 #endif
