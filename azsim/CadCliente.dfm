@@ -483,7 +483,6 @@ object FCadCliente: TFCadCliente
         Width = 49
         Height = 13
         Caption = 'C'#243'd. H'#225'bil'
-        Visible = False
       end
       object Label23: TLabel
         Left = 680
@@ -491,7 +490,6 @@ object FCadCliente: TFCadCliente
         Width = 59
         Height = 13
         Caption = 'C'#243'd. Condor'
-        Visible = False
       end
       object Label24: TLabel
         Left = 751
@@ -645,20 +643,18 @@ object FCadCliente: TFCadCliente
         Top = 28
         Width = 69
         Height = 21
-        DataField = 'CDCLIENTE'
+        DataField = 'CDHABIL'
         DataSource = DModuleCliente.DSCliente
         TabOrder = 5
-        Visible = False
       end
       object EdtCodigoCondor: TDBEdit
         Left = 679
         Top = 28
         Width = 69
         Height = 21
-        DataField = 'CDCLIENTE'
+        DataField = 'CDCONDOR'
         DataSource = DModuleCliente.DSCliente
         TabOrder = 6
-        Visible = False
       end
       object EdtCodCodificador: TDBEdit
         Left = 750

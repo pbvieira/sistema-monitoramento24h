@@ -542,6 +542,14 @@ __published:	// IDE-managed Components
     TStringField *CDSRelOrdemServicoOBSCENTRAL;
     TIntegerField *CDSRelOrdemServicoNUMSETOR;
     TStringField *CDSRelOrdemServicoLOCAL;
+    TIBBCDField *IBQClienteCDHABIL;
+    TIBBCDField *IBQClienteCDCONDOR;
+    TBCDField *CDSClienteCDHABIL;
+    TBCDField *CDSClienteCDCONDOR;
+    TIBBCDField *IBQConsClienteCDHABIL;
+    TIBBCDField *IBQConsClienteCDCONDOR;
+    TBCDField *CDSConsClienteCDHABIL;
+    TBCDField *CDSConsClienteCDCONDOR;
     void __fastcall CDSProcedimentoBeforePost(TDataSet *DataSet);
     void __fastcall CDSClienteBeforePost(TDataSet *DataSet);
     void __fastcall CDSContatoBeforePost(TDataSet *DataSet);

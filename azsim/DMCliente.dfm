@@ -212,7 +212,8 @@ object DModuleCliente: TDModuleCliente
         'RVACAO ,PROCEDIMENTOS, PONTOREF, KMBASE, DATACADASTRO, DATAALTER' +
         'ACAO, FONE1, FONEOBS1, FONE2, FONEOBS2, FONE3, FONEOBS3, FONE4, ' +
         'FONEOBS4, FONE5, FONEOBS5, FONE6, FONEOBS6, FONE7, FONEOBS7, FON' +
-        'E8, FONEOBS8 FROM CLIENTE WHERE CDCLIENTE = -1;')
+        'E8, FONEOBS8, CDHABIL, CDCONDOR FROM CLIENTE WHERE CDCLIENTE = -' +
+        '1;')
     UniDirectional = True
     GeneratorField.ApplyEvent = gamOnPost
     Left = 52
@@ -394,9 +395,21 @@ object DModuleCliente: TDModuleCliente
       Origin = 'CLIENTE.NMFANTASIA'
       Size = 256
     end
+    object IBQClienteCDHABIL: TIBBCDField
+      FieldName = 'CDHABIL'
+      Origin = 'CLIENTE.CDHABIL'
+      Precision = 18
+      Size = 2
+    end
+    object IBQClienteCDCONDOR: TIBBCDField
+      FieldName = 'CDCONDOR'
+      Origin = 'CLIENTE.CDCONDOR'
+      Precision = 18
+      Size = 2
+    end
   end
   object IBTCliente: TIBTransaction
-    Active = False
+    Active = True
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
     Left = 52
@@ -500,7 +513,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE1'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS1'
@@ -510,7 +523,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE2'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS2'
@@ -520,7 +533,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE3'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS3'
@@ -530,7 +543,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE4'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS4'
@@ -540,7 +553,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE5'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS5'
@@ -550,7 +563,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE6'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS6'
@@ -560,7 +573,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE7'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS7'
@@ -570,7 +583,7 @@ object DModuleCliente: TDModuleCliente
       item
         Name = 'FONE8'
         DataType = ftString
-        Size = 13
+        Size = 14
       end
       item
         Name = 'FONEOBS8'
@@ -581,6 +594,18 @@ object DModuleCliente: TDModuleCliente
         Name = 'NMFANTASIA'
         DataType = ftString
         Size = 256
+      end
+      item
+        Name = 'CDHABIL'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end
+      item
+        Name = 'CDCONDOR'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
       end
       item
         Name = 'IBQContato'
@@ -787,6 +812,16 @@ object DModuleCliente: TDModuleCliente
     object CDSClienteNMFANTASIA: TStringField
       FieldName = 'NMFANTASIA'
       Size = 256
+    end
+    object CDSClienteCDHABIL: TBCDField
+      FieldName = 'CDHABIL'
+      Precision = 18
+      Size = 2
+    end
+    object CDSClienteCDCONDOR: TBCDField
+      FieldName = 'CDCONDOR'
+      Precision = 18
+      Size = 2
     end
   end
   object DSCliente: TDataSource
@@ -1749,6 +1784,8 @@ object DModuleCliente: TDModuleCliente
       #9'C.FONEOBS7,'
       #9'C.FONE8,'
       #9'C.FONEOBS8,'
+      '                C.CDHABIL,'
+      '                C.CDCONDOR,'
       #9'CR.CDCONTRATO,'
       #9'CR.CDCODIFICADOR,'
       #9'CR.LOCALINSTALCENTRAL,'
@@ -1955,6 +1992,18 @@ object DModuleCliente: TDModuleCliente
       FieldName = 'NOME'
       Size = 256
     end
+    object IBQConsClienteCDHABIL: TIBBCDField
+      FieldName = 'CDHABIL'
+      Origin = 'CLIENTE.CDHABIL'
+      Precision = 18
+      Size = 2
+    end
+    object IBQConsClienteCDCONDOR: TIBBCDField
+      FieldName = 'CDCONDOR'
+      Origin = 'CLIENTE.CDCONDOR'
+      Precision = 18
+      Size = 2
+    end
   end
   object DSConsCliente: TDataSource
     DataSet = CDSConsCliente
@@ -1962,7 +2011,7 @@ object DModuleCliente: TDModuleCliente
     Top = 254
   end
   object IBTConsCliente: TIBTransaction
-    Active = False
+    Active = True
     DefaultDatabase = DModule.IBCONAzsim
     Params.Strings = (
       'concurrency'
@@ -2173,6 +2222,18 @@ object DModuleCliente: TDModuleCliente
         Size = 256
       end
       item
+        Name = 'CDHABIL'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end
+      item
+        Name = 'CDCONDOR'
+        DataType = ftBCD
+        Precision = 18
+        Size = 2
+      end
+      item
         Name = 'IBQConsSetores'
         DataType = ftDataSet
       end
@@ -2377,6 +2438,16 @@ object DModuleCliente: TDModuleCliente
     object CDSConsClienteFONEOBS8: TStringField
       FieldName = 'FONEOBS8'
       Size = 200
+    end
+    object CDSConsClienteCDHABIL: TBCDField
+      FieldName = 'CDHABIL'
+      Precision = 18
+      Size = 2
+    end
+    object CDSConsClienteCDCONDOR: TBCDField
+      FieldName = 'CDCONDOR'
+      Precision = 18
+      Size = 2
     end
   end
   object DSPConsCliente: TDataSetProvider

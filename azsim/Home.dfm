@@ -1421,7 +1421,7 @@ object FHome: TFHome
           1C1C101717060617171B1C1C1C1C130116161616011B1C1C1C1C0B0715151515
           071B1C1C1C1C0A1414050512141B1C1C1C1C1C031C1C1C1C031C1C1C1C1C1C1C
           181818181C1C1C1C1C1C}
-        Caption = 'Clientes ativos'
+        Caption = 'Contratos ativos'
         OnClick = Clientesativos1Click
       end
       object Clientesinativos1: TMenuItem
@@ -1465,7 +1465,7 @@ object FHome: TFHome
           1C1C101717060617171B1C1C1C1C130116161616011B1C1C1C1C0B0715151515
           071B1C1C1C1C0A1414050512141B1C1C1C1C1C031C1C1C1C031C1C1C1C1C1C1C
           181818181C1C1C1C1C1C}
-        Caption = 'Clientes inativos'
+        Caption = 'Contratos cancelados'
         OnClick = Clientesinativos1Click
       end
       object N5: TMenuItem
