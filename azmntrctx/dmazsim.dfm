@@ -2,8 +2,8 @@ object DModule: TDModule
   OldCreateOrder = False
   OnCreate = DataModuleCreate
   OnDestroy = DataModuleDestroy
-  Left = 607
-  Top = 236
+  Left = 683
+  Top = 202
   Height = 315
   Width = 720
   object IBTMonitor: TIBTransaction

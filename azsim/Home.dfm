@@ -1,10 +1,10 @@
 object FHome: TFHome
-  Left = 201
-  Top = 131
+  Left = 191
+  Top = 102
   AutoScroll = False
   Caption = 'AZSIM - Sistema Integrado de Monitoramento - Vers'#227'o 1.2.2'
-  ClientHeight = 692
-  ClientWidth = 1244
+  ClientHeight = 636
+  ClientWidth = 1240
   Color = clBtnFace
   Constraints.MinHeight = 592
   Constraints.MinWidth = 800
@@ -23,8 +23,8 @@ object FHome: TFHome
   TextHeight = 13
   object SBarHome: TStatusBar
     Left = 0
-    Top = 675
-    Width = 1244
+    Top = 619
+    Width = 1240
     Height = 17
     Panels = <
       item
@@ -41,20 +41,20 @@ object FHome: TFHome
   object PHome: TPanel
     Left = 0
     Top = 0
-    Width = 1244
-    Height = 675
+    Width = 1240
+    Height = 619
     Align = alClient
     BevelOuter = bvLowered
     TabOrder = 1
     object PGCHome: TPageControl
       Left = 1
       Top = 1
-      Width = 1242
-      Height = 673
-      ActivePage = TSResgistroOcorrencia
+      Width = 1238
+      Height = 617
+      ActivePage = TSUltimoEstado
       Align = alClient
       MultiLine = True
-      TabIndex = 1
+      TabIndex = 2
       TabOrder = 0
       TabPosition = tpLeft
       object TSRegistroEventos: TTabSheet
@@ -63,7 +63,7 @@ object FHome: TFHome
         object Splitter1: TSplitter
           Left = 0
           Top = 353
-          Width = 1215
+          Width = 1211
           Height = 9
           Cursor = crVSplit
           Align = alTop
@@ -72,16 +72,16 @@ object FHome: TFHome
         object pnlEventos: TPanel
           Left = 0
           Top = 362
-          Width = 1215
-          Height = 303
+          Width = 1211
+          Height = 247
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
           object gridEventos: TDBGrid
             Left = 0
             Top = 30
-            Width = 1215
-            Height = 225
+            Width = 1211
+            Height = 169
             Align = alClient
             BorderStyle = bsNone
             Ctl3D = True
@@ -188,8 +188,8 @@ object FHome: TFHome
           end
           object pnlConsultaEventos: TPanel
             Left = 0
-            Top = 255
-            Width = 1215
+            Top = 199
+            Width = 1211
             Height = 48
             Align = alBottom
             BevelOuter = bvNone
@@ -408,7 +408,7 @@ object FHome: TFHome
           object pnlSubTituloForm: TPanel
             Left = 0
             Top = 0
-            Width = 1215
+            Width = 1211
             Height = 30
             Align = alTop
             Alignment = taLeftJustify
@@ -427,14 +427,14 @@ object FHome: TFHome
         object pnlOcorrencias: TPanel
           Left = 0
           Top = 0
-          Width = 1215
+          Width = 1211
           Height = 353
           Align = alTop
           TabOrder = 1
           object gridOcorrencias: TDBGrid
             Left = 1
             Top = 31
-            Width = 1213
+            Width = 1209
             Height = 257
             Align = alClient
             BorderStyle = bsNone
@@ -544,7 +544,7 @@ object FHome: TFHome
           object pnlTituloForm: TPanel
             Left = 1
             Top = 1
-            Width = 1213
+            Width = 1209
             Height = 30
             Align = alTop
             Alignment = taLeftJustify
@@ -562,7 +562,7 @@ object FHome: TFHome
           object Panel1: TPanel
             Left = 1
             Top = 288
-            Width = 1213
+            Width = 1209
             Height = 64
             Align = alBottom
             BevelOuter = bvNone
@@ -680,8 +680,8 @@ object FHome: TFHome
         object Panel2: TPanel
           Left = 0
           Top = 0
-          Width = 1215
-          Height = 665
+          Width = 1211
+          Height = 609
           Align = alClient
           TabOrder = 0
           object BtnConsultarOC: TSpeedButton
@@ -838,9 +838,9 @@ object FHome: TFHome
           end
           object DBGOcorrenciasHist: TDBGrid
             Left = 1
-            Top = 144
-            Width = 1213
-            Height = 520
+            Top = 136
+            Width = 1209
+            Height = 472
             Align = alBottom
             Anchors = [akLeft, akTop, akRight, akBottom]
             BorderStyle = bsNone
@@ -1072,7 +1072,7 @@ object FHome: TFHome
           object Panel3: TPanel
             Left = 1
             Top = 1
-            Width = 1213
+            Width = 1209
             Height = 30
             Align = alTop
             Alignment = taLeftJustify
@@ -1089,11 +1089,375 @@ object FHome: TFHome
           end
         end
       end
+      object TSUltimoEstado: TTabSheet
+        Caption = 'Centrais'
+        ImageIndex = 2
+        object Panel4: TPanel
+          Left = 0
+          Top = 0
+          Width = 1211
+          Height = 609
+          Align = alClient
+          TabOrder = 0
+          object BtnConsultarCentrais: TSpeedButton
+            Left = 9
+            Top = 107
+            Width = 138
+            Height = 22
+            Caption = '&Executar Consulta'
+            Flat = True
+            Glyph.Data = {
+              C6040000424DC60400000000000036040000280000000C0000000C0000000100
+              0800000000009000000000000000000000000001000000000000AC650000FCF1
+              DD00B36D0000BE770000A35E0000FCF2E000F3CE8A00FDF7EB00CA871200DAA0
+              3C00BA730000B56E0000C27B0000EABB6400A5600000F0C57500AA6500009F5A
+              0000FEFBF500AF6A0000FFFEFB00FAE6C300F6DAA600FAEACC00C37C0000F8E4
+              BD00BB740000A05B0000FFFFFF00FFFFFF000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              00000000000000000000000000000000000000000000000000001C1C1C1C1C1C
+              1C1C1C1C04041C1C1C1C1C1C1C1C1C0008001C1C1C1C1C1C1C1C0209021C1C1C
+              1C1C1C1C1C1A0D1A1C1C1C1C1B1B111B1A0F0C1C1C1C1C0E191919191A1A1C1C
+              1C1C101717060617171B1C1C1C1C130116161616011B1C1C1C1C0B0715151515
+              071B1C1C1C1C0A1414050512141B1C1C1C1C1C031C1C1C1C031C1C1C1C1C1C1C
+              181818181C1C1C1C1C1C}
+            OnClick = BtnConsultarOCClick
+          end
+          object SpeedButton2: TSpeedButton
+            Left = 150
+            Top = 107
+            Width = 115
+            Height = 22
+            Caption = 'Imprimir'
+            Enabled = False
+            Flat = True
+            Glyph.Data = {
+              C6040000424DC60400000000000036040000280000000C0000000C0000000100
+              0800000000009000000000000000000000000001000000000000E3A32700DE97
+              0A00E6CB9D00E7AE3F00EDBE6600863B1A00EDE9E300EEDAB400EAD0A100C37C
+              0000ECE1D0009F5A0000FFFFFF00FFFFFF000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              00000000000000000000000000000000000000000000000000000C0C09090909
+              090909090C0C0C0B090C0C0C0C0C0C090B0C0B020505050505050505020B0B08
+              0808080808080808080B0B070707070707070707070B0B0A0A0A0A0A0A0A0A0A
+              0A0B0B060606060606060606060B0C0B0B0B0B0B0B0B0B0B0B0C0C0C010C0C0C
+              0C0C0C010C0C0C0C000C0C0C0C0C0C030C0C0C0C000C0C0C0C0C03030C0C0C0C
+              040404040404040C0C0C}
+            Visible = False
+            OnClick = BtnImprimirOCClick
+          end
+          object GroupBox4: TGroupBox
+            Left = 8
+            Top = 40
+            Width = 209
+            Height = 62
+            Caption = 'Selecione o Intervalo da Consulta'
+            TabOrder = 0
+            object Label16: TLabel
+              Left = 106
+              Top = 17
+              Width = 48
+              Height = 13
+              Caption = 'Data Final'
+            end
+            object Label19: TLabel
+              Left = 9
+              Top = 17
+              Width = 53
+              Height = 13
+              Caption = 'Data Inicial'
+            end
+            object EdtDataFinalCentrais: TDateTimePicker
+              Left = 106
+              Top = 32
+              Width = 96
+              Height = 21
+              CalAlignment = dtaLeft
+              Date = 42183.6729884259
+              Format = 'dd/MM/yyyy'
+              Time = 42183.6729884259
+              DateFormat = dfShort
+              DateMode = dmComboBox
+              Kind = dtkDate
+              ParseInput = False
+              TabOrder = 1
+            end
+            object EdtDataInicialCentrais: TDateTimePicker
+              Left = 9
+              Top = 32
+              Width = 96
+              Height = 21
+              CalAlignment = dtaLeft
+              Date = 42183.6729884259
+              Format = 'dd/MM/yyyy'
+              Time = 42183.6729884259
+              DateFormat = dfShort
+              DateMode = dmComboBox
+              Kind = dtkDate
+              ParseInput = False
+              TabOrder = 0
+            end
+          end
+          object DBGEstadoCentrais: TDBGrid
+            Left = 1
+            Top = 136
+            Width = 1209
+            Height = 472
+            Align = alBottom
+            Anchors = [akLeft, akTop, akRight, akBottom]
+            BorderStyle = bsNone
+            Ctl3D = True
+            DataSource = DSRelAtendimento
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -11
+            Font.Name = 'MS Sans Serif'
+            Font.Style = []
+            Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+            ParentCtl3D = False
+            ParentFont = False
+            TabOrder = 3
+            TitleFont.Charset = DEFAULT_CHARSET
+            TitleFont.Color = clWindowText
+            TitleFont.Height = -11
+            TitleFont.Name = 'MS Sans Serif'
+            TitleFont.Style = []
+            OnDrawColumnCell = DBGOcorrenciasHistDrawColumnCell
+            OnDblClick = DBGOcorrenciasHistDblClick
+            Columns = <
+              item
+                Expanded = False
+                FieldName = 'DATAEVENTO'
+                Title.Caption = 'Data Evento'
+                Visible = True
+              end
+              item
+                Alignment = taCenter
+                Expanded = False
+                FieldName = 'CTX'
+                Title.Caption = 'Ctx'
+                Width = 35
+                Visible = True
+              end
+              item
+                Alignment = taCenter
+                Expanded = False
+                FieldName = 'PORTACOM'
+                Title.Alignment = taCenter
+                Title.Caption = 'Com'
+                Width = 25
+                Visible = True
+              end
+              item
+                Alignment = taLeftJustify
+                Expanded = False
+                FieldName = 'EQUIPAMENTO'
+                Title.Caption = 'Codificador'
+                Width = 60
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CDCLIENTE'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'MS Sans Serif'
+                Font.Style = [fsBold]
+                Title.Caption = 'C'#243'd.'
+                Width = 40
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'NMCLIENTE'
+                Title.Caption = 'Cliente'
+                Width = 250
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'STATUS'
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'MS Sans Serif'
+                Font.Style = [fsBold]
+                Title.Caption = 'Status'
+                Width = 35
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'DESTATUS'
+                Title.Caption = 'Descri'#231#227'o'
+                Width = 250
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'ENDERECO'
+                Title.Caption = 'Endere'#231'o'
+                Width = 290
+                Visible = True
+              end
+              item
+                Expanded = False
+                FieldName = 'CIDADE'
+                Title.Caption = 'Cidade'
+                Width = 1024
+                Visible = True
+              end>
+          end
+          object GroupBox5: TGroupBox
+            Left = 220
+            Top = 40
+            Width = 437
+            Height = 62
+            Caption = ' Cliente ou Codificador '
+            TabOrder = 1
+            object Label20: TLabel
+              Left = 13
+              Top = 17
+              Width = 47
+              Height = 13
+              Caption = 'N'#186' Cliente'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label21: TLabel
+              Left = 361
+              Top = 17
+              Width = 68
+              Height = 13
+              Caption = 'N'#186' Codificador'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
+            end
+            object Label22: TLabel
+              Left = 85
+              Top = 17
+              Width = 78
+              Height = 13
+              Caption = 'Nome do Cliente'
+              Font.Charset = DEFAULT_CHARSET
+              Font.Color = clWindowText
+              Font.Height = -11
+              Font.Name = 'MS Sans Serif'
+              Font.Style = []
+              ParentFont = False
+            end
+            object EdtCodClienteCentrais: TEdit
+              Left = 12
+              Top = 32
+              Width = 70
+              Height = 21
+              CharCase = ecUpperCase
+              TabOrder = 0
+            end
+            object EdtNomeCentrais: TEdit
+              Left = 84
+              Top = 32
+              Width = 274
+              Height = 21
+              CharCase = ecUpperCase
+              TabOrder = 1
+            end
+            object EdtCodificadorCentrais: TEdit
+              Left = 360
+              Top = 32
+              Width = 70
+              Height = 21
+              CharCase = ecUpperCase
+              TabOrder = 2
+            end
+          end
+          object Panel5: TPanel
+            Left = 1
+            Top = 1
+            Width = 1209
+            Height = 30
+            Align = alTop
+            Alignment = taLeftJustify
+            BevelOuter = bvNone
+            Caption = ' '#218'ltimo estado das centrais'
+            Color = clPurple
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWhite
+            Font.Height = -16
+            Font.Name = 'MS Sans Serif'
+            Font.Style = [fsBold]
+            ParentFont = False
+            TabOrder = 2
+          end
+        end
+      end
     end
   end
   object MMenuHome: TMainMenu
-    Left = 969
-    Top = 171
+    Left = 64
+    Top = 219
     object MnCadastros: TMenuItem
       Caption = '&Cadastros'
       object MnCadCliente: TMenuItem
@@ -2372,20 +2736,20 @@ object FHome: TFHome
   object TMRConsulta: TTimer
     Enabled = False
     OnTimer = TMRConsultaTimer
-    Left = 1128
-    Top = 230
+    Left = 296
+    Top = 526
   end
   object DSEventos: TDataSource
     DataSet = CDSConsEventos
-    Left = 1096
-    Top = 230
+    Left = 296
+    Top = 478
   end
   object CDSConsEventos: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPEventos'
-    Left = 1064
-    Top = 230
+    Left = 296
+    Top = 430
     object CDSConsEventosCTX: TIntegerField
       FieldName = 'CTX'
       Origin = 'LOGEVENTO.CTX'
@@ -2410,9 +2774,10 @@ object FHome: TFHome
       Size = 70
     end
     object CDSConsEventosNMCLIENTE: TStringField
+      DisplayWidth = 260
       FieldName = 'NMCLIENTE'
       Origin = 'LOGEVENTO.NMCLIENTE'
-      Size = 60
+      Size = 260
     end
     object CDSConsEventosENDERECO: TStringField
       FieldName = 'ENDERECO'
@@ -2437,8 +2802,8 @@ object FHome: TFHome
     DataSet = IBQConsEventos
     Constraints = True
     UpdateMode = upWhereKeyOnly
-    Left = 1032
-    Top = 230
+    Left = 296
+    Top = 382
   end
   object IBQConsEventos: TIBQuery
     Database = DModule.IBCONAzsim
@@ -2453,8 +2818,8 @@ object FHome: TFHome
         'FROM VLOGEVENTO WHERE DATAEVENTO BETWEEN :DATAINICIAL AND :DATAF' +
         'INAL ORDER BY DATAEVENTO DESC;')
     UniDirectional = True
-    Left = 1000
-    Top = 230
+    Left = 296
+    Top = 334
     ParamData = <
       item
         DataType = ftUnknown
@@ -2493,7 +2858,7 @@ object FHome: TFHome
     object IBQConsEventosNMCLIENTE: TIBStringField
       FieldName = 'NMCLIENTE'
       Origin = 'LOGEVENTO.NMCLIENTE'
-      Size = 60
+      Size = 260
     end
     object IBQConsEventosENDERECO: TIBStringField
       FieldName = 'ENDERECO'
@@ -2518,35 +2883,35 @@ object FHome: TFHome
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 969
-    Top = 230
+    Left = 297
+    Top = 286
   end
   object TMRMonitoramento: TTimer
     Enabled = False
     Interval = 180000
     OnTimer = TMRMonitoramentoTimer
-    Left = 1128
-    Top = 200
+    Left = 152
+    Top = 528
   end
   object IBEOcorrencia: TIBEvents
     AutoRegister = False
     Database = DModule.IBCONAzsim
     Registered = False
     OnEventAlert = IBEOcorrenciaEventAlert
-    Left = 1000
-    Top = 170
+    Left = 152
+    Top = 218
   end
   object DSRelAtendimento: TDataSource
     DataSet = CDSRelAtendimento
-    Left = 1096
-    Top = 262
+    Left = 392
+    Top = 478
   end
   object CDSRelAtendimento: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPRelAtendimento'
-    Left = 1064
-    Top = 262
+    Left = 392
+    Top = 430
     object CDSRelAtendimentoDATAEVENTO: TDateTimeField
       FieldName = 'DATAEVENTO'
     end
@@ -2613,8 +2978,8 @@ object FHome: TFHome
     DataSet = IBQRelAtendimento
     Constraints = True
     UpdateMode = upWhereKeyOnly
-    Left = 1032
-    Top = 262
+    Left = 392
+    Top = 382
   end
   object IBQRelAtendimento: TIBQuery
     Database = DModule.IBCONAzsim
@@ -2630,8 +2995,8 @@ object FHome: TFHome
         'NTO, AGENTE, KMTOTALPERCORRIDO'
       'FROM VOCORRENCIAS_ENCERRADAS;')
     UniDirectional = True
-    Left = 1000
-    Top = 262
+    Left = 392
+    Top = 334
     object IBQRelAtendimentoDATAEVENTO: TDateTimeField
       FieldName = 'DATAEVENTO'
       Origin = 'VOCORRENCIAS_ENCERRADAS.DATAEVENTO'
@@ -2655,7 +3020,7 @@ object FHome: TFHome
     object IBQRelAtendimentoNMCLIENTE: TIBStringField
       FieldName = 'NMCLIENTE'
       Origin = 'VOCORRENCIAS_ENCERRADAS.NMCLIENTE'
-      Size = 60
+      Size = 256
     end
     object IBQRelAtendimentoENDERECO: TIBStringField
       FieldName = 'ENDERECO'
@@ -2718,15 +3083,15 @@ object FHome: TFHome
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 969
-    Top = 262
+    Left = 393
+    Top = 286
   end
   object IBTOcorrenciasAbertas: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 969
-    Top = 292
+    Left = 505
+    Top = 284
   end
   object IBQOcorrenciasAbertas: TIBQuery
     Database = DModule.IBCONAzsim
@@ -2753,8 +3118,8 @@ object FHome: TFHome
         'WHERE O.ISOCORRENCIAENCERRADA = 0 AND O.CDOCORRENCIAPAI = 0 ORDE' +
         'R BY O.DATAEVENTO, O.CDOCORRENCIA;')
     UniDirectional = True
-    Left = 1000
-    Top = 292
+    Left = 504
+    Top = 332
     object IBQOcorrenciasAbertasCDOCORRENCIA: TIntegerField
       FieldName = 'CDOCORRENCIA'
       Origin = 'OCORRENCIA.CDOCORRENCIA'
@@ -2784,7 +3149,7 @@ object FHome: TFHome
     object IBQOcorrenciasAbertasNMCLIENTE: TIBStringField
       FieldName = 'NMCLIENTE'
       Origin = 'CLIENTE.NMCLIENTE'
-      Size = 60
+      Size = 256
     end
     object IBQOcorrenciasAbertasENDERECO: TIBStringField
       FieldName = 'ENDERECO'
@@ -2834,15 +3199,15 @@ object FHome: TFHome
     DataSet = IBQOcorrenciasAbertas
     Constraints = True
     UpdateMode = upWhereKeyOnly
-    Left = 1032
-    Top = 292
+    Left = 504
+    Top = 382
   end
   object CDSOcorrenciasAbertas: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPOcorrenciasAbertas'
-    Left = 1064
-    Top = 292
+    Left = 505
+    Top = 430
     object CDSOcorrenciasAbertasCDOCORRENCIA: TIntegerField
       FieldName = 'CDOCORRENCIA'
       Origin = 'OCORRENCIA.CDOCORRENCIA'
@@ -2918,15 +3283,15 @@ object FHome: TFHome
   end
   object DSOcorrenciasAbertas: TDataSource
     DataSet = CDSOcorrenciasAbertas
-    Left = 1096
-    Top = 292
+    Left = 505
+    Top = 477
   end
   object IBTConsFaltaComunicacao: TIBTransaction
     Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
-    Left = 969
-    Top = 200
+    Left = 153
+    Top = 288
   end
   object IBQConsFaltaComunicacao: TIBQuery
     Database = DModule.IBCONAzsim
@@ -2939,8 +3304,8 @@ object FHome: TFHome
         'CDUSUARIO_DESATIVOU, MONITORAMENTO_ATIVO, MOTIVO_DESATIVOU, MINU' +
         'TOS_SEM_COMUNICACAO FROM VLOGCTX_SEM_COMUNICACAO;')
     UniDirectional = True
-    Left = 1000
-    Top = 200
+    Left = 152
+    Top = 336
     object IBQConsFaltaComunicacaoCTX: TIntegerField
       FieldName = 'CTX'
       Origin = 'VLOGCTX_SEM_COMUNICACAO.CTX'
@@ -2987,15 +3352,15 @@ object FHome: TFHome
     Constraints = True
     UpdateMode = upWhereKeyOnly
     OnGetTableName = DSPConsFaltaComunicacaoGetTableName
-    Left = 1032
-    Top = 200
+    Left = 152
+    Top = 384
   end
   object CDSConsFaltaComunicacao: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DSPConsFaltaComunicacao'
-    Left = 1064
-    Top = 200
+    Left = 152
+    Top = 432
     object CDSConsFaltaComunicacaoCTX: TIntegerField
       FieldName = 'CTX'
     end
@@ -3028,8 +3393,8 @@ object FHome: TFHome
   end
   object DSConsFaltaComunicacao: TDataSource
     DataSet = CDSConsFaltaComunicacao
-    Left = 1096
-    Top = 200
+    Left = 152
+    Top = 480
   end
   object IBQCliConsOrdemServico: TIBQuery
     Database = DModule.IBCONAzsim
@@ -3051,8 +3416,8 @@ object FHome: TFHome
         'WHERE V.DATACADASTRO BETWEEN DATEADD(DAY, -30, CURRENT_DATE) AND' +
         ' CURRENT_DATE AND CDCLIENTE = :CDCLIENTE;')
     UniDirectional = True
-    Left = 758
-    Top = 470
+    Left = 646
+    Top = 382
     ParamData = <
       item
         DataType = ftInteger
@@ -3096,8 +3461,8 @@ object FHome: TFHome
   object CDSCliConsOrdemServico: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 788
-    Top = 470
+    Left = 644
+    Top = 430
     object CDSCliConsOrdemServicoSITUACAO: TStringField
       FieldName = 'SITUACAO'
       Required = True
@@ -3127,12 +3492,12 @@ object FHome: TFHome
   end
   object DSCliConsOrdemServico: TDataSource
     DataSet = CDSCliConsOrdemServico
-    Left = 818
-    Top = 470
+    Left = 642
+    Top = 478
   end
   object DSMasterCliConsOrdemServico: TDataSource
-    Left = 758
-    Top = 502
+    Left = 646
+    Top = 332
   end
   object IBQCliConsArmeDesarme: TIBQuery
     Database = DModule.IBCONAzsim
@@ -3151,8 +3516,8 @@ object FHome: TFHome
         'FERENCIA = '#39'00'#39' OR L.REFERENCIA = '#39'8F'#39' OR L.REFERENCIA = '#39'80'#39')) ' +
         ' AND L.CDCLIENTE = :CDCLIENTE;')
     UniDirectional = True
-    Left = 862
-    Top = 470
+    Left = 790
+    Top = 382
     ParamData = <
       item
         DataType = ftInteger
@@ -3209,24 +3574,24 @@ object FHome: TFHome
   object CDSCliConsArmeDesarme: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 892
-    Top = 470
+    Left = 791
+    Top = 430
   end
   object DSCliConsArmeDesarme: TDataSource
     DataSet = CDSCliConsArmeDesarme
-    Left = 922
-    Top = 470
+    Left = 788
+    Top = 332
   end
   object DSCliConsLogEvento: TDataSource
     DataSet = CDSCliConsLogEvento
-    Left = 1130
-    Top = 470
+    Left = 1090
+    Top = 478
   end
   object CDSCliConsLogEvento: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 1100
-    Top = 470
+    Left = 1086
+    Top = 430
     object CDSCliConsLogEventoDATAEVENTO: TDateTimeField
       FieldName = 'DATAEVENTO'
     end
@@ -3280,8 +3645,8 @@ object FHome: TFHome
         'RENT_DATE AND CDCLIENTE = :CDCLIENTE'
       'ORDER BY DATAEVENTO ASC;')
     UniDirectional = True
-    Left = 1070
-    Top = 470
+    Left = 1086
+    Top = 382
     ParamData = <
       item
         DataType = ftInteger
@@ -3354,8 +3719,8 @@ object FHome: TFHome
         'WHERE DATAEVENTO BETWEEN DATEADD(DAY, -30, CURRENT_DATE) AND CUR' +
         'RENT_DATE AND CDCLIENTE = :CDCLIENTE;')
     UniDirectional = True
-    Left = 966
-    Top = 470
+    Left = 934
+    Top = 382
     ParamData = <
       item
         DataType = ftInteger
@@ -3448,8 +3813,8 @@ object FHome: TFHome
   object CDSCliConsOcorrencia: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 996
-    Top = 470
+    Left = 932
+    Top = 430
     object CDSCliConsOcorrenciaCDOCORRENCIA: TIntegerField
       FieldName = 'CDOCORRENCIA'
     end
@@ -3514,19 +3879,19 @@ object FHome: TFHome
   end
   object DSCliConsOcorrencia: TDataSource
     DataSet = CDSCliConsOcorrencia
-    Left = 1026
-    Top = 470
+    Left = 938
+    Top = 478
   end
   object DSMasterCliConsArmeDesarme: TDataSource
-    Left = 862
-    Top = 502
+    Left = 794
+    Top = 478
   end
   object DSMasterCliConsOcorrencia: TDataSource
-    Left = 966
-    Top = 502
+    Left = 934
+    Top = 334
   end
   object DSMasterCliConsLogEvento: TDataSource
-    Left = 1070
-    Top = 502
+    Left = 1078
+    Top = 334
   end
 end

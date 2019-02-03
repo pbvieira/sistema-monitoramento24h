@@ -48,8 +48,8 @@ WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
          Application->Title = "AZSIM - Sistema Integrado de Monitoramento - Versão 1.0.0.35";
          Application->CreateForm(__classid(TFLogin), &FLogin);
          Application->CreateForm(__classid(TDModule), &DModule);
-         Application->CreateForm(__classid(TDModuleCliente), &DModuleCliente);
          Application->CreateForm(__classid(TfdmInfo), &fdmInfo);
+         Application->CreateForm(__classid(TDModuleCliente), &DModuleCliente);
          Application->CreateForm(__classid(TfdmOcorrencia), &fdmOcorrencia);
          Application->CreateForm(__classid(TdlgGeracaoRelClientes), &dlgGeracaoRelClientes);
          Application->Run();

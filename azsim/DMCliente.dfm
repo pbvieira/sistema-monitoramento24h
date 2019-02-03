@@ -1,9 +1,9 @@
 object DModuleCliente: TDModuleCliente
   OldCreateOrder = False
-  Left = 210
-  Top = 162
-  Height = 576
-  Width = 1149
+  Left = 200
+  Top = 154
+  Height = 635
+  Width = 1269
   object IBQContato: TIBQuery
     Database = DModule.IBCONAzsim
     Transaction = IBTCliente
@@ -409,7 +409,7 @@ object DModuleCliente: TDModuleCliente
     end
   end
   object IBTCliente: TIBTransaction
-    Active = True
+    Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
     Left = 52
@@ -2011,7 +2011,7 @@ object DModuleCliente: TDModuleCliente
     Top = 254
   end
   object IBTConsCliente: TIBTransaction
-    Active = True
+    Active = False
     DefaultDatabase = DModule.IBCONAzsim
     Params.Strings = (
       'concurrency'

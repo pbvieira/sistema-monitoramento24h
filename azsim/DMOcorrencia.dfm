@@ -1,7 +1,7 @@
 object fdmOcorrencia: TfdmOcorrencia
   OldCreateOrder = False
-  Left = 361
-  Top = 304
+  Left = 189
+  Top = 273
   Height = 392
   Width = 938
   object DSLinkCliente: TDataSource

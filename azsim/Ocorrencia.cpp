@@ -81,8 +81,11 @@ void __fastcall TFOcorrencia::AbrirManualmente()
         EdtDataAberturaOcorrencia->ReadOnly = false;
         fdmOcorrencia->CDSOcorrenciaDATAEVENTO->ReadOnly = false;
         fdmOcorrencia->CDSOcorrenciaDATAATENDIMENTO->ReadOnly = false;
+        fdmOcorrencia->CDSOcorrenciaDESTATUS->ReadOnly = false;
 
         fdmOcorrencia->CDSOcorrencia->Edit();
+        fdmOcorrencia->CDSOcorrenciaDESTATUS->AsString = "OCORRÊNCIA ABERTA MANUALMENTE";
+        fdmOcorrencia->CDSOcorrenciaDESTATUS->ReadOnly = true;
         GeraOcorrenciaId();
 
         // Realiza um filtro para o combo de subtipos
