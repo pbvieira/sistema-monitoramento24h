@@ -3396,202 +3396,16 @@ object FHome: TFHome
     Left = 152
     Top = 480
   end
-  object IBQCliConsOrdemServico: TIBQuery
-    Database = DModule.IBCONAzsim
-    Transaction = DModule.IBTFilial
-    BufferChunks = 1000
-    CachedUpdates = False
-    DataSource = DSMasterCliConsOrdemServico
-    SQL.Strings = (
-      'SELECT DISTINCT '
-      'CASE'
-      '    WHEN V.ISORDEMENCERRADA = 0 THEN'
-      '         '#39'PENDENTE'#39
-      
-        '    ELSE '#39'REALIZADO'#39' END AS SITUACAO, V.CDORDEMSERVICO, V.CDCLIE' +
-        'NTE, V.NMCLIENTE, V.DATACADASTRO, V.DEORDEMSERVICO, V.EQUIPAMENT' +
-        'O '
-      'FROM VORDEMSERVICOS V'
-      
-        'WHERE V.DATACADASTRO BETWEEN DATEADD(DAY, -30, CURRENT_DATE) AND' +
-        ' CURRENT_DATE AND CDCLIENTE = :CDCLIENTE;')
-    UniDirectional = True
-    Left = 646
-    Top = 382
-    ParamData = <
-      item
-        DataType = ftInteger
-        Name = 'CDCLIENTE'
-        ParamType = ptUnknown
-        Size = 4
-      end>
-    object IBQCliConsOrdemServicoSITUACAO: TIBStringField
-      FieldName = 'SITUACAO'
-      Required = True
-      FixedChar = True
-      Size = 9
-    end
-    object IBQCliConsOrdemServicoCDORDEMSERVICO: TIntegerField
-      FieldName = 'CDORDEMSERVICO'
-      Origin = 'VORDEMSERVICOS.CDORDEMSERVICO'
-    end
-    object IBQCliConsOrdemServicoCDCLIENTE: TIntegerField
-      FieldName = 'CDCLIENTE'
-      Origin = 'VORDEMSERVICOS.CDCLIENTE'
-    end
-    object IBQCliConsOrdemServicoNMCLIENTE: TIBStringField
-      FieldName = 'NMCLIENTE'
-      Origin = 'VORDEMSERVICOS.NMCLIENTE'
-      Size = 60
-    end
-    object IBQCliConsOrdemServicoDATACADASTRO: TDateTimeField
-      FieldName = 'DATACADASTRO'
-      Origin = 'VORDEMSERVICOS.DATACADASTRO'
-    end
-    object IBQCliConsOrdemServicoDEORDEMSERVICO: TIBStringField
-      FieldName = 'DEORDEMSERVICO'
-      Origin = 'VORDEMSERVICOS.DEORDEMSERVICO'
-      Size = 800
-    end
-    object IBQCliConsOrdemServicoEQUIPAMENTO: TIntegerField
-      FieldName = 'EQUIPAMENTO'
-      Origin = 'VORDEMSERVICOS.EQUIPAMENTO'
-    end
-  end
-  object CDSCliConsOrdemServico: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    Left = 644
-    Top = 430
-    object CDSCliConsOrdemServicoSITUACAO: TStringField
-      FieldName = 'SITUACAO'
-      Required = True
-      FixedChar = True
-      Size = 9
-    end
-    object CDSCliConsOrdemServicoCDORDEMSERVICO: TIntegerField
-      FieldName = 'CDORDEMSERVICO'
-    end
-    object CDSCliConsOrdemServicoCDCLIENTE: TIntegerField
-      FieldName = 'CDCLIENTE'
-    end
-    object CDSCliConsOrdemServicoNMCLIENTE: TStringField
-      FieldName = 'NMCLIENTE'
-      Size = 60
-    end
-    object CDSCliConsOrdemServicoDATACADASTRO: TDateTimeField
-      FieldName = 'DATACADASTRO'
-    end
-    object CDSCliConsOrdemServicoDEORDEMSERVICO: TStringField
-      FieldName = 'DEORDEMSERVICO'
-      Size = 800
-    end
-    object CDSCliConsOrdemServicoEQUIPAMENTO: TIntegerField
-      FieldName = 'EQUIPAMENTO'
-    end
-  end
-  object DSCliConsOrdemServico: TDataSource
-    DataSet = CDSCliConsOrdemServico
-    Left = 642
-    Top = 478
-  end
-  object DSMasterCliConsOrdemServico: TDataSource
-    Left = 646
-    Top = 332
-  end
-  object IBQCliConsArmeDesarme: TIBQuery
-    Database = DModule.IBCONAzsim
-    Transaction = DModule.IBTFilial
-    BufferChunks = 1000
-    CachedUpdates = False
-    DataSource = DSMasterCliConsArmeDesarme
-    SQL.Strings = (
-      
-        'SELECT L.DATAEVENTO, L.CTX,  L.PORTACOM, L.EQUIPAMENTO, L.STATUS' +
-        ',  L.DESTATUS, L.CDCLIENTE, L.NMCLIENTE, L.ENDERECO, L.CIDADE '
-      'FROM LOGEVENTO L'
-      
-        'WHERE L.DATAEVENTO BETWEEN DATEADD(DAY, -30, CURRENT_DATE) AND C' +
-        'URRENT_DATE AND (L.STATUS = '#39'0'#39' AND (L.REFERENCIA = '#39'0F'#39' OR L.RE' +
-        'FERENCIA = '#39'00'#39' OR L.REFERENCIA = '#39'8F'#39' OR L.REFERENCIA = '#39'80'#39')) ' +
-        ' AND L.CDCLIENTE = :CDCLIENTE;')
-    UniDirectional = True
-    Left = 790
-    Top = 382
-    ParamData = <
-      item
-        DataType = ftInteger
-        Name = 'CDCLIENTE'
-        ParamType = ptUnknown
-        Size = 4
-      end>
-    object IBQCliConsArmeDesarmeDATAEVENTO: TDateTimeField
-      FieldName = 'DATAEVENTO'
-      Origin = 'LOGEVENTO.DATAEVENTO'
-    end
-    object IBQCliConsArmeDesarmeCTX: TIntegerField
-      FieldName = 'CTX'
-      Origin = 'LOGEVENTO.CTX'
-    end
-    object IBQCliConsArmeDesarmePORTACOM: TIntegerField
-      FieldName = 'PORTACOM'
-      Origin = 'LOGEVENTO.PORTACOM'
-    end
-    object IBQCliConsArmeDesarmeEQUIPAMENTO: TIntegerField
-      FieldName = 'EQUIPAMENTO'
-      Origin = 'LOGEVENTO.EQUIPAMENTO'
-    end
-    object IBQCliConsArmeDesarmeSTATUS: TIBStringField
-      FieldName = 'STATUS'
-      Origin = 'LOGEVENTO.STATUS'
-      Size = 1
-    end
-    object IBQCliConsArmeDesarmeDESTATUS: TIBStringField
-      FieldName = 'DESTATUS'
-      Origin = 'LOGEVENTO.DESTATUS'
-      Size = 70
-    end
-    object IBQCliConsArmeDesarmeCDCLIENTE: TIntegerField
-      FieldName = 'CDCLIENTE'
-      Origin = 'LOGEVENTO.CDCLIENTE'
-    end
-    object IBQCliConsArmeDesarmeNMCLIENTE: TIBStringField
-      FieldName = 'NMCLIENTE'
-      Origin = 'LOGEVENTO.NMCLIENTE'
-      Size = 60
-    end
-    object IBQCliConsArmeDesarmeENDERECO: TIBStringField
-      FieldName = 'ENDERECO'
-      Origin = 'LOGEVENTO.ENDERECO'
-      Size = 60
-    end
-    object IBQCliConsArmeDesarmeCIDADE: TIBStringField
-      FieldName = 'CIDADE'
-      Origin = 'LOGEVENTO.CIDADE'
-      Size = 30
-    end
-  end
-  object CDSCliConsArmeDesarme: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    Left = 791
-    Top = 430
-  end
-  object DSCliConsArmeDesarme: TDataSource
-    DataSet = CDSCliConsArmeDesarme
-    Left = 788
-    Top = 332
-  end
   object DSCliConsLogEvento: TDataSource
     DataSet = CDSCliConsLogEvento
-    Left = 1090
-    Top = 478
+    Left = 783
+    Top = 477
   end
   object CDSCliConsLogEvento: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 1086
-    Top = 430
+    Left = 779
+    Top = 429
     object CDSCliConsLogEventoDATAEVENTO: TDateTimeField
       FieldName = 'DATAEVENTO'
     end
@@ -3645,8 +3459,8 @@ object FHome: TFHome
         'RENT_DATE AND CDCLIENTE = :CDCLIENTE'
       'ORDER BY DATAEVENTO ASC;')
     UniDirectional = True
-    Left = 1086
-    Top = 382
+    Left = 779
+    Top = 381
     ParamData = <
       item
         DataType = ftInteger
@@ -3719,8 +3533,8 @@ object FHome: TFHome
         'WHERE DATAEVENTO BETWEEN DATEADD(DAY, -30, CURRENT_DATE) AND CUR' +
         'RENT_DATE AND CDCLIENTE = :CDCLIENTE;')
     UniDirectional = True
-    Left = 934
-    Top = 382
+    Left = 635
+    Top = 381
     ParamData = <
       item
         DataType = ftInteger
@@ -3813,8 +3627,8 @@ object FHome: TFHome
   object CDSCliConsOcorrencia: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 932
-    Top = 430
+    Left = 633
+    Top = 429
     object CDSCliConsOcorrenciaCDOCORRENCIA: TIntegerField
       FieldName = 'CDOCORRENCIA'
     end
@@ -3879,19 +3693,15 @@ object FHome: TFHome
   end
   object DSCliConsOcorrencia: TDataSource
     DataSet = CDSCliConsOcorrencia
-    Left = 938
-    Top = 478
-  end
-  object DSMasterCliConsArmeDesarme: TDataSource
-    Left = 794
-    Top = 478
+    Left = 639
+    Top = 477
   end
   object DSMasterCliConsOcorrencia: TDataSource
-    Left = 934
-    Top = 334
+    Left = 635
+    Top = 333
   end
   object DSMasterCliConsLogEvento: TDataSource
-    Left = 1078
-    Top = 334
+    Left = 779
+    Top = 333
   end
 end

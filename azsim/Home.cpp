@@ -1132,24 +1132,6 @@ void __fastcall TFHome::MnAbrirOcorrenciaClick(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFHome::DBGCliConsOrdensAbertasDblClick(TObject *Sender)
-{
-    if(CDSCliConsOrdemServico->Active && CDSCliConsOrdemServico > 0){
-        int CodigoOS = CDSCliConsOrdemServicoCDORDEMSERVICO->AsInteger;
-        bool bFCadOrdemServico = FormEstaAberto("FCadOrdemServico");
-        if(bFCadOrdemServico){
-            FCadOrdemServico->ConsultaOrdemServico(CodigoOS);
-            FCadOrdemServico->Show();
-        }else{
-            FCadOrdemServico = new TFCadOrdemServico(FHome);
-            FCadOrdemServico->ConsultaOrdemServico(CodigoOS);
-            FCadOrdemServico->Show();
-        }
-    }
-}
-
-//---------------------------------------------------------------------------
-
 void __fastcall TFHome::BtnConsultaRapidaClick(TObject *Sender)
 {
     try{
