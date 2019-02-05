@@ -7,6 +7,7 @@ object DModule: TDModule
   Height = 433
   Width = 654
   object IBCONAzsim: TIBDatabase
+    Connected = True
     DatabaseName = 'localhost:C:\Desenvolvimento\database\AZSIMDB-LAJEADO.FDB'
     Params.Strings = (
       'user_name=SYSDBA'
@@ -560,7 +561,7 @@ object DModule: TDModule
       000000000000}
   end
   object IBTFilial: TIBTransaction
-    Active = False
+    Active = True
     DefaultDatabase = IBCONAzsim
     AutoStopAction = saNone
     Left = 92

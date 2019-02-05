@@ -39,6 +39,7 @@ USEFORM("ReportEventosUnit.cpp", ReportEventos); /* TQuickRep: File Type */
 USEFORM("SelectReportOcorrenciaUnit.cpp", FSelectReportOcorrencia);
 USEFORM("ConsClienteAtivo.cpp", FConsClienteAtivo);
 USEFORM("ConsClienteInativo.cpp", FConsClienteInativo);
+USEFORM("ConsSimplesClientes.cpp", FConsSimplesClientes);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {

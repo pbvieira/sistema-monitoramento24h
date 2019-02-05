@@ -21,6 +21,7 @@
 #include "SelectReportOcorrenciaUnit.h"
 #include "ConsClienteAtivo.h"
 #include "ConsClienteInativo.h"
+#include "ConsSimplesClientes.h"
 
 #pragma hdrstop
 //---------------------------------------------------------------------------
@@ -188,9 +189,8 @@ void __fastcall TFHome::FormClose(TObject *Sender, TCloseAction &Action)
     CDSConsEventos->Active = false;
     CDSRelAtendimento->Active = false;
     CDSOcorrenciasAbertas->Active = false;
-
-    CDSCliConsOcorrencia->Active = false;
-    CDSCliConsLogEvento->Active = false;
+    CDSIdentificao->Active = false;
+    CDSIdentificaoCliente->Active = false;
 
     Action = caFree;
     Application->Terminate();
@@ -1046,24 +1046,6 @@ void __fastcall TFHome::gridOcorrenciasDblClick(TObject *Sender)
 
 //---------------------------------------------------------------------------
 
-void __fastcall TFHome::DBGCliConsOcorrenciasDblClick(TObject *Sender)
-{
-    TFOcorrencia *FOcorrencia = NULL;
-    int iCdOcorrencia = CDSCliConsOcorrenciaCDOCORRENCIA->AsInteger;
-    if(iCdOcorrencia > 0){
-        FOcorrencia = dynamic_cast <TFOcorrencia*>(OcorrenciaEmAtendimento(iCdOcorrencia));
-        if(FOcorrencia != NULL){
-            FOcorrencia->Show();
-        }else{
-            FOcorrencia = new TFOcorrencia(FHome);
-            FOcorrencia->FOcorrenciaId = iCdOcorrencia;
-            FOcorrencia->ConsultaOcorrencia(iCdOcorrencia);
-            FOcorrencia->Show();
-        }
-    }
-}
-
-//---------------------------------------------------------------------------
 
 void __fastcall TFHome::DSPConsFaltaComunicacaoGetTableName(
       TObject *Sender, TDataSet *DataSet, AnsiString &TableName)
@@ -1130,83 +1112,6 @@ void __fastcall TFHome::MnAbrirOcorrenciaClick(TObject *Sender)
     FOcorrencia->Show();
 }
 
-//---------------------------------------------------------------------------
-
-void __fastcall TFHome::BtnConsultaRapidaClick(TObject *Sender)
-{
-    try{
-        AnsiString ORDER_BY = " ORDER BY C.NMCLIENTE";
-
-        AnsiString SQL_FILTRO_TODOS = "SELECT C.CDCLIENTE, C.CDFILIAL, C.TPPESSOA, "
-            "CASE WHEN C.NMFANTASIA IS NULL THEN C.NMCLIENTE ELSE C.NMFANTASIA END AS NOME, C.NMCLIENTE, C.NMFANTASIA, "
-            "C.DOCUMENTO, C.INSCMUNICIPAL, C.ENDERECO, C.BAIRRO, C.CIDADE, C.UF, C.CEP, "
-	        "C.PONTOREF, C.CHAVE, C.KMBASE, C.OBSERVACAO, C.PROCEDIMENTOS, C.DATACADASTRO, "
-	        "C.DATAALTERACAO, C.FONE1, C.FONEOBS1, C.FONE2, C.FONEOBS2, C.FONE3, C.FONEOBS3, "
-	        "C.FONE4, C.FONEOBS4, C.FONE5, C.FONEOBS5, C.FONE6, C.FONEOBS6, C.FONE7, C.FONEOBS7, "
-	        "C.FONE8, C.FONEOBS8, C.CDHABIL, C.CDCONDOR, CR.CDCONTRATO, CR.CDCODIFICADOR, CR.LOCALINSTALCENTRAL, CR.MODELOCENTRAL "
-          "FROM CLIENTE C INNER JOIN CONTRATO CR ON C.CDCLIENTE = CR.CDCLIENTE ";
-
-        AnsiString SQL_FILTRO_POR_CODIGO = Format(
-            "%s WHERE C.CDCLIENTE = :CDCLIENTE %s",
-                ARRAYOFCONST((SQL_FILTRO_TODOS, ORDER_BY)));
-
-        AnsiString SQL_FILTRO_POR_NOME = Format(
-            "%s WHERE C.NMCLIENTE LIKE UPPER(:NMCLIENTE) OR C.NMFANTASIA LIKE UPPER(:NMCLIENTE) %s",
-                ARRAYOFCONST((SQL_FILTRO_TODOS, ORDER_BY)));
-
-        int CodigoCliente = StrToIntDef(EdtCodigoConsultaRapida->Text, 0);
-        String NomeCliente = EdtNomeConsultaRapida->Text;
-
-        if(CodigoCliente > 0){
-            DModuleCliente->CDSConsCliente->Close();
-            DModuleCliente->IBQConsCliente->SQL->Clear();
-            DModuleCliente->IBQConsCliente->SQL->Text = SQL_FILTRO_POR_CODIGO;
-            DModuleCliente->IBQConsCliente->ParamByName("CDCLIENTE")->AsInteger = CodigoCliente;
-            DModuleCliente->CDSConsCliente->Active = true;
-            if(DModuleCliente->IBTConsCliente->InTransaction){
-                DModuleCliente->IBTConsCliente->Commit();
-            }
-        }else if(NomeCliente != ""){
-            DModuleCliente->CDSConsCliente->Close();
-            DModuleCliente->IBQConsCliente->SQL->Clear();
-            DModuleCliente->IBQConsCliente->SQL->Text = SQL_FILTRO_POR_NOME;
-            DModuleCliente->IBQConsCliente->ParamByName("NMCLIENTE")->AsString = "%" + NomeCliente + "%";
-            DModuleCliente->CDSConsCliente->Active = true;
-            if(DModuleCliente->IBTConsCliente->InTransaction){
-                DModuleCliente->IBTConsCliente->Commit();
-            }
-        }
-
-        if(DModuleCliente->CDSConsCliente->Active){
-           if(DModuleCliente->CDSConsCliente->RecordCount > 0){
-                if(DModuleCliente->CDSConsCliente->RecordCount == 1){
-                 if(FormEstaAberto("FFichaCliente")){
-                      FFichaCliente->Show();
-                  }else{
-                      FFichaCliente = new TFFichaCliente(FHome);
-                      FFichaCliente->Show();
-                  }
-                }else{
-                 if(FormEstaAberto("FFichaCliente")){
-                      FListaClientes->Show();
-                  }else{
-                      FListaClientes = new TFListaClientes(FHome);
-                      FListaClientes->Show();
-                  }
-                }
-            }else{
-                Application->MessageBox("Nenhum cliente foi localizado","",MB_ICONINFORMATION|MB_OK);
-            }
-        }
-
-    }catch(Exception &excecao){
-        AnsiString erro = excecao.Message;
-        String ErroNaConexao =
-            "Ocorreu um erro ao consultar o cadastro de clientes.\n\nDescrição do erro:\n" + erro;
-        Application->MessageBox(ErroNaConexao.c_str(),"Atenção",MB_ICONERROR|MB_OK);
-    }
-
-}
 //---------------------------------------------------------------------------
 
 void __fastcall TFHome::gridOcorrenciasDrawColumnCell(TObject *Sender,
@@ -1305,5 +1210,193 @@ void __fastcall TFHome::Clientesinativos1Click(TObject *Sender)
     FConsClienteInativo->ImgSelecionarCliente->Visible = false;
     FConsClienteInativo->Show();
 }
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::Consultasimplificadadeclientes1Click(
+      TObject *Sender)
+{
+    if(FormEstaAberto("FConsSimplesClientes")){
+        FConsSimplesClientes->Show();
+    }else{
+        FConsSimplesClientes = new TFConsSimplesClientes(this);
+        FConsSimplesClientes->Show();
+    }
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::DBGClientesIdentificadosDrawColumnCell(TObject *Sender,
+      const TRect &Rect, int DataCol, TColumn *Column,
+      TGridDrawState State)
+{
+    if(CDSIdentificao->RecNo % 2){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_ALTERNATE_ROW;
+    }else{
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = clWindow;
+    }
+
+    if(State.Contains(gdSelected)){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_SELECTED_ROW;
+    }
+    (dynamic_cast <TDBGrid*> (Sender))->DefaultDrawColumnCell(Rect, DataCol, Column, State);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::DBGClientesUltimosEventosDrawColumnCell(TObject *Sender,
+      const TRect &Rect, int DataCol, TColumn *Column,
+      TGridDrawState State)
+{
+    if(CDSIdentificaoCliente->RecNo % 2){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_ALTERNATE_ROW;
+    }else{
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = clWindow;
+    }
+
+    if(State.Contains(gdSelected)){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_SELECTED_ROW;
+    }
+    (dynamic_cast <TDBGrid*> (Sender))->DefaultDrawColumnCell(Rect, DataCol, Column, State);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::ConfiguraCriteriosIdentificacaoSQL()
+{
+    int CodigoCliente = StrToIntDef(EdtCodClienteIdentificados->Text, 0);
+    AnsiString NomeCliente = EdtNomeClienteIdentificados->Text;
+    int Codificador = StrToIntDef(EdtCodificadorIdentificados->Text, 0);;
+
+    if(CodigoCliente > 0){
+        IBQIdentificao->ParamByName("CDCLIENTE")->AsInteger = CodigoCliente;
+
+    }else if(NomeCliente != ""){
+        IBQIdentificao->ParamByName("NMCLIENTE")->AsString = "%" + NomeCliente + "%";
+
+    }else if(Codificador > 0){
+        IBQIdentificao->ParamByName("EQUIPAMENTO")->AsInteger = Codificador;
+    }
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::BtnConsultarClientesIdentificadosClick(TObject *Sender)
+{
+    try{
+        AnsiString SQL_ORDER_BY = " ORDER BY ULTIMADATA";
+        AnsiString SQL_GROUP_BY = " GROUP BY L.CDCLIENTE, L.IDENTIFICACAO, C.NMCLIENTE, C.ENDERECO, C.BAIRRO, C.CIDADE";
+
+        AnsiString SQL_FILTRO =
+            "SELECT MAX(L.DATAIDENTIFICACAO) AS ULTIMADATA, L.CDCLIENTE, L.IDENTIFICACAO, C.NMCLIENTE, C.ENDERECO, C.BAIRRO, C.CIDADE, "
+            "COUNT((SELECT COUNT(LL.CDLOGULTIMOESTADO) "
+            "		FROM LOGULTIMOESTADO LL "
+            "		WHERE LL.CDCLIENTE=L.CDCLIENTE AND "
+            "			LL.DATACADASTRO > DATEADD(-30 DAY TO L.DATACADASTRO) "
+            "			AND LL.IDENTIFICACAO IS NOT NULL))AS TOTAL30DIAS, "
+            "(CAST((100.00/30) AS NUMERIC(3,2)) *  COUNT((SELECT COUNT(LL.CDLOGULTIMOESTADO) "
+            "		FROM LOGULTIMOESTADO LL "
+            "		WHERE LL.CDCLIENTE=L.CDCLIENTE AND "
+            "			LL.DATACADASTRO > DATEADD(-30 DAY TO L.DATACADASTRO) "
+            "			AND LL.IDENTIFICACAO IS NOT NULL))) AS PERCENTUAL "
+            "FROM LOGULTIMOESTADO L "
+            "	JOIN CLIENTE C ON C.CDCLIENTE = L.CDCLIENTE "
+            "	JOIN CONTRATO CO ON CO.CDCLIENTE = L.CDCLIENTE AND CO.INATIVO = 0 "
+            "WHERE L.IDENTIFICACAO IS NOT NULL AND L.DATACADASTRO > DATEADD(-30 DAY TO CURRENT_DATE)";
+
+        AnsiString SQL_FILTRO_CODIGO = SQL_FILTRO + " AND C.CDCLIENTE = :CDCLIENTE" + SQL_GROUP_BY + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_NOME = SQL_FILTRO + " AND (C.NMCLIENTE LIKE UPPER(:NMCLIENTE) OR C.NMFANTASIA LIKE UPPER(:NMCLIENTE))" + SQL_GROUP_BY + SQL_ORDER_BY;
+        AnsiString SQL_FILTRO_CODIFICADOR = SQL_FILTRO + " AND CO.EQUIPAMENTO = :EQUIPAMENTO" + SQL_GROUP_BY + SQL_ORDER_BY;
+
+        CDSIdentificao->Close();
+        CDSIdentificaoCliente->Close();
+        IBQIdentificao->SQL->Clear();
+        IBQIdentificao->SQL->Text = SQL_FILTRO + SQL_GROUP_BY + SQL_ORDER_BY;
+
+        int CodigoCliente = StrToIntDef(EdtCodClienteIdentificados->Text, 0);
+        AnsiString NomeCliente = EdtNomeClienteIdentificados->Text;
+        int Codificador = StrToIntDef(EdtCodificadorIdentificados->Text, 0);
+
+        if(CodigoCliente > 0){
+            CDSIdentificao->Close();
+            IBQIdentificao->SQL->Clear();
+            IBQIdentificao->SQL->Text = SQL_FILTRO_CODIGO;
+
+        }else if(NomeCliente != ""){
+            CDSIdentificao->Close();
+            IBQIdentificao->SQL->Clear();
+            IBQIdentificao->SQL->Text = SQL_FILTRO_NOME;
+
+        }else if(Codificador > 0){
+            CDSIdentificao->Close();
+            IBQIdentificao->SQL->Clear();
+            IBQIdentificao->SQL->Text = SQL_FILTRO_CODIFICADOR;
+        }
+
+        ConfiguraCriteriosIdentificacaoSQL();
+        CDSIdentificao->Active = true;
+        CDSIdentificaoCliente->Active = true;
+        int totalRegistros = CDSIdentificao->RecordCount;
+
+        /*
+        if(totalRegistros > 0){
+            BtnImprimirOC->Enabled = true;
+        }else{
+            BtnImprimirOC->Enabled = false;
+        }
+        */
+
+        if(IBTIdentificao->InTransaction){
+            IBTIdentificao->Commit();
+        }
+
+    }catch(Exception &excecao){
+        AnsiString erro = excecao.Message;
+        String ErroNaConexao =
+            "Ocorreu um erro ao consultar os eventos de identificação.\n\nDescrição do erro:\n" + erro;
+        Application->MessageBox(ErroNaConexao.c_str(),"Atenção",MB_ICONERROR|MB_OK);
+    }
+}
+
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::BtnConsultarClientesNaoIdentificadosClick(
+      TObject *Sender)
+{
+    try{
+        AnsiString SQL_ORDER_BY = " ORDER BY ULTIMADATA";
+        AnsiString SQL_GROUP_BY = " GROUP BY L.CDCLIENTE, L.IDENTIFICACAO, C.NMCLIENTE, C.ENDERECO, C.BAIRRO, C.CIDADE";
+
+        AnsiString SQL_FILTRO =
+            "SELECT DISTINCT L.CDCLIENTE, L.IDENTIFICACAO, C.NMCLIENTE, C.ENDERECO, C.BAIRRO, C.CIDADE "
+            "FROM LOGULTIMOESTADO L "
+            "	JOIN CLIENTE C ON C.CDCLIENTE = L.CDCLIENTE "
+            "	JOIN CONTRATO CO ON CO.CDCLIENTE = L.CDCLIENTE AND CO.INATIVO = 0 "
+            "WHERE L.IDENTIFICACAO IS NULL AND L.DATACADASTRO > DATEADD(-7 DAY TO CURRENT_DATE)";
+
+        CDSIdentificao->Close();
+        CDSIdentificaoCliente->Close();
+        IBQIdentificao->SQL->Clear();
+        IBQIdentificao->SQL->Text = SQL_FILTRO + SQL_GROUP_BY + SQL_ORDER_BY;
+        CDSIdentificao->Active = true;
+        CDSIdentificaoCliente->Active = true;
+        int totalRegistros = CDSIdentificao->RecordCount;
+
+        /*
+        if(totalRegistros > 0){
+            BtnImprimirOC->Enabled = true;
+        }else{
+            BtnImprimirOC->Enabled = false;
+        }
+        */
+
+        if(IBTIdentificao->InTransaction){
+            IBTIdentificao->Commit();
+        }
+
+    }catch(Exception &excecao){
+        AnsiString erro = excecao.Message;
+        String ErroNaConexao =
+            "Ocorreu um erro ao consultar os eventos de identificação.\n\nDescrição do erro:\n" + erro;
+        Application->MessageBox(ErroNaConexao.c_str(),"Atenção",MB_ICONERROR|MB_OK);
+    }
+}
+
 //---------------------------------------------------------------------------
 

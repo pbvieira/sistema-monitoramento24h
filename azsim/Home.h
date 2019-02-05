@@ -39,6 +39,11 @@
 #include <dbcgrids.hpp>
 #include "SHDocVw_OCX.h"
 #include <OleCtrls.hpp>
+#include <DBTables.hpp>
+#include <MXDB.hpp>
+#include <Mxstore.hpp>
+#include <MXTABLES.hpp>
+#include <MXGRID.hpp>
 
 //---------------------------------------------------------------------------
 class TFHome : public TForm
@@ -210,68 +215,6 @@ __published:	// IDE-managed Components
     TIntegerField *CDSRelAtendimentoCDOCORRENCIA;
     TMenuItem *MnAtendimento;
     TMenuItem *MnAbrirOcorrencia;
-    TDataSource *DSCliConsLogEvento;
-    TClientDataSet *CDSCliConsLogEvento;
-    TIBQuery *IBQCliConsLogEvento;
-    TIBQuery *IBQCliConsOcorrencia;
-    TClientDataSet *CDSCliConsOcorrencia;
-    TDataSource *DSCliConsOcorrencia;
-    TIntegerField *IBQCliConsOcorrenciaCDOCORRENCIA;
-    TDateTimeField *IBQCliConsOcorrenciaDATAEVENTO;
-    TIntegerField *IBQCliConsOcorrenciaCTX;
-    TIntegerField *IBQCliConsOcorrenciaPORTACOM;
-    TIntegerField *IBQCliConsOcorrenciaEQUIPAMENTO;
-    TIntegerField *IBQCliConsOcorrenciaCDCLIENTE;
-    TIBStringField *IBQCliConsOcorrenciaNMCLIENTE;
-    TIBStringField *IBQCliConsOcorrenciaENDERECO;
-    TIBStringField *IBQCliConsOcorrenciaCIDADE;
-    TIBStringField *IBQCliConsOcorrenciaSTATUS;
-    TIBStringField *IBQCliConsOcorrenciaDESTATUS;
-    TIBStringField *IBQCliConsOcorrenciaLOCAL;
-    TIBStringField *IBQCliConsOcorrenciaRESUMO;
-    TIBStringField *IBQCliConsOcorrenciaOPERADORABERTURA;
-    TIBStringField *IBQCliConsOcorrenciaOPERADORENCERRAMENTO;
-    TIBStringField *IBQCliConsOcorrenciaAGENTE;
-    TIBBCDField *IBQCliConsOcorrenciaKMTOTALPERCORRIDO;
-    TDataSource *DSMasterCliConsOcorrencia;
-    TDataSource *DSMasterCliConsLogEvento;
-    TDateTimeField *IBQCliConsLogEventoDATAEVENTO;
-    TIntegerField *IBQCliConsLogEventoCTX;
-    TIntegerField *IBQCliConsLogEventoPORTACOM;
-    TIntegerField *IBQCliConsLogEventoEQUIPAMENTO;
-    TIBStringField *IBQCliConsLogEventoSTATUS;
-    TIBStringField *IBQCliConsLogEventoDESTATUS;
-    TIntegerField *IBQCliConsLogEventoCDCLIENTE;
-    TIBStringField *IBQCliConsLogEventoNMCLIENTE;
-    TIBStringField *IBQCliConsLogEventoENDERECO;
-    TIBStringField *IBQCliConsLogEventoCIDADE;
-    TDateTimeField *CDSCliConsLogEventoDATAEVENTO;
-    TIntegerField *CDSCliConsLogEventoCTX;
-    TIntegerField *CDSCliConsLogEventoPORTACOM;
-    TIntegerField *CDSCliConsLogEventoEQUIPAMENTO;
-    TStringField *CDSCliConsLogEventoSTATUS;
-    TStringField *CDSCliConsLogEventoDESTATUS;
-    TIntegerField *CDSCliConsLogEventoCDCLIENTE;
-    TStringField *CDSCliConsLogEventoNMCLIENTE;
-    TStringField *CDSCliConsLogEventoENDERECO;
-    TStringField *CDSCliConsLogEventoCIDADE;
-    TIntegerField *CDSCliConsOcorrenciaCDOCORRENCIA;
-    TDateTimeField *CDSCliConsOcorrenciaDATAEVENTO;
-    TIntegerField *CDSCliConsOcorrenciaCTX;
-    TIntegerField *CDSCliConsOcorrenciaPORTACOM;
-    TIntegerField *CDSCliConsOcorrenciaEQUIPAMENTO;
-    TIntegerField *CDSCliConsOcorrenciaCDCLIENTE;
-    TStringField *CDSCliConsOcorrenciaNMCLIENTE;
-    TStringField *CDSCliConsOcorrenciaENDERECO;
-    TStringField *CDSCliConsOcorrenciaCIDADE;
-    TStringField *CDSCliConsOcorrenciaSTATUS;
-    TStringField *CDSCliConsOcorrenciaDESTATUS;
-    TStringField *CDSCliConsOcorrenciaLOCAL;
-    TStringField *CDSCliConsOcorrenciaRESUMO;
-    TStringField *CDSCliConsOcorrenciaOPERADORABERTURA;
-    TStringField *CDSCliConsOcorrenciaOPERADORENCERRAMENTO;
-    TStringField *CDSCliConsOcorrenciaAGENTE;
-    TBCDField *CDSCliConsOcorrenciaKMTOTALPERCORRIDO;
     TPanel *PHome;
     TPageControl *PGCHome;
     TTabSheet *TSRegistroEventos;
@@ -300,12 +243,6 @@ __published:	// IDE-managed Components
     TSplitter *Splitter1;
     TPanel *pnlTituloForm;
     TPanel *pnlSubTituloForm;
-    TPanel *Panel1;
-    TLabel *Label17;
-    TLabel *Label18;
-    TSpeedButton *BtnConsultaRapida;
-    TEdit *EdtCodigoConsultaRapida;
-    TEdit *EdtNomeConsultaRapida;
     TPanel *Panel2;
     TSpeedButton *BtnConsultarOC;
     TSpeedButton *BtnImprimirOC;
@@ -328,7 +265,6 @@ __published:	// IDE-managed Components
     TEdit *EdtStatusOC;
     TEdit *EdtStatusDescricaoOC;
     TPanel *Panel3;
-    TLabel *Label15;
     TMenuItem *MnRelOcorrencias;
     TMenuItem *N2;
     TMenuItem *MnRelContratosAtivos;
@@ -341,22 +277,73 @@ __published:	// IDE-managed Components
     TMenuItem *N6;
     TTabSheet *TSUltimoEstado;
     TPanel *Panel4;
-    TSpeedButton *BtnConsultarCentrais;
-    TSpeedButton *SpeedButton2;
-    TGroupBox *GroupBox4;
-    TLabel *Label16;
-    TLabel *Label19;
-    TDateTimePicker *EdtDataFinalCentrais;
-    TDateTimePicker *EdtDataInicialCentrais;
-    TDBGrid *DBGEstadoCentrais;
-    TGroupBox *GroupBox5;
-    TLabel *Label20;
-    TLabel *Label21;
-    TLabel *Label22;
-    TEdit *EdtCodClienteCentrais;
-    TEdit *EdtNomeCentrais;
-    TEdit *EdtCodificadorCentrais;
     TPanel *Panel5;
+    TMenuItem *Consultasimplificadadeclientes1;
+    TDataSource *DSIdentificao;
+    TClientDataSet *CDSIdentificao;
+    TDataSetProvider *DSPIdentificao;
+    TIBQuery *IBQIdentificao;
+    TIBTransaction *IBTIdentificao;
+    TDateTimeField *IBQIdentificaoULTIMADATA;
+    TIntegerField *IBQIdentificaoCDCLIENTE;
+    TIBStringField *IBQIdentificaoIDENTIFICACAO;
+    TIBStringField *IBQIdentificaoNMCLIENTE;
+    TIBStringField *IBQIdentificaoENDERECO;
+    TIBStringField *IBQIdentificaoBAIRRO;
+    TIBStringField *IBQIdentificaoCIDADE;
+    TIntegerField *IBQIdentificaoTOTAL30DIAS;
+    TDateTimeField *CDSIdentificaoULTIMADATA;
+    TIntegerField *CDSIdentificaoCDCLIENTE;
+    TStringField *CDSIdentificaoIDENTIFICACAO;
+    TStringField *CDSIdentificaoNMCLIENTE;
+    TStringField *CDSIdentificaoENDERECO;
+    TStringField *CDSIdentificaoBAIRRO;
+    TStringField *CDSIdentificaoCIDADE;
+    TIntegerField *CDSIdentificaoTOTAL30DIAS;
+    TDataSource *DSLinkIdentificacaoCliente;
+    TIBQuery *IBQIdentificacaoCliente;
+    TDataSetProvider *DSPIdentificaoCliente;
+    TClientDataSet *CDSIdentificaoCliente;
+    TIntegerField *IBQIdentificacaoClienteCDLOGULTIMOESTADO;
+    TDateField *IBQIdentificacaoClienteDATACADASTRO;
+    TDateTimeField *IBQIdentificacaoClienteDATAIDENTIFICACAO;
+    TIntegerField *IBQIdentificacaoClienteCDCLIENTE;
+    TIBStringField *IBQIdentificacaoClienteIDENTIFICACAO;
+    TDateTimeField *IBQIdentificacaoClienteDATAULTIMOEVENTO;
+    TIBStringField *IBQIdentificacaoClienteULTIMOEVENTO;
+    TDataSetField *CDSIdentificaoIBQIdentificacaoCliente;
+    TIntegerField *CDSIdentificaoClienteCDLOGULTIMOESTADO;
+    TDateField *CDSIdentificaoClienteDATACADASTRO;
+    TDateTimeField *CDSIdentificaoClienteDATAIDENTIFICACAO;
+    TIntegerField *CDSIdentificaoClienteCDCLIENTE;
+    TStringField *CDSIdentificaoClienteIDENTIFICACAO;
+    TDateTimeField *CDSIdentificaoClienteDATAULTIMOEVENTO;
+    TStringField *CDSIdentificaoClienteULTIMOEVENTO;
+    TDataSource *DSIdentificacaoCliente;
+    TIBBCDField *IBQIdentificaoPERCENTUAL;
+    TBCDField *CDSIdentificaoPERCENTUAL;
+    TPageControl *PageControl1;
+    TTabSheet *TSIdentificacao;
+    TTabSheet *TSSemIdentificacao;
+    TDBGrid *DBGClientesUltimosEventos;
+    TDBGrid *DBGClientesIdentificados;
+    TPanel *Panel1;
+    TSpeedButton *BtnConsultarClientesIdentificados;
+    TSpeedButton *SpeedButton3;
+    TSplitter *Splitter2;
+    TDBGrid *DBGrid3;
+    TPanel *Panel6;
+    TSpeedButton *BtnConsultarClientesNaoIdentificados;
+    TSpeedButton *SpeedButton4;
+    TDBGrid *DBGrid4;
+    TSplitter *Splitter3;
+    TGroupBox *GroupBox4;
+    TLabel *Label15;
+    TLabel *Label16;
+    TLabel *Label17;
+    TEdit *EdtCodClienteIdentificados;
+    TEdit *EdtNomeClienteIdentificados;
+    TEdit *EdtCodificadorIdentificados;
     void __fastcall MnSairClick(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall MnCadContratoClick(TObject *Sender);
@@ -400,8 +387,6 @@ __published:	// IDE-managed Components
     void __fastcall MnCadCodificadorClick(TObject *Sender);
     void __fastcall BtnImprimirOCClick(TObject *Sender);
     void __fastcall MnAbrirOcorrenciaClick(TObject *Sender);
-    void __fastcall DBGCliConsOcorrenciasDblClick(TObject *Sender);
-    void __fastcall BtnConsultaRapidaClick(TObject *Sender);
     void __fastcall gridOcorrenciasDrawColumnCell(TObject *Sender,
           const TRect &Rect, int DataCol, TColumn *Column,
           TGridDrawState State);
@@ -414,11 +399,23 @@ __published:	// IDE-managed Components
     void __fastcall MnRelOcorrenciasClick(TObject *Sender);
     void __fastcall Clientesativos1Click(TObject *Sender);
     void __fastcall Clientesinativos1Click(TObject *Sender);
+    void __fastcall Consultasimplificadadeclientes1Click(TObject *Sender);
+    void __fastcall BtnConsultarClientesIdentificadosClick(TObject *Sender);
+    void __fastcall DBGClientesIdentificadosDrawColumnCell(TObject *Sender,
+          const TRect &Rect, int DataCol, TColumn *Column,
+          TGridDrawState State);
+    void __fastcall DBGClientesUltimosEventosDrawColumnCell(TObject *Sender,
+          const TRect &Rect, int DataCol, TColumn *Column,
+          TGridDrawState State);
+    void __fastcall BtnConsultarClientesNaoIdentificadosClick(
+          TObject *Sender);
 private:	// User declarations
     // Métodos
     HWND __fastcall CarregaMonitor(LPCTSTR program, LPCTSTR args);
     void __fastcall ConfiguraCriteriosEventosSQL();
-    void __fastcall ConfiguraCriteriosOcorrenciasSQL();    
+    void __fastcall ConfiguraCriteriosOcorrenciasSQL();
+    void __fastcall ConfiguraCriteriosIdentificacaoSQL();
+    void __fastcall ConfiguraCriteriosNaoIdentificacaoSQL();       
     bool __fastcall ValidaOcorrencia();
 
 public:		// User declarations

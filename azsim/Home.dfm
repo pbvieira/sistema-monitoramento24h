@@ -1,9 +1,9 @@
 object FHome: TFHome
-  Left = 191
-  Top = 102
+  Left = 194
+  Top = 101
   AutoScroll = False
   Caption = 'AZSIM - Sistema Integrado de Monitoramento - Vers'#227'o 1.2.2'
-  ClientHeight = 636
+  ClientHeight = 638
   ClientWidth = 1240
   Color = clBtnFace
   Constraints.MinHeight = 592
@@ -23,7 +23,7 @@ object FHome: TFHome
   TextHeight = 13
   object SBarHome: TStatusBar
     Left = 0
-    Top = 619
+    Top = 621
     Width = 1240
     Height = 17
     Panels = <
@@ -42,7 +42,7 @@ object FHome: TFHome
     Left = 0
     Top = 0
     Width = 1240
-    Height = 619
+    Height = 621
     Align = alClient
     BevelOuter = bvLowered
     TabOrder = 1
@@ -50,7 +50,7 @@ object FHome: TFHome
       Left = 1
       Top = 1
       Width = 1238
-      Height = 617
+      Height = 619
       ActivePage = TSUltimoEstado
       Align = alClient
       MultiLine = True
@@ -73,7 +73,7 @@ object FHome: TFHome
           Left = 0
           Top = 362
           Width = 1211
-          Height = 247
+          Height = 249
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
@@ -81,7 +81,7 @@ object FHome: TFHome
             Left = 0
             Top = 30
             Width = 1211
-            Height = 169
+            Height = 171
             Align = alClient
             BorderStyle = bsNone
             Ctl3D = True
@@ -188,7 +188,7 @@ object FHome: TFHome
           end
           object pnlConsultaEventos: TPanel
             Left = 0
-            Top = 199
+            Top = 201
             Width = 1211
             Height = 48
             Align = alBottom
@@ -435,7 +435,7 @@ object FHome: TFHome
             Left = 1
             Top = 31
             Width = 1209
-            Height = 257
+            Height = 321
             Align = alClient
             BorderStyle = bsNone
             Ctl3D = True
@@ -559,119 +559,6 @@ object FHome: TFHome
             ParentFont = False
             TabOrder = 1
           end
-          object Panel1: TPanel
-            Left = 1
-            Top = 288
-            Width = 1209
-            Height = 64
-            Align = alBottom
-            BevelOuter = bvNone
-            TabOrder = 2
-            object Label17: TLabel
-              Left = 11
-              Top = 21
-              Width = 47
-              Height = 13
-              Caption = 'N'#186' Cliente'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label18: TLabel
-              Left = 83
-              Top = 21
-              Width = 78
-              Height = 13
-              Caption = 'Nome do Cliente'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = []
-              ParentFont = False
-            end
-            object BtnConsultaRapida: TSpeedButton
-              Left = 305
-              Top = 35
-              Width = 128
-              Height = 22
-              Caption = '&Executar Consulta'
-              Flat = True
-              Glyph.Data = {
-                C6040000424DC60400000000000036040000280000000C0000000C0000000100
-                0800000000009000000000000000000000000001000000000000AC650000FCF1
-                DD00B36D0000BE770000A35E0000FCF2E000F3CE8A00FDF7EB00CA871200DAA0
-                3C00BA730000B56E0000C27B0000EABB6400A5600000F0C57500AA6500009F5A
-                0000FEFBF500AF6A0000FFFEFB00FAE6C300F6DAA600FAEACC00C37C0000F8E4
-                BD00BB740000A05B0000FFFFFF00FFFFFF000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                0000000000000000000000000000000000000000000000000000000000000000
-                00000000000000000000000000000000000000000000000000001C1C1C1C1C1C
-                1C1C1C1C04041C1C1C1C1C1C1C1C1C0008001C1C1C1C1C1C1C1C0209021C1C1C
-                1C1C1C1C1C1A0D1A1C1C1C1C1B1B111B1A0F0C1C1C1C1C0E191919191A1A1C1C
-                1C1C101717060617171B1C1C1C1C130116161616011B1C1C1C1C0B0715151515
-                071B1C1C1C1C0A1414050512141B1C1C1C1C1C031C1C1C1C031C1C1C1C1C1C1C
-                181818181C1C1C1C1C1C}
-              OnClick = BtnConsultaRapidaClick
-            end
-            object Label15: TLabel
-              Left = 11
-              Top = 6
-              Width = 94
-              Height = 13
-              Caption = 'Consulta R'#225'pida'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = [fsBold]
-              ParentFont = False
-            end
-            object EdtCodigoConsultaRapida: TEdit
-              Left = 10
-              Top = 36
-              Width = 70
-              Height = 21
-              CharCase = ecUpperCase
-              TabOrder = 0
-            end
-            object EdtNomeConsultaRapida: TEdit
-              Left = 82
-              Top = 36
-              Width = 219
-              Height = 21
-              CharCase = ecUpperCase
-              TabOrder = 1
-            end
-          end
         end
       end
       object TSResgistroOcorrencia: TTabSheet
@@ -681,7 +568,7 @@ object FHome: TFHome
           Left = 0
           Top = 0
           Width = 1211
-          Height = 609
+          Height = 611
           Align = alClient
           TabOrder = 0
           object BtnConsultarOC: TSpeedButton
@@ -840,7 +727,7 @@ object FHome: TFHome
             Left = 1
             Top = 136
             Width = 1209
-            Height = 472
+            Height = 474
             Align = alBottom
             Anchors = [akLeft, akTop, akRight, akBottom]
             BorderStyle = bsNone
@@ -1096,343 +983,9 @@ object FHome: TFHome
           Left = 0
           Top = 0
           Width = 1211
-          Height = 609
+          Height = 611
           Align = alClient
           TabOrder = 0
-          object BtnConsultarCentrais: TSpeedButton
-            Left = 9
-            Top = 107
-            Width = 138
-            Height = 22
-            Caption = '&Executar Consulta'
-            Flat = True
-            Glyph.Data = {
-              C6040000424DC60400000000000036040000280000000C0000000C0000000100
-              0800000000009000000000000000000000000001000000000000AC650000FCF1
-              DD00B36D0000BE770000A35E0000FCF2E000F3CE8A00FDF7EB00CA871200DAA0
-              3C00BA730000B56E0000C27B0000EABB6400A5600000F0C57500AA6500009F5A
-              0000FEFBF500AF6A0000FFFEFB00FAE6C300F6DAA600FAEACC00C37C0000F8E4
-              BD00BB740000A05B0000FFFFFF00FFFFFF000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              00000000000000000000000000000000000000000000000000001C1C1C1C1C1C
-              1C1C1C1C04041C1C1C1C1C1C1C1C1C0008001C1C1C1C1C1C1C1C0209021C1C1C
-              1C1C1C1C1C1A0D1A1C1C1C1C1B1B111B1A0F0C1C1C1C1C0E191919191A1A1C1C
-              1C1C101717060617171B1C1C1C1C130116161616011B1C1C1C1C0B0715151515
-              071B1C1C1C1C0A1414050512141B1C1C1C1C1C031C1C1C1C031C1C1C1C1C1C1C
-              181818181C1C1C1C1C1C}
-            OnClick = BtnConsultarOCClick
-          end
-          object SpeedButton2: TSpeedButton
-            Left = 150
-            Top = 107
-            Width = 115
-            Height = 22
-            Caption = 'Imprimir'
-            Enabled = False
-            Flat = True
-            Glyph.Data = {
-              C6040000424DC60400000000000036040000280000000C0000000C0000000100
-              0800000000009000000000000000000000000001000000000000E3A32700DE97
-              0A00E6CB9D00E7AE3F00EDBE6600863B1A00EDE9E300EEDAB400EAD0A100C37C
-              0000ECE1D0009F5A0000FFFFFF00FFFFFF000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              0000000000000000000000000000000000000000000000000000000000000000
-              00000000000000000000000000000000000000000000000000000C0C09090909
-              090909090C0C0C0B090C0C0C0C0C0C090B0C0B020505050505050505020B0B08
-              0808080808080808080B0B070707070707070707070B0B0A0A0A0A0A0A0A0A0A
-              0A0B0B060606060606060606060B0C0B0B0B0B0B0B0B0B0B0B0C0C0C010C0C0C
-              0C0C0C010C0C0C0C000C0C0C0C0C0C030C0C0C0C000C0C0C0C0C03030C0C0C0C
-              040404040404040C0C0C}
-            Visible = False
-            OnClick = BtnImprimirOCClick
-          end
-          object GroupBox4: TGroupBox
-            Left = 8
-            Top = 40
-            Width = 209
-            Height = 62
-            Caption = 'Selecione o Intervalo da Consulta'
-            TabOrder = 0
-            object Label16: TLabel
-              Left = 106
-              Top = 17
-              Width = 48
-              Height = 13
-              Caption = 'Data Final'
-            end
-            object Label19: TLabel
-              Left = 9
-              Top = 17
-              Width = 53
-              Height = 13
-              Caption = 'Data Inicial'
-            end
-            object EdtDataFinalCentrais: TDateTimePicker
-              Left = 106
-              Top = 32
-              Width = 96
-              Height = 21
-              CalAlignment = dtaLeft
-              Date = 42183.6729884259
-              Format = 'dd/MM/yyyy'
-              Time = 42183.6729884259
-              DateFormat = dfShort
-              DateMode = dmComboBox
-              Kind = dtkDate
-              ParseInput = False
-              TabOrder = 1
-            end
-            object EdtDataInicialCentrais: TDateTimePicker
-              Left = 9
-              Top = 32
-              Width = 96
-              Height = 21
-              CalAlignment = dtaLeft
-              Date = 42183.6729884259
-              Format = 'dd/MM/yyyy'
-              Time = 42183.6729884259
-              DateFormat = dfShort
-              DateMode = dmComboBox
-              Kind = dtkDate
-              ParseInput = False
-              TabOrder = 0
-            end
-          end
-          object DBGEstadoCentrais: TDBGrid
-            Left = 1
-            Top = 136
-            Width = 1209
-            Height = 472
-            Align = alBottom
-            Anchors = [akLeft, akTop, akRight, akBottom]
-            BorderStyle = bsNone
-            Ctl3D = True
-            DataSource = DSRelAtendimento
-            Font.Charset = DEFAULT_CHARSET
-            Font.Color = clWindowText
-            Font.Height = -11
-            Font.Name = 'MS Sans Serif'
-            Font.Style = []
-            Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
-            ParentCtl3D = False
-            ParentFont = False
-            TabOrder = 3
-            TitleFont.Charset = DEFAULT_CHARSET
-            TitleFont.Color = clWindowText
-            TitleFont.Height = -11
-            TitleFont.Name = 'MS Sans Serif'
-            TitleFont.Style = []
-            OnDrawColumnCell = DBGOcorrenciasHistDrawColumnCell
-            OnDblClick = DBGOcorrenciasHistDblClick
-            Columns = <
-              item
-                Expanded = False
-                FieldName = 'DATAEVENTO'
-                Title.Caption = 'Data Evento'
-                Visible = True
-              end
-              item
-                Alignment = taCenter
-                Expanded = False
-                FieldName = 'CTX'
-                Title.Caption = 'Ctx'
-                Width = 35
-                Visible = True
-              end
-              item
-                Alignment = taCenter
-                Expanded = False
-                FieldName = 'PORTACOM'
-                Title.Alignment = taCenter
-                Title.Caption = 'Com'
-                Width = 25
-                Visible = True
-              end
-              item
-                Alignment = taLeftJustify
-                Expanded = False
-                FieldName = 'EQUIPAMENTO'
-                Title.Caption = 'Codificador'
-                Width = 60
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'CDCLIENTE'
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -11
-                Font.Name = 'MS Sans Serif'
-                Font.Style = [fsBold]
-                Title.Caption = 'C'#243'd.'
-                Width = 40
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'NMCLIENTE'
-                Title.Caption = 'Cliente'
-                Width = 250
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'STATUS'
-                Font.Charset = DEFAULT_CHARSET
-                Font.Color = clWindowText
-                Font.Height = -11
-                Font.Name = 'MS Sans Serif'
-                Font.Style = [fsBold]
-                Title.Caption = 'Status'
-                Width = 35
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'DESTATUS'
-                Title.Caption = 'Descri'#231#227'o'
-                Width = 250
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'ENDERECO'
-                Title.Caption = 'Endere'#231'o'
-                Width = 290
-                Visible = True
-              end
-              item
-                Expanded = False
-                FieldName = 'CIDADE'
-                Title.Caption = 'Cidade'
-                Width = 1024
-                Visible = True
-              end>
-          end
-          object GroupBox5: TGroupBox
-            Left = 220
-            Top = 40
-            Width = 437
-            Height = 62
-            Caption = ' Cliente ou Codificador '
-            TabOrder = 1
-            object Label20: TLabel
-              Left = 13
-              Top = 17
-              Width = 47
-              Height = 13
-              Caption = 'N'#186' Cliente'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label21: TLabel
-              Left = 361
-              Top = 17
-              Width = 68
-              Height = 13
-              Caption = 'N'#186' Codificador'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = []
-              ParentFont = False
-            end
-            object Label22: TLabel
-              Left = 85
-              Top = 17
-              Width = 78
-              Height = 13
-              Caption = 'Nome do Cliente'
-              Font.Charset = DEFAULT_CHARSET
-              Font.Color = clWindowText
-              Font.Height = -11
-              Font.Name = 'MS Sans Serif'
-              Font.Style = []
-              ParentFont = False
-            end
-            object EdtCodClienteCentrais: TEdit
-              Left = 12
-              Top = 32
-              Width = 70
-              Height = 21
-              CharCase = ecUpperCase
-              TabOrder = 0
-            end
-            object EdtNomeCentrais: TEdit
-              Left = 84
-              Top = 32
-              Width = 274
-              Height = 21
-              CharCase = ecUpperCase
-              TabOrder = 1
-            end
-            object EdtCodificadorCentrais: TEdit
-              Left = 360
-              Top = 32
-              Width = 70
-              Height = 21
-              CharCase = ecUpperCase
-              TabOrder = 2
-            end
-          end
           object Panel5: TPanel
             Left = 1
             Top = 1
@@ -1449,7 +1002,762 @@ object FHome: TFHome
             Font.Name = 'MS Sans Serif'
             Font.Style = [fsBold]
             ParentFont = False
-            TabOrder = 2
+            TabOrder = 0
+          end
+          object PageControl1: TPageControl
+            Left = 1
+            Top = 31
+            Width = 1209
+            Height = 579
+            ActivePage = TSSemIdentificacao
+            Align = alClient
+            Style = tsFlatButtons
+            TabIndex = 1
+            TabOrder = 1
+            object TSIdentificacao: TTabSheet
+              Caption = 'Clientes identificados '#250'ltimos 30 dias'
+              object Splitter2: TSplitter
+                Left = 0
+                Top = 413
+                Width = 1201
+                Height = 9
+                Cursor = crVSplit
+                Align = alTop
+                Beveled = True
+              end
+              object DBGClientesUltimosEventos: TDBGrid
+                Left = 0
+                Top = 422
+                Width = 1201
+                Height = 126
+                Align = alClient
+                BorderStyle = bsNone
+                Ctl3D = True
+                DataSource = DSIdentificacaoCliente
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'MS Sans Serif'
+                Font.Style = []
+                Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+                ParentCtl3D = False
+                ParentFont = False
+                TabOrder = 0
+                TitleFont.Charset = DEFAULT_CHARSET
+                TitleFont.Color = clWindowText
+                TitleFont.Height = -11
+                TitleFont.Name = 'MS Sans Serif'
+                TitleFont.Style = []
+                OnDrawColumnCell = DBGClientesUltimosEventosDrawColumnCell
+                Columns = <
+                  item
+                    Expanded = False
+                    FieldName = 'DATACADASTRO'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Caption = 'Data cadastro'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clWindowText
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 100
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'DATAIDENTIFICACAO'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Caption = 'Data identifica'#231#227'o'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clWindowText
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 230
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'IDENTIFICACAO'
+                    Title.Caption = 'Identifica'#231#227'o'
+                    Width = 300
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'DATAULTIMOEVENTO'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Caption = 'Data '#250'ltimo evento recebido'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clWindowText
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 230
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'ULTIMOEVENTO'
+                    Title.Caption = 'Evento'
+                    Width = 1024
+                    Visible = True
+                  end>
+              end
+              object DBGClientesIdentificados: TDBGrid
+                Left = 0
+                Top = 113
+                Width = 1201
+                Height = 300
+                Align = alTop
+                BorderStyle = bsNone
+                Ctl3D = True
+                DataSource = DSIdentificao
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'MS Sans Serif'
+                Font.Style = []
+                Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+                ParentCtl3D = False
+                ParentFont = False
+                TabOrder = 1
+                TitleFont.Charset = DEFAULT_CHARSET
+                TitleFont.Color = clWindowText
+                TitleFont.Height = -11
+                TitleFont.Name = 'MS Sans Serif'
+                TitleFont.Style = []
+                OnDrawColumnCell = DBGClientesIdentificadosDrawColumnCell
+                Columns = <
+                  item
+                    Expanded = False
+                    FieldName = 'CDCLIENTE'
+                    Title.Caption = 'Cod.'
+                    Width = 60
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'NMCLIENTE'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Caption = 'Cliente'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clWindowText
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 380
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'ENDERECO'
+                    Title.Caption = 'Endere'#231'o'
+                    Width = 290
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'CIDADE'
+                    Title.Caption = 'Cidade'
+                    Width = 100
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'TOTAL30DIAS'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Total '#250'ltimos 30 dias'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clWindowText
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 130
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'PERCENTUAL'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clMaroon
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Caption = 'Percentual'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clMaroon
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 70
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'ULTIMADATA'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Caption = 'Data '#250'ltimo evento'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clWindowText
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 150
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'IDENTIFICACAO'
+                    Title.Caption = 'Identifica'#231#227'o'
+                    Width = 1024
+                    Visible = True
+                  end>
+              end
+              object Panel1: TPanel
+                Left = 0
+                Top = 0
+                Width = 1201
+                Height = 113
+                Align = alTop
+                BevelOuter = bvNone
+                TabOrder = 2
+                object BtnConsultarClientesIdentificados: TSpeedButton
+                  Left = 9
+                  Top = 74
+                  Width = 138
+                  Height = 22
+                  Caption = '&Executar Consulta'
+                  Flat = True
+                  Glyph.Data = {
+                    C6040000424DC60400000000000036040000280000000C0000000C0000000100
+                    0800000000009000000000000000000000000001000000000000AC650000FCF1
+                    DD00B36D0000BE770000A35E0000FCF2E000F3CE8A00FDF7EB00CA871200DAA0
+                    3C00BA730000B56E0000C27B0000EABB6400A5600000F0C57500AA6500009F5A
+                    0000FEFBF500AF6A0000FFFEFB00FAE6C300F6DAA600FAEACC00C37C0000F8E4
+                    BD00BB740000A05B0000FFFFFF00FFFFFF000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    00000000000000000000000000000000000000000000000000001C1C1C1C1C1C
+                    1C1C1C1C04041C1C1C1C1C1C1C1C1C0008001C1C1C1C1C1C1C1C0209021C1C1C
+                    1C1C1C1C1C1A0D1A1C1C1C1C1B1B111B1A0F0C1C1C1C1C0E191919191A1A1C1C
+                    1C1C101717060617171B1C1C1C1C130116161616011B1C1C1C1C0B0715151515
+                    071B1C1C1C1C0A1414050512141B1C1C1C1C1C031C1C1C1C031C1C1C1C1C1C1C
+                    181818181C1C1C1C1C1C}
+                  OnClick = BtnConsultarClientesIdentificadosClick
+                end
+                object SpeedButton3: TSpeedButton
+                  Left = 150
+                  Top = 74
+                  Width = 115
+                  Height = 22
+                  Caption = 'Imprimir'
+                  Enabled = False
+                  Flat = True
+                  Glyph.Data = {
+                    C6040000424DC60400000000000036040000280000000C0000000C0000000100
+                    0800000000009000000000000000000000000001000000000000E3A32700DE97
+                    0A00E6CB9D00E7AE3F00EDBE6600863B1A00EDE9E300EEDAB400EAD0A100C37C
+                    0000ECE1D0009F5A0000FFFFFF00FFFFFF000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    00000000000000000000000000000000000000000000000000000C0C09090909
+                    090909090C0C0C0B090C0C0C0C0C0C090B0C0B020505050505050505020B0B08
+                    0808080808080808080B0B070707070707070707070B0B0A0A0A0A0A0A0A0A0A
+                    0A0B0B060606060606060606060B0C0B0B0B0B0B0B0B0B0B0B0C0C0C010C0C0C
+                    0C0C0C010C0C0C0C000C0C0C0C0C0C030C0C0C0C000C0C0C0C0C03030C0C0C0C
+                    040404040404040C0C0C}
+                  Visible = False
+                  OnClick = BtnImprimirOCClick
+                end
+                object GroupBox4: TGroupBox
+                  Left = 8
+                  Top = 8
+                  Width = 441
+                  Height = 62
+                  Caption = ' Cliente ou Codificador '
+                  TabOrder = 0
+                  object Label15: TLabel
+                    Left = 13
+                    Top = 17
+                    Width = 47
+                    Height = 13
+                    Caption = 'N'#186' Cliente'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = []
+                    ParentFont = False
+                  end
+                  object Label16: TLabel
+                    Left = 85
+                    Top = 17
+                    Width = 78
+                    Height = 13
+                    Caption = 'Nome do Cliente'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = []
+                    ParentFont = False
+                  end
+                  object Label17: TLabel
+                    Left = 361
+                    Top = 17
+                    Width = 68
+                    Height = 13
+                    Caption = 'N'#186' Codificador'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = []
+                    ParentFont = False
+                  end
+                  object EdtCodClienteIdentificados: TEdit
+                    Left = 12
+                    Top = 32
+                    Width = 70
+                    Height = 21
+                    CharCase = ecUpperCase
+                    TabOrder = 0
+                  end
+                  object EdtNomeClienteIdentificados: TEdit
+                    Left = 84
+                    Top = 32
+                    Width = 274
+                    Height = 21
+                    CharCase = ecUpperCase
+                    TabOrder = 1
+                  end
+                  object EdtCodificadorIdentificados: TEdit
+                    Left = 360
+                    Top = 32
+                    Width = 70
+                    Height = 21
+                    CharCase = ecUpperCase
+                    TabOrder = 2
+                  end
+                end
+              end
+            end
+            object TSSemIdentificacao: TTabSheet
+              Caption = 'Clientes n'#227'o identificados '#250'ltimos 7 dias'
+              ImageIndex = 1
+              object Splitter3: TSplitter
+                Left = 0
+                Top = 353
+                Width = 1201
+                Height = 9
+                Cursor = crVSplit
+                Align = alTop
+                Beveled = True
+              end
+              object DBGrid3: TDBGrid
+                Left = 0
+                Top = 362
+                Width = 1201
+                Height = 186
+                Align = alClient
+                BorderStyle = bsNone
+                Ctl3D = True
+                DataSource = DSIdentificacaoCliente
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'MS Sans Serif'
+                Font.Style = []
+                Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+                ParentCtl3D = False
+                ParentFont = False
+                TabOrder = 0
+                TitleFont.Charset = DEFAULT_CHARSET
+                TitleFont.Color = clWindowText
+                TitleFont.Height = -11
+                TitleFont.Name = 'MS Sans Serif'
+                TitleFont.Style = []
+                Columns = <
+                  item
+                    Expanded = False
+                    FieldName = 'DATACADASTRO'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Caption = 'Data cadastro'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clWindowText
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 100
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'DATAIDENTIFICACAO'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Caption = 'Data identifica'#231#227'o'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clWindowText
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 230
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'IDENTIFICACAO'
+                    Title.Caption = 'Identifica'#231#227'o'
+                    Width = 300
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'DATAULTIMOEVENTO'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Caption = 'Data '#250'ltimo evento recebido'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clWindowText
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 230
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'ULTIMOEVENTO'
+                    Title.Caption = 'Evento'
+                    Width = 1024
+                    Visible = True
+                  end>
+              end
+              object Panel6: TPanel
+                Left = 0
+                Top = 0
+                Width = 1201
+                Height = 53
+                Align = alTop
+                BevelOuter = bvNone
+                TabOrder = 1
+                object BtnConsultarClientesNaoIdentificados: TSpeedButton
+                  Left = 9
+                  Top = 10
+                  Width = 138
+                  Height = 22
+                  Caption = '&Executar Consulta'
+                  Flat = True
+                  Glyph.Data = {
+                    C6040000424DC60400000000000036040000280000000C0000000C0000000100
+                    0800000000009000000000000000000000000001000000000000AC650000FCF1
+                    DD00B36D0000BE770000A35E0000FCF2E000F3CE8A00FDF7EB00CA871200DAA0
+                    3C00BA730000B56E0000C27B0000EABB6400A5600000F0C57500AA6500009F5A
+                    0000FEFBF500AF6A0000FFFEFB00FAE6C300F6DAA600FAEACC00C37C0000F8E4
+                    BD00BB740000A05B0000FFFFFF00FFFFFF000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    00000000000000000000000000000000000000000000000000001C1C1C1C1C1C
+                    1C1C1C1C04041C1C1C1C1C1C1C1C1C0008001C1C1C1C1C1C1C1C0209021C1C1C
+                    1C1C1C1C1C1A0D1A1C1C1C1C1B1B111B1A0F0C1C1C1C1C0E191919191A1A1C1C
+                    1C1C101717060617171B1C1C1C1C130116161616011B1C1C1C1C0B0715151515
+                    071B1C1C1C1C0A1414050512141B1C1C1C1C1C031C1C1C1C031C1C1C1C1C1C1C
+                    181818181C1C1C1C1C1C}
+                  OnClick = BtnConsultarClientesNaoIdentificadosClick
+                end
+                object SpeedButton4: TSpeedButton
+                  Left = 150
+                  Top = 10
+                  Width = 115
+                  Height = 22
+                  Caption = 'Imprimir'
+                  Enabled = False
+                  Flat = True
+                  Glyph.Data = {
+                    C6040000424DC60400000000000036040000280000000C0000000C0000000100
+                    0800000000009000000000000000000000000001000000000000E3A32700DE97
+                    0A00E6CB9D00E7AE3F00EDBE6600863B1A00EDE9E300EEDAB400EAD0A100C37C
+                    0000ECE1D0009F5A0000FFFFFF00FFFFFF000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    0000000000000000000000000000000000000000000000000000000000000000
+                    00000000000000000000000000000000000000000000000000000C0C09090909
+                    090909090C0C0C0B090C0C0C0C0C0C090B0C0B020505050505050505020B0B08
+                    0808080808080808080B0B070707070707070707070B0B0A0A0A0A0A0A0A0A0A
+                    0A0B0B060606060606060606060B0C0B0B0B0B0B0B0B0B0B0B0C0C0C010C0C0C
+                    0C0C0C010C0C0C0C000C0C0C0C0C0C030C0C0C0C000C0C0C0C0C03030C0C0C0C
+                    040404040404040C0C0C}
+                  Visible = False
+                  OnClick = BtnImprimirOCClick
+                end
+              end
+              object DBGrid4: TDBGrid
+                Left = 0
+                Top = 53
+                Width = 1201
+                Height = 300
+                Align = alTop
+                BorderStyle = bsNone
+                Ctl3D = True
+                DataSource = DSIdentificao
+                Font.Charset = DEFAULT_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'MS Sans Serif'
+                Font.Style = []
+                Options = [dgTitles, dgIndicator, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+                ParentCtl3D = False
+                ParentFont = False
+                TabOrder = 2
+                TitleFont.Charset = DEFAULT_CHARSET
+                TitleFont.Color = clWindowText
+                TitleFont.Height = -11
+                TitleFont.Name = 'MS Sans Serif'
+                TitleFont.Style = []
+                Columns = <
+                  item
+                    Expanded = False
+                    FieldName = 'CDCLIENTE'
+                    Title.Caption = 'Cod.'
+                    Width = 60
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'NMCLIENTE'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Caption = 'Cliente'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clWindowText
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 380
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'ENDERECO'
+                    Title.Caption = 'Endere'#231'o'
+                    Width = 290
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'CIDADE'
+                    Title.Caption = 'Cidade'
+                    Width = 100
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'TOTAL30DIAS'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Total '#250'ltimos 30 dias'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clWindowText
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 130
+                    Visible = True
+                  end
+                  item
+                    Alignment = taCenter
+                    Expanded = False
+                    FieldName = 'PERCENTUAL'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clMaroon
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Caption = 'Percentual'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clMaroon
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 70
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'ULTIMADATA'
+                    Font.Charset = DEFAULT_CHARSET
+                    Font.Color = clWindowText
+                    Font.Height = -11
+                    Font.Name = 'MS Sans Serif'
+                    Font.Style = [fsBold]
+                    Title.Caption = 'Data '#250'ltimo evento'
+                    Title.Font.Charset = DEFAULT_CHARSET
+                    Title.Font.Color = clWindowText
+                    Title.Font.Height = -11
+                    Title.Font.Name = 'MS Sans Serif'
+                    Title.Font.Style = [fsBold]
+                    Width = 150
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'IDENTIFICACAO'
+                    Title.Caption = 'Identifica'#231#227'o'
+                    Width = 1024
+                    Visible = True
+                  end>
+              end
+            end
           end
         end
       end
@@ -1843,6 +2151,10 @@ object FHome: TFHome
       object N6: TMenuItem
         Caption = '-'
         Visible = False
+      end
+      object Consultasimplificadadeclientes1: TMenuItem
+        Caption = ' Consulta simplificada de clientes'
+        OnClick = Consultasimplificadadeclientes1Click
       end
     end
     object MnMonitorSerial: TMenuItem
@@ -3396,71 +3708,175 @@ object FHome: TFHome
     Left = 152
     Top = 480
   end
-  object DSCliConsLogEvento: TDataSource
-    DataSet = CDSCliConsLogEvento
-    Left = 783
-    Top = 477
+  object DSIdentificao: TDataSource
+    DataSet = CDSIdentificao
+    Left = 625
+    Top = 525
   end
-  object CDSCliConsLogEvento: TClientDataSet
+  object CDSIdentificao: TClientDataSet
     Aggregates = <>
     Params = <>
-    Left = 779
-    Top = 429
-    object CDSCliConsLogEventoDATAEVENTO: TDateTimeField
-      FieldName = 'DATAEVENTO'
+    ProviderName = 'DSPIdentificao'
+    Left = 625
+    Top = 478
+    object CDSIdentificaoULTIMADATA: TDateTimeField
+      FieldName = 'ULTIMADATA'
     end
-    object CDSCliConsLogEventoCTX: TIntegerField
-      FieldName = 'CTX'
-    end
-    object CDSCliConsLogEventoPORTACOM: TIntegerField
-      FieldName = 'PORTACOM'
-    end
-    object CDSCliConsLogEventoEQUIPAMENTO: TIntegerField
-      FieldName = 'EQUIPAMENTO'
-    end
-    object CDSCliConsLogEventoSTATUS: TStringField
-      FieldName = 'STATUS'
-      ReadOnly = True
-      Size = 4
-    end
-    object CDSCliConsLogEventoDESTATUS: TStringField
-      FieldName = 'DESTATUS'
-      Size = 70
-    end
-    object CDSCliConsLogEventoCDCLIENTE: TIntegerField
+    object CDSIdentificaoCDCLIENTE: TIntegerField
       FieldName = 'CDCLIENTE'
+      Required = True
     end
-    object CDSCliConsLogEventoNMCLIENTE: TStringField
+    object CDSIdentificaoIDENTIFICACAO: TStringField
+      FieldName = 'IDENTIFICACAO'
+      Size = 100
+    end
+    object CDSIdentificaoNMCLIENTE: TStringField
       FieldName = 'NMCLIENTE'
       Size = 60
     end
-    object CDSCliConsLogEventoENDERECO: TStringField
+    object CDSIdentificaoENDERECO: TStringField
       FieldName = 'ENDERECO'
       Size = 60
     end
-    object CDSCliConsLogEventoCIDADE: TStringField
+    object CDSIdentificaoBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Size = 60
+    end
+    object CDSIdentificaoCIDADE: TStringField
       FieldName = 'CIDADE'
-      Size = 30
+      Size = 60
+    end
+    object CDSIdentificaoTOTAL30DIAS: TIntegerField
+      FieldName = 'TOTAL30DIAS'
+      Required = True
+    end
+    object CDSIdentificaoIBQIdentificacaoCliente: TDataSetField
+      FieldName = 'IBQIdentificacaoCliente'
+    end
+    object CDSIdentificaoPERCENTUAL: TBCDField
+      FieldName = 'PERCENTUAL'
+      Required = True
+      Precision = 18
+      Size = 2
     end
   end
-  object IBQCliConsLogEvento: TIBQuery
+  object DSPIdentificao: TDataSetProvider
+    DataSet = IBQIdentificao
+    Constraints = True
+    UpdateMode = upWhereKeyOnly
+    Left = 624
+    Top = 430
+  end
+  object IBQIdentificao: TIBQuery
     Database = DModule.IBCONAzsim
-    Transaction = DModule.IBTFilial
+    Transaction = IBTIdentificao
     BufferChunks = 1000
     CachedUpdates = False
-    DataSource = DSMasterCliConsLogEvento
     SQL.Strings = (
       
-        'SELECT DATAEVENTO, CTX, PORTACOM, EQUIPAMENTO, STATUS,  DESTATUS' +
-        ', CDCLIENTE, NMCLIENTE, ENDERECO, CIDADE '
-      'FROM VLOGEVENTO '
+        'SELECT MAX(L.DATAIDENTIFICACAO) AS ULTIMADATA, L.CDCLIENTE, L.ID' +
+        'ENTIFICACAO, C.NMCLIENTE, C.ENDERECO, C.BAIRRO, C.CIDADE,'
+      'COUNT((SELECT COUNT(LL.CDLOGULTIMOESTADO) '
+      #9#9'FROM LOGULTIMOESTADO LL '
+      #9#9'WHERE LL.CDCLIENTE=L.CDCLIENTE AND '
+      #9#9#9'LL.DATACADASTRO > DATEADD(-20 DAY TO L.DATACADASTRO) '
+      #9#9#9'AND LL.IDENTIFICACAO IS NOT NULL))AS TOTAL30DIAS,'
       
-        'WHERE DATAEVENTO BETWEEN DATEADD(DAY, -30, CURRENT_DATE) AND CUR' +
-        'RENT_DATE AND CDCLIENTE = :CDCLIENTE'
-      'ORDER BY DATAEVENTO ASC;')
+        '(CAST((100.00/30) AS NUMERIC(3,2)) *  COUNT((SELECT COUNT(LL.CDL' +
+        'OGULTIMOESTADO) '
+      #9#9'FROM LOGULTIMOESTADO LL '
+      #9#9'WHERE LL.CDCLIENTE=L.CDCLIENTE AND '
+      #9#9#9'LL.DATACADASTRO > DATEADD(-20 DAY TO L.DATACADASTRO) '
+      #9#9#9'AND LL.IDENTIFICACAO IS NOT NULL))) AS PERCENTUAL'
+      'FROM LOGULTIMOESTADO L '
+      #9'JOIN CLIENTE C ON C.CDCLIENTE = L.CDCLIENTE'
+      
+        #9'JOIN CONTRATO CO ON CO.CDCLIENTE = L.CDCLIENTE AND CO.INATIVO =' +
+        ' 0'
+      
+        'GROUP BY L.CDCLIENTE, L.IDENTIFICACAO, C.NMCLIENTE, C.ENDERECO, ' +
+        'C.BAIRRO, C.CIDADE;')
     UniDirectional = True
-    Left = 779
+    Left = 624
+    Top = 332
+    object IBQIdentificaoULTIMADATA: TDateTimeField
+      FieldName = 'ULTIMADATA'
+    end
+    object IBQIdentificaoCDCLIENTE: TIntegerField
+      FieldName = 'CDCLIENTE'
+      Origin = 'LOGULTIMOESTADO.CDCLIENTE'
+      Required = True
+    end
+    object IBQIdentificaoIDENTIFICACAO: TIBStringField
+      FieldName = 'IDENTIFICACAO'
+      Origin = 'LOGULTIMOESTADO.IDENTIFICACAO'
+      Size = 100
+    end
+    object IBQIdentificaoNMCLIENTE: TIBStringField
+      FieldName = 'NMCLIENTE'
+      Origin = 'CLIENTE.NMCLIENTE'
+      Size = 60
+    end
+    object IBQIdentificaoENDERECO: TIBStringField
+      FieldName = 'ENDERECO'
+      Origin = 'CLIENTE.ENDERECO'
+      Size = 60
+    end
+    object IBQIdentificaoBAIRRO: TIBStringField
+      FieldName = 'BAIRRO'
+      Origin = 'CLIENTE.BAIRRO'
+      Size = 60
+    end
+    object IBQIdentificaoCIDADE: TIBStringField
+      FieldName = 'CIDADE'
+      Origin = 'CLIENTE.CIDADE'
+      Size = 60
+    end
+    object IBQIdentificaoTOTAL30DIAS: TIntegerField
+      FieldName = 'TOTAL30DIAS'
+      Required = True
+    end
+    object IBQIdentificaoPERCENTUAL: TIBBCDField
+      FieldName = 'PERCENTUAL'
+      Required = True
+      Precision = 18
+      Size = 2
+    end
+  end
+  object IBTIdentificao: TIBTransaction
+    Active = False
+    DefaultDatabase = DModule.IBCONAzsim
+    AutoStopAction = saNone
+    Left = 625
+    Top = 284
+  end
+  object DSLinkIdentificacaoCliente: TDataSource
+    DataSet = IBQIdentificao
+    Left = 624
     Top = 381
+  end
+  object IBQIdentificacaoCliente: TIBQuery
+    Database = DModule.IBCONAzsim
+    Transaction = IBTIdentificao
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DSLinkIdentificacaoCliente
+    SQL.Strings = (
+      
+        'SELECT L.CDLOGULTIMOESTADO, L.DATACADASTRO, L.DATAIDENTIFICACAO,' +
+        ' L.CDCLIENTE, L.IDENTIFICACAO, L.DATAULTIMOEVENTO, L.ULTIMOEVENT' +
+        'O'
+      'FROM LOGULTIMOESTADO L '
+      #9'JOIN CLIENTE C ON C.CDCLIENTE = L.CDCLIENTE'
+      
+        #9'JOIN CONTRATO CO ON CO.CDCLIENTE = L.CDCLIENTE AND CO.INATIVO =' +
+        ' 0'
+      
+        'WHERE C.CDCLIENTE = :CDCLIENTE AND L.DATACADASTRO > DATEADD(-30 ' +
+        'DAY TO L.DATACADASTRO) '
+      'ORDER BY L.DATAIDENTIFICACAO;')
+    Left = 749
+    Top = 331
     ParamData = <
       item
         DataType = ftInteger
@@ -3468,240 +3884,82 @@ object FHome: TFHome
         ParamType = ptUnknown
         Size = 4
       end>
-    object IBQCliConsLogEventoDATAEVENTO: TDateTimeField
-      FieldName = 'DATAEVENTO'
-      Origin = 'VLOGEVENTO.DATAEVENTO'
+    object IBQIdentificacaoClienteCDLOGULTIMOESTADO: TIntegerField
+      FieldName = 'CDLOGULTIMOESTADO'
+      Origin = 'LOGULTIMOESTADO.CDLOGULTIMOESTADO'
+      Required = True
     end
-    object IBQCliConsLogEventoCTX: TIntegerField
-      FieldName = 'CTX'
-      Origin = 'VLOGEVENTO.CTX'
+    object IBQIdentificacaoClienteDATACADASTRO: TDateField
+      FieldName = 'DATACADASTRO'
+      Origin = 'LOGULTIMOESTADO.DATACADASTRO'
+      Required = True
     end
-    object IBQCliConsLogEventoPORTACOM: TIntegerField
-      FieldName = 'PORTACOM'
-      Origin = 'VLOGEVENTO.PORTACOM'
+    object IBQIdentificacaoClienteDATAIDENTIFICACAO: TDateTimeField
+      FieldName = 'DATAIDENTIFICACAO'
+      Origin = 'LOGULTIMOESTADO.DATAIDENTIFICACAO'
     end
-    object IBQCliConsLogEventoEQUIPAMENTO: TIntegerField
-      FieldName = 'EQUIPAMENTO'
-      Origin = 'VLOGEVENTO.EQUIPAMENTO'
-    end
-    object IBQCliConsLogEventoSTATUS: TIBStringField
-      FieldKind = fkInternalCalc
-      FieldName = 'STATUS'
-      Origin = 'VLOGEVENTO.STATUS'
-      ReadOnly = True
-      Size = 4
-    end
-    object IBQCliConsLogEventoDESTATUS: TIBStringField
-      FieldName = 'DESTATUS'
-      Origin = 'VLOGEVENTO.DESTATUS'
-      Size = 70
-    end
-    object IBQCliConsLogEventoCDCLIENTE: TIntegerField
+    object IBQIdentificacaoClienteCDCLIENTE: TIntegerField
       FieldName = 'CDCLIENTE'
-      Origin = 'VLOGEVENTO.CDCLIENTE'
+      Origin = 'LOGULTIMOESTADO.CDCLIENTE'
+      Required = True
     end
-    object IBQCliConsLogEventoNMCLIENTE: TIBStringField
-      FieldName = 'NMCLIENTE'
-      Origin = 'VLOGEVENTO.NMCLIENTE'
-      Size = 60
+    object IBQIdentificacaoClienteIDENTIFICACAO: TIBStringField
+      FieldName = 'IDENTIFICACAO'
+      Origin = 'LOGULTIMOESTADO.IDENTIFICACAO'
+      Size = 100
     end
-    object IBQCliConsLogEventoENDERECO: TIBStringField
-      FieldName = 'ENDERECO'
-      Origin = 'VLOGEVENTO.ENDERECO'
-      Size = 60
+    object IBQIdentificacaoClienteDATAULTIMOEVENTO: TDateTimeField
+      FieldName = 'DATAULTIMOEVENTO'
+      Origin = 'LOGULTIMOESTADO.DATAULTIMOEVENTO'
     end
-    object IBQCliConsLogEventoCIDADE: TIBStringField
-      FieldName = 'CIDADE'
-      Origin = 'VLOGEVENTO.CIDADE'
-      Size = 30
+    object IBQIdentificacaoClienteULTIMOEVENTO: TIBStringField
+      FieldName = 'ULTIMOEVENTO'
+      Origin = 'LOGULTIMOESTADO.ULTIMOEVENTO'
+      Size = 100
     end
   end
-  object IBQCliConsOcorrencia: TIBQuery
-    Database = DModule.IBCONAzsim
-    Transaction = DModule.IBTFilial
-    BufferChunks = 1000
-    CachedUpdates = False
-    DataSource = DSMasterCliConsOcorrencia
-    SQL.Strings = (
-      
-        'SELECT CDOCORRENCIA, DATAEVENTO, CTX, PORTACOM, EQUIPAMENTO, CDC' +
-        'LIENTE, NMCLIENTE, ENDERECO, CIDADE, STATUS,  DESTATUS, LOCAL, R' +
-        'ESUMO, OPERADORABERTURA, OPERADORENCERRAMENTO, AGENTE, KMTOTALPE' +
-        'RCORRIDO'
-      'FROM VOCORRENCIAS_ENCERRADAS'
-      
-        'WHERE DATAEVENTO BETWEEN DATEADD(DAY, -30, CURRENT_DATE) AND CUR' +
-        'RENT_DATE AND CDCLIENTE = :CDCLIENTE;')
-    UniDirectional = True
-    Left = 635
+  object DSPIdentificaoCliente: TDataSetProvider
+    DataSet = IBQIdentificacaoCliente
+    Constraints = True
+    Left = 750
     Top = 381
-    ParamData = <
-      item
-        DataType = ftInteger
-        Name = 'CDCLIENTE'
-        ParamType = ptUnknown
-        Size = 4
-      end>
-    object IBQCliConsOcorrenciaCDOCORRENCIA: TIntegerField
-      FieldName = 'CDOCORRENCIA'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.CDOCORRENCIA'
-    end
-    object IBQCliConsOcorrenciaDATAEVENTO: TDateTimeField
-      FieldName = 'DATAEVENTO'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.DATAEVENTO'
-    end
-    object IBQCliConsOcorrenciaCTX: TIntegerField
-      FieldName = 'CTX'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.CTX'
-    end
-    object IBQCliConsOcorrenciaPORTACOM: TIntegerField
-      FieldName = 'PORTACOM'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.PORTACOM'
-    end
-    object IBQCliConsOcorrenciaEQUIPAMENTO: TIntegerField
-      FieldName = 'EQUIPAMENTO'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.EQUIPAMENTO'
-    end
-    object IBQCliConsOcorrenciaCDCLIENTE: TIntegerField
-      FieldName = 'CDCLIENTE'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.CDCLIENTE'
-    end
-    object IBQCliConsOcorrenciaNMCLIENTE: TIBStringField
-      FieldName = 'NMCLIENTE'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.NMCLIENTE'
-      Size = 60
-    end
-    object IBQCliConsOcorrenciaENDERECO: TIBStringField
-      FieldName = 'ENDERECO'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.ENDERECO'
-      Size = 60
-    end
-    object IBQCliConsOcorrenciaCIDADE: TIBStringField
-      FieldName = 'CIDADE'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.CIDADE'
-      Size = 60
-    end
-    object IBQCliConsOcorrenciaSTATUS: TIBStringField
-      FieldKind = fkInternalCalc
-      FieldName = 'STATUS'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.STATUS'
-      ReadOnly = True
-      Size = 4
-    end
-    object IBQCliConsOcorrenciaDESTATUS: TIBStringField
-      FieldName = 'DESTATUS'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.DESTATUS'
-      Size = 70
-    end
-    object IBQCliConsOcorrenciaLOCAL: TIBStringField
-      FieldKind = fkInternalCalc
-      FieldName = 'LOCAL'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.LOCAL'
-      ReadOnly = True
-      Size = 114
-    end
-    object IBQCliConsOcorrenciaRESUMO: TIBStringField
-      FieldName = 'RESUMO'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.RESUMO'
-      Size = 1000
-    end
-    object IBQCliConsOcorrenciaOPERADORABERTURA: TIBStringField
-      FieldName = 'OPERADORABERTURA'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.OPERADORABERTURA'
-    end
-    object IBQCliConsOcorrenciaOPERADORENCERRAMENTO: TIBStringField
-      FieldName = 'OPERADORENCERRAMENTO'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.OPERADORENCERRAMENTO'
-    end
-    object IBQCliConsOcorrenciaAGENTE: TIBStringField
-      FieldName = 'AGENTE'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.AGENTE'
-    end
-    object IBQCliConsOcorrenciaKMTOTALPERCORRIDO: TIBBCDField
-      FieldName = 'KMTOTALPERCORRIDO'
-      Origin = 'VOCORRENCIAS_ENCERRADAS.KMTOTALPERCORRIDO'
-      Precision = 18
-      Size = 4
-    end
   end
-  object CDSCliConsOcorrencia: TClientDataSet
+  object CDSIdentificaoCliente: TClientDataSet
     Aggregates = <>
+    DataSetField = CDSIdentificaoIBQIdentificacaoCliente
     Params = <>
-    Left = 633
-    Top = 429
-    object CDSCliConsOcorrenciaCDOCORRENCIA: TIntegerField
-      FieldName = 'CDOCORRENCIA'
+    Left = 752
+    Top = 430
+    object CDSIdentificaoClienteCDLOGULTIMOESTADO: TIntegerField
+      FieldName = 'CDLOGULTIMOESTADO'
+      Required = True
     end
-    object CDSCliConsOcorrenciaDATAEVENTO: TDateTimeField
-      FieldName = 'DATAEVENTO'
+    object CDSIdentificaoClienteDATACADASTRO: TDateField
+      FieldName = 'DATACADASTRO'
+      Required = True
     end
-    object CDSCliConsOcorrenciaCTX: TIntegerField
-      FieldName = 'CTX'
+    object CDSIdentificaoClienteDATAIDENTIFICACAO: TDateTimeField
+      FieldName = 'DATAIDENTIFICACAO'
     end
-    object CDSCliConsOcorrenciaPORTACOM: TIntegerField
-      FieldName = 'PORTACOM'
-    end
-    object CDSCliConsOcorrenciaEQUIPAMENTO: TIntegerField
-      FieldName = 'EQUIPAMENTO'
-    end
-    object CDSCliConsOcorrenciaCDCLIENTE: TIntegerField
+    object CDSIdentificaoClienteCDCLIENTE: TIntegerField
       FieldName = 'CDCLIENTE'
+      Required = True
     end
-    object CDSCliConsOcorrenciaNMCLIENTE: TStringField
-      FieldName = 'NMCLIENTE'
-      Size = 60
+    object CDSIdentificaoClienteIDENTIFICACAO: TStringField
+      FieldName = 'IDENTIFICACAO'
+      Size = 100
     end
-    object CDSCliConsOcorrenciaENDERECO: TStringField
-      FieldName = 'ENDERECO'
-      Size = 60
+    object CDSIdentificaoClienteDATAULTIMOEVENTO: TDateTimeField
+      FieldName = 'DATAULTIMOEVENTO'
     end
-    object CDSCliConsOcorrenciaCIDADE: TStringField
-      FieldName = 'CIDADE'
-      Size = 60
-    end
-    object CDSCliConsOcorrenciaSTATUS: TStringField
-      FieldName = 'STATUS'
-      ReadOnly = True
-      Size = 4
-    end
-    object CDSCliConsOcorrenciaDESTATUS: TStringField
-      FieldName = 'DESTATUS'
-      Size = 70
-    end
-    object CDSCliConsOcorrenciaLOCAL: TStringField
-      FieldName = 'LOCAL'
-      ReadOnly = True
-      Size = 114
-    end
-    object CDSCliConsOcorrenciaRESUMO: TStringField
-      FieldName = 'RESUMO'
-      Size = 1000
-    end
-    object CDSCliConsOcorrenciaOPERADORABERTURA: TStringField
-      FieldName = 'OPERADORABERTURA'
-    end
-    object CDSCliConsOcorrenciaOPERADORENCERRAMENTO: TStringField
-      FieldName = 'OPERADORENCERRAMENTO'
-    end
-    object CDSCliConsOcorrenciaAGENTE: TStringField
-      FieldName = 'AGENTE'
-    end
-    object CDSCliConsOcorrenciaKMTOTALPERCORRIDO: TBCDField
-      FieldName = 'KMTOTALPERCORRIDO'
-      Precision = 18
+    object CDSIdentificaoClienteULTIMOEVENTO: TStringField
+      FieldName = 'ULTIMOEVENTO'
+      Size = 100
     end
   end
-  object DSCliConsOcorrencia: TDataSource
-    DataSet = CDSCliConsOcorrencia
-    Left = 639
+  object DSIdentificacaoCliente: TDataSource
+    DataSet = CDSIdentificaoCliente
+    Left = 754
     Top = 477
-  end
-  object DSMasterCliConsOcorrencia: TDataSource
-    Left = 635
-    Top = 333
-  end
-  object DSMasterCliConsLogEvento: TDataSource
-    Left = 779
-    Top = 333
   end
 end

@@ -15,7 +15,7 @@
       CadCodificadores.obj RelFichaClientes.obj DMInfo.obj DMOcorrencia.obj 
       DialogGeracaoRelClientes.obj ListaClientes.obj FichaCliente.obj 
       ReportEventosUnit.obj SelectReportOcorrenciaUnit.obj ConsClienteAtivo.obj 
-      ConsClienteInativo.obj"/>
+      ConsClienteInativo.obj ConsSimplesClientes.obj"/>
     <RESFILES value="Azsim.res"/>
     <IDLFILES value=""/>
     <IDLGENFILES value=""/>
@@ -31,12 +31,14 @@
       CadCodificadores.dfm RelFichaClientes.dfm DMInfo.dfm DMOcorrencia.dfm 
       DialogGeracaoRelClientes.dfm ListaClientes.dfm FichaCliente.dfm 
       ReportEventosUnit.dfm SelectReportOcorrenciaUnit.dfm ConsClienteAtivo.dfm 
-      ConsClienteInativo.dfm"/>
+      ConsClienteInativo.dfm ConsSimplesClientes.dfm"/>
     <LIBFILES value=""/>
-    <LIBRARIES value="bcbie.lib bcb2kaxserver.lib vclx.lib qrpt.lib bdertl.lib vcldb.lib 
-      dbexpress.lib dsnap.lib cds.lib ibxpress.lib dbrtl.lib rtl.lib vcl.lib"/>
+    <LIBRARIES value="tee.lib dss.lib bcbie.lib bcb2kaxserver.lib vclx.lib qrpt.lib bdertl.lib 
+      vcldb.lib dbexpress.lib dsnap.lib cds.lib ibxpress.lib dbrtl.lib rtl.lib 
+      vcl.lib"/>
     <SPARELIBS value="vcl.lib rtl.lib dbrtl.lib ibxpress.lib cds.lib dsnap.lib dbexpress.lib 
-      vcldb.lib bdertl.lib qrpt.lib vclx.lib bcb2kaxserver.lib bcbie.lib"/>
+      vcldb.lib bdertl.lib qrpt.lib vclx.lib bcb2kaxserver.lib bcbie.lib dss.lib 
+      tee.lib"/>
     <PACKAGES value="vcl.bpi rtl.bpi dbrtl.bpi adortl.bpi vcldb.bpi vclx.bpi bdertl.bpi 
       vcldbx.bpi ibxpress.bpi dsnap.bpi cds.bpi bdecds.bpi qrpt.bpi teeui.bpi 
       teedb.bpi tee.bpi dss.bpi teeqr.bpi visualclx.bpi visualdbclx.bpi 
@@ -119,6 +121,7 @@
       <FILE FILENAME="ConsClienteAtivo.h" FORMNAME="" UNITNAME="ConsClienteAtivo.h" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ConsClienteInativo.cpp" FORMNAME="FConsClienteInativo" UNITNAME="ConsClienteInativo" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="ConsClienteInativo.dfm" FORMNAME="" UNITNAME="ConsClienteInativo.dfm" CONTAINERID="" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="ConsSimplesClientes.cpp" FORMNAME="FConsSimplesClientes" UNITNAME="ConsSimplesClientes" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
@@ -130,7 +133,7 @@ AutoIncBuild=1
 MajorVer=1
 MinorVer=2
 Release=2
-Build=12
+Build=13
 Debug=0
 PreRelease=0
 Special=0
@@ -142,7 +145,7 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=AZ Monitoramento
 FileDescription=
-FileVersion=1.2.2.12
+FileVersion=1.2.2.13
 InternalName=
 LegalCopyright=
 LegalTrademarks=
