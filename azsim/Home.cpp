@@ -1280,7 +1280,7 @@ void __fastcall TFHome::ConfiguraCriteriosIdentificacaoSQL()
 void __fastcall TFHome::BtnConsultarClientesIdentificadosClick(TObject *Sender)
 {
     try{
-        AnsiString SQL_ORDER_BY = " ORDER BY ULTIMADATA";
+        AnsiString SQL_ORDER_BY = " ORDER BY ULTIMADATA DESC";
         AnsiString SQL_GROUP_BY = " GROUP BY L.CDCLIENTE, L.IDENTIFICACAO, C.NMCLIENTE, C.ENDERECO, C.BAIRRO, C.CIDADE";
 
         AnsiString SQL_FILTRO =
@@ -1360,23 +1360,21 @@ void __fastcall TFHome::BtnConsultarClientesNaoIdentificadosClick(
       TObject *Sender)
 {
     try{
-        AnsiString SQL_ORDER_BY = " ORDER BY ULTIMADATA";
-        AnsiString SQL_GROUP_BY = " GROUP BY L.CDCLIENTE, L.IDENTIFICACAO, C.NMCLIENTE, C.ENDERECO, C.BAIRRO, C.CIDADE";
-
         AnsiString SQL_FILTRO =
-            "SELECT DISTINCT L.CDCLIENTE, L.IDENTIFICACAO, C.NMCLIENTE, C.ENDERECO, C.BAIRRO, C.CIDADE "
+            "SELECT DISTINCT L.CDCLIENTE, C.NMCLIENTE, C.ENDERECO, C.BAIRRO, C.CIDADE "
             "FROM LOGULTIMOESTADO L "
             "	JOIN CLIENTE C ON C.CDCLIENTE = L.CDCLIENTE "
             "	JOIN CONTRATO CO ON CO.CDCLIENTE = L.CDCLIENTE AND CO.INATIVO = 0 "
-            "WHERE L.IDENTIFICACAO IS NULL AND L.DATACADASTRO > DATEADD(-7 DAY TO CURRENT_DATE)";
+            "WHERE L.IDENTIFICACAO IS NULL AND L.DATACADASTRO > DATEADD(-7 DAY TO CURRENT_DATE) "
+            "ORDER BY NMCLIENTE";
 
-        CDSIdentificao->Close();
-        CDSIdentificaoCliente->Close();
-        IBQIdentificao->SQL->Clear();
-        IBQIdentificao->SQL->Text = SQL_FILTRO + SQL_GROUP_BY + SQL_ORDER_BY;
-        CDSIdentificao->Active = true;
-        CDSIdentificaoCliente->Active = true;
-        int totalRegistros = CDSIdentificao->RecordCount;
+        CDSNaoIdentificao->Close();
+        CDSNaoIdentificaoCliente->Close();
+        IBQNaoIdentificao->SQL->Clear();
+        IBQNaoIdentificao->SQL->Text = SQL_FILTRO;
+        CDSNaoIdentificao->Active = true;
+        CDSNaoIdentificaoCliente->Active = true;
+        int totalRegistros = CDSNaoIdentificao->RecordCount;
 
         /*
         if(totalRegistros > 0){
@@ -1386,8 +1384,8 @@ void __fastcall TFHome::BtnConsultarClientesNaoIdentificadosClick(
         }
         */
 
-        if(IBTIdentificao->InTransaction){
-            IBTIdentificao->Commit();
+        if(IBTNaoIdentificao->InTransaction){
+            IBTNaoIdentificao->Commit();
         }
 
     }catch(Exception &excecao){
@@ -1398,5 +1396,39 @@ void __fastcall TFHome::BtnConsultarClientesNaoIdentificadosClick(
     }
 }
 
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::DBGClientesIdentificados7diasDrawColumnCell(
+      TObject *Sender, const TRect &Rect, int DataCol, TColumn *Column,
+      TGridDrawState State)
+{
+    if(CDSNaoIdentificao->RecNo % 2){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_ALTERNATE_ROW;
+    }else{
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = clWindow;
+    }
+
+    if(State.Contains(gdSelected)){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_SELECTED_ROW;
+    }
+    (dynamic_cast <TDBGrid*> (Sender))->DefaultDrawColumnCell(Rect, DataCol, Column, State);
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::DBGClientesUltimosEventos7diasDrawColumnCell(
+      TObject *Sender, const TRect &Rect, int DataCol, TColumn *Column,
+      TGridDrawState State)
+{
+    if(CDSNaoIdentificaoCliente->RecNo % 2){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_ALTERNATE_ROW;
+    }else{
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = clWindow;
+    }
+
+    if(State.Contains(gdSelected)){
+        (dynamic_cast <TDBGrid*> (Sender))->Canvas->Brush->Color = COLOR_GRID_SELECTED_ROW;
+    }
+    (dynamic_cast <TDBGrid*> (Sender))->DefaultDrawColumnCell(Rect, DataCol, Column, State);
+}
 //---------------------------------------------------------------------------
 

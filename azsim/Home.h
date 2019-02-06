@@ -331,11 +331,11 @@ __published:	// IDE-managed Components
     TSpeedButton *BtnConsultarClientesIdentificados;
     TSpeedButton *SpeedButton3;
     TSplitter *Splitter2;
-    TDBGrid *DBGrid3;
+    TDBGrid *DBGClientesUltimosEventos7dias;
     TPanel *Panel6;
     TSpeedButton *BtnConsultarClientesNaoIdentificados;
     TSpeedButton *SpeedButton4;
-    TDBGrid *DBGrid4;
+    TDBGrid *DBGClientesIdentificados7dias;
     TSplitter *Splitter3;
     TGroupBox *GroupBox4;
     TLabel *Label15;
@@ -344,6 +344,41 @@ __published:	// IDE-managed Components
     TEdit *EdtCodClienteIdentificados;
     TEdit *EdtNomeClienteIdentificados;
     TEdit *EdtCodificadorIdentificados;
+    TIBQuery *IBQNaoIdentificacaoCliente;
+    TIntegerField *IntegerField1;
+    TDateField *DateField1;
+    TDateTimeField *DateTimeField1;
+    TIntegerField *IntegerField2;
+    TIBStringField *IBStringField1;
+    TDateTimeField *DateTimeField2;
+    TIBStringField *IBStringField2;
+    TDataSetProvider *DSPNaoIdentificaoCliente;
+    TClientDataSet *CDSNaoIdentificaoCliente;
+    TIntegerField *IntegerField3;
+    TDateField *DateField2;
+    TDateTimeField *DateTimeField3;
+    TIntegerField *IntegerField4;
+    TStringField *StringField1;
+    TDateTimeField *DateTimeField4;
+    TStringField *StringField2;
+    TDataSource *DSNaoIdentificacaoCliente;
+    TDataSource *DSNaoIdentificao;
+    TClientDataSet *CDSNaoIdentificao;
+    TDataSetProvider *DSPNaoIdentificao;
+    TDataSource *DSLinkNaoIdentificacaoCliente;
+    TIBQuery *IBQNaoIdentificao;
+    TIBTransaction *IBTNaoIdentificao;
+    TIntegerField *IBQNaoIdentificaoCDCLIENTE;
+    TIBStringField *IBQNaoIdentificaoNMCLIENTE;
+    TIBStringField *IBQNaoIdentificaoENDERECO;
+    TIBStringField *IBQNaoIdentificaoBAIRRO;
+    TIBStringField *IBQNaoIdentificaoCIDADE;
+    TIntegerField *CDSNaoIdentificaoCDCLIENTE;
+    TStringField *CDSNaoIdentificaoNMCLIENTE;
+    TStringField *CDSNaoIdentificaoENDERECO;
+    TStringField *CDSNaoIdentificaoBAIRRO;
+    TStringField *CDSNaoIdentificaoCIDADE;
+    TDataSetField *CDSNaoIdentificaoIBQNaoIdentificacaoCliente;
     void __fastcall MnSairClick(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall MnCadContratoClick(TObject *Sender);
@@ -409,6 +444,12 @@ __published:	// IDE-managed Components
           TGridDrawState State);
     void __fastcall BtnConsultarClientesNaoIdentificadosClick(
           TObject *Sender);
+    void __fastcall DBGClientesIdentificados7diasDrawColumnCell(
+          TObject *Sender, const TRect &Rect, int DataCol, TColumn *Column,
+          TGridDrawState State);
+    void __fastcall DBGClientesUltimosEventos7diasDrawColumnCell(
+          TObject *Sender, const TRect &Rect, int DataCol, TColumn *Column,
+          TGridDrawState State);
 private:	// User declarations
     // Métodos
     HWND __fastcall CarregaMonitor(LPCTSTR program, LPCTSTR args);

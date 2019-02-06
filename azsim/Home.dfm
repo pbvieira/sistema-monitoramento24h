@@ -1,6 +1,6 @@
 object FHome: TFHome
   Left = 194
-  Top = 101
+  Top = 102
   AutoScroll = False
   Caption = 'AZSIM - Sistema Integrado de Monitoramento - Vers'#227'o 1.2.2'
   ClientHeight = 638
@@ -1224,13 +1224,13 @@ object FHome: TFHome
                     Font.Height = -11
                     Font.Name = 'MS Sans Serif'
                     Font.Style = [fsBold]
-                    Title.Caption = 'Data '#250'ltimo evento'
+                    Title.Caption = 'Data '#250'ltima identifica'#231#227'o'
                     Title.Font.Charset = DEFAULT_CHARSET
                     Title.Font.Color = clWindowText
                     Title.Font.Height = -11
                     Title.Font.Name = 'MS Sans Serif'
                     Title.Font.Style = [fsBold]
-                    Width = 150
+                    Width = 160
                     Visible = True
                   end
                   item
@@ -1434,7 +1434,7 @@ object FHome: TFHome
                 Align = alTop
                 Beveled = True
               end
-              object DBGrid3: TDBGrid
+              object DBGClientesUltimosEventos7dias: TDBGrid
                 Left = 0
                 Top = 362
                 Width = 1201
@@ -1442,7 +1442,7 @@ object FHome: TFHome
                 Align = alClient
                 BorderStyle = bsNone
                 Ctl3D = True
-                DataSource = DSIdentificacaoCliente
+                DataSource = DSNaoIdentificacaoCliente
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -11
@@ -1457,6 +1457,7 @@ object FHome: TFHome
                 TitleFont.Height = -11
                 TitleFont.Name = 'MS Sans Serif'
                 TitleFont.Style = []
+                OnDrawColumnCell = DBGClientesUltimosEventos7diasDrawColumnCell
                 Columns = <
                   item
                     Expanded = False
@@ -1633,7 +1634,7 @@ object FHome: TFHome
                   OnClick = BtnImprimirOCClick
                 end
               end
-              object DBGrid4: TDBGrid
+              object DBGClientesIdentificados7dias: TDBGrid
                 Left = 0
                 Top = 53
                 Width = 1201
@@ -1641,7 +1642,7 @@ object FHome: TFHome
                 Align = alTop
                 BorderStyle = bsNone
                 Ctl3D = True
-                DataSource = DSIdentificao
+                DataSource = DSNaoIdentificao
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clWindowText
                 Font.Height = -11
@@ -1656,6 +1657,7 @@ object FHome: TFHome
                 TitleFont.Height = -11
                 TitleFont.Name = 'MS Sans Serif'
                 TitleFont.Style = []
+                OnDrawColumnCell = DBGClientesIdentificados7diasDrawColumnCell
                 Columns = <
                   item
                     Expanded = False
@@ -1692,67 +1694,6 @@ object FHome: TFHome
                     Expanded = False
                     FieldName = 'CIDADE'
                     Title.Caption = 'Cidade'
-                    Width = 100
-                    Visible = True
-                  end
-                  item
-                    Alignment = taCenter
-                    Expanded = False
-                    FieldName = 'TOTAL30DIAS'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -11
-                    Font.Name = 'MS Sans Serif'
-                    Font.Style = [fsBold]
-                    Title.Alignment = taCenter
-                    Title.Caption = 'Total '#250'ltimos 30 dias'
-                    Title.Font.Charset = DEFAULT_CHARSET
-                    Title.Font.Color = clWindowText
-                    Title.Font.Height = -11
-                    Title.Font.Name = 'MS Sans Serif'
-                    Title.Font.Style = [fsBold]
-                    Width = 130
-                    Visible = True
-                  end
-                  item
-                    Alignment = taCenter
-                    Expanded = False
-                    FieldName = 'PERCENTUAL'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clMaroon
-                    Font.Height = -11
-                    Font.Name = 'MS Sans Serif'
-                    Font.Style = [fsBold]
-                    Title.Caption = 'Percentual'
-                    Title.Font.Charset = DEFAULT_CHARSET
-                    Title.Font.Color = clMaroon
-                    Title.Font.Height = -11
-                    Title.Font.Name = 'MS Sans Serif'
-                    Title.Font.Style = [fsBold]
-                    Width = 70
-                    Visible = True
-                  end
-                  item
-                    Expanded = False
-                    FieldName = 'ULTIMADATA'
-                    Font.Charset = DEFAULT_CHARSET
-                    Font.Color = clWindowText
-                    Font.Height = -11
-                    Font.Name = 'MS Sans Serif'
-                    Font.Style = [fsBold]
-                    Title.Caption = 'Data '#250'ltimo evento'
-                    Title.Font.Charset = DEFAULT_CHARSET
-                    Title.Font.Color = clWindowText
-                    Title.Font.Height = -11
-                    Title.Font.Name = 'MS Sans Serif'
-                    Title.Font.Style = [fsBold]
-                    Width = 150
-                    Visible = True
-                  end
-                  item
-                    Expanded = False
-                    FieldName = 'IDENTIFICACAO'
-                    Title.Caption = 'Identifica'#231#227'o'
                     Width = 1024
                     Visible = True
                   end>
@@ -3872,9 +3813,9 @@ object FHome: TFHome
         #9'JOIN CONTRATO CO ON CO.CDCLIENTE = L.CDCLIENTE AND CO.INATIVO =' +
         ' 0'
       
-        'WHERE C.CDCLIENTE = :CDCLIENTE AND L.DATACADASTRO > DATEADD(-30 ' +
-        'DAY TO L.DATACADASTRO) '
-      'ORDER BY L.DATAIDENTIFICACAO;')
+        'WHERE C.CDCLIENTE = :CDCLIENTE AND L.IDENTIFICACAO IS NOT NULL A' +
+        'ND  L.DATACADASTRO > DATEADD(-30 DAY TO L.DATACADASTRO) '
+      'ORDER BY L.DATAIDENTIFICACAO DESC;')
     Left = 749
     Top = 331
     ParamData = <
@@ -3961,5 +3902,213 @@ object FHome: TFHome
     DataSet = CDSIdentificaoCliente
     Left = 754
     Top = 477
+  end
+  object IBQNaoIdentificacaoCliente: TIBQuery
+    Database = DModule.IBCONAzsim
+    Transaction = IBTNaoIdentificao
+    BufferChunks = 1000
+    CachedUpdates = False
+    DataSource = DSLinkNaoIdentificacaoCliente
+    SQL.Strings = (
+      
+        'SELECT L.CDLOGULTIMOESTADO, L.DATACADASTRO, L.DATAIDENTIFICACAO,' +
+        ' L.CDCLIENTE, L.IDENTIFICACAO, L.DATAULTIMOEVENTO, L.ULTIMOEVENT' +
+        'O'
+      'FROM LOGULTIMOESTADO L '
+      #9'JOIN CLIENTE C ON C.CDCLIENTE = L.CDCLIENTE'
+      
+        #9'JOIN CONTRATO CO ON CO.CDCLIENTE = L.CDCLIENTE AND CO.INATIVO =' +
+        ' 0'
+      
+        'WHERE C.CDCLIENTE = :CDCLIENTE AND L.IDENTIFICACAO IS NOT NULL A' +
+        'ND  L.DATACADASTRO > DATEADD(-30 DAY TO L.DATACADASTRO) '
+      'ORDER BY L.DATAIDENTIFICACAO DESC;')
+    Left = 1029
+    Top = 331
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'CDCLIENTE'
+        ParamType = ptUnknown
+        Size = 4
+      end>
+    object IntegerField1: TIntegerField
+      FieldName = 'CDLOGULTIMOESTADO'
+      Origin = 'LOGULTIMOESTADO.CDLOGULTIMOESTADO'
+      Required = True
+    end
+    object DateField1: TDateField
+      FieldName = 'DATACADASTRO'
+      Origin = 'LOGULTIMOESTADO.DATACADASTRO'
+      Required = True
+    end
+    object DateTimeField1: TDateTimeField
+      FieldName = 'DATAIDENTIFICACAO'
+      Origin = 'LOGULTIMOESTADO.DATAIDENTIFICACAO'
+    end
+    object IntegerField2: TIntegerField
+      FieldName = 'CDCLIENTE'
+      Origin = 'LOGULTIMOESTADO.CDCLIENTE'
+      Required = True
+    end
+    object IBStringField1: TIBStringField
+      FieldName = 'IDENTIFICACAO'
+      Origin = 'LOGULTIMOESTADO.IDENTIFICACAO'
+      Size = 100
+    end
+    object DateTimeField2: TDateTimeField
+      FieldName = 'DATAULTIMOEVENTO'
+      Origin = 'LOGULTIMOESTADO.DATAULTIMOEVENTO'
+    end
+    object IBStringField2: TIBStringField
+      FieldName = 'ULTIMOEVENTO'
+      Origin = 'LOGULTIMOESTADO.ULTIMOEVENTO'
+      Size = 100
+    end
+  end
+  object DSPNaoIdentificaoCliente: TDataSetProvider
+    DataSet = IBQNaoIdentificacaoCliente
+    Constraints = True
+    Left = 1030
+    Top = 381
+  end
+  object CDSNaoIdentificaoCliente: TClientDataSet
+    Aggregates = <>
+    DataSetField = CDSNaoIdentificaoIBQNaoIdentificacaoCliente
+    Params = <>
+    Left = 1032
+    Top = 430
+    object IntegerField3: TIntegerField
+      FieldName = 'CDLOGULTIMOESTADO'
+      Required = True
+    end
+    object DateField2: TDateField
+      FieldName = 'DATACADASTRO'
+      Required = True
+    end
+    object DateTimeField3: TDateTimeField
+      FieldName = 'DATAIDENTIFICACAO'
+    end
+    object IntegerField4: TIntegerField
+      FieldName = 'CDCLIENTE'
+      Required = True
+    end
+    object StringField1: TStringField
+      FieldName = 'IDENTIFICACAO'
+      Size = 100
+    end
+    object DateTimeField4: TDateTimeField
+      FieldName = 'DATAULTIMOEVENTO'
+    end
+    object StringField2: TStringField
+      FieldName = 'ULTIMOEVENTO'
+      Size = 100
+    end
+  end
+  object DSNaoIdentificacaoCliente: TDataSource
+    DataSet = CDSNaoIdentificaoCliente
+    Left = 1034
+    Top = 477
+  end
+  object DSNaoIdentificao: TDataSource
+    DataSet = CDSNaoIdentificao
+    Left = 881
+    Top = 525
+  end
+  object CDSNaoIdentificao: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DSPNaoIdentificao'
+    Left = 881
+    Top = 478
+    object CDSNaoIdentificaoCDCLIENTE: TIntegerField
+      FieldName = 'CDCLIENTE'
+      Required = True
+    end
+    object CDSNaoIdentificaoNMCLIENTE: TStringField
+      FieldName = 'NMCLIENTE'
+      Size = 60
+    end
+    object CDSNaoIdentificaoENDERECO: TStringField
+      FieldName = 'ENDERECO'
+      Size = 60
+    end
+    object CDSNaoIdentificaoBAIRRO: TStringField
+      FieldName = 'BAIRRO'
+      Size = 60
+    end
+    object CDSNaoIdentificaoCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Size = 60
+    end
+    object CDSNaoIdentificaoIBQNaoIdentificacaoCliente: TDataSetField
+      FieldName = 'IBQNaoIdentificacaoCliente'
+    end
+  end
+  object DSPNaoIdentificao: TDataSetProvider
+    DataSet = IBQNaoIdentificao
+    Constraints = True
+    UpdateMode = upWhereKeyOnly
+    Left = 880
+    Top = 430
+  end
+  object DSLinkNaoIdentificacaoCliente: TDataSource
+    DataSet = IBQNaoIdentificao
+    Left = 880
+    Top = 381
+  end
+  object IBQNaoIdentificao: TIBQuery
+    Database = DModule.IBCONAzsim
+    Transaction = IBTNaoIdentificao
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      
+        'SELECT DISTINCT L.CDCLIENTE,  C.NMCLIENTE, C.ENDERECO, C.BAIRRO,' +
+        ' C.CIDADE '
+      'FROM LOGULTIMOESTADO L '
+      #9'JOIN CLIENTE C ON C.CDCLIENTE = L.CDCLIENTE '
+      
+        #9'JOIN CONTRATO CO ON CO.CDCLIENTE = L.CDCLIENTE AND CO.INATIVO =' +
+        ' 0 '
+      
+        'WHERE L.IDENTIFICACAO IS NULL AND L.DATACADASTRO > DATEADD(-7 DA' +
+        'Y TO CURRENT_DATE) '
+      'ORDER BY C.NMCLIENTE;')
+    UniDirectional = True
+    Left = 880
+    Top = 332
+    object IBQNaoIdentificaoCDCLIENTE: TIntegerField
+      FieldName = 'CDCLIENTE'
+      Origin = 'LOGULTIMOESTADO.CDCLIENTE'
+      Required = True
+    end
+    object IBQNaoIdentificaoNMCLIENTE: TIBStringField
+      FieldName = 'NMCLIENTE'
+      Origin = 'CLIENTE.NMCLIENTE'
+      Size = 60
+    end
+    object IBQNaoIdentificaoENDERECO: TIBStringField
+      FieldName = 'ENDERECO'
+      Origin = 'CLIENTE.ENDERECO'
+      Size = 60
+    end
+    object IBQNaoIdentificaoBAIRRO: TIBStringField
+      FieldName = 'BAIRRO'
+      Origin = 'CLIENTE.BAIRRO'
+      Size = 60
+    end
+    object IBQNaoIdentificaoCIDADE: TIBStringField
+      FieldName = 'CIDADE'
+      Origin = 'CLIENTE.CIDADE'
+      Size = 60
+    end
+  end
+  object IBTNaoIdentificao: TIBTransaction
+    Active = True
+    DefaultDatabase = DModule.IBCONAzsim
+    AutoStopAction = saNone
+    Left = 881
+    Top = 284
   end
 end
