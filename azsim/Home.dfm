@@ -2,7 +2,7 @@ object FHome: TFHome
   Left = 194
   Top = 102
   AutoScroll = False
-  Caption = 'AZSIM - Sistema Integrado de Monitoramento - Vers'#227'o 1.2.2'
+  Caption = 'AZSIM - Sistema Integrado de Monitoramento - Vers'#227'o 1.2.3'
   ClientHeight = 638
   ClientWidth = 1240
   Color = clBtnFace
@@ -1009,10 +1009,10 @@ object FHome: TFHome
             Top = 31
             Width = 1209
             Height = 579
-            ActivePage = TSSemIdentificacao
+            ActivePage = TSIdentificacao
             Align = alClient
             Style = tsFlatButtons
-            TabIndex = 1
+            TabIndex = 0
             TabOrder = 1
             object TSIdentificacao: TTabSheet
               Caption = 'Clientes identificados '#250'ltimos 30 dias'
@@ -1687,7 +1687,14 @@ object FHome: TFHome
                     Expanded = False
                     FieldName = 'ENDERECO'
                     Title.Caption = 'Endere'#231'o'
-                    Width = 290
+                    Width = 310
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'BAIRRO'
+                    Title.Caption = 'Bairro'
+                    Width = 200
                     Visible = True
                   end
                   item
@@ -3812,10 +3819,12 @@ object FHome: TFHome
       
         #9'JOIN CONTRATO CO ON CO.CDCLIENTE = L.CDCLIENTE AND CO.INATIVO =' +
         ' 0'
+      'WHERE C.CDCLIENTE = :CDCLIENTE AND '
       
-        'WHERE C.CDCLIENTE = :CDCLIENTE AND L.IDENTIFICACAO IS NOT NULL A' +
-        'ND  L.DATACADASTRO > DATEADD(-30 DAY TO L.DATACADASTRO) '
-      'ORDER BY L.DATAIDENTIFICACAO DESC;')
+        #9'(L.IDENTIFICACAO IS NOT NULL OR L.ESTADOCENTRAL IS NOT NULL OR ' +
+        'L.ULTIMOEVENTO IS NOT NULL)'
+      #9'AND L.DATACADASTRO > DATEADD(-30 DAY TO L.DATACADASTRO) '
+      'ORDER BY L.DATACADASTRO DESC;')
     Left = 749
     Top = 331
     ParamData = <
@@ -3919,10 +3928,13 @@ object FHome: TFHome
       
         #9'JOIN CONTRATO CO ON CO.CDCLIENTE = L.CDCLIENTE AND CO.INATIVO =' +
         ' 0'
+      'WHERE C.CDCLIENTE = :CDCLIENTE AND '
       
-        'WHERE C.CDCLIENTE = :CDCLIENTE AND L.IDENTIFICACAO IS NOT NULL A' +
-        'ND  L.DATACADASTRO > DATEADD(-30 DAY TO L.DATACADASTRO) '
-      'ORDER BY L.DATAIDENTIFICACAO DESC;')
+        #9'(L.IDENTIFICACAO IS NOT NULL OR L.ESTADOCENTRAL IS NOT NULL OR ' +
+        'L.ULTIMOEVENTO IS NOT NULL)'
+      #9'AND L.DATACADASTRO > DATEADD(-30 DAY TO L.DATACADASTRO) '
+      'ORDER BY L.DATACADASTRO DESC;'
+      '')
     Left = 1029
     Top = 331
     ParamData = <
@@ -4064,17 +4076,21 @@ object FHome: TFHome
     CachedUpdates = False
     SQL.Strings = (
       
-        'SELECT DISTINCT L.CDCLIENTE,  C.NMCLIENTE, C.ENDERECO, C.BAIRRO,' +
-        ' C.CIDADE '
-      'FROM LOGULTIMOESTADO L '
-      #9'JOIN CLIENTE C ON C.CDCLIENTE = L.CDCLIENTE '
+        'SELECT DISTINCT LL.CDCLIENTE, C.NMCLIENTE, C.ENDERECO, C.BAIRRO,' +
+        ' C.CIDADE'
+      'FROM LOGULTIMOESTADO LL '
+      #9'JOIN CLIENTE C ON C.CDCLIENTE = LL.CDCLIENTE '
       
-        #9'JOIN CONTRATO CO ON CO.CDCLIENTE = L.CDCLIENTE AND CO.INATIVO =' +
-        ' 0 '
+        #9'JOIN CONTRATO CO ON CO.CDCLIENTE = LL.CDCLIENTE AND CO.INATIVO ' +
+        '= 0 '
       
-        'WHERE L.IDENTIFICACAO IS NULL AND L.DATACADASTRO > DATEADD(-7 DA' +
-        'Y TO CURRENT_DATE) '
-      'ORDER BY C.NMCLIENTE;')
+        'WHERE LL.CDCLIENTE NOT IN(SELECT l.CDCLIENTE FROM LOGULTIMOESTAD' +
+        'O L'
+      #9'WHERE L.DATACADASTRO > DATEADD(-7 DAY TO CURRENT_DATE) '
+      #9#9'AND L.IDENTIFICACAO IS NOT NULL)'
+      
+        #9'AND LL.DATACADASTRO > DATEADD(-7 DAY TO CURRENT_DATE) AND LL.ID' +
+        'ENTIFICACAO IS NULL;')
     UniDirectional = True
     Left = 880
     Top = 332

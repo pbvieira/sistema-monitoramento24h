@@ -132,8 +132,8 @@ IncludeVerInfo=1
 AutoIncBuild=1
 MajorVer=1
 MinorVer=2
-Release=2
-Build=13
+Release=3
+Build=15
 Debug=0
 PreRelease=0
 Special=0
@@ -145,13 +145,13 @@ CodePage=1252
 [Version Info Keys]
 CompanyName=AZ Monitoramento
 FileDescription=
-FileVersion=1.2.2.13
+FileVersion=1.2.3.15
 InternalName=
 LegalCopyright=
 LegalTrademarks=
 OriginalFilename=
 ProductName=AZSIM
-ProductVersion=1.2.2.11
+ProductVersion=1.2.3
 Comments=
 
 [HistoryLists\hlIncludePath]
