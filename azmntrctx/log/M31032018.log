@@ -1,9 +1,0 @@
-01:03:29 - Iniciando o monitor serial Versão 1.0.1.0
-01:03:29 - Carregando em cache os status
-01:03:29 - Carregando a dll bccom5.dll
-01:03:29 - Validando a integridade da dll
-01:03:29 - Iniciando a comunicação serial com a porta COM5
-01:03:29 - Erro de comunicação serial: CODERRO1. Endereço inválido. Erro na abertura da porta de comunicação
-01:03:29 - Comunicação serial com a porta COM5 falhou
-01:03:36 - Erro de comunicação serial: CODERRO5. Erro no encerramento da rede. 
-01:03:36 - Encerramento da comunicação serial falhou
