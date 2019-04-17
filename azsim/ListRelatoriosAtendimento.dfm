@@ -1,6 +1,6 @@
 object FListRelatoriosAtendimento: TFListRelatoriosAtendimento
-  Left = 727
-  Top = 137
+  Left = 702
+  Top = 159
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'AZSIM'

@@ -1,9 +1,9 @@
 object FHome: TFHome
-  Left = 194
-  Top = 102
+  Left = 192
+  Top = 112
   AutoScroll = False
-  Caption = 'AZSIM - Sistema Integrado de Monitoramento - Vers'#227'o 1.2.3'
-  ClientHeight = 638
+  Caption = 'AZSIM - Sistema Integrado de Monitoramento - Vers'#227'o 1.2.4'
+  ClientHeight = 639
   ClientWidth = 1240
   Color = clBtnFace
   Constraints.MinHeight = 592
@@ -23,7 +23,7 @@ object FHome: TFHome
   TextHeight = 13
   object SBarHome: TStatusBar
     Left = 0
-    Top = 621
+    Top = 622
     Width = 1240
     Height = 17
     Panels = <
@@ -42,7 +42,7 @@ object FHome: TFHome
     Left = 0
     Top = 0
     Width = 1240
-    Height = 621
+    Height = 622
     Align = alClient
     BevelOuter = bvLowered
     TabOrder = 1
@@ -50,7 +50,7 @@ object FHome: TFHome
       Left = 1
       Top = 1
       Width = 1238
-      Height = 619
+      Height = 620
       ActivePage = TSUltimoEstado
       Align = alClient
       MultiLine = True
@@ -73,7 +73,7 @@ object FHome: TFHome
           Left = 0
           Top = 362
           Width = 1211
-          Height = 249
+          Height = 250
           Align = alClient
           BevelOuter = bvNone
           TabOrder = 0
@@ -81,7 +81,7 @@ object FHome: TFHome
             Left = 0
             Top = 30
             Width = 1211
-            Height = 171
+            Height = 172
             Align = alClient
             BorderStyle = bsNone
             Ctl3D = True
@@ -188,7 +188,7 @@ object FHome: TFHome
           end
           object pnlConsultaEventos: TPanel
             Left = 0
-            Top = 201
+            Top = 202
             Width = 1211
             Height = 48
             Align = alBottom
@@ -568,7 +568,7 @@ object FHome: TFHome
           Left = 0
           Top = 0
           Width = 1211
-          Height = 611
+          Height = 612
           Align = alClient
           TabOrder = 0
           object BtnConsultarOC: TSpeedButton
@@ -727,7 +727,7 @@ object FHome: TFHome
             Left = 1
             Top = 136
             Width = 1209
-            Height = 474
+            Height = 475
             Align = alBottom
             Anchors = [akLeft, akTop, akRight, akBottom]
             BorderStyle = bsNone
@@ -983,7 +983,7 @@ object FHome: TFHome
           Left = 0
           Top = 0
           Width = 1211
-          Height = 611
+          Height = 612
           Align = alClient
           TabOrder = 0
           object Panel5: TPanel
@@ -1008,11 +1008,11 @@ object FHome: TFHome
             Left = 1
             Top = 31
             Width = 1209
-            Height = 579
-            ActivePage = TSIdentificacao
+            Height = 580
+            ActivePage = TSSemIdentificacao
             Align = alClient
             Style = tsFlatButtons
-            TabIndex = 0
+            TabIndex = 1
             TabOrder = 1
             object TSIdentificacao: TTabSheet
               Caption = 'Clientes identificados '#250'ltimos 30 dias'
@@ -1029,7 +1029,7 @@ object FHome: TFHome
                 Left = 0
                 Top = 422
                 Width = 1201
-                Height = 126
+                Height = 127
                 Align = alClient
                 BorderStyle = bsNone
                 Ctl3D = True
@@ -1438,7 +1438,7 @@ object FHome: TFHome
                 Left = 0
                 Top = 362
                 Width = 1201
-                Height = 186
+                Height = 187
                 Align = alClient
                 BorderStyle = bsNone
                 Ctl3D = True
@@ -1582,7 +1582,7 @@ object FHome: TFHome
                     181818181C1C1C1C1C1C}
                   OnClick = BtnConsultarClientesNaoIdentificadosClick
                 end
-                object SpeedButton4: TSpeedButton
+                object BtnImprimirNaoIdentificados: TSpeedButton
                   Left = 150
                   Top = 10
                   Width = 115
@@ -2991,6 +2991,13 @@ object FHome: TFHome
         Caption = 'Relat'#243'rio de Clientes Inativos'
         Visible = False
       end
+      object N7: TMenuItem
+        Caption = '-'
+      end
+      object MnRelNaoIdentificados: TMenuItem
+        Caption = 'Relat'#243'rio de Clientes sem Comunica'#231#227'o...'
+        OnClick = MnRelNaoIdentificadosClick
+      end
     end
   end
   object TMRConsulta: TTimer
@@ -4121,7 +4128,7 @@ object FHome: TFHome
     end
   end
   object IBTNaoIdentificao: TIBTransaction
-    Active = True
+    Active = False
     DefaultDatabase = DModule.IBCONAzsim
     AutoStopAction = saNone
     Left = 881

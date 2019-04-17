@@ -550,6 +550,16 @@ __published:	// IDE-managed Components
     TIBBCDField *IBQConsClienteCDCONDOR;
     TBCDField *CDSConsClienteCDHABIL;
     TBCDField *CDSConsClienteCDCONDOR;
+    TIBTransaction *IBTRelNaoIdentificados;
+    TDataSetProvider *DSPRelNaoIdentificados;
+    TClientDataSet *CDSRelNaoIdentificados;
+    TDataSource *DSRelNaoIdentificados;
+    TIntegerField *CDSRelNaoIdentificadosCDCLIENTE;
+    TStringField *CDSRelNaoIdentificadosNMCLIENTE;
+    TIntegerField *CDSRelNaoIdentificadosCDCODIFICADOR;
+    TDateTimeField *CDSRelNaoIdentificadosDATAULTIMOEVENTO;
+    TStringField *CDSRelNaoIdentificadosULTIMOEVENTO;
+    TIBQuery *IBQRelNaoIdentificados;
     void __fastcall CDSProcedimentoBeforePost(TDataSet *DataSet);
     void __fastcall CDSClienteBeforePost(TDataSet *DataSet);
     void __fastcall CDSContatoBeforePost(TDataSet *DataSet);

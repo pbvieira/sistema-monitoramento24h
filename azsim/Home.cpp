@@ -22,6 +22,8 @@
 #include "ConsClienteAtivo.h"
 #include "ConsClienteInativo.h"
 #include "ConsSimplesClientes.h"
+#include "RelNaoIdentificados.h"
+#include "SelectRelNaoIdentificados.h"
 
 #pragma hdrstop
 //---------------------------------------------------------------------------
@@ -1379,13 +1381,11 @@ void __fastcall TFHome::BtnConsultarClientesNaoIdentificadosClick(
         CDSNaoIdentificaoCliente->Active = true;
         int totalRegistros = CDSNaoIdentificao->RecordCount;
 
-        /*
         if(totalRegistros > 0){
-            BtnImprimirOC->Enabled = true;
+            BtnImprimirNaoIdentificados->Enabled = true;
         }else{
-            BtnImprimirOC->Enabled = false;
+            BtnImprimirNaoIdentificados->Enabled = false;
         }
-        */
 
         if(IBTNaoIdentificao->InTransaction){
             IBTNaoIdentificao->Commit();
@@ -1433,5 +1433,17 @@ void __fastcall TFHome::DBGClientesUltimosEventos7diasDrawColumnCell(
     }
     (dynamic_cast <TDBGrid*> (Sender))->DefaultDrawColumnCell(Rect, DataCol, Column, State);
 }
+//---------------------------------------------------------------------------
+
+void __fastcall TFHome::MnRelNaoIdentificadosClick(TObject *Sender)
+{
+    if(FormEstaAberto("FSelectRelNaoIdentificados")){
+        FSelectRelNaoIdentificados->Show();
+    }else{
+        FSelectRelNaoIdentificados = new TFSelectRelNaoIdentificados(this);
+        FSelectRelNaoIdentificados->Show();
+    }
+}
+
 //---------------------------------------------------------------------------
 

@@ -1,9 +1,9 @@
 object DModuleCliente: TDModuleCliente
   OldCreateOrder = False
-  Left = 200
-  Top = 154
-  Height = 635
-  Width = 1269
+  Left = 191
+  Top = 101
+  Height = 769
+  Width = 1247
   object IBQContato: TIBQuery
     Database = DModule.IBCONAzsim
     Transaction = IBTCliente
@@ -3822,5 +3822,66 @@ object DModuleCliente: TDModuleCliente
       Origin = 'CONTRATO.LOCALINSTALCENTRAL'
       Size = 400
     end
+  end
+  object IBTRelNaoIdentificados: TIBTransaction
+    Active = False
+    DefaultDatabase = DModule.IBCONAzsim
+    AutoStopAction = saNone
+    Left = 1180
+    Top = 14
+  end
+  object DSPRelNaoIdentificados: TDataSetProvider
+    DataSet = IBQRelNaoIdentificados
+    Constraints = True
+    Left = 1181
+    Top = 110
+  end
+  object CDSRelNaoIdentificados: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'DSPRelNaoIdentificados'
+    Left = 1182
+    Top = 159
+    object CDSRelNaoIdentificadosCDCLIENTE: TIntegerField
+      FieldName = 'CDCLIENTE'
+      Required = True
+    end
+    object CDSRelNaoIdentificadosNMCLIENTE: TStringField
+      FieldName = 'NMCLIENTE'
+      Size = 60
+    end
+    object CDSRelNaoIdentificadosCDCODIFICADOR: TIntegerField
+      FieldName = 'CDCODIFICADOR'
+    end
+    object CDSRelNaoIdentificadosDATAULTIMOEVENTO: TDateTimeField
+      FieldName = 'DATAULTIMOEVENTO'
+    end
+    object CDSRelNaoIdentificadosULTIMOEVENTO: TStringField
+      FieldName = 'ULTIMOEVENTO'
+      Size = 100
+    end
+  end
+  object DSRelNaoIdentificados: TDataSource
+    DataSet = CDSRelNaoIdentificados
+    Left = 1183
+    Top = 207
+  end
+  object IBQRelNaoIdentificados: TIBQuery
+    Database = DModule.IBCONAzsim
+    Transaction = IBTRelNaoIdentificados
+    BufferChunks = 1000
+    CachedUpdates = False
+    SQL.Strings = (
+      'SELECT * FROM SP_CONS_LOGULTIMOESTADO('
+      #9':NUMDIAS'
+      ') ORDER BY DATAULTIMOEVENTO;')
+    Left = 1181
+    Top = 62
+    ParamData = <
+      item
+        DataType = ftInteger
+        Name = 'NUMDIAS'
+        ParamType = ptInput
+      end>
   end
 end

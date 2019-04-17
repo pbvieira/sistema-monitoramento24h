@@ -1,7 +1,7 @@
 object fdmInfo: TfdmInfo
   OldCreateOrder = False
-  Left = 583
-  Top = 145
+  Left = 776
+  Top = 246
   Height = 491
   Width = 643
   object IBTAlarmeAcidental: TIBTransaction

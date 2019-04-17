@@ -334,7 +334,7 @@ __published:	// IDE-managed Components
     TDBGrid *DBGClientesUltimosEventos7dias;
     TPanel *Panel6;
     TSpeedButton *BtnConsultarClientesNaoIdentificados;
-    TSpeedButton *SpeedButton4;
+    TSpeedButton *BtnImprimirNaoIdentificados;
     TDBGrid *DBGClientesIdentificados7dias;
     TSplitter *Splitter3;
     TGroupBox *GroupBox4;
@@ -379,6 +379,8 @@ __published:	// IDE-managed Components
     TIBStringField *IBQNaoIdentificaoENDERECO;
     TIBStringField *IBQNaoIdentificaoBAIRRO;
     TIBStringField *IBQNaoIdentificaoCIDADE;
+    TMenuItem *N7;
+    TMenuItem *MnRelNaoIdentificados;
     void __fastcall MnSairClick(TObject *Sender);
     void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
     void __fastcall MnCadContratoClick(TObject *Sender);
@@ -450,6 +452,7 @@ __published:	// IDE-managed Components
     void __fastcall DBGClientesUltimosEventos7diasDrawColumnCell(
           TObject *Sender, const TRect &Rect, int DataCol, TColumn *Column,
           TGridDrawState State);
+    void __fastcall MnRelNaoIdentificadosClick(TObject *Sender);
 private:	// User declarations
     // Métodos
     HWND __fastcall CarregaMonitor(LPCTSTR program, LPCTSTR args);

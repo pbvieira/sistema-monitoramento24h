@@ -40,6 +40,8 @@ USEFORM("SelectReportOcorrenciaUnit.cpp", FSelectReportOcorrencia);
 USEFORM("ConsClienteAtivo.cpp", FConsClienteAtivo);
 USEFORM("ConsClienteInativo.cpp", FConsClienteInativo);
 USEFORM("ConsSimplesClientes.cpp", FConsSimplesClientes);
+USEFORM("RelNaoIdentificados.cpp", QRPRelNaoIdentificados); /* TQuickRep: File Type */
+USEFORM("SelectRelNaoIdentificados.cpp", FSelectRelNaoIdentificados);
 //---------------------------------------------------------------------------
 WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
 {

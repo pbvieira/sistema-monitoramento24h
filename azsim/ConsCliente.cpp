@@ -282,50 +282,57 @@ void __fastcall TFConsCliente::BtnSelecionarClick(TObject *Sender)
 
 void __fastcall TFConsCliente::BtnRelatorioClientesClick(TObject *Sender)
 {
-    AnsiString Cabecalho = "";
-    TStringList *ConteudoCSV = new TStringList();
+    if(dlgGeracaoRelClientes->ShowModal() == mrOk){
+      QrpFichaCliente = new TQrpFichaCliente(this);
+      QrpFichaCliente->PreviewModal();
+      QrpFichaCliente->Free();
+    }else{
 
-    // Monta o cabeçalho do arquivo
-    for(int i =0; i <= DModuleCliente->CDSConsCliente->FieldCount -3; i++){
-        AnsiString NomeCampo = DModuleCliente->CDSConsCliente->Fields->Fields[i]->FieldName;
-        if(NomeCampo == "CDCLIENTE" || NomeCampo == "NMCLIENTE"){
-            Cabecalho+=  NomeCampo + ";";
-        }
+      AnsiString Cabecalho = "";
+      TStringList *ConteudoCSV = new TStringList();
+
+      // Monta o cabeçalho do arquivo
+      for(int i =0; i <= DModuleCliente->CDSConsCliente->FieldCount -3; i++){
+          AnsiString NomeCampo = DModuleCliente->CDSConsCliente->Fields->Fields[i]->FieldName;
+          if(NomeCampo == "CDCLIENTE" || NomeCampo == "NMCLIENTE"){
+              Cabecalho+=  NomeCampo + ";";
+          }
+      }
+
+      ConteudoCSV->Add(Cabecalho.SubString(0, StrLen(Cabecalho.c_str())-1));
+      DModuleCliente->CDSConsCliente->First();
+
+      // Monta linhas do arquivo
+      while(!DModuleCliente->CDSConsCliente->Eof){
+          AnsiString Linha = "";
+          AnsiString Valor = "";
+          for(int i =0; i <= DModuleCliente->CDSConsCliente->FieldCount -3; i++){
+              AnsiString NomeCampo = DModuleCliente->CDSConsCliente->Fields->Fields[i]->FieldName;
+              if(NomeCampo == "CDCLIENTE" || NomeCampo == "NMCLIENTE"){
+                  Valor = DModuleCliente->CDSConsCliente->Fields->Fields[i]->AsString;
+                  Linha += StringReplace (Valor, ";", " ", TReplaceFlags() << rfReplaceAll) + ";";
+              }
+          }
+
+          ConteudoCSV->Add(Linha.SubString(0, StrLen(Linha.c_str())-1));
+          DModuleCliente->CDSConsCliente->Next();
+      }
+
+      if (!DirectoryExists("./relatorios")){
+          if (!CreateDir("./relatorios"))
+              throw Exception("Não foi possível criar o diretório relatorios.");
+      }
+
+      AnsiString NomeArquivo = Format(
+          "Clientes-todos-%s.csv",
+              ARRAYOFCONST((FormatDateTime("ddmmmyyyy", Date()))));
+
+      AnsiString PathApp = ExtractFilePath(ParamStr(0));
+      AnsiString PathArquivo = PathApp+ "relatorios\\" + NomeArquivo;
+      AnsiString MensagemExportacao = "Arquivo exportadado em " + PathArquivo;
+      ConteudoCSV->SaveToFile(PathArquivo);
+      Application->MessageBox(MensagemExportacao.c_str(),"Exportação",MB_OK);
     }
-
-    ConteudoCSV->Add(Cabecalho.SubString(0, StrLen(Cabecalho.c_str())-1));
-    DModuleCliente->CDSConsCliente->First();
-
-    // Monta linhas do arquivo
-    while(!DModuleCliente->CDSConsCliente->Eof){
-        AnsiString Linha = "";
-        AnsiString Valor = "";
-        for(int i =0; i <= DModuleCliente->CDSConsCliente->FieldCount -3; i++){
-            AnsiString NomeCampo = DModuleCliente->CDSConsCliente->Fields->Fields[i]->FieldName;
-            if(NomeCampo == "CDCLIENTE" || NomeCampo == "NMCLIENTE"){
-                Valor = DModuleCliente->CDSConsCliente->Fields->Fields[i]->AsString;
-                Linha += StringReplace (Valor, ";", " ", TReplaceFlags() << rfReplaceAll) + ";";
-            }
-        }
-
-        ConteudoCSV->Add(Linha.SubString(0, StrLen(Linha.c_str())-1));
-        DModuleCliente->CDSConsCliente->Next();
-    }
-
-    if (!DirectoryExists("./relatorios")){
-        if (!CreateDir("./relatorios"))
-            throw Exception("Não foi possível criar o diretório relatorios.");
-    }
-
-    AnsiString NomeArquivo = Format(
-        "Clientes-todos-%s.csv",
-            ARRAYOFCONST((FormatDateTime("ddmmmyyyy", Date()))));
-
-    AnsiString PathApp = ExtractFilePath(ParamStr(0));
-    AnsiString PathArquivo = PathApp+ "relatorios\\" + NomeArquivo;
-    AnsiString MensagemExportacao = "Arquivo exportadado em " + PathArquivo;
-    ConteudoCSV->SaveToFile(PathArquivo);
-    Application->MessageBox(MensagemExportacao.c_str(),"Exportação",MB_OK);
 }
 
 //---------------------------------------------------------------------------
